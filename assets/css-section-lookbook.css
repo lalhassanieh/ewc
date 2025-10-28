@@ -131,6 +131,7 @@
   transition: all 0.2s ease;
   box-shadow: -1px 5px 5px 0 rgba(0, 0, 0, 0.2);
   overflow: unset;
+  border-radius: 10px;
 }
 .wpbingo-widget-lookbook .content-product-card .product-card .wpb-variants-swatch .swatch-content {
   justify-content: center;
@@ -214,7 +215,7 @@
   left: calc(50% - 8px);
 }
 .wpbingo-widget-lookbook .position-bottom-left .product-card {
-  transform: translate(calc(-100% + 20px), 0);
+  transform: translate(calc(-100% - 17px), 0);
   position: relative;
 }
 .wpbingo-widget-lookbook .position-bottom-left .product-card:before {
@@ -340,11 +341,14 @@
   }
 }
 /*============= BOX TITLE ===================*/
+.wpbingo-widget-lookbook .lookbook-product-content {
+  position: relative;
+}
 .wpbingo-widget-lookbook .box-title {
-  top: 0;
+  top: auto;
   width: 100%;
-  height: 100%;
   left: 0;
+  z-index: 1;
   display: flex;
 }
 .wpbingo-widget-lookbook .box-title .content-info {
@@ -371,6 +375,7 @@
   justify-content: right;
 }
 .wpbingo-widget-lookbook .box-vertical-top {
+  top: 0;
   align-items: start;
 }
 .wpbingo-widget-lookbook .box-vertical-middle {
@@ -378,6 +383,7 @@
 }
 .wpbingo-widget-lookbook .box-vertical-bottom {
   align-items: end;
+  bottom: 0;
 }
 @media(max-width:500px) {
   .wpbingo-widget-lookbook .box-title.disable_absolute {

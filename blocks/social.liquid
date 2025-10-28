@@ -59,6 +59,11 @@
 			}
 		}
 	{%- endif -%}
+    @media (max-width:767px){
+        #shopify-block-{{ block.id }} .social-icons{
+            justify-content:{{block.settings.align_mobi}};
+        }
+    }
 </style>
 <div class="wpbingo-block wpbingo-widget--social wpbingo-block--{{ block.id }}">
 {% content_for "blocks" %}
@@ -159,7 +164,18 @@
           "id": "border_color_hover",
           "label": "Border color hover",
           "default": "#000"
-      }
+      },
+      {
+          "type": "header",
+          "content": "====== Mobile ======",
+          "info": "screen < 767px"
+      },
+      {
+            "type": "text_alignment",
+            "id": "align_mobi",
+            "label": "Text align",
+            "default": "left"
+        },
     ],
     "presets": [{"name": "Social"}]
   }

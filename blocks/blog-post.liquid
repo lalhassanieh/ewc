@@ -51,7 +51,7 @@
 {%- endif -%}
 {%- endstyle -%}
 <div class="wpbingo-block wpbingo-widget--featured-blog wpbingo-block--{{ block.id }} overflow-hidden">
-    <div class="featured-blog wpbingo-section__content bwp_slider-carousel">
+    <div class="featured-blog wpbingo-section__content bwp_slider-carousel{% if block.settings.half_slider != blank %} bwp_slick-margin-mobile{% endif %}">
         {% if blog == blank %}
              <h4>{{ 'blogs.block.select_blog' | t }}</h4>
         {% else %}
@@ -191,6 +191,12 @@
           "type": "checkbox",
           "id": "infinite",
           "label": "Infinite loop sliding",
+          "default": true
+        },
+        {
+          "type": "checkbox",
+          "id": "half_slider",
+          "label": "Half slider",
           "default": true
         },
         {

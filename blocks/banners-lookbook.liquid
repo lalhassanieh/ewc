@@ -50,17 +50,7 @@
 <div class="wpbingo-block wpbingo-widget-lookbook wpbingo-block--{{ block.id }}">
     <div class="lookbook-product-content">
 		<div class="wpbingo-lookbook__item">
-			<div class="lookbook-card">
-				<div class="lookbook-image">
-					{%- if block.settings.image != blank -%}
-						{% include 'img-global' with image: block.settings.image, class: "featured-lookbook__img", effect: "fade-in" %}
-					{%- else -%}
-						<img class="lazyload fade-in" src="https://placehold.jp/855x920.png" width="855" height="920" />
-					{%- endif -%}
-				</div>
-				{% content_for "blocks" %}
-			</div>
-			{%- if block.settings.box_content -%}
+            {%- if block.settings.box_content -%}
 				<div class="box-title position-{{ block.settings.content_position }} box-vertical-{{ block.settings.vertical_position }} box-vertical-mobi-{{ block.settings.vertical_position_mobi }}{% if block.settings.disable_absolute %} disable_absolute{% endif %}">
 					<div class="content-info box-horizontal-{{ block.settings.horizontal_position }} box-horizontal-mobi-{{ block.settings.horizontal_position_mobi }}">
 						<div class="content box-align-{{ block.settings.text_align }} box-align-mobi-{{ block.settings.text_align_mobi }}">
@@ -86,6 +76,16 @@
 					</div>
 				</div>
 			{%- endif -%}
+			<div class="lookbook-card">
+				<div class="lookbook-image">
+					{%- if block.settings.image != blank -%}
+						{% include 'img-global' with image: block.settings.image, class: "featured-lookbook__img", effect: "fade-in" %}
+					{%- else -%}
+						<img class="lazyload fade-in" src="https://placehold.jp/855x920.png" width="855" height="920" />
+					{%- endif -%}
+				</div>
+				{% content_for "blocks" %}
+			</div>
 		</div>
 	</div>
 </div>

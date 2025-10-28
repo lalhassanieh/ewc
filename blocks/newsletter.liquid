@@ -3,8 +3,14 @@
 {%- assign mailchimp_action = block.settings.form_action | replace: '/post?', '/post-json?' | append: '&amp;c=?' -%}
 {% assign margin 			= block.settings.margin | split: "|" %}
 {% assign padding 			= block.settings.padding | split: "|" %}
+{% assign max_width 		= block.settings.max_width %}
 <style>
-      {%- if margin[0] != blank or padding[0] != blank -%}
+	{%- if max_width != blank -%}
+		#shopify-block-{{ block.id }} .wpbingo-widget--newsletter {
+			max-width: {{ max_width }}
+		}
+	{%- endif -%}
+    {%- if margin[0] != blank or padding[0] != blank -%}
 		#shopify-block-{{ block.id }} .wpbingo-widget--newsletter{
 			{%- if margin[0] != blank -%}margin: {{ margin[0] }};{%- endif -%}
 			{%- if padding[0] != blank -%}padding:{{ padding[0] }};{%- endif -%}
@@ -74,6 +80,12 @@
   {
     "name": "Newsletter",
     "settings": [
+		{
+			"type": "text",
+			"id": "max_width",
+			"label": "Width newsletter",
+			"default": "350px"
+		},
         {
 			"type": "textarea",
 			"id": "padding",
