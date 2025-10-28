@@ -290,6 +290,10 @@
             "tab_content": "<p>You can choose between a refund or a credit note on full priced items.</p>\n<ul>\n<li>Item(s) must be returned in their original condition and packaging: unworn, unwashed and with all tags attached.</li>\n<li>Earrings cannot be returned due to health and safety reasons.</li>\n<li>Return shipping methods and associated costs are the responsibility of the customer.</li>\n<li>Sale items can not be refunded for change of mind.</li>\n</ul>",
             "tab_metafields": ""
           }
+        },
+        "sc_back_in_stock_app_block_3rmdeE": {
+          "type": "shopify://apps/sc-back-in-stock/blocks/app-block/839cbcb7-0406-4c2b-8e74-a54d987b90ab",
+          "settings": {}
         }
       },
       "block_order": [
@@ -317,7 +321,8 @@
         "product_tab_xXMhyp",
         "product_tab_LzeYXE",
         "product_tab_zbbQUN",
-        "product_tab_hiH3p4"
+        "product_tab_hiH3p4",
+        "sc_back_in_stock_app_block_3rmdeE"
       ],
       "settings": {
         "bg_section": "#ffffff",
@@ -422,6 +427,10 @@
         "column3": 2,
         "column4": 1
       }
+    },
+    "17616635041ed8cc03": {
+      "type": "apps",
+      "settings": {}
     }
   },
   "order": [
@@ -430,6 +439,7 @@
     "buy-together",
     "product-tab",
     "product-recommendations",
-    "recently-viewed"
+    "recently-viewed",
+    "17616635041ed8cc03"
   ]
 }
