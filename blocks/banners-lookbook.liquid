@@ -1,0 +1,389 @@
+{{ 'css-section-lookbook.css' | asset_url | stylesheet_tag }}
+{% assign margin 			= block.settings.margin | split: "|" %}
+{% assign padding 			= block.settings.padding | split: "|" %}
+{% assign padding_content 			= block.settings.padding_content | split: "|" %}
+{%- style -%}
+{%- if margin[0] != blank or margin_image[0] != blank or padding[0] != blank or padding_content[0] != blank -%}
+	#shopify-block-{{ block.id }} .wpbingo-widget-lookbook{
+		{%- if margin[0] != blank -%}margin: {{ margin[0] }};{%- endif -%}
+		{%- if padding[0] != blank -%}padding:{{ padding[0] }};{%- endif -%}
+	}
+	#shopify-block-{{ block.id }} .wpbingo-widget-lookbook .box-title{
+		{%- if padding_content[0] != blank -%}padding:{{ padding_content[0] }};{%- endif -%}
+	}
+{%- endif -%}
+{%- if margin[1] != blank or padding[1] != blank or padding_content[1] != blank -%}
+	@media (max-width:1199px){
+		#shopify-block-{{ block.id }} .wpbingo-widget-lookbook{
+			{%- if margin[1] != blank -%}margin: {{ margin[1] }};{%- endif -%}
+			{%- if padding[1] != blank -%}padding:{{ padding[1] }};{%- endif -%}
+		}
+		#shopify-block-{{ block.id }} .wpbingo-widget-lookbook .box-title{
+			{%- if padding_content[1] != blank -%}padding:{{ padding_content[1] }};{%- endif -%}
+		}
+	}
+{%- endif -%}
+{%- if margin[2] != blank or padding[2] != blank or padding_content[2] != blank -%}
+	@media (max-width:991px){
+		#shopify-block-{{ block.id }} .wpbingo-widget-lookbook{
+			{%- if margin[2] != blank -%}margin: {{ margin[2] }};{%- endif -%}
+			{%- if padding[2] != blank -%}padding:{{ padding[2] }};{%- endif -%}
+		}
+		#shopify-block-{{ block.id }} .wpbingo-widget-lookbook .box-title{
+			{%- if padding_content[2] != blank -%}padding:{{ padding_content[2] }};{%- endif -%}
+		}
+	}
+{%- endif -%}
+{%- if margin[3] != blank or padding[3] != blank or padding_content[3] != blank -%}
+	@media (max-width:767px){
+		#shopify-block-{{ block.id }} .wpbingo-widget-lookbook{
+			{%- if margin[3] != blank -%}margin: {{ margin[3] }};{%- endif -%}
+			{%- if padding[3] != blank -%}padding:{{ padding[3] }};{%- endif -%}
+		}
+		#shopify-block-{{ block.id }} .wpbingo-widget-lookbook .box-title{
+			{%- if padding_content[3] != blank -%}padding:{{ padding_content[3] }};{%- endif -%}
+		}
+	}
+{%- endif -%}
+{%- endstyle -%}
+{% content_for "block", type: "custom-lookbook", id: "custom-lookbook" %}
+<div class="wpbingo-block wpbingo-widget-lookbook wpbingo-block--{{ block.id }}">
+    <div class="lookbook-product-content">
+		<div class="wpbingo-lookbook__item">
+            {%- if block.settings.box_content -%}
+				<div class="box-title position-{{ block.settings.content_position }} box-vertical-{{ block.settings.vertical_position }} box-vertical-mobi-{{ block.settings.vertical_position_mobi }}{% if block.settings.disable_absolute %} disable_absolute{% endif %}">
+					<div class="content-info box-horizontal-{{ block.settings.horizontal_position }} box-horizontal-mobi-{{ block.settings.horizontal_position_mobi }}">
+						<div class="content box-align-{{ block.settings.text_align }} box-align-mobi-{{ block.settings.text_align_mobi }}">
+							{% if block.settings.subtitle_lookbook != blank %}
+								<div class="subtitle">{{ block.settings.subtitle_lookbook }}</div>
+							{%- endif -%}
+							{% if block.settings.title_lookbook != blank %}
+								<h2 class="title">{{ block.settings.title_lookbook }}</h2>
+							{%- endif -%}
+							{% if block.settings.button_lookbook != blank %}
+								<div class="wpbingo-button">
+									<a class="bwp-button {{ block.settings.button_hover }}" href="{{ block.settings.button_lookbook_url }}">
+										<span class="bwp-button-content-wrapper">
+											<span class="bwp-button-text">{{ block.settings.button_lookbook }}</span>
+										</span>
+										{%- unless block.settings.icon_title == blank -%}
+											<i class="{{ block.settings.icon_title }}"></i>
+										{%- endunless -%}
+									</a>
+								</div>
+							{%- endif -%}
+						</div>
+					</div>
+				</div>
+			{%- endif -%}
+			<div class="lookbook-card">
+				<div class="lookbook-image">
+					{%- if block.settings.image != blank -%}
+						{% include 'img-global' with image: block.settings.image, class: "featured-lookbook__img", effect: "fade-in" %}
+					{%- else -%}
+						<img class="lazyload fade-in" src="https://placehold.jp/855x920.png" width="855" height="920" />
+					{%- endif -%}
+				</div>
+				{% content_for "blocks" %}
+			</div>
+		</div>
+	</div>
+</div>
+{% schema %}
+  {
+    "name": "Banners lookbook",
+	"blocks": [{ "type": "_lookbook-pin" }],
+    "settings": [
+        {
+			"type": "textarea",
+			"id": "padding",
+			"label": "Padding",
+			"placeholder": "0px 0px 0px 0px",
+			"info":"Screen: desktop | 1200px | 991px | 767px"
+		},
+		{
+			"type": "textarea",
+			"id": "margin",
+			"label": "Margin",
+			"placeholder": "0px 0px 0px 0px",
+			"info":"Screen: desktop | 1200px | 991px | 767px"
+		},
+		{
+			"type": "image_picker",
+			"id": "image",
+			"label": "Image"
+		},
+		{
+			"type": "header",
+			"content": "Content"
+		},
+		{
+			"type": "checkbox",
+			"id": "box_content",
+			"label": "Turn on Content",
+			"default": false
+		},
+		{
+			"type": "text",
+			"id": "subtitle_lookbook",
+			"label": "Subtitle",
+			"default": "Heading"
+		},
+		{
+			"type": "text",
+			"id": "title_lookbook",
+			"label": "Heading",
+			"default": "Heading"
+		},
+		{
+			"type": "text",
+			"id": "button_lookbook",
+			"label": "Button",
+			"default": "Shop now"
+		},
+		{
+			"type": "url",
+			"id": "button_lookbook_url",
+			"label": "Button url"
+		},
+		{
+			"type": "text",
+			"id": "icon_title",
+			"label": "Icon title",
+			"info": "You can use the font set [here](https://dropways.github.io/feathericons/)"
+		},
+		{
+            "type": "select",
+            "id": "content_position",
+            "label": "Content position",
+            "options": [
+                {
+                    "value": "absolute",
+                    "label": "In the picture"
+                },
+                {
+                    "value": "unset",
+                    "label": "Bottom"
+                }
+            ],
+            "default": "absolute"
+        },
+        {
+            "type": "select",
+            "id": "vertical_position",
+            "label": "Vertical position",
+            "options": [
+                {
+                    "value": "top",
+                    "label": "Top"
+                },
+                {
+                    "value": "middle",
+                    "label": "Middle"
+                },
+                {
+                    "value": "bottom",
+                    "label": "Bottom"
+                }
+            ],
+            "default": "middle"
+        },
+        {
+            "type": "select",
+            "id": "horizontal_position",
+            "label": "Horizontal position",
+            "options": [
+                {
+                    "value": "left",
+                    "label": "Left"
+                },
+                {
+                    "value": "center",
+                    "label": "Center"
+                },
+                {
+                    "value": "right",
+                    "label": "Right"
+                }
+            ],
+            "default": "center"
+        },
+        {
+            "type": "select",
+            "id": "text_align",
+            "label": "Text align",
+            "options": [
+                {
+                    "value": "left",
+                    "label": "Left"
+                },
+                {
+                    "value": "center",
+                    "label": "Center"
+                },
+                {
+                    "value": "right",
+                    "label": "Right"
+                }
+            ],
+            "default": "center"
+        },
+		{
+			"type": "textarea",
+			"id": "padding_content",
+			"label": "Padding",
+			"placeholder": "0px 0px 0px 0px",
+			"info":"Screen: desktop | 1200px | 991px | 767px"
+		},
+		{
+            "type": "header",
+            "content": "Button hover"
+        },
+        {
+            "type": "select",
+            "id": "button_hover",
+            "label": "Button hover",
+            "options": [
+                {
+                    "value": "default",
+                    "label": "Default"
+                },
+                {
+                    "value": "hover_style_1",
+                    "label": "Hover Style 1"
+                },
+                {
+                    "value": "hover_style_2",
+                    "label": "Hover Style 2"
+                },
+                {
+                    "value": "hover_style_3",
+                    "label": "Hover Style 3"
+                },
+                {
+                    "value": "hover_style_4",
+                    "label": "Hover Style 4"
+                },
+                {
+                    "value": "hover_style_5",
+                    "label": "Hover Style 5"
+                },
+                {
+                    "value": "hover_style_6",
+                    "label": "Hover Style 6"
+                },
+                {
+                    "value": "hover_style_7",
+                    "label": "Hover Style 7"
+                },
+                {
+                    "value": "hover_style_8",
+                    "label": "Hover Style 8"
+                },
+                {
+                    "value": "hover_style_9",
+                    "label": "Hover Style 9"
+                },
+                {
+                    "value": "hover_style_10",
+                    "label": "Hover Style 10"
+                },
+                {
+                    "value": "hover_style_11",
+                    "label": "Hover Style 11"
+                },
+                {
+                    "value": "hover_style_12",
+                    "label": "Hover Style 12"
+                },
+                {
+                    "value": "hover_style_13",
+                    "label": "Hover Style 13"
+                }
+            ],
+            "default": "default"
+        },
+		{
+            "type": "header",
+            "content": "==Mobile",
+            "info": "screen < 767px"
+        },
+        {
+            "type": "checkbox",
+            "id": "disable_absolute",
+            "label": "Disable absolute content in mobile",
+            "default": true
+        },
+		{
+            "type": "select",
+            "id": "vertical_position_mobi",
+            "label": "Caption vertical position",
+            "default": "middle",
+            "options": [
+                {
+                    "value": "middle",
+                    "label": "Middle"
+                },
+                {
+                    "value": "top",
+                    "label": "Top"
+                },
+                {
+                    "value": "bottom",
+                    "label": "Bottom"
+                }
+            ]
+        },
+        {
+            "type": "select",
+            "id": "horizontal_position_mobi",
+            "label": "Caption horizontal position",
+            "default": "left",
+            "options": [
+                {
+                    "value": "left",
+                    "label": "Left"
+                },
+                {
+                    "value": "center",
+                    "label": "Center"
+                },
+                {
+                    "value": "right",
+                    "label": "Right"
+                }
+            ]
+        },
+        {
+            "type": "select",
+            "id": "text_align_mobi",
+            "label": "Caption alignment",
+            "default": "left",
+            "options": [
+                {
+                    "value": "center",
+                    "label": "Center"
+                },
+                {
+                    "value": "left",
+                    "label": "Left"
+                },
+                {
+                    "value": "right",
+                    "label": "Right"
+                }
+            ]
+        }
+    ],
+    "presets": [
+        {
+            "name": "Banners lookbook",
+			"blocks": [
+              {
+                "type": "_lookbook-pin"
+              }
+           ]
+        }
+    ]
+  }
+{% endschema %}

@@ -1,0 +1,15 @@
+/*================== SECTION MAPS =============*/
+.wpbingo-widget--map .map-section__wrapper {
+	height:100%;
+	min-height:725px;
+}
+.wpbingo-widget--map .map-section{
+	height:100%;
+}
+.wpbingo-widget--map .map-section__container{
+	height:100%;
+}
+.wpbingo-widget--map iframe{
+	height:735px;
+	border-radius: 10px;
+}

@@ -1,0 +1,98 @@
+/*=============== SECTION TESTIMONIALS ===========*/
+.wpbingo-widget--testimonials .slick-dots {
+  position: unset;
+  margin-top: 40px;
+}
+.wpbingo-widget--testimonials .testimonial-image {
+  display: flex;
+  align-items: center;
+}
+.wpbingo-widget--testimonials .testimonial-image.image-position-top {
+  flex-wrap: wrap;
+}
+.wpbingo-widget--testimonials .testimonial-image.image-position-top .content-image,
+.wpbingo-widget--testimonials .testimonial-image.image-position-top .content-info {
+  width: 100%;
+}
+.wpbingo-widget--testimonials .testimonial-image.image-position-right .content-image{
+  order: 2;
+}
+.wpbingo-widget--testimonials .testimonial-card__rating {
+  margin-bottom: 10px;
+}
+.wpbingo-widget--testimonials .testimonial-card__rating:before, .wpbingo-widget--testimonials .testimonial-card__rating:after {
+  display: inline-block;
+  color: #000;
+  font-family: FontAwesome;
+  font-size: 15px;
+  line-height: 1;
+  letter-spacing: 9px;
+}
+.wpbingo-widget--testimonials .testimonial-card__rating:after {
+  color: #e1e1e1;
+}
+.wpbingo-widget--testimonials .testimonial-card__rating.testimonial-card__rating--1:before {
+  content: "\f005";
+}
+.wpbingo-widget--testimonials .testimonial-card__rating.testimonial-card__rating--1:after {
+  content: "\f005\f005\f005\f005";
+}
+.wpbingo-widget--testimonials .testimonial-card__rating.testimonial-card__rating--2:before {
+  content: "\f005\f005";
+}
+.wpbingo-widget--testimonials .testimonial-card__rating.testimonial-card__rating--2:after {
+  content: "\f005\f005\f005";
+}
+.wpbingo-widget--testimonials .testimonial-card__rating.testimonial-card__rating--3:before {
+  content: "\f005\f005\f005";
+}
+.wpbingo-widget--testimonials .testimonial-card__rating.testimonial-card__rating--3:after {
+  content: "\f005\f005";
+}
+.wpbingo-widget--testimonials .testimonial-card__rating.testimonial-card__rating--4:before {
+  content: "\f005\f005\f005\f005";
+}
+.wpbingo-widget--testimonials .testimonial-card__rating.testimonial-card__rating--4:after {
+  content: "\f005";
+}
+.wpbingo-widget--testimonials .testimonial-card__rating.testimonial-card__rating--5:before {
+  content: "\f005\f005\f005\f005\f005";
+}
+
+/*=============== CUSTOM TESTIMONIALS ===========*/
+@media(min-width: 1200px){
+  .wpbingo-widget--testimonials .slick-arrow.slick-next {
+    right: -70px;
+  }
+  .wpbingo-widget--testimonials .slick-arrow.slick-prev {
+    left: -70px;
+  }
+  .wpbingo-widget--testimonials.layout-2 .slick-list {
+    margin: 0 -55px;
+  }
+  .wpbingo-widget--testimonials.layout-2 .slick-slide {
+    padding: 0 55px;
+  }
+}
+.wpbingo-widget--testimonials.layout-2 .testimonial-card__inner {
+  opacity: .35;
+}
+.wpbingo-widget--testimonials.layout-2 .slick-center .testimonial-card__inner {
+  opacity: 1;
+}
+.wpbingo-widget--testimonials.layout-2 .slick-arrow {
+  opacity: 1;
+  visibility: visible;
+  top: calc(50% - 45px);
+}
+.wpbingo-widget--testimonials.layout-2 .slick-arrow:before {
+  font-size: 14px;
+}
+@media(min-width: 767px) {
+  .wpbingo-widget--testimonials.layout-2 .slick-arrow.slick-next {
+    right: 32%;
+  }
+  .wpbingo-widget--testimonials.layout-2 .slick-arrow.slick-prev {
+    left: 32%;
+  }
+}

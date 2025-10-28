@@ -1,0 +1,355 @@
+{{ 'css-section-list-link.css' | asset_url | stylesheet_tag }}
+{%- assign heading          = block.settings.title | escape -%}
+{% assign margin 			= block.settings.margin | split: "|" %}
+{% assign padding 			= block.settings.padding | split: "|" %}
+<style>
+    {%- if margin[0] != blank or padding[0] != blank -%}
+        #shopify-block-{{ block.id }} .bwp-list_link{
+            {%- if margin[0] != blank -%}margin: {{ margin[0] }};{%- endif -%}
+            {%- if padding[0] != blank -%}padding:{{ padding[0] }};{%- endif -%}
+        }
+	{%- endif -%}
+	{%- if margin[1] != blank or padding[1] != blank -%}
+		@media (max-width:1199px){
+			#shopify-block-{{ block.id }} .bwp-list_link{
+				{%- if margin[1] != blank -%}margin: {{ margin[1] }};{%- endif -%}
+				{%- if padding[1] != blank -%}padding:{{ padding[1] }};{%- endif -%}
+			}
+		}
+	{%- endif -%}
+	{%- if margin[2] != blank or padding[2] != blank -%}
+		@media (max-width:991px){
+			#shopify-block-{{ block.id }} .bwp-list_link{
+				{%- if margin[2] != blank -%}margin: {{ margin[2] }};{%- endif -%}
+				{%- if padding[2] != blank -%}padding:{{ padding[2] }};{%- endif -%}
+			}
+		}
+	{%- endif -%}
+	{%- if margin[3] != blank or padding[3] != blank -%}
+		@media (max-width:767px){
+			#shopify-block-{{ block.id }} .bwp-list_link{
+				{%- if margin[3] != blank -%}margin: {{ margin[3] }};{%- endif -%}
+				{%- if padding[3] != blank -%}padding:{{ padding[3] }};{%- endif -%}
+			}
+		}
+	{%- endif -%}
+  #shopify-block-{{ block.id }} .wpbingo-title__heading{
+    font-size:{{ block.settings.font_size }}px;
+    line-height:{{ block.settings.line_height }}px;
+    font-weight:{{ block.settings.font_weight }};
+    letter-spacing:{{ block.settings.letter_spacing }}px;
+    color:{{ block.settings.color }};
+    text-align:{{ block.settings.align }};
+    font-family:var({{ block.settings.font }});
+    margin: {{ block.settings.margin_title }};
+  }
+  #shopify-block-{{ block.id }} .list-item span{
+    font-size:{{ block.settings.font_size_list }}px;
+    color:{{ block.settings.color_list }};
+    font-family:var({{ block.settings.font_list }});
+  }
+  #shopify-block-{{ block.id }} .list-item span:hover{
+    color:{{ block.settings.color_hover }};
+  }
+  @media(max-width:767px){
+    #shopify-block-{{ block.id }} .wpbingo-title__heading{
+      font-size:{{ block.settings.font_size_mobi }}px;
+      line-height:{{ block.settings.line_height_mobi }}px;
+      letter-spacing:{{ block.settings.letter_spacing_mobi }}px;
+      color:{{ block.settings.color_mobi }};
+      text-align:{{ block.settings.align_mobi }};
+      margin: {{ block.settings.margin_title_mobi }};
+    }
+  }
+</style>
+<div class="wpbingo-block bwp-widget-list_link wpbingo-block--{{ block.id }} overflow-hidden">
+    <div class="list-content{% if block.settings.show_accordion %} active_accordion show{% endif %}" >
+        {%- if heading != blank -%}
+          <{{ block.settings.heading_size }} class="wpbingo-title__heading">{{ heading }}</{{ block.settings.heading_size }}>
+        {%- endif -%}
+        <ul class="bwp-list_link list-style-{{ block.settings.list_style }}">
+            {% content_for "blocks" %}
+        </ul>
+    </div>
+</div>
+{% schema %}
+  {
+    "name": "List link",
+    "blocks": [{"type": "_list-item"}],
+    "settings": [
+      {
+        "type": "textarea",
+        "id": "padding",
+        "label": "Padding",
+        "placeholder": "0px 0px 0px 0px",
+        "info":"Screen: desktop | 1200px | 991px | 767px"
+      },
+      {
+        "type": "textarea",
+        "id": "margin",
+        "label": "Margin",
+        "placeholder": "0px 0px 0px 0px",
+        "info":"Screen: desktop | 1200px | 991px | 767px"
+      },
+      {
+        "type": "header",
+        "content": "Heading",
+      },
+      {
+        "type": "select",
+        "id": "heading_size",
+        "label": "Heading size",
+        "default": "h3",
+        "options": [
+          {
+            "value": "h6",
+            "label": "H6"
+          },
+          {
+            "value": "h5",
+            "label": "H5"
+          },
+          {
+            "value": "h4",
+            "label": "H4"
+          },
+          {
+            "value": "h3",
+            "label": "H3"
+          },
+          {
+            "value": "h2",
+            "label": "H2"
+          },
+          {
+            "value": "h1",
+            "label": "H1"
+          }
+        ]
+      },
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Heading"
+      },
+      {
+        "type": "header",
+        "content": "Icon List",
+      },
+      {
+  			"type": "select",
+			  "id": "list_style",
+			  "label": "List style",
+        "options": [
+          {
+            "value": "none",
+            "label": "None"
+				  },
+          {
+            "value": "custom",
+            "label": "Custom(You can enter icons in the list item)"
+          },
+          {
+            "value": "disc",
+            "label": "Disc"
+          },
+          {
+            "value": "circle",
+            "label": "Circle"
+          },
+          {
+            "value": "square",
+            "label": "Square"
+          },
+          {
+            "value": "decimal",
+            "label": "Decimal"
+          },
+          {
+            "value": "decimal-leading-zero",
+            "label": "Decimal leading zero"
+          },
+          {
+            "value": "lower-alpha",
+            "label": "Lower alpha"
+          },
+          {
+            "value": "upper-alpha",
+            "label": "Upper alpha"
+          },
+          {
+            "value": "lower-roman",
+            "label": "Lower roman"
+          },
+          {
+            "value": "upper-roman",
+            "label": "Upper roman"
+          }
+        ]
+      },
+      {
+        "type": "header",
+        "content": "Garenal",
+      },
+      {
+        "type": "checkbox",
+        "id": "show_accordion",
+        "label": "Shop accordion",
+        "default": true
+      },
+      {
+        "type": "header",
+        "content": "Heading",
+      },
+      {
+          "type": "color",
+          "id": "color",
+          "label": "color",
+          "default": "#ffffff"
+      },
+      {
+          "type": "number",
+          "id": "font_size",
+          "label": "Font size",
+          "default": 60,
+          "info": "px"
+      },
+      {
+          "type": "number",
+          "id": "line_height",
+          "label": "Line height",
+          "default": 70,
+          "info": "px"
+      },
+      {
+          "type": "number",
+          "id": "letter_spacing",
+          "label": "Letter spacing",
+          "default": 0,
+          "info": "px"
+      },
+      {
+          "type": "text",
+          "id": "font_weight",
+          "label": "Font Weight",
+          "default": "300"
+      },
+      {
+          "type": "text_alignment",
+          "id": "align",
+          "label": "Text align",
+          "default": "left"
+      },
+      {
+        "type": "text",
+        "id": "margin_title",
+        "label": "Margin",
+        "default": "0px 0px 0px 0px",
+        "placeholder": "0px 0px 0px 0px",	
+      },
+      {
+          "type": "header",
+          "content": "Icon List",
+      },
+      {
+          "type": "select",
+          "id": "font",
+          "label": "Font family",
+          "options": [
+              {
+                  "value": "--font-family-second",
+                  "label": "Font Heading"
+              },
+              {
+                  "value": "--font-family-base",
+                  "label": "Font Body"
+              }
+          ],
+          "default": "--font-family-second"
+      },
+      {
+          "type": "number",
+          "id": "font_size_list",
+          "label": "Font size",
+          "default": 14,
+          "info": "px"
+      },
+      {
+          "type": "color",
+          "id": "color_list",
+          "label": "Color",
+          "default": "#000"
+      },
+      {
+          "type": "color",
+          "id": "color_hover",
+          "label": "Color hover",
+          "default": "#000"
+      },
+      {
+          "type": "header",
+          "content": "====== Mobile ======",
+          "info": "screen < 767px"
+      },
+      {
+          "type": "color",
+          "id": "color_mobi",
+          "label": "color",
+          "default": "#ffffff"
+      },
+      {
+          "type": "number",
+          "id": "font_size_mobi",
+          "label": "Font size",
+          "default": 30,
+          "info": "px"
+      },
+      {
+          "type": "number",
+          "id": "line_height_mobi",
+          "label": "Line height",
+          "default": 35,
+          "info": "px"
+      },
+      {
+          "type": "number",
+          "id": "letter_spacing_mobi",
+          "label": "Letter spacing",
+          "default": 0,
+          "info": "px"
+      },
+        {
+          "type": "text_alignment",
+          "id": "align_mobi",
+          "label": "Text align",
+          "default": "left"
+      },
+      {
+        "type": "text",
+        "id": "margin_title_mobi",
+        "label": "Margin",
+        "default": "0px 0px 0px 0px",
+        "placeholder": "0px 0px 0px 0px",	
+      }
+    ],
+    "presets": [
+        {
+            "name": "List link",
+            "blocks": [
+              {
+                  "type": "_list-item",
+              },
+              {
+                  "type": "_list-item",
+              },
+              {
+                  "type": "_list-item",
+              },
+              {
+                  "type": "_list-item",
+              }
+           ]
+        }
+    ]
+  }
+{% endschema %}

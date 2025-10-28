@@ -1,0 +1,141 @@
+{{ 'css-section-countdown.css' | asset_url | stylesheet_tag }}
+{%- assign final_date 	= block.settings.final_date | escape -%}
+{% assign margin 			= block.settings.margin | split: "|" %}
+{% assign padding 			= block.settings.padding | split: "|" %}
+<style>
+	{%- if margin[0] != blank or padding[0] != blank -%}
+		#shopify-block-{{ block.id }} .bwp-block-countdown{
+			{%- if margin[0] != blank -%}margin: {{ margin[0] }};{%- endif -%}
+			{%- if padding[0] != blank -%}padding:{{ padding[0] }};{%- endif -%}
+		}
+	{%- endif -%}
+	{%- if margin[1] != blank or padding[1] != blank -%}
+		@media (max-width:1199px){
+			#shopify-block-{{ block.id }} .bwp-block-countdown{
+				{%- if margin[1] != blank -%}margin: {{ margin[1] }};{%- endif -%}
+				{%- if padding[1] != blank -%}padding:{{ padding[1] }};{%- endif -%}
+			}
+		}
+	{%- endif -%}
+	{%- if margin[2] != blank or padding[2] != blank -%}
+		@media (max-width:991px){
+			#shopify-block-{{ block.id }} .bwp-block-countdown{
+				{%- if margin[2] != blank -%}margin: {{ margin[2] }};{%- endif -%}
+				{%- if padding[2] != blank -%}padding:{{ padding[2] }};{%- endif -%}
+			}
+		}
+	{%- endif -%}
+	{%- if margin[3] != blank or padding[3] != blank -%}
+		@media (max-width:767px){
+			#shopify-block-{{ block.id }} .bwp-block-countdown{
+				{%- if margin[3] != blank -%}margin: {{ margin[3] }};{%- endif -%}
+				{%- if padding[3] != blank -%}padding:{{ padding[3] }};{%- endif -%}
+			}
+		}
+	{%- endif -%}
+  #shopify-block-{{ block.id }} .bwp-block-countdown {
+    text-align:{{ block.settings.align }};
+  }
+  @media (max-width:767px){
+    #shopify-block-{{ block.id }} .bwp-block-countdown {
+      text-align:{{ block.settings.align_mobi }};
+    }
+  }
+</style>
+<div class="bwp-block-countdown {{ block.settings.layout_countdown }}">
+  <div class="countdown-deal">
+    <div class="content-countdown">
+      <div class="countdown" data-countdown="{{ final_date }}" data-day="{{ block.settings.countdown_day }}" data-hour="{{ block.settings.countdown_hour }}" data-min="{{ block.settings.countdown_min }}" data-sec="{{ block.settings.countdown_sec }}"></div>
+    </div>
+  </div>
+</div>
+{% schema %}
+  {
+    "name": "Countdown",
+    "settings": [
+      {
+        "type": "text_alignment",
+        "id": "align",
+        "label": "Text align",
+        "default": "left"
+      },
+      {
+        "type": "select",
+        "id": "layout_countdown",
+        "label": "Layout Countdown",
+        "options": [
+            {
+                "value": "layout-1",
+                "label": "Countdown 1"
+            },
+            {
+                "value": "layout-2",
+                "label": "Countdown 2"
+            }
+        ],
+        "default": "layout-1"
+      },
+      {
+        "type": "text",
+        "id": "final_date",
+        "label": "Final date",
+        "info": "Format: yyyy/MM/dd hh:mm:ss",
+        "default": "2021/01/01 00:00:00"
+      },
+      {
+        "type": "text",
+        "id": "countdown_day",
+        "label": "Text day",
+        "default": "d"
+      },
+      {
+        "type": "text",
+        "id": "countdown_hour",
+        "label": "Text hour",
+        "default": "h"
+      },
+      {
+        "type": "text",
+        "id": "countdown_min",
+        "label": "Text minutes",
+        "default": "m"
+      },
+      {
+        "type": "text",
+        "id": "countdown_sec",
+        "label": "Text second",
+        "default": "s"
+      },
+      {
+        "type": "textarea",
+        "id": "padding",
+        "label": "Padding",
+        "placeholder": "0px 0px 0px 0px",
+        "info":"Screen: desktop | 1200px | 991px | 767px"
+      },
+      {
+        "type": "textarea",
+        "id": "margin",
+        "label": "Margin",
+        "placeholder": "0px 0px 0px 0px",
+        "info":"Screen: desktop | 1200px | 991px | 767px"
+      },
+      {
+        "type": "header",
+        "content": "Mobile ====================",
+        "info": "screen < 767px"
+      },
+      {
+        "type": "text_alignment",
+        "id": "align_mobi",
+        "label": "Text align",
+        "default": "left"
+      }
+    ],
+    "presets": [
+        {
+          "name": "Countdown"
+        } 
+     ]
+  }
+{% endschema %}

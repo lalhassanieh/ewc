@@ -1,0 +1,769 @@
+{{ 'css-section-button.css' | asset_url | stylesheet_tag }}
+{% assign margin 			= block.settings.margin | split: "|" %}
+{% assign padding 			= block.settings.padding | split: "|" %}
+{% assign min_width 			= block.settings.min_width | split: "|" %}
+<style>
+    #shopify-block-{{ block.id }} .wpbingo-button>a{
+        {%- if margin[0] != blank -%}margin: {{ margin[0] }};{%- endif -%}
+        {%- if padding[0] != blank -%}padding:{{ padding[0] }};{%- endif -%}
+        font-size:{{ block.settings.font_size }}px;
+        line-height:{{ block.settings.line_height }}px;
+        font-weight:{{ block.settings.font_weight }};
+        letter-spacing:{{ block.settings.letter_spacing }}px;
+        color:{{ block.settings.color }};
+        background:{{ block.settings.background }};
+        border-radius:{{ block.settings.border_radius }};
+        font-family:var({{ block.settings.font }});
+        {%- if block.settings.border -%}
+            border-width:{{ block.settings.border_width }};
+            border-color:{{ block.settings.border_color }};
+            border-style:{{ block.settings.border_style }};
+        {%- endif -%}
+        {%- if min_width[0] != blank -%}
+            min-width: {{ min_width[0] }};
+        {%- endif -%}
+    }
+    #shopify-block-{{ block.id }} .wpbingo-button{
+        text-align:{{ block.settings.align }};
+    }
+    #shopify-block-{{ block.id }} .wpbingo-button>a:hover{
+        background:{{ block.settings.background_hover }};
+        color:{{ block.settings.color_hover }};
+        {%- if block.settings.border -%}
+            border-color:{{ block.settings.border_color_hover }}; 
+        {%- endif -%}
+    }
+    #shopify-block-{{ block.id }} .wpbingo-button .hover_style_1.bwp-button:before,
+    #shopify-block-{{ block.id }} .wpbingo-button .hover_style_1.bwp-button:after{
+        background:{{ block.settings.background_hover }};
+    }
+    #shopify-block-{{ block.id }} .wpbingo-button .hover_style_1.bwp-button .bwp-button-content-wrapper:before,
+    #shopify-block-{{ block.id }} .wpbingo-button .hover_style_1.bwp-button .bwp-button-content-wrapper:after{
+        background:{{ block.settings.background_hover }};
+    }
+    #shopify-block-{{ block.id }} .wpbingo-button .hover_style_2.bwp-button:before{
+        background:{{ block.settings.background_hover }};
+    }
+    #shopify-block-{{ block.id }} .wpbingo-button .hover_style_3.bwp-button:before{
+        border-color: transparent transparent transparent {{ block.settings.border_color }};
+    }
+    #shopify-block-{{ block.id }} .wpbingo-button .hover_style_3.bwp-button:after{
+        border-color: transparent {{ block.settings.border_color }} transparent transparent;
+    }
+    #shopify-block-{{ block.id }} .wpbingo-button .hover_style_4.bwp-button:before,
+    #shopify-block-{{ block.id }} .wpbingo-button .hover_style_4.bwp-button:after{
+        background:{{ block.settings.background_hover }};
+    }
+    #shopify-block-{{ block.id }} .wpbingo-button .hover_style_4.bwp-button .bwp-button-content-wrapper:before,
+    #shopify-block-{{ block.id }} .wpbingo-button .hover_style_4.bwp-button .bwp-button-content-wrapper:after{
+        background:{{ block.settings.background_hover }};
+    }
+    #shopify-block-{{ block.id }} .wpbingo-button .hover_style_5.bwp-button:before,
+    #shopify-block-{{ block.id }} .wpbingo-button .hover_style_5.bwp-button:after{
+        border-color:{{ block.settings.border_color }};
+    }
+    #shopify-block-{{ block.id }} .wpbingo-button .hover_style_6.bwp-button:hover{
+        background:{{ block.settings.background_hover }};
+    }
+    #shopify-block-{{ block.id }} .wpbingo-button .hover_style_7.bwp-button:before{
+        background:{{ block.settings.background_hover }};
+    }
+    #shopify-block-{{ block.id }} .wpbingo-button .hover_style_8.bwp-button:before,
+    #shopify-block-{{ block.id }} .wpbingo-button .hover_style_8.bwp-button:after{
+        background:{{ block.settings.background_hover }};
+    }
+    #shopify-block-{{ block.id }} .wpbingo-button .hover_style_9.bwp-button:hover{
+        background:{{ block.settings.background_hover }};
+    }
+    #shopify-block-{{ block.id }} .wpbingo-button .hover_style_10.bwp-button:hover{
+        background:{{ block.settings.background_hover }};
+    }
+    #shopify-block-{{ block.id }} .wpbingo-button .hover_style_11.bwp-button:before,
+    #shopify-block-{{ block.id }} .wpbingo-button .hover_style_11.bwp-button:after{
+        background-color:{{ block.settings.border_color }};
+    }
+    #shopify-block-{{ block.id }} .wpbingo-button .hover_style_11.bwp-button:hover:before,
+    #shopify-block-{{ block.id }} .wpbingo-button .hover_style_11.bwp-button:hover:after{
+        background:{{ block.settings.border_color_hover }};
+    }
+    #shopify-block-{{ block.id }} .wpbingo-button .hover_style_12.bwp-button:before{
+        background:{{ block.settings.border_color }};
+    }
+    #shopify-block-{{ block.id }} .wpbingo-button .hover_style_13.bwp-button:before{
+        background:{{ block.settings.border_color }};
+    }
+    #shopify-block-{{ block.id }} .wpbingo-button .hover_style_14.bwp-button{
+        background:{{ block.settings.background_hover }};
+    }
+  {%- unless block.settings.icon_title == blank -%}
+      #shopify-block-{{ block.id }} .wpbingo-button>a> .bwp-button-icon{
+        color:{{ block.settings.color_icon }};
+        font-size:{{ block.settings.font_icon }}px;
+        width: {{ block.settings.width_icon }}px;
+        height: {{ block.settings.height_icon }}px;
+        line-height:{{ block.settings.height_icon }}px;
+        display: inline-block;
+        border-radius:{{ block.settings.border_radius_icon }};
+        top:{{ block.settings.top_icon }}px;
+        margin: {{ block.settings.margin_icon }};
+        position:relative;
+        text-align:{{ block.settings.align_icon }};
+        background: {{ block.settings.background_icon }};
+        {%- if block.settings.border_icon -%}
+            border-width:{{ block.settings.border_width_icon }};
+            border-color:{{ block.settings.border_color_icon }};
+            border-style:{{ block.settings.border_style_icon }};
+        {%- endif -%}
+      }
+      #shopify-block-{{ block.id }} .wpbingo-button>a:hover> .bwp-button-icon{
+        background:{{ block.settings.background_hover_icon }};
+        color:{{ block.settings.color_hover_icon }};
+        {%- if block.settings.border_icon -%}
+            border-color:{{ block.settings.border_color_hover_icon }}; 
+        {%- endif -%}
+      }
+  {%- endunless -%}
+  {%- if margin[1] != blank or padding[1] != blank or min_width[1] != blank -%}
+		@media (max-width:1199px){
+			#shopify-block-{{ block.id }} .wpbingo-button>a{
+				{%- if margin[1] != blank -%}margin: {{ margin[1] }};{%- endif -%}
+				{%- if padding[1] != blank -%}padding:{{ padding[1] }};{%- endif -%}
+                {%- if min_width[1] != blank -%}min-width: {{ min_width[1] }};{%- endif -%}
+			}
+		}
+	{%- endif -%}
+	{%- if margin[2] != blank or padding[2] != blank or min_width[2] != blank -%}
+		@media (max-width:991px){
+			#shopify-block-{{ block.id }} .wpbingo-button>a{
+				{%- if margin[2] != blank -%}margin: {{ margin[2] }};{%- endif -%}
+				{%- if padding[2] != blank -%}padding:{{ padding[2] }};{%- endif -%}
+                {%- if min_width[2] != blank -%}min-width: {{ min_width[2] }};{%- endif -%}
+			}
+		}
+	{%- endif -%}
+	{%- if margin[3] != blank or padding[3] != blank or min_width[3] != blank -%}
+		@media (max-width:767px){
+			#shopify-block-{{ block.id }} .wpbingo-button>a{
+				{%- if margin[3] != blank -%}margin: {{ margin[3] }};{%- endif -%}
+				{%- if padding[3] != blank -%}padding:{{ padding[3] }};{%- endif -%}
+                {%- if min_width[3] != blank -%}min-width: {{ min_width[3] }};{%- endif -%}
+			}
+		}
+	{%- endif -%}
+    @media (max-width:1199px){
+        #shopify-block-{{ block.id }} .wpbingo-button{
+          text-align:{{ block.settings.align_lap }};
+        }
+    }
+    @media (max-width:991px){
+        #shopify-block-{{ block.id }} .wpbingo-button{
+          text-align:{{ block.settings.align_tab }};
+        }
+    }
+    @media (max-width:767px){
+      #shopify-block-{{ block.id }} .wpbingo-button>a{
+        font-size:{{ block.settings.font_size_mobi }}px;
+        line-height:{{ block.settings.line_height_mobi }}px;
+        letter-spacing:{{ block.settings.letter_spacing_mobi }}px;
+        color:{{ block.settings.color_mobi }};
+        background:{{ block.settings.background_mobi }};
+        border-radius:{{ block.settings.border_radius_mobi }};
+        {%- if block.settings.border_mobi -%}
+            border-width:{{ block.settings.border_width_mobi }};
+            border-color:{{ block.settings.border_color_mobi }};
+            border-style:{{ block.settings.border_style_mobi }};
+        {%- endif -%}
+      }
+      #shopify-block-{{ block.id }} .wpbingo-button>a:hover{
+          background:{{ block.settings.background_hover_mobi }};
+          color:{{ block.settings.color_hover_mobi }};
+          {%- if block.settings.border_mobi -%}
+          border-color:{{ block.settings.border_color_hover_mobi }}; 
+          {%- endif -%}
+      }
+       #shopify-block-{{ block.id }} .wpbingo-button{
+          text-align:{{ block.settings.align_mobi }};
+      }
+      {%- unless block.settings.icon_title == blank -%}
+         #shopify-block-{{ block.id }} .wpbingo-button>a> i{
+              font-size:{{ block.settings.font_icon_mobi }}px;
+              top:{{ block.settings.top_icon_mobi }}px;
+              margin:{{ block.settings.margin_icon_mobi }};
+          }
+      {%- endunless -%}
+    }
+</style>
+<div class="wpbingo-button">
+    <a class="bwp-button {{ block.settings.button_hover }}" href="{{ block.settings.button_link }}">
+        <span class="bwp-button-content-wrapper">
+            <span class="bwp-button-text">{{ block.settings.title }}</span>
+        </span>
+        {%- unless block.settings.icon_title == blank -%}
+            <span class="bwp-button-icon">
+                <i class="{{ block.settings.icon_title }}"></i>
+            </span>
+        {%- endunless -%}
+    </a>
+</div>
+{% schema %}
+{
+"name": "Button",
+"settings": [
+    {
+        "type": "text",
+        "id": "title",
+        "label": "Label",
+        "default": "Shop now"
+    },
+    {
+        "type": "url",
+        "id": "button_link",
+        "label": "Url button"
+    },
+    {
+        "type": "select",
+        "id": "font",
+        "label": "Font family",
+        "options": [
+            {
+                "value": "--font-family-second",
+                "label": "Font Heading"
+            },
+            {
+                "value": "--font-family-base",
+                "label": "Font Body"
+            }
+        ],
+        "default": "--font-family-second"
+    },
+    {
+        "type": "text",
+        "id": "icon_title",
+        "label": "Icon title",
+        "info": "You can use the font set [here](https://dropways.github.io/feathericons/)"
+    },
+    {
+        "type": "number",
+        "id": "font_icon",
+        "label": "Font size icon",
+        "default": 14,
+        "info": "px"
+    },
+    {
+        "type": "text",
+        "id": "margin_icon",
+        "label": "margin",
+        "default": "0px 0px 0px 0px",
+        "placeholder":"0px 0px 0px 0px"
+    },
+    {
+        "type": "number",
+        "id": "top_icon",
+        "label": "Position icon",
+        "default": 0,
+        "info": "px"
+    },
+    {
+        "type": "number",
+        "id": "width_icon",
+        "label": "width",
+        "default": 80,
+        "info": "px"
+    },
+    {
+        "type": "number",
+        "id": "height_icon",
+        "label": "height",
+        "default": 80,
+        "info": "px"
+    },
+    {
+        "type": "text",
+        "id": "border_radius_icon",
+        "label": "Border radius",
+        "default": "0px 0px 0px 0px",
+        "info": "top right bottom left"
+    },
+    {
+        "type": "checkbox",
+        "id": "border_icon",
+        "label": "Turn on border",
+        "default": false
+    },
+    {
+        "type": "text",
+        "id": "border_width_icon",
+        "label": "Border width",
+        "default": "0px 0px 0px 0px",
+        "info": "top right bottom left"
+    },
+    {
+        "type": "select",
+        "id": "border_style_icon",
+        "label": "Border Style",
+        "options": [
+            {
+                "value": "none",
+                "label": "None"
+            },
+            {
+                "value": "solid",
+                "label": "Solid"
+            },
+            {
+                "value": "dashed",
+                "label": "Dashed"
+            },
+            {
+                "value": "dotted",
+                "label": "Dotted"
+            },
+            {
+                "value": "double",
+                "label": "Double"
+            }
+        ],
+        "default": "solid"
+    },
+    {
+        "type": "header",
+        "content": "Color Default Icon"
+    },
+    {
+        "type": "color",
+        "id": "color_icon",
+        "label": "color",
+        "default": "#fff"
+    },
+    {
+        "type": "color",
+        "id": "background_icon",
+        "label": "Background",
+        "default": "#ed5d43"
+    },
+    {
+        "type": "color",
+        "id": "border_color_icon",
+        "label": "Border color",
+        "default": "#fff"
+    },
+    {
+        "type": "header",
+        "content": "Color Hover icon"
+    },
+    {
+        "type": "color",
+        "id": "color_hover_icon",
+        "label": "Color hover",
+        "default": "#fff"
+    },
+    {
+        "type": "color",
+        "id": "background_hover_icon",
+        "label": "Background Hover",
+        "default": "#ed5d43"
+    },
+    {
+        "type": "color",
+        "id": "border_color_hover_icon",
+        "label": "Border color hover",
+        "default": "#fff"
+    },
+    {
+        "type": "text_alignment",
+        "id": "align_icon",
+        "label": "Text align",
+        "default": "left"
+    },
+    {
+        "type": "header",
+        "content": "Button hover"
+    },
+    {
+        "type": "select",
+        "id": "button_hover",
+        "label": "Button hover",
+        "options": [
+            {
+                "value": "default",
+                "label": "Default"
+            },
+            {
+                "value": "hover_style_1",
+                "label": "Hover Style 1"
+            },
+            {
+                "value": "hover_style_2",
+                "label": "Hover Style 2"
+            },
+            {
+                "value": "hover_style_3",
+                "label": "Hover Style 3"
+            },
+            {
+                "value": "hover_style_4",
+                "label": "Hover Style 4"
+            },
+            {
+                "value": "hover_style_5",
+                "label": "Hover Style 5"
+            },
+            {
+                "value": "hover_style_6",
+                "label": "Hover Style 6"
+            },
+            {
+                "value": "hover_style_7",
+                "label": "Hover Style 7"
+            },
+            {
+                "value": "hover_style_8",
+                "label": "Hover Style 8"
+            },
+            {
+                "value": "hover_style_9",
+                "label": "Hover Style 9"
+            },
+            {
+                "value": "hover_style_10",
+                "label": "Hover Style 10"
+            },
+            {
+                "value": "hover_style_11",
+                "label": "Hover Style 11"
+            },
+            {
+                "value": "hover_style_12",
+                "label": "Hover Style 12"
+            },
+            {
+                "value": "hover_style_13",
+                "label": "Hover Style 13"
+            },
+            {
+                "value": "hover_style_14",
+                "label": "Hover Style 14"
+            }
+        ],
+        "default": "default"
+    },
+    {
+        "type": "checkbox",
+        "id": "border",
+        "label": "Turn on border",
+        "default": false
+    },
+    {
+        "type": "text",
+        "id": "border_width",
+        "label": "Border width",
+        "default": "0px 0px 0px 0px",
+        "info": "top right bottom left"
+    },
+    {
+        "type": "select",
+        "id": "border_style",
+        "label": "Border Style",
+        "options": [
+            {
+                "value": "none",
+                "label": "None"
+            },
+            {
+                "value": "solid",
+                "label": "Solid"
+            },
+            {
+                "value": "dashed",
+                "label": "Dashed"
+            },
+            {
+                "value": "dotted",
+                "label": "Dotted"
+            },
+            {
+                "value": "double",
+                "label": "Double"
+            }
+        ],
+        "default": "solid"
+    },
+    {
+        "type": "text",
+        "id": "border_radius",
+        "label": "Border radius",
+        "default": "0px 0px 0px 0px",
+        "info": "top right bottom left"
+    },
+    {
+        "type": "header",
+        "content": "Color Default"
+    },
+    {
+        "type": "color",
+        "id": "color",
+        "label": "color",
+        "default": "#fff"
+    },
+    {
+        "type": "color",
+        "id": "background",
+        "label": "Background",
+        "default": "#ed5d43"
+    },
+    {
+        "type": "color",
+        "id": "border_color",
+        "label": "Border color",
+        "default": "#fff"
+    },
+    {
+        "type": "header",
+        "content": "Color Hover"
+    },
+    {
+        "type": "color",
+        "id": "color_hover",
+        "label": "Color hover",
+        "default": "#fff"
+    },
+    {
+        "type": "color",
+        "id": "background_hover",
+        "label": "Background Hover",
+        "default": "#ed5d43"
+    },
+    {
+        "type": "color",
+        "id": "border_color_hover",
+        "label": "Border color hover",
+        "default": "#fff"
+    },
+    {
+        "type": "number",
+        "id": "font_size",
+        "label": "Font size",
+        "default": 14,
+        "info": "px"
+    },
+    {
+        "type": "number",
+        "id": "line_height",
+        "label": "Line height",
+        "default": 20,
+        "info": "px"
+    },
+    {
+        "type": "number",
+        "id": "letter_spacing",
+        "label": "Letter spacing",
+        "default": 0,
+        "info": "px"
+    },
+    {
+        "type": "text",
+        "id": "font_weight",
+        "label": "Font Weight",
+        "default": "500"
+    },
+    {
+        "type": "text",
+        "id": "min_width",
+        "label": "Width button",
+        "info":"Screen: desktop | 1200px | 991px | 767px"
+    },
+    {
+        "type": "textarea",
+        "id": "padding",
+        "label": "Padding",
+        "placeholder": "0px 0px 0px 0px",
+        "info":"Screen: desktop | 1200px | 991px | 767px"
+    },
+    {
+        "type": "textarea",
+        "id": "margin",
+        "label": "Margin",
+        "placeholder": "0px 0px 0px 0px",
+        "info":"Screen: desktop | 1200px | 991px | 767px"
+    },
+    {
+        "type": "text_alignment",
+        "id": "align",
+        "label": "Text align",
+        "default": "left"
+    },
+    {
+        "type": "header",
+        "content": "Laptop ====================",
+        "info": "screen < 1199px"
+    },
+    {
+        "type": "text_alignment",
+        "id": "align_lap",
+        "label": "Text align",
+        "default": "left"
+    },
+    {
+        "type": "header",
+        "content": "Tablet ====================",
+        "info": "screen < 991px"
+    },
+    {
+        "type": "text_alignment",
+        "id": "align_tab",
+        "label": "Text align",
+        "default": "left"
+    },
+    {
+        "type": "header",
+        "content": "Mobile ====================",
+        "info": "screen < 767px"
+    },
+    {
+        "type": "number",
+        "id": "font_size_mobi",
+        "label": "Font size",
+        "default": 14,
+        "info": "px"
+    },
+    {
+        "type": "number",
+        "id": "font_icon_mobi",
+        "label": "Font size icon",
+        "default": 14,
+        "info": "px"
+    },
+    {
+        "type": "text",
+        "id": "margin_icon_mobi",
+        "label": "margin",
+        "default": "0px 0px 0px 0px",
+        "placeholder":"0px 0px 0px 0px"
+    },
+    {
+        "type": "number",
+        "id": "top_icon_mobi",
+        "label": "Position icon",
+        "default": 0,
+        "info": "px"
+    },
+    {
+        "type": "number",
+        "id": "line_height_mobi",
+        "label": "Line height",
+        "default": 20,
+        "info": "px"
+    },
+    {
+        "type": "number",
+        "id": "letter_spacing_mobi",
+        "label": "Letter spacing",
+        "default": 0,
+        "info": "px"
+    },
+    {
+        "type": "text",
+        "id": "border_radius_mobi",
+        "label": "Border radius",
+        "default": "0px 0px 0px 0px",
+        "info": "top right bottom left"
+    },
+    {
+        "type": "checkbox",
+        "id": "border_mobi",
+        "label": "Turn on border",
+        "default": false
+    },
+    {
+        "type": "text",
+        "id": "border_width_mobi",
+        "label": "Border width",
+        "default": "0px 0px 0px 0px",
+        "info": "top right bottom left"
+    },
+    {
+        "type": "select",
+        "id": "border_style_mobi",
+        "label": "Border Style",
+        "options": [
+            {
+                "value": "none",
+                "label": "None"
+            },
+            {
+                "value": "solid",
+                "label": "Solid"
+            },
+            {
+                "value": "dashed",
+                "label": "Dashed"
+            },
+            {
+                "value": "dotted",
+                "label": "Dotted"
+            },
+            {
+                "value": "double",
+                "label": "Double"
+            }
+        ],
+        "default": "solid"
+    },
+    {
+        "type": "header",
+        "content": "Color Default"
+    },
+    {
+        "type": "color",
+        "id": "color_mobi",
+        "label": "color",
+        "default": "#fff"
+    },
+    {
+        "type": "color",
+        "id": "background_mobi",
+        "label": "Background",
+        "default": "#ed5d43"
+    },
+    {
+        "type": "color",
+        "id": "border_color_mobi",
+        "label": "Border color",
+        "default": "#fff"
+    },
+    {
+        "type": "header",
+        "content": "Color Hover"
+    },
+    {
+        "type": "color",
+        "id": "color_hover_mobi",
+        "label": "Color hover",
+        "default": "#fff"
+    },
+    {
+        "type": "color",
+        "id": "background_hover_mobi",
+        "label": "Background Hover",
+        "default": "#ed5d43"
+    },
+    {
+        "type": "color",
+        "id": "border_color_hover_mobi",
+        "label": "Border color hover",
+        "default": "#fff"
+    },
+    {
+        "type": "text_alignment",
+        "id": "align_mobi",
+        "label": "Text align",
+        "default": "left"
+    }
+],
+"presets": [
+        {
+            "name": "Button"
+        } 
+    ]
+}
+{% endschema %}

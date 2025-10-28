@@ -1,0 +1,691 @@
+{%- style -%}
+#shopify-section-{{ section.id }} .wpbingo-widget-lookbook .subtitle{
+    font-size: {{ block.settings.font_size_subtitle }}px;
+    line-height: {{ block.settings.line_height_subtitle }}px;
+    font-weight: {{ block.settings.font_weight_subtitle }};
+    color:{{ block.settings.color_subtitle }};
+    margin:{{ block.settings.margin_subtitle }};
+    text-transform: {{ block.settings.text_transfrom_subtitle }};
+    font-family:var({{ block.settings.font_subtitle }});
+}
+#shopify-section-{{ section.id }} .wpbingo-widget-lookbook .title{
+    font-size: {{ block.settings.font_size_title }}px;
+    line-height: {{ block.settings.line_height_title }}px;
+    font-weight: {{ block.settings.font_weight_title }};
+    color:{{ block.settings.color_title }};
+    letter-spacing:{{ block.settings.letter_spacing_title }}px;
+    margin:{{ block.settings.margin_title }};
+    text-transform: {{ block.settings.text_transfrom_title }};
+    font-family:var({{ block.settings.font_title }});
+}
+#shopify-section-{{ section.id }} .wpbingo-widget-lookbook .wpbingo-button>a{
+    font-size:{{ block.settings.font_size_button }}px;
+    line-height:{{ block.settings.line_height_button }}px;
+    font-weight:{{ block.settings.font_weight_button }};
+    letter-spacing:{{ block.settings.letter_spacing_button }}px;
+    color:{{ block.settings.color_button }};
+    background:{{ block.settings.background_button }};
+    border-radius:{{ block.settings.border_radius_button }};
+    text-transform: {{ block.settings.text_transfrom_button }};
+    font-family:var({{ block.settings.font_button }});
+    padding:{{ block.settings.padding_button }};
+    {%- if block.settings.border -%}
+        border-width:{{ block.settings.border_width }};
+        border-color:{{ block.settings.border_color }};
+        border-style:solid;
+    {%- endif -%}
+}
+#shopify-section-{{ section.id }} .wpbingo-widget-lookbook .wpbingo-button>a:hover{
+    background:{{ block.settings.background_hover }};
+    color:{{ block.settings.color_button_hover }};
+    {%- if block.settings.border -%}
+        border-color:{{ block.settings.border_color_hover }}; 
+    {%- endif -%}
+}
+#shopify-section-{{ section.id }} .wpbingo-widget-lookbook .wpbingo-button .hover_style_1.bwp-button:before,
+#shopify-section-{{ section.id }} .wpbingo-widget-lookbook .wpbingo-button .hover_style_1.bwp-button:after{
+    background:{{ block.settings.background_hover }};
+}
+#shopify-section-{{ section.id }} .wpbingo-widget-lookbook .wpbingo-button .hover_style_1.bwp-button .bwp-button-content-wrapper:before,
+#shopify-section-{{ section.id }} .wpbingo-widget-lookbook .wpbingo-button .hover_style_1.bwp-button .bwp-button-content-wrapper:after{
+    background:{{ block.settings.background_hover }};
+}
+#shopify-section-{{ section.id }} .wpbingo-widget-lookbook .wpbingo-button .hover_style_2.bwp-button:before{
+    background:{{ block.settings.background_hover }};
+}
+#shopify-section-{{ section.id }} .wpbingo-widget-lookbook .wpbingo-button .hover_style_3.bwp-button:before{
+    border-color: transparent transparent transparent {{ block.settings.border_color }};
+}
+#shopify-section-{{ section.id }} .wpbingo-widget-lookbook .wpbingo-button .hover_style_3.bwp-button:after{
+    border-color: transparent {{ block.settings.border_color }} transparent transparent;
+}
+#shopify-section-{{ section.id }} .wpbingo-widget-lookbook .wpbingo-button .hover_style_4.bwp-button:before,
+#shopify-section-{{ section.id }} .wpbingo-widget-lookbook .wpbingo-button .hover_style_4.bwp-button:after{
+    background:{{ block.settings.background_hover }};
+}
+#shopify-section-{{ section.id }} .wpbingo-widget-lookbook .wpbingo-button .hover_style_4.bwp-button .bwp-button-content-wrapper:before,
+#shopify-section-{{ section.id }} .wpbingo-widget-lookbook .wpbingo-button .hover_style_4.bwp-button .bwp-button-content-wrapper:after{
+    background:{{ block.settings.background_hover }};
+}
+#shopify-section-{{ section.id }} .wpbingo-widget-lookbook .wpbingo-button .hover_style_5.bwp-button:before,
+#shopify-section-{{ section.id }} .wpbingo-widget-lookbook .wpbingo-button .hover_style_5.bwp-button:after{
+    border-color:{{ block.settings.border_color }};
+}
+#shopify-section-{{ section.id }} .wpbingo-widget-lookbook .wpbingo-button .hover_style_6.bwp-button:hover{
+    background:{{ block.settings.background_hover }};
+}
+#shopify-section-{{ section.id }} .wpbingo-widget-lookbook .wpbingo-button .hover_style_7.bwp-button:before{
+    background:{{ block.settings.background_hover }};
+}
+#shopify-section-{{ section.id }} .wpbingo-widget-lookbook .wpbingo-button .hover_style_8.bwp-button:before,
+#shopify-section-{{ section.id }} .wpbingo-widget-lookbook .wpbingo-button .hover_style_8.bwp-button:after{
+    background:{{ block.settings.background_hover }};
+}
+#shopify-section-{{ section.id }} .wpbingo-widget-lookbook .wpbingo-button .hover_style_9.bwp-button:hover{
+    background:{{ block.settings.background_hover }};
+}
+#shopify-section-{{ section.id }} .wpbingo-widget-lookbook .wpbingo-button .hover_style_10.bwp-button:hover{
+    background:{{ block.settings.background_hover }};
+}
+#shopify-section-{{ section.id }} .wpbingo-widget-lookbook .wpbingo-button .hover_style_11.bwp-button:before,
+#shopify-section-{{ section.id }} .wpbingo-widget-lookbook .wpbingo-button .hover_style_11.bwp-button:after{
+    background-color:{{ block.settings.border_color }};
+}
+#shopify-section-{{ section.id }} .wpbingo-widget-lookbook .wpbingo-button .hover_style_11.bwp-button:hover:before,
+#shopify-section-{{ section.id }} .wpbingo-widget-lookbook .wpbingo-button .hover_style_11.bwp-button:hover:after{
+    background:{{ block.settings.border_color_hover }};
+}
+#shopify-section-{{ section.id }} .wpbingo-widget-lookbook .wpbingo-button .hover_style_12.bwp-button:before{
+    background:{{ block.settings.border_color }};
+}
+#shopify-section-{{ section.id }} .wpbingo-widget-lookbook .wpbingo-button .hover_style_13.bwp-button:before{
+    background:{{ block.settings.border_color }};
+}
+{%- unless block.settings.icon_title == blank -%}
+    #shopify-section-{{ section.id }} .wpbingo-widget-lookbook .wpbingo-button>a> i{
+        font-size:{{ block.settings.font_icon }}px;
+        top:{{ block.settings.margin_icon }}px;
+        position:relative;
+    }
+{%- endunless -%}
+@media(max-width:991px){
+    #shopify-section-{{ section.id }} .wpbingo-widget-lookbook .title{
+        font-size:{{ block.settings.font_size_title_tab }}px;
+        line-height:{{ block.settings.line_height_title_tab }}px;
+    }
+}
+@media(max-width:767px){
+    #shopify-section-{{ section.id }} .wpbingo-widget-lookbook .subtitle{
+        font-size:{{ block.settings.font_size_subtitle_mobi }}px;
+        line-height:{{ block.settings.line_height_subtitle_mobi }}px;
+        letter-spacing:{{ block.settings.letter_spacing_subtitle_mobi }}px;
+        color:{{ block.settings.color_subtitle_mobi }};
+        margin:{{ block.settings.margin_subtitle_mobi }};
+    }
+    #shopify-section-{{ section.id }} .wpbingo-widget-lookbook .title{
+        font-size:{{ block.settings.font_size_title_mobi }}px;
+        line-height:{{ block.settings.line_height_title_mobi }}px;
+        letter-spacing:{{ block.settings.letter_spacing_title_mobi }}px;
+        color:{{ block.settings.color_title_mobi }};
+        margin:{{ block.settings.margin_title_mobi }};
+    }
+    #shopify-section-{{ section.id }} .wpbingo-widget-lookbook .wpbingo-button>a{
+        font-size:{{ block.settings.font_size_button_mobi }}px;
+        line-height:{{ block.settings.line_height_button_mobi }}px;
+        letter-spacing:{{ block.settings.letter_spacing_button_mobi }}px;
+        color:{{ block.settings.color_button_mobi }};
+        background:{{ block.settings.background_button_mobi }};
+        border-radius:{{ block.settings.border_radius_button_mobi }};
+        {%- if block.settings.border_mobi -%}
+            border-width:{{ block.settings.border_width_mobi }};
+            border-color:{{ block.settings.border_color_mobi }};
+            border-style:solid;
+        {%- endif -%}
+        padding:var({{ block.settings.padding_button_mobi }});
+    }
+    #shopify-section-{{ section.id }} .wpbingo-widget-lookbook .wpbingo-button>a:hover{
+        background:{{ block.settings.background_hover_mobi }};
+        color:{{ block.settings.color_button_hover_mobi }};
+        {%- if block.settings.border_mobi -%}
+            border-color:{{ block.settings.border_color_hover_mobi }}; 
+        {%- endif -%}
+    }
+    {%- unless block.settings.icon_title == blank -%}
+        #shopify-section-{{ section.id }} .wpbingo-widget-lookbook .wpbingo-button>a> i{
+            font-size:{{ block.settings.font_icon_mobi }}px;
+            top:{{ block.settings.margin_icon_mobi }}px;
+        }
+    {%- endunless -%}
+}
+{%- endstyle -%}
+{% schema %}
+  {
+    "name": "Custom css",
+    "settings": [
+        {
+            "type": "header",
+            "content": "====== Customer Subtitle ======"
+        },
+        {
+            "type": "color",
+            "id": "color_subtitle",
+            "label": "color",
+            "default": "#000"
+        },
+        {
+            "type": "select",
+            "id": "font_subtitle",
+            "label": "Font family",
+            "options": [
+                {
+                    "value": "--font-family-second",
+                    "label": "Font Heading"
+                },
+                {
+                    "value": "--font-family-base",
+                    "label": "Font Body"
+                }
+            ],
+            "default": "--font-family-second"
+        },
+        {
+            "type": "number",
+            "id": "font_size_subtitle",
+            "label": "Font size",
+            "default": 16,
+            "info": "px"
+        },
+        {
+            "type": "number",
+            "id": "line_height_subtitle",
+            "label": "Line height",
+            "default": 22,
+            "info": "px"
+        },
+        {
+            "type": "text",
+            "id": "font_weight_subtitle",
+            "label": "Font Weight",
+            "default": "500"
+        },
+        {
+            "type": "text",
+            "id": "margin_subtitle",
+            "label": "margin",
+            "default": "0px 0px 0px 0px",
+            "placeholder":"0px 0px 0px 0px"
+        },
+        {
+            "type": "select",
+            "id": "text_transfrom_subtitle",
+            "label": "Text transform",
+            "options": [
+                {
+                    "value": "default",
+                    "label": "Default"
+                },
+                {
+                    "value": "capitalize",
+                    "label": "Capitalize"
+                },
+                {
+                    "value": "uppercase",
+                    "label": "Uppercase"
+                },
+                {
+                    "value": "lowercase",
+                    "label": "Lowercase"
+                }
+            ],
+            "default": "default"
+        },
+        {
+            "type": "header",
+            "content": "====== Title ======"
+        },
+        {
+            "type": "color",
+            "id": "color_title",
+            "label": "color",
+            "default": "#000"
+        },
+        {
+            "type": "select",
+            "id": "font_title",
+            "label": "Font family",
+            "options": [
+                {
+                    "value": "--font-family-second",
+                    "label": "Font Heading"
+                },
+                {
+                    "value": "--font-family-base",
+                    "label": "Font Body"
+                }
+            ],
+            "default": "--font-family-second"
+        },
+        {
+            "type": "number",
+            "id": "font_size_title",
+            "label": "Font size",
+            "default": 16,
+            "info": "px"
+        },
+        {
+            "type": "number",
+            "id": "line_height_title",
+            "label": "Line height",
+            "default": 22,
+            "info": "px"
+        },
+        {
+            "type": "text",
+            "id": "font_weight_title",
+            "label": "Font Weight",
+            "default": "500"
+        },
+        {
+            "type": "number",
+            "id": "letter_spacing_title",
+            "label": "Letter spacing",
+            "default": 0,
+            "info": "px"
+        },
+        {
+            "type": "text",
+            "id": "margin_title",
+            "label": "margin",
+            "default": "0px 0px 0px 0px",
+            "placeholder":"0px 0px 0px 0px"
+        },
+        {
+            "type": "select",
+            "id": "text_transfrom_title",
+            "label": "Text transform",
+            "options": [
+                {
+                    "value": "default",
+                    "label": "Default"
+                },
+                {
+                    "value": "capitalize",
+                    "label": "Capitalize"
+                },
+                {
+                    "value": "uppercase",
+                    "label": "Uppercase"
+                },
+                {
+                    "value": "lowercase",
+                    "label": "Lowercase"
+                }
+            ],
+            "default": "default"
+        },
+        {
+            "type": "header",
+            "content": "====== Button ======"
+        },
+        {
+            "type": "select",
+            "id": "font_button",
+            "label": "Font family",
+            "options": [
+                {
+                    "value": "--font-family-second",
+                    "label": "Font Heading"
+                },
+                {
+                    "value": "--font-family-base",
+                    "label": "Font Body"
+                }
+            ],
+            "default": "--font-family-second"
+        },
+        {
+            "type": "select",
+            "id": "text_transfrom_button",
+            "label": "Text transform",
+            "options": [
+                {
+                    "value": "default",
+                    "label": "Default"
+                },
+                {
+                    "value": "capitalize",
+                    "label": "Capitalize"
+                },
+                {
+                    "value": "uppercase",
+                    "label": "Uppercase"
+                },
+                {
+                    "value": "lowercase",
+                    "label": "Lowercase"
+                }
+            ],
+            "default": "default"
+        },
+        {
+            "type": "number",
+            "id": "font_icon",
+            "label": "Font size icon",
+            "default": 14,
+            "info": "px"
+        },
+        {
+            "type": "number",
+            "id": "margin_icon",
+            "label": "Position icon",
+            "default": 0,
+            "info": "px"
+        },
+        {
+            "type": "text",
+            "id": "border_radius_button",
+            "label": "Border radius",
+            "default": "0px 0px 0px 0px",
+            "info": "top right bottom left"
+        },
+        {
+            "type": "checkbox",
+            "id": "border",
+            "label": "Turn on border",
+            "default": false
+        },
+        {
+            "type": "text",
+            "id": "border_width",
+            "label": "Border width",
+            "default": "0px 0px 0px 0px",
+            "info": "top right bottom left"
+        },
+        {
+            "type": "header",
+            "content": "Color Default"
+        },
+        {
+            "type": "color",
+            "id": "color_button",
+            "label": "color",
+            "default": "#fff"
+        },
+        {
+            "type": "color",
+            "id": "background_button",
+            "label": "Background",
+            "default": "#ed5d43"
+        },
+        {
+            "type": "color",
+            "id": "border_color",
+            "label": "Border color",
+            "default": "#fff"
+        },
+        {
+            "type": "header",
+            "content": "Color Hover"
+        },
+        {
+            "type": "color",
+            "id": "color_button_hover",
+            "label": "Color hover",
+            "default": "#fff"
+        },
+        {
+            "type": "color",
+            "id": "background_hover",
+            "label": "Background Hover",
+            "default": "#ed5d43"
+        },
+        {
+            "type": "color",
+            "id": "border_color_hover",
+            "label": "Border color hover",
+            "default": "#fff"
+        },
+        {
+            "type": "number",
+            "id": "font_size_button",
+            "label": "Font size",
+            "default": 14,
+            "info": "px"
+        },
+        {
+            "type": "number",
+            "id": "line_height_button",
+            "label": "Line height",
+            "default": 20,
+            "info": "px"
+        },
+        {
+            "type": "number",
+            "id": "letter_spacing_button",
+            "label": "Letter spacing",
+            "default": 0,
+            "info": "px"
+        },
+        {
+            "type": "text",
+            "id": "font_weight_button",
+            "label": "Font Weight",
+            "default": "500"
+        },
+        {
+			"type": "textarea",
+			"id": "padding_button",
+			"label": "Padding",
+			"default": "0px 0px 0px 0px",
+			"placeholder":"0px 0px 0px 0px"
+		},
+        {
+            "type": "header",
+            "content": "====== Tablet ======",
+            "info": "screen < 991px"
+        },
+        {
+            "type": "header",
+            "content": "====== Title ======"
+        },
+        {
+            "type": "number",
+            "id": "font_size_title_tab",
+            "label": "Font size",
+            "default": 30,
+            "info": "px"
+        },
+        {
+            "type": "number",
+            "id": "line_height_title_tab",
+            "label": "Line height",
+            "default": 35,
+            "info": "px"
+        },
+        {
+            "type": "header",
+            "content": "====== Mobile ======",
+            "info": "screen < 767px"
+        },
+        {
+            "type": "header",
+            "content": "====== Subtitle ======"
+        },
+        {
+            "type": "color",
+            "id": "color_subtitle_mobi",
+            "label": "color",
+            "default": "#ffffff"
+        },
+        {
+            "type": "number",
+            "id": "font_size_subtitle_mobi",
+            "label": "Font size",
+            "default": 30,
+            "info": "px"
+        },
+        {
+            "type": "number",
+            "id": "line_height_subtitle_mobi",
+            "label": "Line height",
+            "default": 35,
+            "info": "px"
+        },
+        {
+            "type": "number",
+            "id": "letter_spacing_subtitle_mobi",
+            "label": "Letter spacing",
+            "default": 0,
+            "info": "px"
+        },
+        {
+            "type": "text",
+            "id": "margin_subtitle_mobi",
+            "label": "margin",
+            "default": "0px 0px 0px 0px",
+            "placeholder":"0px 0px 0px 0px"
+        },
+        {
+            "type": "header",
+            "content": "====== Title ======"
+        },
+        {
+            "type": "color",
+            "id": "color_title_mobi",
+            "label": "color",
+            "default": "#ffffff"
+        },
+        {
+            "type": "number",
+            "id": "font_size_title_mobi",
+            "label": "Font size",
+            "default": 30,
+            "info": "px"
+        },
+        {
+            "type": "number",
+            "id": "line_height_title_mobi",
+            "label": "Line height",
+            "default": 35,
+            "info": "px"
+        },
+        {
+            "type": "number",
+            "id": "letter_spacing_title_mobi",
+            "label": "Letter spacing",
+            "default": 0,
+            "info": "px"
+        },
+        {
+            "type": "text",
+            "id": "margin_title_mobi",
+            "label": "margin",
+            "default": "0px 0px 0px 0px",
+            "placeholder":"0px 0px 0px 0px"
+        },
+        {
+            "type": "header",
+            "content": "====== Button ======"
+        },
+        {
+            "type": "number",
+            "id": "font_size_button_mobi",
+            "label": "Font size",
+            "default": 14,
+            "info": "px"
+        },
+        {
+            "type": "number",
+            "id": "font_icon_mobi",
+            "label": "Font size icon",
+            "default": 14,
+            "info": "px"
+        },
+        {
+            "type": "number",
+            "id": "margin_icon_mobi",
+            "label": "Position icon",
+            "default": 0,
+            "info": "px"
+        },
+        {
+            "type": "number",
+            "id": "line_height_button_mobi",
+            "label": "Line height",
+            "default": 20,
+            "info": "px"
+        },
+        {
+            "type": "number",
+            "id": "letter_spacing_button_mobi",
+            "label": "Letter spacing",
+            "default": 0,
+            "info": "px"
+        },
+        {
+            "type": "text",
+            "id": "border_radius_button_mobi",
+            "label": "Border radius",
+            "default": "0px 0px 0px 0px",
+            "info": "top right bottom left"
+        },
+        {
+            "type": "checkbox",
+            "id": "border_mobi",
+            "label": "Turn on border",
+            "default": false
+        },
+        {
+            "type": "text",
+            "id": "border_width_mobi",
+            "label": "Border width",
+            "default": "0px 0px 0px 0px",
+            "info": "top right bottom left"
+        },
+        {
+            "type": "header",
+            "content": "Color Default"
+        },
+        {
+            "type": "color",
+            "id": "color_button_mobi",
+            "label": "color",
+            "default": "#fff"
+        },
+        {
+            "type": "color",
+            "id": "background_button_mobi",
+            "label": "Background",
+            "default": "#ed5d43"
+        },
+        {
+            "type": "color",
+            "id": "border_color_mobi",
+            "label": "Border color",
+            "default": "#fff"
+        },
+        {
+            "type": "header",
+            "content": "Color Hover"
+        },
+        {
+            "type": "color",
+            "id": "color_button_hover_mobi",
+            "label": "Color hover",
+            "default": "#fff"
+        },
+        {
+            "type": "color",
+            "id": "background_hover_mobi",
+            "label": "Background Hover",
+            "default": "#ed5d43"
+        },
+        {
+            "type": "color",
+            "id": "border_color_hover_mobi",
+            "label": "Border color hover",
+            "default": "#fff"
+        }
+    ]
+  }
+{% endschema %}

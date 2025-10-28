@@ -1,0 +1,73 @@
+/* $opacity-to-hex: (
+	0: '00',
+	0.05: '0C',
+	0.1: '19',
+	0.15: '26',
+	0.2: '33',
+	0.25: '3F',
+	0.3: '4C',
+	0.35: '59',
+	0.4: '66',
+	0.45: '72',
+	0.5: '7F',
+	0.55: '8C',
+	0.6: '99',
+	0.65: 'A5',
+	0.7: 'B2',
+	0.75: 'BF',
+	0.8: 'CC',
+	0.85: 'D8',
+	0.9: 'E5',
+	0.95: 'F2',
+	1: 'FF'
+); */
+body{
+	--white: #fff;
+    --theme-color:#000000;
+	--theme-color-15:#00000026;
+	--theme-color-25:#0000003F;
+	--theme-color-50:#0000007F;
+	--theme-color-75:#000000BF;
+	
+	--hover-color:#000000;
+	--secondary-color:#000000;
+	--text-color:#000000;
+	--text-color-50:#0000007F;
+	--text-color-75:#000000BF;
+	
+
+	--gray-dark-10:#00000019;
+	--gray-dark-15:#00000026;
+	--gray-dark-20:#00000033;
+	--gray-dark-25:#0000003F;
+	--gray-dark:#000000;
+	--gray-dark-50:#0000007F;
+	--gray-dark-75:#000000BF;
+	
+	--body-bg-color:#ffffff;
+	--border-color:#e9e9e9;
+	--border-color-50:#e9e9e97F;
+	
+	--header-bg-color: #ffffff;
+	--menu-color: #000000;
+	--menu-hover-color: #000000;
+	--menu-dropdown-bg: #ffffff;
+	--menu-dropdown-color: #000000;
+	--menu-dropdown-hover-color: #000000;
+	
+	--font-family-second: Urbanist;
+	--heading-font-weight-default: 400;
+	--heading-font-weight-bold: 700;
+	--heading-font-weight-semibold: 600;
+	--heading-font-weight-medium: 500;
+	--heading-font-weight-light: 300;
+	--font-size-heading: 25px;
+	
+	--font-family-base: Urbanist;
+	--body-font-weight-default: 400;
+	--body-font-weight-bold: 700;
+	--body-font-weight-semibold: 600;
+	--body-font-weight-medium: 500;
+	--body-font-weight-light: 300;
+	--font-size-base: 14px;
+}

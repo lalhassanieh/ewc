@@ -1,0 +1,746 @@
+/*==================== SECTION LOOKBOOK ============*/
+.wpbingo-widget-lookbook .close-lookbook {
+  display: none;
+}
+.wpbingo-widget-lookbook .wpbingo-lookbook {
+  overflow: hidden;
+}
+.wpbingo-widget-lookbook .wpbingo-lookbook__content {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+}
+.wpbingo-widget-lookbook .lookbook-card {
+  position: relative;
+  display: inline-block;
+}
+.wpbingo-widget-lookbook .lookbook-card__item {
+  position: absolute;
+  z-index: 1;
+}
+.wpbingo-widget-lookbook .lookbook-card__item:hover, .wpbingo-widget-lookbook .lookbook-card__item:focus {
+  z-index: 2;
+}
+.wpbingo-widget-lookbook .lookbook-card__point {
+  position: absolute;
+  top: -15px;
+  left: -15px;
+}
+.wpbingo-widget-lookbook .lookbook-card__point:hover .product-card, .wpbingo-widget-lookbook .lookbook-card__point:focus .product-card {
+  opacity: 1;
+  visibility: visible;
+}
+.wpbingo-widget-lookbook .lookbook-card__button {
+  cursor: pointer;
+}
+.wpbingo-widget-lookbook .lookbook-card__button:hover .lookbook-card__btn span {
+  background: var(--theme-color);
+  color: var(--white);
+}
+.wpbingo-widget-lookbook .lookbook-card__button:hover .lookbook-card__btn span:before {
+  background: var(--white);
+}
+.wpbingo-widget-lookbook .lookbook-card__btn{
+  position: absolute;
+  left: 0;
+  top: 0;
+  display: inline-block;
+  width: 42px;
+  height: 42px;
+  border: 0;
+  padding: 0;
+  background: 0 0;
+  border-radius: 50%;
+  transition: all 0.2s ease;
+  font-size: 0;
+  line-height: 42px;
+  text-align: center;
+  color: var(--gray-dark);
+}
+.wpbingo-widget-lookbook .lookbook-card__btn span{
+  position: absolute;
+  left: 0;
+  top: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  border: 0;
+  padding: 0;
+  background: var(--white);
+  border-radius: 50%;
+  transition: all 0.2s ease;
+  font-size: 0;
+  line-height: 42px;
+  text-align: center;
+  color: var(--gray-dark);
+}
+.wpbingo-widget-lookbook .lookbook-card__btn:before {
+  content: "";
+  top: -8px;
+  right: -8px;
+  bottom: -8px;
+  left: -8px;
+  display: block;
+  animation: l 2s ease infinite;
+  backface-visibility: hidden;
+  perspective: 800px;
+  background-color: hsla(0, 0%, 100%, .8);
+  z-index: -1;
+  position: absolute;
+  border-radius: 50%;
+}
+.wpbingo-widget-lookbook .lookbook-card__btn span:before{
+  content: "";
+  position: relative;
+  width: 14px;
+  height: 14px;
+  background-color: var(--gray-dark);
+  display: inline-block;
+  border-radius: 50%;
+}
+.wpbingo-widget-lookbook .content-product-card {
+  display: none;
+  position: absolute;
+  z-index: 2;
+  width: 250px;
+  opacity: 0;
+  visibility: hidden;
+}
+.wpbingo-widget-lookbook .lookbook-card__item.active .content-product-card {
+  display: block;
+  opacity: 1;
+  visibility: visible;
+}
+.wpbingo-widget-lookbook .content-product-card:after {
+  content: "";
+  pointer-events: none;
+  position: absolute;
+}
+.wpbingo-widget-lookbook .content-product-card.active {
+  visibility: visible;
+  opacity: 1;
+  display: block;
+}
+.wpbingo-widget-lookbook .content-product-card .product-card {
+  padding: 10px 10px 20px;
+  margin-bottom: 0;
+  text-align: center;
+  background-color: white;
+  transition: all 0.2s ease;
+  box-shadow: -1px 5px 5px 0 rgba(0, 0, 0, 0.2);
+  overflow: unset;
+  border-radius: 10px;
+}
+.wpbingo-widget-lookbook .content-product-card .product-card .wpb-variants-swatch .swatch-content {
+  justify-content: center;
+}
+.wpbingo-widget-lookbook .position-top-left .product-card {
+  transform: translate(calc(-100% + 20px), calc(-100% - 45px));
+  position: relative;
+}
+.wpbingo-widget-lookbook .position-top-left .product-card:before {
+  content: "";
+  position: absolute;
+  border: 8px solid transparent;
+  border-top-color: var(--white);
+  border-width: 12px 8px;
+  bottom: -23px;
+  right: 7px;
+}
+.wpbingo-widget-lookbook .position-top-right .product-card {
+  transform: translateY(calc(-100% - 30px));
+  position: relative;
+}
+.wpbingo-widget-lookbook .position-top-right .product-card:before {
+  content: "";
+  position: absolute;
+  border: 8px solid transparent;
+  border-top-color: var(--white);
+  border-width: 12px 8px;
+  bottom: -23px;
+  left: 7px;
+}
+.wpbingo-widget-lookbook .position-center-left .product-card {
+  transform: translate(calc(-100% - 15px), -50%);
+  position: relative;
+}
+.wpbingo-widget-lookbook .position-center-left .product-card:before {
+  content: "";
+  position: absolute;
+  border: 8px solid transparent;
+  border-left-color: var(--white);
+  border-width: 8px 12px;
+  top: calc(50% + 6px);
+  left: 100%;
+}
+.wpbingo-widget-lookbook .position-center-top .product-card {
+  transform: translate(calc(-50% + 12px), calc(-100% - 15px));
+  position: relative;
+}
+.wpbingo-widget-lookbook .position-center-top .product-card:before {
+  content: "";
+  position: absolute;
+  border: 8px solid transparent;
+  border-top-color: var(--white);
+  border-width: 12px 8px;
+  bottom: -23px;
+  left: calc(50% - 6px);
+}
+.wpbingo-widget-lookbook .position-center-right .product-card {
+  transform: translate(45px, calc(-50% + 15px));
+  position: relative;
+}
+.wpbingo-widget-lookbook .position-center-right .product-card:before {
+  content: "";
+  position: absolute;
+  border: 8px solid transparent;
+  border-right-color: var(--white);
+  border-width: 8px 12px;
+  top: calc(50% - 8px);
+  left: -24px;
+}
+.wpbingo-widget-lookbook .position-center-bottom .product-card {
+  transform: translate(calc(-50% + 15px), 45px);
+  position: relative;
+}
+.wpbingo-widget-lookbook .position-center-bottom .product-card:before {
+  content: "";
+  position: absolute;
+  border: 8px solid transparent;
+  border-bottom-color: var(--white);
+  border-width: 12px 8px;
+  top: -24px;
+  left: calc(50% - 8px);
+}
+.wpbingo-widget-lookbook .position-bottom-left .product-card {
+  transform: translate(calc(-100% - 17px), 0);
+  position: relative;
+}
+.wpbingo-widget-lookbook .position-bottom-left .product-card:before {
+  content: "";
+  position: absolute;
+  border: 8px solid transparent;
+  border-bottom-color: var(--white);
+  border-width: 12px 8px;
+  top: -24px;
+  right: 8px;
+}
+.wpbingo-widget-lookbook .position-bottom-right .product-card {
+  transform: translateY(45px);
+  position: relative;
+}
+.wpbingo-widget-lookbook .position-bottom-right .product-card:before {
+  content: "";
+  position: absolute;
+  border: 8px solid transparent;
+  border-bottom-color: var(--white);
+  border-width: 12px 8px;
+  top: -24px;
+  left: 7px;
+}
+.wpbingo-widget-lookbook .lookbook-product__img {
+  display: block;
+  width: 100%;
+  margin: 0 0 10px;
+}
+.wpbingo-widget-lookbook .lookbook-product__price {
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+  justify-content: center;
+}
+.wpbingo-widget-lookbook .lookbook-modal .modal-header {
+  padding: 10px 15px 5px;
+  border-bottom: 0;
+}
+.wpbingo-widget-lookbook .lookbook-modal .modal-body {
+  padding: 10px 15px 15px;
+}
+@media(max-width: 767px) {
+  .wpbingo-widget-lookbook .content-product-card {
+    position: fixed;
+    width: 100%;
+    left: 0 !important;
+    bottom: 50px !important;
+    display: block;
+    transition: all 0.3s ease;
+    opacity: 0;
+    visibility: hidden;
+    z-index: 99;
+    border-bottom: 1px solid #ededed;
+    background: var(--white);
+    transform: translateY(100%) !important;
+  }
+  .wpbingo-widget-lookbook .content-product-card .product-card {
+    padding: 20px;
+    transform: translateY(0) !important;
+    transition: all 0.3s ease;
+    box-shadow: unset;
+    max-width: 250px;
+    margin: auto;
+  }
+  .wpbingo-widget-lookbook .content-product-card .product-card:before, .wpbingo-widget-lookbook .content-product-card .product-card:after {
+    display: none;
+  }
+  .wpbingo-widget-lookbook .content-product-card .product-card .product-card__content {
+    text-align: center;
+  }
+  .wpbingo-widget-lookbook .content-product-card .product-card .product-card__content .wpb-variants-swatch .swatch-content, .wpbingo-widget-lookbook .content-product-card .product-card .product-card__content .spr-badge {
+    justify-content: center;
+  }
+  .wpbingo-widget-lookbook .content-product-card .product-card .product-card__image img {
+    aspect-ratio: 1;
+    object-fit: contain;
+    background: #f5f5f5;
+  }
+  .wpbingo-widget-lookbook .content-product-card .close-lookbook {
+    display: inline-block;
+    cursor: pointer;
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    text-align: center;
+    z-index: 1;
+    display: inline-block;
+    width: 28px;
+    height: 28px;
+    padding: 6px;
+    border-radius: 100%;
+    box-shadow: 0 2px 59px rgba(0, 0, 0, 0.4);
+  }
+  .wpbingo-widget-lookbook .content-product-card .close-lookbook:before, .wpbingo-widget-lookbook .content-product-card .close-lookbook:after {
+    content: "";
+    position: absolute;
+    height: 1px;
+    width: 14px;
+    top: 50%;
+    left: calc(50% - 7px);
+    margin-top: -1px;
+    background-color: var(--gray-dark);
+    transition: all 0.3s ease;
+  }
+  .wpbingo-widget-lookbook .content-product-card .close-lookbook:before {
+    transform-origin: 50% 50%;
+    transform: rotate(-45deg);
+  }
+  .wpbingo-widget-lookbook .content-product-card .close-lookbook:after {
+    transform-origin: 50% 50%;
+    transform: rotate(45deg);
+  }
+  .wpbingo-widget-lookbook .content-product-card .close-lookbook:hover:before, .wpbingo-widget-lookbook .content-product-card .close-lookbook:hover:after {
+    transform: rotate(0deg);
+  }
+  .wpbingo-widget-lookbook .lookbook-card__item.active .content-product-card {
+    box-shadow: 0 -5px 30px 2px rgba(0, 0, 0, 0.0784313725);
+    transform: translateY(0) !important;
+  }
+  .wpbingo-widget-lookbook .lookbook-card__item.active .content-product-card .product-card {
+    transform: translateY(0) !important;
+  }
+}
+/*============= BOX TITLE ===================*/
+.wpbingo-widget-lookbook .lookbook-product-content {
+  position: relative;
+}
+.wpbingo-widget-lookbook .box-title {
+  top: auto;
+  width: 100%;
+  left: 0;
+  z-index: 1;
+  display: flex;
+}
+.wpbingo-widget-lookbook .box-title .content-info {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+}
+.wpbingo-widget-lookbook .box-title .content.box-align-left {
+  text-align: left;
+}
+.wpbingo-widget-lookbook .box-title .content.box-align-center {
+  text-align: center;
+}
+.wpbingo-widget-lookbook .box-title .content.box-align-right {
+  text-align: right;
+}
+.wpbingo-widget-lookbook .box-title .content-info.box-horizontal-left {
+  justify-content: left;
+}
+.wpbingo-widget-lookbook .box-title .content-info.box-horizontal-center {
+  justify-content: center;
+}
+.wpbingo-widget-lookbook .box-title .content-info.box-horizontal-right {
+  justify-content: right;
+}
+.wpbingo-widget-lookbook .box-vertical-top {
+  top: 0;
+  align-items: start;
+}
+.wpbingo-widget-lookbook .box-vertical-middle {
+  align-items: center;
+}
+.wpbingo-widget-lookbook .box-vertical-bottom {
+  align-items: end;
+  bottom: 0;
+}
+@media(max-width:500px) {
+  .wpbingo-widget-lookbook .box-title.disable_absolute {
+    position: static !important;
+  }
+  .wpbingo-widget-lookbook .box-title .content.box-align-mobi-left {
+    text-align: left;
+  }
+  .wpbingo-widget-lookbook .box-title .content.box-align-mobi-center {
+    text-align: center;
+  }
+  .wpbingo-widget-lookbook .box-title .content.box-align-mobi-right {
+    text-align: right;
+  }
+  .wpbingo-widget-lookbook .box-title .content-info.box-horizontal-mobi-left {
+    justify-content: left;
+  }
+  .wpbingo-widget-lookbook .box-title .content-info.box-horizontal-mobi-center {
+    justify-content: center;
+  }
+  .wpbingo-widget-lookbook .box-title .content-info.box-horizontal-right {
+    justify-content: right;
+  }
+  .wpbingo-widget-lookbook .box-vertical-mobi-top {
+    align-items: start;
+  }
+  .wpbingo-widget-lookbook .box-vertical-mobi-middle {
+    align-items: center;
+  }
+  .wpbingo-widget-lookbook .box-vertical-mobi-bottom {
+    align-items: end;
+  }
+}
+
+/*============= HOVER STYLE ===================*/
+.wpbingo-widget-lookbook .wpbingo-button .hover_style_1:before,
+.wpbingo-widget-lookbook .wpbingo-button .hover_style_1:after{
+  content: "";
+  position: absolute;
+  top: 0;
+  width: 25.25%;
+  height: 0;
+  left:0;
+  z-index:1;
+  transition: all 0.3s ease-in-out;
+}
+.wpbingo-widget-lookbook .wpbingo-button .hover_style_1:after{
+  left: 50%;
+}
+.wpbingo-widget-lookbook .wpbingo-button .hover_style_1 .bwp-button-content-wrapper:before,
+.wpbingo-widget-lookbook .wpbingo-button .hover_style_1 .bwp-button-content-wrapper:after{
+  content: "";
+  position: absolute;
+  bottom: 0;
+  width: 25.25%;
+  height: 0;
+  left: 25%;
+  z-index:1;
+  transition: all 0.3s ease-in-out;
+}
+.wpbingo-widget-lookbook .wpbingo-button .hover_style_1 .bwp-button-content-wrapper:after{
+  left: 75%;
+}
+.wpbingo-widget-lookbook .wpbingo-button .hover_style_1:hover:before,
+.wpbingo-widget-lookbook .wpbingo-button .hover_style_1:hover:after{
+  height: 100%;
+}
+.wpbingo-widget-lookbook .wpbingo-button .hover_style_1:hover .bwp-button-content-wrapper:before,
+.wpbingo-widget-lookbook .wpbingo-button .hover_style_1:hover .bwp-button-content-wrapper:after{
+  height: 100%;
+}
+
+.wpbingo-widget-lookbook .wpbingo-button .hover_style_2:before{
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  mix-blend-mode: lighten;
+  transition: all .3s ease;
+  transform-origin: center;
+  transform: scale(0) rotate(0);
+  content: "";
+  position: absolute;
+  background: var(--theme-color);
+  display: block;
+  box-sizing: border-box;
+  top: 0;
+  left: 0;
+}
+.wpbingo-widget-lookbook .wpbingo-button .hover_style_2:hover:before{
+  border-radius: 0;
+  transform: scale(1) rotate(180deg);
+}
+
+.wpbingo-widget-lookbook .wpbingo-button .hover_style_3:before,
+.wpbingo-widget-lookbook .wpbingo-button .hover_style_3:after{
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 0;
+  border: 0 solid;
+  transform: rotate(360deg);
+  transition: all 0.5s ease-in-out;
+  z-index:1;
+}
+.wpbingo-widget-lookbook .wpbingo-button .hover_style_3:before{
+  bottom: 0;
+  left: 0;
+}
+.wpbingo-widget-lookbook .wpbingo-button .hover_style_3:after{
+  top: 0;
+  right: 0;
+}
+.wpbingo-widget-lookbook .wpbingo-button .hover_style_3:hover:before,
+.wpbingo-widget-lookbook .wpbingo-button .hover_style_3:hover:after{
+  border-width: 120px 500px;
+}
+
+.wpbingo-widget-lookbook .wpbingo-button .hover_style_4:before,
+.wpbingo-widget-lookbook .wpbingo-button .hover_style_4:after{
+  transition: all 0.3s ease-in-out;
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width:100%;
+  height:100%;
+}
+.wpbingo-widget-lookbook .wpbingo-button .hover_style_4:before{
+  transform: translate(-100%, -100%);
+}
+.wpbingo-widget-lookbook .wpbingo-button .hover_style_4:after{
+  transform:translate(-100%, 100%);
+}
+.wpbingo-widget-lookbook .wpbingo-button .hover_style_4 .bwp-button-content-wrapper:before,
+.wpbingo-widget-lookbook .wpbingo-button .hover_style_4 .bwp-button-content-wrapper:after{
+  transition: all 0.3s ease-in-out;
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width:100%;
+  height:100%;
+}
+.wpbingo-widget-lookbook .wpbingo-button .hover_style_4 .bwp-button-content-wrapper:before{
+  transform:translate(100%, -100%);
+}
+.wpbingo-widget-lookbook .wpbingo-button .hover_style_4 .bwp-button-content-wrapper:after{
+  transform:translate(100%, 100%);
+}
+.wpbingo-widget-lookbook .wpbingo-button .hover_style_4:hover:before{
+  transform: translate(-50%, -50%);
+}
+.wpbingo-widget-lookbook .wpbingo-button .hover_style_4:hover:after{
+  transform: translate(-50%, 50%);
+}
+.wpbingo-widget-lookbook .wpbingo-button .hover_style_4:hover .bwp-button-content-wrapper:before{
+  transform:translate(50%, -50%);
+}
+.wpbingo-widget-lookbook .wpbingo-button .hover_style_4:hover .bwp-button-content-wrapper:after{
+  transform:translate(50%, 50%);
+}
+
+.wpbingo-widget-lookbook .wpbingo-button .hover_style_5:before,
+.wpbingo-widget-lookbook .wpbingo-button .hover_style_5:after{
+  border: 0 solid transparent;
+  box-sizing: border-box;
+  content: "";
+  pointer-events: none;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.3s ease-in-out;
+  opacity: 0;
+  visibility: hidden;
+}
+.wpbingo-widget-lookbook .wpbingo-button .hover_style_5:before{
+  border-bottom-width: 2px;
+	border-left-width: 2px;
+  transform:translate(-10px,10px);
+}
+.wpbingo-widget-lookbook .wpbingo-button .hover_style_5:after{
+  border-top-width: 2px;
+	border-right-width: 2px;
+  transform:translate(10px,-10px);
+}
+.wpbingo-widget-lookbook .wpbingo-button .hover_style_5:hover{
+  background:transparent !important;
+}
+.wpbingo-widget-lookbook .wpbingo-button .hover_style_5:hover:before,
+.wpbingo-widget-lookbook .wpbingo-button .hover_style_5:hover:after{
+  opacity: 1;
+  visibility: visible;
+  transform: unset;
+}
+
+.wpbingo-widget-lookbook .wpbingo-button .hover_style_6{
+  display: inline-block;
+  vertical-align: middle;
+  transform: perspective(1px) translateZ(0);
+  box-shadow: 0 0 1px var(--gray-dark);
+  transition-duration: 0.3s;
+  transition-property: box-shadow;
+}
+.wpbingo-widget-lookbook .wpbingo-button .hover_style_6:hover{
+  box-shadow: 0 0 8px var(--gray-dark-60);
+}
+
+.wpbingo-widget-lookbook .wpbingo-button .hover_style_7{
+  transition: color 0.5s ease-in-out;
+  position:relative;
+  overflow:hidden;
+}
+.wpbingo-widget-lookbook .wpbingo-button .hover_style_7:before{
+  content: "";
+  position: absolute;
+  z-index: -1;
+  height: 200%;
+  width: 300%;
+  border-radius: 50%;
+  top: 0;
+  left: -350%;
+  transition: all .7s;
+}
+.wpbingo-widget-lookbook .wpbingo-button .hover_style_7:hover:before{
+  top: -45%;
+  left: -100%;
+}
+
+.wpbingo-widget-lookbook .wpbingo-button .hover_style_8{
+  position:relative;
+  overflow:hidden;
+  transition: color 0.3s ease-in-out;
+  transition-delay:0.3s;
+}
+.wpbingo-widget-lookbook .wpbingo-button .hover_style_8:before{
+  content:"";
+  position:absolute;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  top:calc(50% - 8px);
+  right:-16px;
+  transition: right 0.3s ease-in-out;
+  transition-delay:0.3s;
+}
+.wpbingo-widget-lookbook .wpbingo-button .hover_style_8:after{
+  content:"";
+  position:absolute;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  top:calc(50% - 8px);
+  right:calc(50% - 8px);
+  transform: scale(0);
+  transition: transform 0.4s ease-in-out;
+}
+.wpbingo-widget-lookbook .wpbingo-button .hover_style_8:hover:before{
+  right:calc(50% - 8px);
+	transition-delay:0s;
+}
+.wpbingo-widget-lookbook .wpbingo-button .hover_style_8:hover:after{
+ transform: scale(50);
+  transition-delay:0.3s;
+}
+
+.wpbingo-widget-lookbook .wpbingo-button .hover_style_9{
+  display: inline-block;
+  transition-duration: 0.3s;
+  transition-property: box-shadow;
+  box-shadow: inset 0 0 0 var(--gray-dark-60), 0 0 1px var(--gray-dark-0);
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  transform: translateZ(0);
+}
+.wpbingo-widget-lookbook .wpbingo-button .hover_style_9:hover{
+  box-shadow: inset 3px 3px 3px var(--gray-dark-60), 0 0 1px var(--gray-dark-0);
+}
+
+.wpbingo-widget-lookbook .wpbingo-button .hover_style_10{
+  transition: transform 0.3s ease-in-out;
+}
+.wpbingo-widget-lookbook .wpbingo-button .hover_style_10:before{
+  pointer-events: none;
+  position: absolute;
+  z-index: -1;
+  content: '';
+  top: 100%;
+  left: 5%;
+  height: 10px;
+  width: 90%;
+  opacity: 0;
+  background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.35) 0%, rgba(0, 0, 0, 0) 80%);
+  transition-duration: 0.3s;
+  transition-property: transform, opacity;
+}
+.wpbingo-widget-lookbook .wpbingo-button .hover_style_10:hover{
+  transform: translateY(-5px);
+}
+.wpbingo-widget-lookbook .wpbingo-button .hover_style_10:hover:before{
+  opacity: 1;
+  transform: translateY(5px);
+}
+
+.wpbingo-widget-lookbook .wpbingo-button .hover_style_11:before,
+.wpbingo-widget-lookbook .wpbingo-button .hover_style_11:after{
+  content: "";
+  position: absolute;
+  left: 0;
+  height: 1px;
+  background-color: var(--gray-dark);
+  transform-origin: right;
+  transform: scaleX(1) translateZ(0);
+  transition:transform .6s cubic-bezier(.165,.84,.44,1) .3s;
+  bottom: 0;
+  width: 100%;
+}
+.wpbingo-widget-lookbook .wpbingo-button .hover_style_11:after{
+  transform-origin: left; 
+  transform: scaleX(0) translateZ(0);
+  transition:transform .6s cubic-bezier(.165,.84,.44,1);
+}
+.wpbingo-widget-lookbook .wpbingo-button .hover_style_11:hover:before{
+  transform: scaleX(0) translateZ(0);
+  transition:transform .6s cubic-bezier(.165,.84,.44,1);
+}
+.wpbingo-widget-lookbook .wpbingo-button .hover_style_11:hover:after{
+  transform: scaleX(1) translateZ(0);
+	transition:transform .6s cubic-bezier(.165,.84,.44,1) .3s;
+}
+.wpbingo-widget-lookbook .wpbingo-button .hover_style_12:before{
+  position: absolute;
+  content: "";
+  bottom: 0;
+  width: 100%;
+  height: 2px;
+  left: 0;
+  transition: all .3s ease;
+}
+.wpbingo-widget-lookbook .wpbingo-button .hover_style_12:hover:before{
+  width: 50%;
+  right: 50%;
+}
+.wpbingo-widget-lookbook .wpbingo-button .hover_style_13:before{
+  position: absolute;
+  content: "";
+  bottom: 0;
+  width: 100%;
+  height: 2px;
+  left: 50%;
+  transform: translateX(-50%);
+  transition: all .3s ease;
+}
+.wpbingo-widget-lookbook .wpbingo-button .hover_style_13:hover:before{
+  width: 50%;
+}

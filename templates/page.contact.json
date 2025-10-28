@@ -1,0 +1,499 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+ {
+  "sections": {
+    "breadcrumb": {
+      "type": "page-breadcrumb",
+      "settings": {
+        "enable": true,
+        "bgimage": false,
+        "show_pagetitle": true,
+        "show_breadcrumb": true,
+        "color_breadcrumb": "#000000",
+        "align_breadcrumb": "center"
+      }
+    },
+    "main": {
+      "type": "main-page",
+      "settings": {
+        "enable": false,
+        "padding_top": 28,
+        "padding_bottom": 28
+      }
+    },
+    "featured_custom_section_JVWEre": {
+      "type": "featured-custom-section",
+      "blocks": {
+        "column_DLWCDt": {
+          "type": "_column",
+          "settings": {
+            "width": 100,
+            "padding": "0 15px",
+            "margin": "",
+            "width_lap": 100,
+            "width_tab": 100,
+            "width_mobi": 100
+          },
+          "blocks": {
+            "google_map_RP9RxM": {
+              "type": "google-map",
+              "settings": {
+                "padding": "",
+                "margin": "",
+                "html_map": "<iframe src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d50470.02982618993!2d-122.47879940876057!3d37.75776068857222!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80859a6d00690021%3A0x4a501367f076adff!2sSan%20Francisco%2C%20California%2C%20Hoa%20K%E1%BB%B3!5e0!3m2!1svi!2s!4v1690774797695!5m2!1svi!2s\" width=\"100%\" height=\"100%\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\" referrerpolicy=\"no-referrer-when-downgrade\"></iframe>"
+              }
+            }
+          },
+          "block_order": [
+            "google_map_RP9RxM"
+          ]
+        }
+      },
+      "block_order": [
+        "column_DLWCDt"
+      ],
+      "settings": {
+        "max_width": "",
+        "fullwidth": false,
+        "background_gradient": "",
+        "background_fixed": false,
+        "background_size": "cover",
+        "background_pos": "center center",
+        "background_color": "",
+        "width_bg": "container",
+        "padding_bg": "",
+        "padding": "",
+        "margin": "0 0 85px",
+        "vertical_align": "top",
+        "horizontal_align": "left"
+      }
+    },
+    "featured_custom_section_W4q6EC": {
+      "type": "featured-custom-section",
+      "blocks": {
+        "column_KddGVg": {
+          "type": "_column",
+          "settings": {
+            "width": 62,
+            "padding": "0 35px | 0 7.5px",
+            "margin": "| | | 0 0 30px",
+            "width_lap": 63.4,
+            "width_tab": 63.4,
+            "width_mobi": 100
+          },
+          "blocks": {
+            "title_b9k8gU": {
+              "type": "title",
+              "settings": {
+                "heading_size": "h3",
+                "title": "Contact Details",
+                "font": "--font-family-second",
+                "color": "#000000",
+                "font_size": 30,
+                "line_height": 30,
+                "letter_spacing": 0,
+                "font_weight": "500",
+                "align": "center",
+                "padding": "",
+                "margin": "0 0 35px",
+                "color_mobi": "#000000",
+                "font_size_mobi": 30,
+                "line_height_mobi": 30,
+                "letter_spacing_mobi": 0,
+                "align_mobi": "center"
+              }
+            },
+            "contact_form_Ehhtit": {
+              "type": "contact-form",
+              "settings": {
+                "padding": "",
+                "margin": "",
+                "placeholder_name": "Your Name*",
+                "placeholder_email": "Your Email*",
+                "placeholder_phone": "Phone Number*",
+                "placeholder_message": "Your Message*",
+                "label_button": "Submit Now"
+              }
+            }
+          },
+          "block_order": [
+            "title_b9k8gU",
+            "contact_form_Ehhtit"
+          ]
+        },
+        "column_kbWjKb": {
+          "type": "_column",
+          "settings": {
+            "width": 38,
+            "padding": "0 35px | 0 7.5px",
+            "margin": "",
+            "width_lap": 36.6,
+            "width_tab": 36.6,
+            "width_mobi": 100
+          },
+          "blocks": {
+            "inner_section_deKLJk": {
+              "type": "inner-section",
+              "settings": {
+                "max_width": "",
+                "fullwidth": false,
+                "background_gradient": "",
+                "background_color": "#ffffff",
+                "background_fixed": false,
+                "background_size": "cover",
+                "background_pos": "center center",
+                "padding": "60px | 55px 30px | | 50px 15px",
+                "margin": ""
+              },
+              "blocks": {
+                "column_fYEBUX": {
+                  "type": "_column",
+                  "settings": {
+                    "width": 100,
+                    "padding": "",
+                    "margin": "",
+                    "width_lap": 100,
+                    "width_tab": 100,
+                    "width_mobi": 100
+                  },
+                  "blocks": {
+                    "title_LHrz3c": {
+                      "type": "title",
+                      "settings": {
+                        "heading_size": "h3",
+                        "title": "Get in touch",
+                        "font": "--font-family-second",
+                        "color": "#000000",
+                        "font_size": 30,
+                        "line_height": 30,
+                        "letter_spacing": 0,
+                        "font_weight": "500",
+                        "align": "left",
+                        "padding": "",
+                        "margin": "0 0 35px",
+                        "color_mobi": "#000000",
+                        "font_size_mobi": 30,
+                        "line_height_mobi": 30,
+                        "letter_spacing_mobi": 0,
+                        "align_mobi": "left"
+                      }
+                    }
+                  },
+                  "block_order": [
+                    "title_LHrz3c"
+                  ]
+                },
+                "column_C4P94i": {
+                  "type": "_column",
+                  "settings": {
+                    "width": 100,
+                    "padding": "",
+                    "margin": "0 0 30px",
+                    "width_lap": 100,
+                    "width_tab": 100,
+                    "width_mobi": 100
+                  },
+                  "blocks": {
+                    "title_jMEUia": {
+                      "type": "title",
+                      "settings": {
+                        "heading_size": "h3",
+                        "title": "Address",
+                        "font": "--font-family-second",
+                        "color": "#000000",
+                        "font_size": 18,
+                        "line_height": 18,
+                        "letter_spacing": 0,
+                        "font_weight": "500",
+                        "align": "left",
+                        "padding": "",
+                        "margin": "0 0 20px",
+                        "color_mobi": "#000000",
+                        "font_size_mobi": 18,
+                        "line_height_mobi": 18,
+                        "letter_spacing_mobi": 0,
+                        "align_mobi": "left"
+                      }
+                    },
+                    "description_mPzdEd": {
+                      "type": "description",
+                      "settings": {
+                        "desc": "<a href=\"#\">Tower of London, London EC3N 4AB, United<br>\nKingdom.</a>",
+                        "font": "--font-family-second",
+                        "color": "#000000",
+                        "font_size": 14,
+                        "line_height": 24,
+                        "letter_spacing": 0,
+                        "font_weight": "400",
+                        "align": "left",
+                        "padding": "",
+                        "margin": "0 0 15px",
+                        "color_mobi": "#000000",
+                        "font_size_mobi": 14,
+                        "line_height_mobi": 24,
+                        "letter_spacing_mobi": 0,
+                        "align_mobi": "left"
+                      }
+                    },
+                    "line_UWEkbp": {
+                      "type": "line",
+                      "settings": {
+                        "padding": "",
+                        "margin": "",
+                        "height": 1,
+                        "background": "#0000000d"
+                      }
+                    }
+                  },
+                  "block_order": [
+                    "title_jMEUia",
+                    "description_mPzdEd",
+                    "line_UWEkbp"
+                  ]
+                },
+                "column_8JLQFN": {
+                  "type": "_column",
+                  "settings": {
+                    "width": 100,
+                    "padding": "",
+                    "margin": "0 0 30px",
+                    "width_lap": 100,
+                    "width_tab": 100,
+                    "width_mobi": 100
+                  },
+                  "blocks": {
+                    "title_XXHxD4": {
+                      "type": "title",
+                      "settings": {
+                        "heading_size": "h3",
+                        "title": "Phone",
+                        "font": "--font-family-second",
+                        "color": "#000000",
+                        "font_size": 18,
+                        "line_height": 18,
+                        "letter_spacing": 0,
+                        "font_weight": "500",
+                        "align": "left",
+                        "padding": "",
+                        "margin": "0 0 20px",
+                        "color_mobi": "#000000",
+                        "font_size_mobi": 18,
+                        "line_height_mobi": 18,
+                        "letter_spacing_mobi": 0,
+                        "align_mobi": "left"
+                      }
+                    },
+                    "description_C86BjM": {
+                      "type": "description",
+                      "settings": {
+                        "desc": "<a href=\"tel:\">(+84) 123 567 712</a>",
+                        "font": "--font-family-second",
+                        "color": "#000000",
+                        "font_size": 14,
+                        "line_height": 24,
+                        "letter_spacing": 0,
+                        "font_weight": "400",
+                        "align": "left",
+                        "padding": "",
+                        "margin": "0 0 15px",
+                        "color_mobi": "#000000",
+                        "font_size_mobi": 14,
+                        "line_height_mobi": 24,
+                        "letter_spacing_mobi": 0,
+                        "align_mobi": "left"
+                      }
+                    },
+                    "line_6RftMe": {
+                      "type": "line",
+                      "settings": {
+                        "padding": "",
+                        "margin": "",
+                        "height": 1,
+                        "background": "#0000000d"
+                      }
+                    }
+                  },
+                  "block_order": [
+                    "title_XXHxD4",
+                    "description_C86BjM",
+                    "line_6RftMe"
+                  ]
+                },
+                "column_GMNB4i": {
+                  "type": "_column",
+                  "settings": {
+                    "width": 100,
+                    "padding": "",
+                    "margin": "0 0 30px",
+                    "width_lap": 100,
+                    "width_tab": 100,
+                    "width_mobi": 100
+                  },
+                  "blocks": {
+                    "title_EKE4M7": {
+                      "type": "title",
+                      "settings": {
+                        "heading_size": "h3",
+                        "title": "Email",
+                        "font": "--font-family-second",
+                        "color": "#000000",
+                        "font_size": 18,
+                        "line_height": 18,
+                        "letter_spacing": 0,
+                        "font_weight": "500",
+                        "align": "left",
+                        "padding": "",
+                        "margin": "0 0 20px",
+                        "color_mobi": "#000000",
+                        "font_size_mobi": 18,
+                        "line_height_mobi": 18,
+                        "letter_spacing_mobi": 0,
+                        "align_mobi": "left"
+                      }
+                    },
+                    "description_7AqriQ": {
+                      "type": "description",
+                      "settings": {
+                        "desc": "<a href=\"mailto:Aktiveshop@gmail.com%0A\">Aktiveshop@gmail.com</a>",
+                        "font": "--font-family-second",
+                        "color": "#000000",
+                        "font_size": 14,
+                        "line_height": 24,
+                        "letter_spacing": 0,
+                        "font_weight": "400",
+                        "align": "left",
+                        "padding": "",
+                        "margin": "0 0 15px",
+                        "color_mobi": "#000000",
+                        "font_size_mobi": 14,
+                        "line_height_mobi": 24,
+                        "letter_spacing_mobi": 0,
+                        "align_mobi": "left"
+                      }
+                    },
+                    "line_dVDJmY": {
+                      "type": "line",
+                      "settings": {
+                        "padding": "",
+                        "margin": "",
+                        "height": 1,
+                        "background": "#0000000d"
+                      }
+                    }
+                  },
+                  "block_order": [
+                    "title_EKE4M7",
+                    "description_7AqriQ",
+                    "line_dVDJmY"
+                  ]
+                },
+                "column_48NxaD": {
+                  "type": "_column",
+                  "settings": {
+                    "width": 100,
+                    "padding": "",
+                    "margin": "",
+                    "width_lap": 100,
+                    "width_tab": 100,
+                    "width_mobi": 100
+                  },
+                  "blocks": {
+                    "social_AnQfdL": {
+                      "type": "social",
+                      "settings": {
+                        "padding": "",
+                        "margin": "",
+                        "align": "left",
+                        "width": 25,
+                        "height": 25,
+                        "border_radius": "0px 0px 0px 0px",
+                        "border": false,
+                        "color": "#000000",
+                        "background": "rgba(0,0,0,0)",
+                        "border_color": "#000000",
+                        "color_hover": "#000000",
+                        "background_hover": "rgba(0,0,0,0)",
+                        "border_color_hover": "#000000"
+                      },
+                      "blocks": {
+                        "title_YxCxAr": {
+                          "type": "title",
+                          "settings": {
+                            "heading_size": "h3",
+                            "title": "Follow us:",
+                            "font": "--font-family-second",
+                            "color": "#000000",
+                            "font_size": 20,
+                            "line_height": 20,
+                            "letter_spacing": 0,
+                            "font_weight": "500",
+                            "align": "left",
+                            "padding": "",
+                            "margin": "",
+                            "color_mobi": "#000000",
+                            "font_size_mobi": 20,
+                            "line_height_mobi": 20,
+                            "letter_spacing_mobi": 0,
+                            "align_mobi": "left"
+                          }
+                        }
+                      },
+                      "block_order": [
+                        "title_YxCxAr"
+                      ]
+                    }
+                  },
+                  "block_order": [
+                    "social_AnQfdL"
+                  ]
+                }
+              },
+              "block_order": [
+                "column_fYEBUX",
+                "column_C4P94i",
+                "column_8JLQFN",
+                "column_GMNB4i",
+                "column_48NxaD"
+              ]
+            }
+          },
+          "block_order": [
+            "inner_section_deKLJk"
+          ]
+        }
+      },
+      "block_order": [
+        "column_KddGVg",
+        "column_kbWjKb"
+      ],
+      "settings": {
+        "max_width": "1510px",
+        "fullwidth": false,
+        "background_gradient": "",
+        "background_fixed": false,
+        "background_size": "cover",
+        "background_pos": "center center",
+        "background_color": "#f5f5f5",
+        "width_bg": "full",
+        "padding_bg": "",
+        "padding": "100px 0 | 80px 7.5px",
+        "margin": "",
+        "vertical_align": "top",
+        "horizontal_align": "left"
+      }
+    }
+  },
+  "order": [
+    "breadcrumb",
+    "main",
+    "featured_custom_section_JVWEre",
+    "featured_custom_section_W4q6EC"
+  ]
+}

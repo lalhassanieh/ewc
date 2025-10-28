@@ -1,0 +1,429 @@
+{% assign margin 			= block.settings.margin | split: "|" %}
+{% assign padding 			= block.settings.padding | split: "|" %}
+{% assign left 				= block.settings.left | split: "|" %}
+{% assign right 			= block.settings.right | split: "|" %}
+{% assign top 				= block.settings.top | split: "|" %}
+{% assign bottom 			= block.settings.bottom | split: "|" %}
+<style>
+  	#shopify-block-{{ block.id }} .bwp-block-image{
+    	text-align:{{ block.settings.align }};
+		border-radius:{{ block.settings.border_radius }};
+ 	}
+  	 #shopify-block-{{ block.id }} .bwp-block-image .image img{
+		object-fit:{{ block.settings.image_size }};
+		object-position:{{ block.settings.image_pos }};
+		overflow:hidden;
+		max-width:{{ block.settings.size }};
+		{%- if block.settings.border -%}
+				border-width:{{ block.settings.border_width }};
+				border-color:{{ block.settings.border_color }};
+				border-style:solid;
+		{%- endif -%}
+   	}
+	{%- if left[0] != blank or right[0] != blank or top[0] != blank or bottom[0] != blank -%}
+		#shopify-block-{{ block.id }} .bwp-block-image{
+			{%- if right[0] != blank -%}right:{{ right[0] }};{%- endif -%}
+			{%- if left[0] != blank -%}left:{{ left[0] }};{%- endif -%}
+			{%- if top[0] != blank -%}top:{{ top[0] }};{%- endif -%}
+			{%- if bottom[0] != blank -%}bottom:{{ bottom[0] }};{%- endif -%}
+		}
+	{%- endif -%}
+	@media (max-width:1200px){
+		{%- if left[1] != blank or right[1] != blank or top[1] != blank or bottom[1] != blank -%}
+			#shopify-block-{{ block.id }} .bwp-block-image{
+				{%- if right[1] != blank -%}right:{{ right[1] }};{%- endif -%}
+				{%- if left[1] != blank -%}left:{{ left[1] }};{%- endif -%}
+				{%- if top[1] != blank -%}top:{{ top[1] }};{%- endif -%}
+				{%- if bottom[1] != blank -%}bottom:{{ bottom[1] }};{%- endif -%}
+			}
+		{%- endif -%}
+	}
+	@media (max-width:991px){
+		{%- if left[2] != blank or right[2] != blank or top[2] != blank or bottom[2] != blank -%}
+			#shopify-block-{{ block.id }} .bwp-block-image{
+				{%- if right[2] != blank -%}right:{{ right[2] }};{%- endif -%}
+				{%- if left[2] != blank -%}left:{{ left[2] }};{%- endif -%}
+				{%- if top[2] != blank -%}top:{{ top[2] }};{%- endif -%}
+				{%- if bottom[2] != blank -%}bottom:{{ bottom[2] }};{%- endif -%}
+			}
+		{%- endif -%}
+	}
+	@media (max-width:767px){
+		{%- if left[3] != blank or right[3] != blank or top[3] != blank or bottom[3] != blank -%}
+			#shopify-block-{{ block.id }} .bwp-block-image{
+				{%- if right[3] != blank -%}right:{{ right[3] }};{%- endif -%}
+				{%- if left[3] != blank -%}left:{{ left[3] }};{%- endif -%}
+				{%- if top[3] != blank -%}top:{{ top[3] }};{%- endif -%}
+				{%- if bottom[3] != blank -%}bottom:{{ bottom[3] }};{%- endif -%}
+			}
+		{%- endif -%}
+	}
+   	{%- if margin[0] != blank or padding[0] != blank -%}
+		#shopify-block-{{ block.id }} .bwp-block-image{
+			{%- if margin[0] != blank -%}margin: {{ margin[0] }};{%- endif -%}
+			{%- if padding[0] != blank -%}padding:{{ padding[0] }};{%- endif -%}
+		}
+	{%- endif -%}
+	{%- if margin[1] != blank or padding[1] != blank -%}
+		@media (max-width:1199px){
+			#shopify-block-{{ block.id }} .bwp-block-image{
+				{%- if margin[1] != blank -%}margin: {{ margin[1] }};{%- endif -%}
+				{%- if padding[1] != blank -%}padding:{{ padding[1] }};{%- endif -%}
+			}
+		}
+	{%- endif -%}
+	{%- if margin[2] != blank or padding[2] != blank -%}
+		@media (max-width:991px){
+			#shopify-block-{{ block.id }} .bwp-block-image{
+				{%- if margin[2] != blank -%}margin: {{ margin[2] }};{%- endif -%}
+				{%- if padding[2] != blank -%}padding:{{ padding[2] }};{%- endif -%}
+			}
+		}
+	{%- endif -%}
+	{%- if margin[3] != blank or padding[3] != blank -%}
+		@media (max-width:767px){
+			#shopify-block-{{ block.id }} .bwp-block-image{
+				{%- if margin[3] != blank -%}margin: {{ margin[3] }};{%- endif -%}
+				{%- if padding[3] != blank -%}padding:{{ padding[3] }};{%- endif -%}
+			}
+		}
+	{%- endif -%}
+   	@media (max-width:767px){
+		#shopify-block-{{ block.id }} .bwp-block-image{
+		text-align:{{ block.settings.align_mobi }};
+	}
+}
+</style>
+<div class="bwp-block-image bwp-effect-{{ block.settings.effect }} position-{{ block.settings.position }} overflow-hidden">
+    <div class="image image-effect">
+        {%- if block.settings.image -%}
+			{%- if block.settings.url -%}
+				<a href="{{block.settings.url}}"><img class="lazyload fade-in" src="{{ block.settings.image | image_url:width:1200 }}" alt="{{ block.settings.image.alt }}" width="{{ block.settings.image.width }}" height="{{ block.settings.image.height }}" /></a>
+			{%- else -%}
+				<img class="lazyload fade-in" src="{{ block.settings.image | image_url:width:1200 }}" alt="{{ block.settings.image.alt }}" width="{{ block.settings.image.width }}" height="{{ block.settings.image.height }}" />
+			{%- endif -%}
+        {%- else -%}
+            <img class="lazyload fade-in" src="{{ 'placeholder.svg' | asset_url }}" alt="image demo"  width="auto" height="auto" />
+        {%- endif -%}
+    </div>
+</div>
+{% schema %}
+  {
+    "name": "Image",
+    "settings": [
+      {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+      },
+       {
+          "type": "url",
+          "id": "url",
+          "label": "Url"
+      },
+		{
+			"type": "textarea",
+			"id": "padding",
+			"label": "Padding",
+			"placeholder": "0px 0px 0px 0px",
+			"info":"Screen: desktop | 1200px | 991px | 767px"
+		},
+		{
+			"type": "textarea",
+			"id": "margin",
+			"label": "Margin",
+			"placeholder": "0px 0px 0px 0px",
+			"info":"Screen: desktop | 1200px | 991px | 767px"
+		},
+		{
+			"type": "text",
+			"id": "size",
+			"label": "Max width image"
+		},
+      {
+          "type": "select",
+          "id": "image_size",
+          "label": "Size",
+          "options": [
+              {
+                  "value": "contain",
+                  "label": "Contain"
+              },
+              {
+                  "value": "auto",
+                  "label": "Auto"
+              },
+              {
+                  "value": "cover",
+                  "label": "Cover"
+              }
+          ],
+          "default": "cover"
+      },
+      {
+          "type": "select",
+          "id": "image_pos",
+          "label": "Position",
+          "options": [
+              {
+                  "value": "left top",
+                  "label": "Left Top"
+              },
+              {
+                  "value": "left  center",
+                  "label": "Left Center"
+              },
+              {
+                  "value": "left bottom",
+                  "label": "Left Bottom"
+              },
+              {
+                  "value": "center top",
+                  "label": "Center Top"
+              },
+              {
+                  "value": "center center",
+                  "label": "Center Center"
+              },
+              {
+                  "value": "center bottom",
+                  "label": "Center Bottom"
+              },
+              {
+                  "value": "right top",
+                  "label": "Right Top"
+              },
+              {
+                  "value": "right center",
+                  "label": "Right Center"
+              },
+              {
+                  "value": "right bottom",
+                  "label": "Right Bottom"
+              }
+          ],
+          "default": "center center"
+      },
+      {
+          "type": "text_alignment",
+          "id": "align",
+          "label": "Text align",
+          "default": "left"
+      },
+      {
+          "type": "text",
+          "id": "border_radius",
+          "label": "Border radius",
+          "default": "0px 0px 0px 0px",
+          "info": "top right bottom left"
+      },
+       {
+          "type": "checkbox",
+          "id": "border",
+          "label": "Turn on border",
+          "default": false
+      },
+      {
+          "type": "text",
+          "id": "border_width",
+          "label": "Border width",
+          "default": "0px 0px 0px 0px",
+          "info": "top right bottom left"
+      },
+      {
+          "type": "color",
+          "id": "border_color",
+          "label": "Border color",
+          "default": "#fff"
+      },
+      {
+			"type": "select",
+			"id": "effect",
+			"label": "Effect",
+			"options": [
+				{
+					"value": "none",
+					"label": "None"
+				},
+				{
+					"value": "grow",
+					"label": "Grow"
+				},
+				{
+					"value": "shrink",
+					"label": "Shrink"
+				},
+				{
+					"value": "pulse",
+					"label": "Pulse"
+				},
+				{
+					"value": "pulse-grow",
+					"label": "Pulse Grow"
+				},
+				{
+					"value": "pulse-shrink",
+					"label": "Pulse Shrink"
+				},
+				{
+					"value": "push",
+					"label": "Push"
+				},
+				{
+					"value": "pop",
+					"label": "Pop"
+				},
+				{
+					"value": "bounce-in",
+					"label": "Bounce In"
+				},
+				{
+					"value": "bounce-out",
+					"label": "Bounce Out"
+				},
+				{
+					"value": "rotate",
+					"label": "Rotate"
+				},
+				{
+					"value": "grow-rotate",
+					"label": "Grow Rotate"
+				},
+				{
+					"value": "float",
+					"label": "Float"
+				},
+				{
+					"value": "sink",
+					"label": "Sink"
+				},
+				{
+					"value": "bob",
+					"label": "Bob"
+				},
+				{
+					"value": "hang",
+					"label": "Hang"
+				},
+				{
+					"value": "skew",
+					"label": "Skew"
+				},
+				{
+					"value": "skew-forward",
+					"label": "Skew Forward"
+				},
+				{
+					"value": "skew-backward",
+					"label": "Skew Backward"
+				},
+				{
+					"value": "wobble-vertical",
+					"label": "Wobble Vertical"
+				},
+				{
+					"value": "wobble-horizontal",
+					"label": "Wobble Horizontal"
+				},
+				{
+					"value": "wobble-to-bottom-right",
+					"label": "Wobble To Bottom Right"
+				},
+				{
+					"value": "wobble-to-top-right",
+					"label": "Wobble To Top Right"
+				},
+				{
+					"value": "wobble-top",
+					"label": "Wobble Top"
+				},
+				{
+					"value": "wobble-bottom",
+					"label": "Wobble Bottom"
+				},
+				{
+					"value": "wobble-skew",
+					"label": "Wobble Skew"
+				},
+				{
+					"value": "buzz",
+					"label": "Buzz"
+				},
+				{
+					"value": "buzz-out",
+					"label": "Buzz Out"
+				},
+				{
+					"value": "hover-circular",
+					"label": "Hover Circular"
+				}
+			],
+			"default": "none"
+		},
+		{
+			"type": "header",
+			"content": "Absolute Settings"
+		},
+		{
+			"type": "select",
+			"id": "position",
+			"label": "Content position",
+			"options": [
+				{
+					"value": "absolute",
+					"label": "In the picture"
+				},
+				{
+					"value": "unset",
+					"label": "Default"
+				}
+			],
+			"default": "unset"
+		},
+		{
+			"type": "text",
+			"id": "left",
+			"label": "Offset left",
+			"placeholder": "0px",
+			"info":"Screen: desktop | 1200px | 991px | 767px"
+		},
+		{
+			"type": "text",
+			"id": "right",
+			"label": "Offset right",
+			"placeholder": "0px",
+			"info":"Screen: desktop | 1200px | 991px | 767px"
+		},
+		{
+			"type": "text",
+			"id": "top",
+			"label": "Offset top",
+			"placeholder": "0px",
+			"info":"Screen: desktop | 1200px | 991px | 767px"
+		},
+		{
+			"type": "text",
+			"id": "bottom",
+			"label": "Offset bottom",
+			"placeholder": "0px",
+			"info":"Screen: desktop | 1200px | 991px | 767px"
+		},
+		{
+			"type": "header",
+			"content": "Mobile ====================",
+			"info": "screen < 767px"
+		},
+		{
+          "type": "text_alignment",
+          "id": "align_mobi",
+          "label": "Text align",
+          "default": "left"
+		}
+    ],
+    "presets": [
+        {
+          "name": "Image"
+        } 
+     ]
+  }
+{% endschema %}

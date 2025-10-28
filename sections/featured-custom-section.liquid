@@ -1,0 +1,287 @@
+{%- if section.settings.fullwidth -%}
+	{%- assign container = 'container-full' -%}
+{%- else -%}
+	{%- assign container = 'section-container' -%}
+{%- endif -%}
+
+{%- assign max_width = '' -%}
+{%- if section.settings.fullwidth == blank and section.settings.max_width != blank -%}
+	{%- capture max_width -%}style="max-width: {{ section.settings.max_width }};"{%- endcapture -%}
+{%- endif -%}
+{% assign margin 			= section.settings.margin | split: "|" %}
+{% assign padding 			= section.settings.padding | split: "|" %}
+{% assign padding_bg 			= section.settings.padding_bg | split: "|" %}
+{%- style -%}
+    {%- if section.settings.background_gradient -%}
+		#shopify-section-{{ section.id }} .wpbingo-custom-section{
+			background: {{section.settings.background_gradient}};
+		}
+	{%- endif -%}
+	{%- if section.settings.background_color != blank -%}
+		{%- if section.settings.width_bg == 'full' -%}
+			#shopify-section-{{ section.id }}{
+				background:{{ section.settings.background_color }};
+			}
+		{%- elsif section.settings.width_bg == 'container' -%}
+			#shopify-section-{{ section.id }} .section-content{
+				background:{{ section.settings.background_color }};
+			}
+		{%- endif -%}
+	{%- endif -%}
+    {%- if section.settings.background -%}
+		{%- assign background = section.settings.background | img_url: "" -%}
+		#shopify-section-{{ section.id }} .wpbingo-custom-section{
+			background-image: url('{{ background }}');
+			background-position:{{ section.settings.background_pos }};
+			background-size:{{ section.settings.background_size }};
+			{%- if section.settings.background_fixed -%}background-attachment: fixed;{%- endif -%}
+		}
+	{%- endif -%}
+	{%- if margin[0] != blank or padding[0] != blank or padding_bg[0] != blank -%}
+		#shopify-section-{{ section.id }} .wpbingo-custom-section{
+			{%- if margin[0] != blank -%}margin: {{ margin[0] }};{%- endif -%}
+			{%- if padding[0] != blank -%}padding:{{ padding[0] }};{%- endif -%}
+		}
+		#shopify-section-{{ section.id }} .section-content{
+			{%- if padding_bg[0] != blank -%}padding:{{ padding_bg[0] }};{%- endif -%}
+		}
+	{%- endif -%}
+	{%- if margin[1] != blank or padding[1] != blank or padding_bg[1] != blank -%}
+		@media (max-width:1199px){
+			#shopify-section-{{ section.id }} .wpbingo-custom-section{
+				{%- if margin[1] != blank -%}margin: {{ margin[1] }};{%- endif -%}
+				{%- if padding[1] != blank -%}padding:{{ padding[1] }};{%- endif -%}
+			}
+			#shopify-section-{{ section.id }} .section-content{
+				{%- if padding_bg[1] != blank -%}padding:{{ padding_bg[1] }};{%- endif -%}
+			}
+		}
+	{%- endif -%}
+	{%- if margin[2] != blank or padding[2] != blank or padding_bg[2] != blank -%}
+		@media (max-width:991px){
+			#shopify-section-{{ section.id }} .wpbingo-custom-section{
+				{%- if margin[2] != blank -%}margin: {{ margin[2] }};{%- endif -%}
+				{%- if padding[2] != blank -%}padding:{{ padding[2] }};{%- endif -%}
+			}
+			#shopify-section-{{ section.id }} .section-content{
+				{%- if padding_bg[2] != blank -%}padding:{{ padding_bg[2] }};{%- endif -%}
+			}
+		}
+	{%- endif -%}
+	{%- if margin[3] != blank or padding[3] != blank  or padding_bg[3] != blank -%}
+		@media (max-width:767px){
+			#shopify-section-{{ section.id }} .wpbingo-custom-section{
+				{%- if margin[3] != blank -%}margin: {{ margin[3] }};{%- endif -%}
+				{%- if padding[3] != blank -%}padding:{{ padding[3] }};{%- endif -%}
+			}
+			#shopify-section-{{ section.id }} .section-content{
+				{%- if padding_bg[3] != blank -%}padding:{{ padding_bg[3] }};{%- endif -%}
+			}
+		}
+	{%- endif -%}
+{%- endstyle -%}
+
+<section class="wpbingo-section wpbingo-custom-section {% if section.settings.half_overflow != blank %} overflow-hidden {% endif %}wpbingo-section--{{ section.id }}">
+	<div class="{{ container }}" {{ max_width }}>
+        <div class="section-content vertical-{{section.settings.vertical_align}} horizontal-{{section.settings.horizontal_align}}">
+         {% content_for "blocks" %}
+        </div>
+    </div>
+</section>
+{% schema %}
+  {
+    "name": "Custom Section",
+    "blocks": [{ "type": "_column" }],
+    "settings": [
+        {
+			"type": "text",
+			"id": "max_width",
+			"label": "Width container",
+			"info": "Default: 1440px"
+		},
+		{
+			"type": "checkbox",
+			"id": "fullwidth",
+			"label": "Fullwidth"
+		},
+		{
+			"type": "checkbox",
+			"id": "half_overflow",
+			"label": "Class overflow hidden",
+			"default": true
+		},
+        {
+            "type": "color_background",
+            "id": "background_gradient",
+            "label": "Background gradient"
+        },
+        {
+			"type": "image_picker",
+			"id": "background",
+			"label": "Background image"
+		},
+        {
+			"type": "checkbox",
+			"id": "background_fixed",
+			"label": "Background fixed",
+			"default":false
+		},
+		{
+			"type": "select",
+			"id": "background_size",
+			"label": "Background Size",
+			"options": [
+				{
+					"value": "contain",
+					"label": "Contain"
+				},
+				{
+					"value": "auto",
+					"label": "Auto"
+				},
+				{
+					"value": "cover",
+					"label": "Cover"
+				}
+			],
+			"default": "cover"
+		},
+		{
+			"type": "select",
+			"id": "background_pos",
+			"label": "Background position",
+			"options": [
+				{
+					"value": "left top",
+					"label": "Left Top"
+				},
+				{
+					"value": "left  center",
+					"label": "Left Center"
+				},
+				{
+					"value": "left bottom",
+					"label": "Left Bottom"
+				},
+				{
+					"value": "center top",
+					"label": "Center Top"
+				},
+				{
+					"value": "center center",
+					"label": "Center Center"
+				},
+				{
+					"value": "center bottom",
+					"label": "Center Bottom"
+				},
+				{
+					"value": "right top",
+					"label": "Right Top"
+				},
+				{
+					"value": "right center",
+					"label": "Right Center"
+				},
+				{
+					"value": "right bottom",
+					"label": "Right Bottom"
+				}
+			],
+			"default": "center center"
+		},
+		{
+			"type": "color",
+			"id": "background_color",
+			"label": "Background Color"
+		},
+		{
+			"type": "select",
+			"id": "width_bg",
+			"label": "Width Background",
+			"options": [
+				{
+					"value": "container",
+					"label": "Container"
+				},
+				{
+					"value": "full",
+					"label": "Full"
+				}
+			],
+			"default": "container"
+		},
+		{
+			"type": "text",
+			"id": "padding_bg",
+			"label": "Padding content background",
+			"placeholder": "0px 0px 0px 0px",
+			"info":"Screen: desktop | 1200px | 991px | 767px"
+		},
+		{
+			"type": "textarea",
+			"id": "padding",
+			"label": "Padding",
+			"placeholder": "0px 0px 0px 0px",
+			"info":"Screen: desktop | 1200px | 991px | 767px"
+		},
+		{
+			"type": "textarea",
+			"id": "margin",
+			"label": "Margin",
+			"placeholder": "0px 0px 0px 0px",
+			"info":"Screen: desktop | 1200px | 991px | 767px"
+		},
+		{
+			"type": "select",
+			"id": "vertical_align",
+			"label": "Vertical align",
+			"options": [
+				{
+					"value": "top",
+					"label": "Top"
+				},
+				{
+					"value": "middle",
+					"label": "Middle"
+				},
+				{
+					"value": "bottom",
+					"label": "Bottom"
+				}
+			],
+			"default": "top"
+		},
+		{
+			"type": "select",
+			"id": "horizontal_align",
+			"label": "Horizontal align",
+			"options": [
+				{
+					"value": "left",
+					"label": "Left"
+				},
+				{
+					"value": "center",
+					"label": "Center"
+				},
+				{
+					"value": "right",
+					"label": "Right"
+				}
+			],
+			"default": "left"
+		},
+    ],
+    "presets": [
+        {
+            "name": "Custom Section",
+            "blocks": [
+              {
+                  "type": "_column",
+              }
+           ]
+        }
+    ]
+  }
+{% endschema %}

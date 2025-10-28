@@ -1,0 +1,80 @@
+/*============== SECTION NEWSLETTER =============*/
+.wpbingo-widget--newsletter .newsletter__content.layout-1 .newsletter-form__wrap {
+	display: flex;
+  border: 1px solid hsla(0,0%,100%,.3);
+  border-radius: 50px;
+  padding: 0;
+  height: 50px;
+  position: relative;
+}
+.wpbingo-widget--newsletter .newsletter__content.layout-1 .newsletter-form__wrap input {
+	height: 50px;
+  border-radius: 0;
+  padding: 0 65px 0 20px;
+  color: var(--white);
+  font-size: 14px;
+  line-height: 50px;
+  border: 0;
+  text-transform: capitalize;
+  background-color: transparent;
+}
+.wpbingo-widget--newsletter .newsletter__content.layout-1 .newsletter-form__wrap input::placeholder {
+  color: var(--white);
+}
+.wpbingo-widget--newsletter .newsletter__content.layout-1 .newsletter-form__wrap .newsletter-form__submit {
+	font-size: 0;
+  padding: 0;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  display: inline-block;
+  right: 3px;
+  top: 2px;
+  font-size: 0;
+  background: var(--white);
+  position: absolute;
+  cursor: pointer;
+}
+.wpbingo-widget--newsletter .newsletter__content.layout-1 .newsletter-form__wrap .newsletter-form__submit:before {
+  position: absolute;
+  content: "\e906";
+  font-family: icomoon;
+  font-size: 14px;
+  color: var(--gray-dark);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transition: all .3s ease;
+}
+.wpbingo-widget--newsletter .newsletter__content.layout-2 .newsletter-form__wrap {
+  display: flex;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--gray-dark);
+}
+.wpbingo-widget--newsletter .newsletter__content.layout-2 .newsletter-form__wrap input {
+  width: 100%;
+  border: 0;
+  padding: 0 15px 0 0;
+  font-size: var(--font-size-base);
+  background: transparent;
+  border: 0;
+  height: auto;
+  color: var(--gray-dark);
+}
+.wpbingo-widget--newsletter .newsletter__content.layout-2 .newsletter-form__wrap input::placeholder {
+  color: var(--text-color);
+}
+.wpbingo-widget--newsletter .newsletter__content.layout-2 .newsletter-form__wrap .newsletter-form__submit {
+	border: 0;
+  background: transparent;
+  font-size: 12px;
+  text-transform: uppercase;
+  color: var(--gray-dark);
+  padding: 0 ;
+  font-weight: 600;
+  position: relative;
+  cursor: pointer;
+}
+.wpbingo-widget--newsletter .newsletter__content.layout-2 .newsletter-form__wrap .newsletter-form__submit:hover {
+  color: var(--theme-color);
+}

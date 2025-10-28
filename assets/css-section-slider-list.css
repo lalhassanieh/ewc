@@ -1,0 +1,12 @@
+@media (min-width: 1200px) {
+    .wpbingo-widget--slider-list .slick-prev {
+        left: -70px;
+    }
+    .wpbingo-widget--slider-list .slick-next {
+        right: -70px;
+    }
+}
+.wpbingo-widget--slider-list .banner-wrapper-infor {
+    display: flex;
+    width: 100%;
+}

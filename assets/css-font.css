@@ -1,0 +1,12 @@
+@font-face{
+	font-family: 'MADE Mirage Regular';
+	src:url(./MADE\ Mirage\ Regular.otf) format("truetype");
+	font-weight:400;
+	font-style:normal;
+}
+@font-face{
+	font-family: 'MADE Mirage Medium';
+	src:url(./MADE\ Mirage\ Medium.otf) format("truetype");
+	font-weight:500;
+	font-style:normal;
+}

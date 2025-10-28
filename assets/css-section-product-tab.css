@@ -1,0 +1,82 @@
+/*================= PRODUCT TABS ============*/
+.wpbingo-section--product-tabs .product-tabs__nav {
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+.wpbingo-section--product-tabs .product-tabs__nav ul {
+  display: inline-block;
+  position: relative;
+  white-space: nowrap;
+}
+.wpbingo-section--product-tabs .product-tabs__nav ul li {
+  display: inline-block;
+  white-space: nowrap;
+  margin: 0 25px;
+  position: relative;
+  transition: all .3s ease;
+}
+.wpbingo-section--product-tabs .product-tabs__nav ul li:first-child {
+  margin-left: 0;
+}
+.wpbingo-section--product-tabs .product-tabs__nav ul li:last-child {
+  margin-right: 0;
+}
+.wpbingo-section--product-tabs .product-tabs__nav ul li:after {
+  position: absolute;
+  content: "";
+  width: 3px;
+  height: 25px;
+  background: var(--gray-dark-20);
+  transform: rotate(25deg);
+  right: -28px;
+  top: 7px;
+}
+.wpbingo-section--product-tabs .product-tabs__nav ul li:last-child:after {
+  display: none;
+}
+.wpbingo-section--product-tabs .slick-arrow {
+  box-shadow: unset;
+  background: transparent;
+}
+@media (min-width: 1441px) {
+  .wpbingo-section--product-tabs .slick-prev {
+    left: -55px;
+  }
+  .wpbingo-section--product-tabs .slick-next {
+    right: -55px;
+  }
+}
+.wpbingo-section--product-tabs .slick-arrow:before {
+    font-size: 25px;
+}
+.wpbingo-section--product-tabs .slick-arrow:hover {
+    background: transparent;
+    color: var(--theme-color);
+}
+.wpbingo-section--product-tabs .button-view {
+  text-align: center;
+  margin-top: 50px;
+}
+.wpbingo-section--product-tabs .button-view a {
+  display: inline-block;
+  line-height: 40px;
+  padding: 0 30px;
+  letter-spacing: 2px;
+  font-size: 12px;
+  text-transform: uppercase;
+  color: var(--gray-dark);
+  border: 1px solid var(--gray-dark);
+  position: relative;
+  z-index: 1;
+  transition: all 0.3s ease;
+}
+.wpbingo-section--product-tabs .button-view a:hover {
+  border-color: var(--theme-color);
+  background: var(--theme-color);
+  color: var(--white);
+}
+@media (max-width: 767px) {
+	.wpbingo-section--product-tabs .product-tabs__nav ul li {
+    margin: 0 20px;
+  }
+}
