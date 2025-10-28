@@ -556,9 +556,9 @@
           "mainmenu_item_NDUp8q": {
             "type": "_mainmenu-item",
             "settings": {
-              "title": "Home",
-              "menu_url": "/",
-              "submenu_format": "mega",
+              "title": "Fashion",
+              "menu_url": "shopify://collections/fashion",
+              "submenu_format": "",
               "badge": "",
               "position": "after",
               "badge_color": "#000000"
@@ -711,9 +711,9 @@
           "mainmenu_item_g884pn": {
             "type": "_mainmenu-item",
             "settings": {
-              "title": "Shop",
-              "menu_url": "shopify://collections/all",
-              "submenu_format": "mega",
+              "title": "Bags",
+              "menu_url": "shopify://collections/bags",
+              "submenu_format": "",
               "badge": "",
               "position": "after",
               "badge_color": "#000000"
@@ -818,9 +818,9 @@
           "mainmenu_item_W7rhGn": {
             "type": "_mainmenu-item",
             "settings": {
-              "title": "Product",
-              "menu_url": "#",
-              "submenu_format": "mega",
+              "title": "Trophies & Awards",
+              "menu_url": "shopify://collections/trophies-awards",
+              "submenu_format": "",
               "badge": "",
               "position": "after",
               "badge_color": "#000000"
@@ -909,9 +909,9 @@
           "mainmenu_item_EtPCeD": {
             "type": "_mainmenu-item",
             "settings": {
-              "title": "Blog",
-              "menu_url": "shopify://blogs/news",
-              "submenu_format": "mega",
+              "title": "Toys",
+              "menu_url": "shopify://collections/toys",
+              "submenu_format": "",
               "badge": "",
               "position": "after",
               "badge_color": "#000000"
@@ -967,6 +967,7 @@
           },
           "mainmenu_item_7JnjnL": {
             "type": "_mainmenu-item",
+            "disabled": true,
             "settings": {
               "title": "Featured",
               "menu_url": "#",
