@@ -428,7 +428,6 @@
       "blocks": {
         "sc_back_in_stock_app_block_Uy8mp8": {
           "type": "shopify://apps/sc-back-in-stock/blocks/app-block/839cbcb7-0406-4c2b-8e74-a54d987b90ab",
-          "disabled": true,
           "settings": {}
         }
       },
@@ -442,9 +441,9 @@
     "breadcrumb",
     "product-template",
     "buy-together",
+    "17616635041ed8cc03",
     "product-tab",
     "product-recommendations",
-    "recently-viewed",
-    "17616635041ed8cc03"
+    "recently-viewed"
   ]
 }
