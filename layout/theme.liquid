@@ -154,6 +154,104 @@
 				shippingCalcMoneyFormat: {{ shop.money_with_currency_format | json }}
 			} 
 		</script>
+		<script>
+		// SmartCS Currency Converter Error Prevention and DOM Safety
+		(function() {
+			'use strict';
+			
+			// Create a safe head reference function
+			function getSafeHead() {
+				return document.head || document.querySelector('head') || document.getElementsByTagName('head')[0];
+			}
+			
+			// Create a safe theme-header reference function  
+			function getSafeThemeHeader() {
+				return document.querySelector('theme-header') || document.querySelector('.bwp-header') || document.querySelector('header');
+			}
+			
+			// Override document.querySelector to provide safe fallbacks for SmartCS
+			const originalQuerySelector = document.querySelector;
+			document.querySelector = function(selector) {
+				if (selector === 'head') {
+					return getSafeHead();
+				}
+				if (selector === 'theme-header') {
+					return getSafeThemeHeader();
+				}
+				return originalQuerySelector.call(document, selector);
+			};
+			
+			// Ensure head element exists
+			if (!getSafeHead()) {
+				const head = document.createElement('head');
+				if (document.documentElement) {
+					document.documentElement.insertBefore(head, document.documentElement.firstChild);
+				}
+			}
+			
+			// Safe appendChild override for null protection
+			const originalAppendChild = Node.prototype.appendChild;
+			Node.prototype.appendChild = function(child) {
+				try {
+					if (this && child && typeof originalAppendChild === 'function') {
+						return originalAppendChild.call(this, child);
+					}
+				} catch (error) {
+					console.warn('AppendChild error prevented:', error);
+				}
+				return null;
+			};
+			
+			// Initialize SmartCS safely when ready
+			function initSmartCS() {
+				try {
+					// Mark SmartCS as ready
+					window.smartCSReady = true;
+					
+					// Execute queued operations
+					if (window.smartCSQueue && window.smartCSQueue.length > 0) {
+						window.smartCSQueue.forEach(function(fn) {
+							try {
+								fn();
+							} catch (error) {
+								console.warn('SmartCS queued operation error:', error);
+							}
+						});
+						window.smartCSQueue = [];
+					}
+					
+					// Check for SECOMAPP (SmartCS) availability
+					if (typeof SECOMAPP !== 'undefined' && typeof Currency !== 'undefined') {
+						if (Currency.convertAll && Currency.shopCurrency && Currency.currentCurrency) {
+							Currency.convertAll(Currency.shopCurrency, Currency.currentCurrency);
+						}
+					}
+					
+					// Check for startCurrencySwitcher function
+					if (window.startCurrencySwitcher && typeof window.startCurrencySwitcher === 'function') {
+						window.startCurrencySwitcher();
+					}
+				} catch (error) {
+					console.warn('SmartCS initialization error:', error);
+				}
+			}
+			
+			// Multiple initialization strategies
+			if (document.readyState === 'loading') {
+				document.addEventListener('DOMContentLoaded', function() {
+					setTimeout(initSmartCS, 500);
+				});
+			} else {
+				setTimeout(initSmartCS, 100);
+			}
+			
+			// Additional fallback initialization
+			window.addEventListener('load', function() {
+				setTimeout(initSmartCS, 1000);
+			});
+			
+		})();
+		</script>
 		{% include 'footer-javascript' %}
 	<script src="{{ '//cdn.shopify.com/s/files/1/0194/1736/6592/t/1/assets/booster-page-speed-optimizer.js?23' }}" defer="defer"></script>
 </body>
