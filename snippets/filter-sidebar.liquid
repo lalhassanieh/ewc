@@ -105,7 +105,7 @@
 														id="Filter-{{ filter.label | escape }}-{{ forloop.index }}"
 														{% if value.active %}checked{% endif %}
 														{% if value.count == 0 and value.active == false %}disabled{% endif %} >
-												{%- if type == 'color' and layout_filter != 'side_out' and layout_filter != 'filter_drawer' -%}
+												{%- if type == 'color' and layout_filter != 'sidebar_2' and layout_filter != 'side_out' and layout_filter != 'filter_drawer' -%}
 													<label for="Filter-{{ filter.label | escape }}-{{ forloop.index }}" 
 														class="facet-checkbox{% if value.count == 0 and value.active == false %} facet-checkbox--disabled{% endif %}">
 														<span class="title"><span class="color {{ value.label }}"></span>{{ value.label | escape }}</span>

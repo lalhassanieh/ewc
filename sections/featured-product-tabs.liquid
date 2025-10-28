@@ -57,12 +57,8 @@
 	{%- if section.blocks.size > 0 -%}
 		{%- for block in section.blocks -%}
 			{%- if block.type == 'css' -%}
-				#shopify-section-{{ section.id }} .wpbingo-section--product-tabs .pagination-fraction {
-					text-align:{{ block.settings.align_fraction }};
-				}
 				#shopify-section-{{ section.id }} .wpbingo-section--product-tabs .product-tabs__nav{
 					margin:{{ block.settings.margin }};
-					padding:{{ block.settings.padding }};
 					text-align:{{ block.settings.align }};
 				}
 				#shopify-section-{{ section.id }} .wpbingo-section--product-tabs .product-tabs__nav-link{
@@ -72,44 +68,48 @@
 					letter-spacing:{{ block.settings.letter_spacing_title }}px;
 					color:{{ block.settings.color_title }};
 					margin:{{ block.settings.margin_title }};
-					padding:{{ block.settings.padding_title }};
-					background:{{ block.settings.background_title }};
-					border-radius:{{ block.settings.border_radius }};
-					{%- if block.settings.border -%}
-						border-width:{{ block.settings.border_width }};
-						border-color:{{ block.settings.border_color }};
-						border-style:{{ block.settings.border_style }};
-					{%- endif -%}
 				}
 				#shopify-section-{{ section.id }} .wpbingo-section--product-tabs .product-tabs__nav-item .active{
 					color:{{ block.settings.color_title_active }};
-					background:{{ block.settings.background_title_active }};
-					border-color:{{ block.settings.border_color_active }};
 				}
 				#shopify-section-{{ section.id }} .wpbingo-section--product-tabs .product-tabs__nav-link:hover{
 					color:{{ block.settings.color_title_active }};
-					background:{{ block.settings.background_title_active }};
-					border-color:{{ block.settings.border_color_active }};
 				}
-				@media(max-width:1199px){
-					#shopify-section-{{ section.id }} .wpbingo-section--product-tabs .product-tabs__nav-link{
-						font-size: {{ block.settings.font_size_title_lap }}px;
-						line-height: {{ block.settings.line_height_title_lap }}px;
-						margin:{{ block.settings.margin_title_lap }};
-					}
+				#shopify-section-{{ section.id }} .wpbingo-section--product-tabs .bwp-button{
+					font-size: {{ block.settings.font_size_button }}px;
+					line-height: {{ block.settings.line_height_button }}px;
+					color:{{ block.settings.color_button }};
+					padding:{{ block.settings.padding_button }};
+					background:{{ block.settings.bg_button }};
+					font-weight: {{ block.settings.font_weight_button }};
+					letter-spacing:{{ block.settings.letter_spacing_button }}px;
+					border-radius:{{ block.settings.border_radius }};
+					overflow:hidden;
+					{%- if block.settings.border -%}
+						border:{{ block.settings.border_width }}px solid {{ block.settings.border_color_button }};
+					{%- endif -%}
 				}
-				@media(max-width:991px){
-					#shopify-section-{{ section.id }} .wpbingo-section--product-tabs .product-tabs__nav-link{
-						font-size: {{ block.settings.font_size_title_tab }}px;
-						line-height: {{ block.settings.line_height_title_tab }}px;
-						margin:{{ block.settings.margin_title_tab }};
-					}
+				#shopify-section-{{ section.id }} .wpbingo-section--product-tabs .bwp-button a:hover{
+					color:{{ block.settings.color_hover_button }};
+					border-color:{{ block.settings.border_color_hover_button }};
 				}
+				#shopify-section-{{ section.id }} .wpbingo-section--product-tabs .bwp-button:hover:before{
+					background:{{ block.settings.bg_hover_button }};
+				} 
 				@media(max-width:767px){
 					#shopify-section-{{ section.id }} .wpbingo-section--product-tabs .product-tabs__nav-link{
 						font-size: {{ block.settings.font_size_title_mobi }}px;
 						line-height: {{ block.settings.line_height_title_mobi }}px;
 						margin:{{ block.settings.margin_title_mobi }};
+					}
+					#shopify-section-{{ section.id }} .wpbingo-section--product-tabs .bwp-button{
+						font-size: {{ block.settings.font_size_button_mobi }}px;
+						line-height: {{ block.settings.line_height_button_mobi }}px;
+						padding:{{ block.settings.padding_button_mobi }};
+						border-radius:{{ block.settings.border_radius_mobi }};
+						{%- if block.settings.border -%}
+							border-width:{{ block.settings.border_width }}px;
+						{%- endif -%}
 					}
 				}
 			{%- endif -%}
@@ -121,11 +121,9 @@
 {%- assign grid_style = section.settings.grid_style | escape -%}
 {%- assign collection_handle = section.settings.featured_products -%}
 {%- assign nav = section.settings.navigation -%}
-{%- assign pag_fraction = section.settings.pag_fraction -%}
 {%- assign infinite = section.settings.infinite -%}
 {%- assign autoplay = section.settings.autoplay -%}
 {%- assign autoplay_speed = section.settings.autoplay_speed | escape -%}
-{%- assign row = section.settings.row -%}
   {%- assign columns = section.settings.columns -%}
   {%- assign column1440 = section.settings.column1440 -%}
   {%- assign column1 = section.settings.column1 -%}
@@ -141,7 +139,7 @@
   {% if column4 == 5 %} col-2-5{% else %} col-{{ 12 | divided_by: column4 }}{% endif %}
 {% endcapture %}
 
-<section class="wpbingo-section--{{ section.id }} wpbingo-section--product-tabs {{ section.settings.layout_product }} product-tabs overflow-hidden">
+<section class="wpbingo-section--{{ section.id }} wpbingo-section--product-tabs product-tabs overflow-hidden">
   <div class="{{ container }}" {{ max_width }}>
     <div class="wpbingo-section__inner">
       <div class="wpbingo-section__content">
@@ -159,51 +157,40 @@
 						{%- endif -%}
 					{%- endfor -%}
 				</ul>
+				{%- if section.settings.button != blank -%}
+					<div class="bwp-button button-{{forloop.index}}">
+						<a href="{{ section.settings.button_url }}">
+							{{ section.settings.button }}
+						</a>
+					</div>
+				{%- endif -%}
 			</div>
-			<div class="tab-content product-tabs__content content-product-list bwp_slider-carousel{% if section.settings.half_slider != blank %} bwp_slick-margin-mobile{% endif %}">
+			<div class="tab-content product-tabs__content bwp_slider-carousel bwp_slick-margin-mobile">
 				{%- for block in section.blocks -%}
 					{%- assign collection_handle = block.settings.collection -%}
 					{%- assign limit = block.settings.limit | plus: 0 -%}
-
-					{%- if collection_handle and collections[collection_handle] -%}
-						{%- assign collection_count = collections[collection_handle].products_count -%}
-						{%- assign tab_total_products = limit | at_most: collection_count -%} 
-						<div class="tab-pane fade{% if forloop.first %} show active{% endif %}" id="product-tabs-{{ section.id }}{{ forloop.index }}">
-							<div class="js-carousel slick-carousel" data-nav="{{ nav }}" data-infinite="{{ infinite }}" data-autoplay="{{ autoplay }}" data-autoplayspeed="{{ autoplay_speed }}" 
-								data-columns="{{ columns }}" 
-								data-column1440="{{ column1440 }}" 
-								data-column1="{{ column1 }}" 
-								data-column2="{{ column2 }}" 
-								data-column3="{{ column3 }}" 
-								data-column4="{{ column4 }}">
-								{%- assign j = 1 -%}
-								{%- for product in collections[collection_handle].products limit: limit -%}
-									{%- assign modulo = j | modulo:row -%}
-										{%- if modulo == 1 or row == 1 -%}
-											<div class="slick-carousel__item">
-										{%- endif -%}
-											{% include 'product-grid-item' %}
-										{%- if modulo == 0 or forloop.last == true or row == 1 -%}
-											</div>
-										{%- endif -%}
-									{%- assign j = j | plus: 1 -%}
-								{%- endfor -%}
+					<div class="tab-pane fade{% if forloop.first %} show active{% endif %}" id="product-tabs-{{ section.id }}{{ forloop.index }}">
+						{%- if collection_handle == blank or collections[collection_handle] == empty or collections[collection_handle].products_count == 0 -%}
+							<div class="row">
+								{% include 'onboarding-featured-products' %}
 							</div>
-							{%- if pag_fraction -%}
-								<div class="pagination-fraction">
-									<div class="fraction">
-										<button class="btn-products prev"><i class="icon-arrow-left"></i></button>
-										<div class="slider-pagination-fraction">
-											<span class="pagination-current-products">1</span>
-											{{ '/' }}
-											<span class="pagination-total-products">{{ tab_total_products }}</span>
+						{%- else -%}
+							<div class="js-carousel slick-carousel" data-nav="{{ nav }}" data-infinite="{{ infinite }}" data-autoplay="{{ autoplay }}"
+								data-autoplayspeed="{{ autoplay_speed }}"
+								data-columns="{{ columns }}"
+								data-column1440="{{ column1440 }}"
+								data-column1="{{ column1 }}"
+								data-column2="{{ column2 }}"
+								data-column3="{{ column3 }}"
+								data-column4="{{ column4 }}">
+									{%- for product in collections[collection_handle].products limit: limit -%}
+										<div class="slick-carousel__item">
+											{% include 'product-grid-item' %}
 										</div>
-										<button class="btn-products next"><i class="icon-arrow-right"></i></button>
-									</div>
-								</div>
-							{%- endif -%}
-						</div>
-					{%- endif -%}
+									{%- endfor -%}
+							</div>
+						{%- endif -%}
+					</div>
 				{%- endfor -%}
 			</div>
         {%- else -%}
@@ -257,24 +244,15 @@
       "content": "General Settings"
     },
 	{
-		"type": "select",
-		"id": "layout_product",
-		"label": "Layout Product",
-		"options": [
-			{
-				"value": "default",
-				"label": "Default"
-			},
-			{
-				"value": "layout-1",
-				"label": "Layout 1"
-			},
-			{
-				"value": "layout-2",
-				"label": "Layout 2"
-			}
-		],
-		"default": "layout-1"
+		"type": "text",
+		"id": "button",
+		"label": "Button",
+		"default": "VIEW ALL PRODUCT"
+	},
+	{
+		"type": "url",
+		"id": "button_url",
+		"label": "Button url"
 	},
     {
       "type": "header",
@@ -284,12 +262,6 @@
 		"type": "checkbox",
 		"id": "navigation",
 		"label": "Show navigation",
-		"default": true
-	},
-	{
-		"type": "checkbox",
-		"id": "pag_fraction",
-		"label": "Show pag fraction",
 		"default": true
 	},
 	{
@@ -305,26 +277,11 @@
 		"default": false
 	},
 	{
-		"type": "checkbox",
-		"id": "half_slider",
-		"label": "Half slider",
-		"default": true
-	},
-	{
 		"type": "text",
 		"id": "autoplay_speed",
 		"label": "Autoplay speed",
 		"info": "Autoplay speed in milliseconds. Type: int(ms)",
 		"default": "10000"
-	},
-	{
-		"type": "range",
-		"id": "row",
-		"min": 1,
-		"max": 5,
-		"step": 1,
-		"label": "Row of section",
-		"default": 1
 	},
 	{
 		"type": "range",
@@ -421,20 +378,27 @@
 			"settings": [
 				{
 					"type": "header",
-					"content": "====== Content Tab ======"
+					"content": "====== Content ======"
 				},
 				{
-					"type": "text_alignment",
+					"type": "select",
 					"id": "align",
 					"label": "Text align",
-        			"default": "left"
-				},
-				{
-					"type": "text",
-					"id": "padding",
-					"label": "padding",
-					"default": "0px 0px 0px 0px",
-					"placeholder":"0px 0px 0px 0px"
+					"options": [
+						{
+							"value": "left",
+							"label": "Left"
+						},
+						{
+							"value": "right",
+							"label": "Right"
+						},
+						{
+							"value": "center",
+							"label": "Center"
+						}
+					],
+					"default": "left"
 				},
 				{
 					"type": "text",
@@ -445,109 +409,19 @@
 				},
 				{
 					"type": "header",
-					"content": "====== Pagination Fraction ======"
-				},
-				{
-					"type": "text_alignment",
-					"id": "align_fraction",
-					"label": "Text align",
-        			"default": "center"
-				},
-				{ 
-					"type": "header",
-					"content": "====== Tab Link ======"
-				},
-				{
-					"type": "checkbox",
-					"id": "border",
-					"label": "Turn on border",
-					"default": false
-				},
-				{
-					"type": "text",
-					"id": "border_width",
-					"label": "Border width",
-					"default": "0px 0px 0px 0px",
-					"info": "top right bottom left"
-				},
-				{
-					"type": "select",
-					"id": "border_style",
-					"label": "Border Style",
-					"options": [
-						{
-							"value": "none",
-							"label": "None"
-						},
-						{
-							"value": "solid",
-							"label": "Solid"
-						},
-						{
-							"value": "dashed",
-							"label": "Dashed"
-						},
-						{
-							"value": "dotted",
-							"label": "Dotted"
-						},
-						{
-							"value": "double",
-							"label": "Double"
-						}
-					],
-					"default": "solid"
-				},
-				{
-					"type": "text",
-					"id": "border_radius",
-					"label": "Border radius",
-					"default": "0px 0px 0px 0px",
-					"info": "top right bottom left"
-				},
-				{
-					"type": "header",
-					"content": "Color Default"
+					"content": "====== Title ======"
 				},
 				{
 					"type": "color_background",
 					"id": "color_title",
 					"label": "color",
-					"default": "#fff"
-				},
-				{
-					"type": "color",
-					"id": "background_title",
-					"label": "Background",
-					"default": "#ed5d43"
-				},
-				{
-					"type": "color",
-					"id": "border_color",
-					"label": "Border color",
-					"default": "#fff"
-				},
-				{
-					"type": "header",
-					"content": "Color Hover"
+					"default": "#666666"
 				},
 				{
 					"type": "color",
 					"id": "color_title_active",
 					"label": "color active",
 					"default": "#000"
-				},
-				{
-					"type": "color",
-					"id": "background_title_active",
-					"label": "Background Hover",
-					"default": "#ed5d43"
-				},
-				{
-					"type": "color",
-					"id": "border_color_active",
-					"label": "Border color hover",
-					"default": "#fff"
 				},
 				{
 					"type": "number",
@@ -584,61 +458,97 @@
 					"placeholder":"0px 0px 0px 0px"
 				},
 				{
-					"type": "text",
-					"id": "padding_title",
-					"label": "padding",
-					"default": "0px 0px 0px 0px",
-					"placeholder":"0px 0px 0px 0px"
+					"type": "header",
+					"content": "====== button ======"
 				},
 				{
-					"type": "header",
-					"content": "====== Laptop ======",
-					"info": "screen < 1199px"
+					"type": "checkbox",
+					"id": "border",
+					"label": "Turn on border",
+					"default": false
 				},
 				{
 					"type": "number",
-					"id": "font_size_title_lap",
+					"id": "border_width",
+					"label": "Border width",
+					"default": 0
+				},
+				{
+					"type": "color",
+					"id": "bg_button",
+					"label": "Background"
+				},
+				{
+					"type": "color",
+					"id": "color_button",
+					"label": "color",
+					"default": "#000"
+				},
+				{
+					"type": "color",
+					"id": "border_color_button",
+					"label": "Border color",
+					"default": "#dddddd"
+				},
+				{
+					"type": "header",
+					"content": "hover button"
+				},
+				{
+					"type": "color",
+					"id": "bg_hover_button",
+					"label": "Background"
+				},
+				{
+					"type": "color",
+					"id": "color_hover_button",
+					"label": "color",
+					"default": "#000"
+				},
+				{
+					"type": "color",
+					"id": "border_color_hover_button",
+					"label": "Border color",
+					"default": "#dddddd"
+				},
+				{
+					"type": "text",
+					"id": "border_radius",
+					"label": "Border radius",
+					"default": "0px 0px 0px 0px",
+					"info": "top right bottom left"
+				},
+				{
+					"type": "number",
+					"id": "font_size_button",
 					"label": "Font size",
 					"default": 16,
 					"info": "px"
 				},
 				{
 					"type": "number",
-					"id": "line_height_title_lap",
+					"id": "line_height_button",
 					"label": "Line height",
 					"default": 22,
 					"info": "px"
 				},
 				{
-					"type": "text",
-					"id": "margin_title_lap",
-					"label": "margin",
-					"default": "0px 0px 0px 0px",
-					"placeholder":"0px 0px 0px 0px"
-				},
-				{
-					"type": "header",
-					"content": "====== Tablets ======",
-					"info": "screen < 991px"
-				},
-				{
 					"type": "number",
-					"id": "font_size_title_tab",
-					"label": "Font size",
-					"default": 16,
-					"info": "px"
-				},
-				{
-					"type": "number",
-					"id": "line_height_title_tab",
-					"label": "Line height",
-					"default": 22,
+					"id": "letter_spacing_button",
+					"label": "Letter spacing",
+					"default": 0,
 					"info": "px"
 				},
 				{
 					"type": "text",
-					"id": "margin_title_tab",
-					"label": "margin",
+					"id": "font_weight_button",
+					"label": "Font Weight",
+					"default": "500"
+				},
+				{
+					"type": "text",
+					"id": "padding_button",
+					"label": "Padding",
 					"default": "0px 0px 0px 0px",
 					"placeholder":"0px 0px 0px 0px"
 				},
@@ -646,6 +556,10 @@
 					"type": "header",
 					"content": "====== Mobile ======",
 					"info": "screen < 767px"
+				},
+				{
+					"type": "header",
+					"content": "---------- Title"
 				},
 				{
 					"type": "number",
@@ -665,6 +579,44 @@
 					"type": "text",
 					"id": "margin_title_mobi",
 					"label": "margin",
+					"default": "0px 0px 0px 0px",
+					"placeholder":"0px 0px 0px 0px"
+				},
+				{
+					"type": "header",
+					"content": "---------- button"
+				},
+				{
+					"type": "text",
+					"id": "border_radius_mobi",
+					"label": "Border radius",
+					"default": "0px 0px 0px 0px",
+					"info": "top right bottom left"
+				},
+				{
+					"type": "number",
+					"id": "border_width_mobi",
+					"label": "Border width",
+					"default": 0
+				},
+				{
+					"type": "number",
+					"id": "font_size_button_mobi",
+					"label": "Font size",
+					"default": 16,
+					"info": "px"
+				},
+				{
+					"type": "number",
+					"id": "line_height_button_mobi",
+					"label": "Line height",
+					"default": 22,
+					"info": "px"
+				},
+				{
+					"type": "text",
+					"id": "padding_button_mobi",
+					"label": "Padding",
 					"default": "0px 0px 0px 0px",
 					"placeholder":"0px 0px 0px 0px"
 				}

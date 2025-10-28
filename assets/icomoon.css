@@ -1,10 +1,10 @@
 @font-face {
   font-family: 'icomoon';
-  src:  url('//wpbingo-aktive.myshopify.com/cdn/shop/t/5/assets/icomoon.eot?v=96527944715978989031738809883');
-  src:  url('//wpbingo-aktive.myshopify.com/cdn/shop/t/5/assets/icomoon.eot?v=96527944715978989031738809883') format('embedded-opentype'),
-    url('//wpbingo-aktive.myshopify.com/cdn/shop/t/5/assets/icomoon.ttf?v=108091798087276285981738809884') format('truetype'),
-    url('//wpbingo-aktive.myshopify.com/cdn/shop/t/5/assets/icomoon.woff?v=22320040448193603201738809885') format('woff'),
-    url('//wpbingo-aktive.myshopify.com/cdn/shop/t/5/assets/icomoon.svg?v=144027886658347460941738809883') format('svg');
+  src:  url('//wpbingo-aktive.myshopify.com/cdn/shop/t/4/assets/icomoon.eot?v=145716255915871612331738724731');
+  src:  url('//wpbingo-aktive.myshopify.com/cdn/shop/t/4/assets/icomoon.eot?v=145716255915871612331738724731') format('embedded-opentype'),
+    url('//wpbingo-aktive.myshopify.com/cdn/shop/t/4/assets/icomoon.ttf?v=8874718800989483121738724732') format('truetype'),
+    url('//wpbingo-aktive.myshopify.com/cdn/shop/t/4/assets/icomoon.woff?v=88112626755333202511738724733') format('woff'),
+    url('//wpbingo-aktive.myshopify.com/cdn/shop/t/4/assets/icomoon.svg?v=146786028501311721771738724731') format('svg');
   font-weight: normal;
   font-style: normal;
   font-display: block;
@@ -21,6 +21,9 @@
   -moz-osx-font-smoothing:grayscale;
 }
 
+.icon-next:before {
+  content: "\e909";
+}
 .icon-account:before {
   content: "\e900";
 }

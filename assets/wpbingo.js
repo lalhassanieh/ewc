@@ -2475,7 +2475,6 @@ wpbingo.ProductRecommendations = (function() {
 		wpbingo.click_atribute_image();
 		wpbingo.zoom_thumb();
 		wpbingo.popup_product_card();
-		wpbingo.click_pagination_fraction();
 		if( $('.bwp_currency').length > 0){ Currency.Currency_customer(true); }
 		$('.product-card__image-wrapper.slider').each(function() {
 			wpbingo.elementslickCarousel( $('.js-carousel',$(this)) );
@@ -7617,45 +7616,6 @@ wpbingo.wpb_accordion = function(){
 		});
 	}
 }
-wpbingo.click_pagination_fraction = function() {
-    function updatePagination($carousel) {
-        var slickInstance = $carousel.slick("getSlick");
-        var totalSlides = slickInstance.slideCount;
-        var currentSlide = slickInstance.slickCurrentSlide() + 1;   
-        var $parent = $carousel.closest('.tab-pane');
-        $('.pagination-current-products', $parent).text(currentSlide);
-        $('.pagination-total-products', $parent).text(totalSlides);
-    }
-    function attachPaginationUpdate($carousel) {
-        $carousel.on('afterChange', function() {
-            updatePagination($carousel);
-        });
-    }
-    $('.tab-pane').each(function() {
-        var $tabPane = $(this);
-        var $carousel = $('.slick-carousel', $tabPane);
-        attachPaginationUpdate($carousel);
-    });
-    $('.btn-products.next').on("click", function() {
-        var $parent = $(this).closest('.tab-pane');
-        var $carousel = $('.slick-carousel', $parent);
-        $carousel.slick('slickNext');
-    });
-    $('.btn-products.prev').on("click", function() {
-        var $parent = $(this).closest('.tab-pane');
-        var $carousel = $('.slick-carousel', $parent);
-        $carousel.slick('slickPrev');
-    });
-    $('.product-tabs__nav-link').on("click", function() {
-        var targetTab = $(this).attr('href');
-        var $tabPane = $(targetTab);
-        var $carousel = $('.slick-carousel', $tabPane);
-        setTimeout(function() {
-            updatePagination($carousel);
-        }, 300);
-    });
-};
-
 wpbingo.init = function() {
 	wpbingo.initializeEvents();
 	wpbingo.setBreakpoints();
@@ -7701,7 +7661,6 @@ wpbingo.init = function() {
 	wpbingo.product_result_count();
 	wpbingo.widget_collapsible();
 	wpbingo.wpb_accordion();
-	wpbingo.click_pagination_fraction();
 	new wpbingo.update_variant_cartpage('.js-edit_variants');
 	if (wpbingo.settings.enableGiftCard) {
 		new wpbingo.gift_wrap('.js-giftcard');
