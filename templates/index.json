@@ -1592,8 +1592,8 @@
                     "button_J8RMVP": {
                       "type": "button",
                       "settings": {
-                        "title": "Waist Shorts",
-                        "button_link": "shopify://collections/shorts",
+                        "title": "Fasion",
+                        "button_link": "shopify://collections/fashion",
                         "font": "--font-family-second",
                         "icon_title": "",
                         "font_icon": 14,
@@ -1724,7 +1724,7 @@
                     "banners_box_Faz83D": {
                       "type": "banners-box",
                       "settings": {
-                        "url": "shopify://collections/accessory",
+                        "url": "shopify://collections/bags",
                         "border_radius_img": "10px",
                         "margin_image": "",
                         "padding": "",
@@ -1748,8 +1748,8 @@
                             "button_EVxnEz": {
                               "type": "button",
                               "settings": {
-                                "title": "Sports Socks",
-                                "button_link": "shopify://collections/accessory",
+                                "title": "Bags",
+                                "button_link": "shopify://collections/bags",
                                 "font": "--font-family-second",
                                 "icon_title": "",
                                 "font_icon": 14,
@@ -1866,7 +1866,7 @@
                     "banners_box_dW8jTp": {
                       "type": "banners-box",
                       "settings": {
-                        "url": "shopify://collections/tank-tops",
+                        "url": "shopify://collections/toys",
                         "border_radius_img": "10px",
                         "margin_image": "",
                         "padding": "",
@@ -1890,8 +1890,8 @@
                             "button_NzcReR": {
                               "type": "button",
                               "settings": {
-                                "title": "Tank Top",
-                                "button_link": "shopify://collections/tank-tops",
+                                "title": "Toys",
+                                "button_link": "shopify://collections/toys",
                                 "font": "--font-family-second",
                                 "icon_title": "",
                                 "font_icon": 14,
@@ -2028,7 +2028,7 @@
                 "margin": "",
                 "box_content": true,
                 "subtitle_lookbook": "",
-                "title_lookbook": "Mauve <br> 5mm yoga",
+                "title_lookbook": "Mauve  5mm yoga",
                 "button_lookbook": "Shop Collection",
                 "button_lookbook_url": "shopify://collections/all",
                 "icon_title": "",
