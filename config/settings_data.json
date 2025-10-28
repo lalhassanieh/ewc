@@ -1093,6 +1093,7 @@
           "border_style": "solid",
           "border_color": "#000000",
           "border_opacity": "0.15",
+          "logo": "shopify://shop_images/EWC_TWO-LINE_LOGOTYPE-02.svg",
           "logo_max_width": 115,
           "horizontal_align": "center",
           "padding_menu": "0px 0px 0px 0px",
