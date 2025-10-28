@@ -1499,7 +1499,7 @@
               "settings": {
                 "padding": "",
                 "margin": "",
-                "featured_products": "akk",
+                "featured_products": "all",
                 "layout_product": "layout-2",
                 "limit": 8,
                 "navigation": true,
@@ -2395,7 +2395,7 @@
               "settings": {
                 "padding": "",
                 "margin": "",
-                "featured_products": "akk",
+                "featured_products": "all",
                 "layout_product": "layout-1",
                 "limit": 8,
                 "navigation": true,
