@@ -1099,7 +1099,7 @@
           "padding_menu": "0px 0px 0px 0px",
           "show_header_search": true,
           "show_header_wishlist": true,
-          "page_wishlist": "wishlist",
+          "page_wishlist": "whislist",
           "show_header_user": true,
           "header_user_title": "Account",
           "header_user_link_list": "",
