@@ -329,7 +329,7 @@
         "position_thumbnails": "left",
         "thumbnail_count": 5,
         "enable_video_looping": false,
-        "show_sidebar": true,
+        "show_sidebar": false,
         "position_sidebar": "left",
         "heading_sidebar": "Top rate products",
         "collection_sidebar": "accessory",
@@ -343,6 +343,10 @@
         "bundler_title": "Frequently Bought Together",
         "bundler_margin": "60px 0 0"
       }
+    },
+    "17616635041ed8cc03": {
+      "type": "apps",
+      "settings": {}
     },
     "product-tab": {
       "type": "product-information",
@@ -428,6 +432,7 @@
     "breadcrumb",
     "product-template",
     "buy-together",
+    "17616635041ed8cc03",
     "product-tab",
     "product-recommendations",
     "recently-viewed"
