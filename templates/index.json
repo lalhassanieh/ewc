@@ -2438,6 +2438,59 @@
         "vertical_align": "top",
         "horizontal_align": "left"
       }
+    },
+    "featured_product_tabs_BVzBap": {
+      "type": "featured-product-tabs",
+      "blocks": {
+        "tab_Kizx7t": {
+          "type": "tab",
+          "settings": {
+            "title": "Tab heading",
+            "collection": "fashion",
+            "limit": 8
+          }
+        },
+        "tab_LqRQ7N": {
+          "type": "tab",
+          "settings": {
+            "title": "Tab heading",
+            "collection": "bags",
+            "limit": 8
+          }
+        },
+        "tab_ABHmqH": {
+          "type": "tab",
+          "settings": {
+            "title": "Tab heading",
+            "collection": "toys",
+            "limit": 8
+          }
+        }
+      },
+      "block_order": [
+        "tab_Kizx7t",
+        "tab_LqRQ7N",
+        "tab_ABHmqH"
+      ],
+      "name": "Product tabs",
+      "settings": {
+        "max_width": "",
+        "fullwidth": false,
+        "padding": "",
+        "margin": "",
+        "button": "VIEW ALL PRODUCT",
+        "button_url": "",
+        "navigation": true,
+        "infinite": true,
+        "autoplay": false,
+        "autoplay_speed": "10000",
+        "columns": 4,
+        "column1440": 4,
+        "column1": 4,
+        "column2": 3,
+        "column3": 1,
+        "column4": 1
+      }
     }
   },
   "order": [
@@ -2450,6 +2503,7 @@
     "featured_custom_section_m4kR83",
     "featured_custom_section_CGNBJB",
     "featured_custom_section_nxRpXp",
-    "featured_custom_section_4VMgVA"
+    "featured_custom_section_4VMgVA",
+    "featured_product_tabs_BVzBap"
   ]
 }
