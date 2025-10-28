@@ -532,7 +532,7 @@
           "a4de579f-d8d5-4a1b-99c0-69d98b156b3c"
         ],
         "settings": {
-          "show_topbar": true,
+          "show_topbar": false,
           "max_width": "",
           "fullwidth": false,
           "padding": "13px 0",
