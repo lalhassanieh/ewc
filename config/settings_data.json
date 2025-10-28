@@ -1,1 +1,1297 @@
-{"current":{"theme-color":"#000000","color_secondary":"#000000","gray-dark":"#000000","hover-color":"#000000","text-color":"#000000","color_body_bg":"#ffffff","color_border":"#e9e9e9","font-family-second-google-link":"<link href=\"https:\/\/fonts.googleapis.com\/css2?family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap\" rel=\"stylesheet\">","font-family-second":"Urbanist","font-size-heading":25,"font-weight-second-default":"400","font-weight-second-medium":"500","font-weight-second-bold":"700","font-family-base-google-link":"<link href=\"https:\/\/fonts.googleapis.com\/css2?family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap\" rel=\"stylesheet\">","font-family-base":"Urbanist","font-size-base":14,"font-weight-base-light":"300","font-weight-base-medium":"500","font-weight-base-bold":"700","layout_header":"1","show_menu_bottom":true,"color_header_bg":"#ffffff","color_menu_text":"#000000","color_menu_text_hover":"#000000","color_submenu_text":"#000000","color_submenu_text_hover":"#000000","enable_rtl":true,"iso_rtl":"ar","login_style":"sideout","scroll_to_top":true,"preview_bar":true,"enable_christmas":false,"svg_christmas":"shopify:\/\/shop_images\/flake.svg","show_search_blog":true,"search_item_count":8,"shop_full":false,"layout_filter":"sidebar_2","sidebar_enable":true,"style_view_items":"viewmore","count_items":20,"views_enable":true,"select_columns":"list","sortby_enable":true,"select_pagination":"loadmore","show_compare":true,"sortby_variants":true,"number_variants":2,"product_vendor_enable":false,"product_within_collection":false,"product_card_review":true,"product_atc_mobile":true,"quickview_enable_mobile":true,"hover_style":"hover_style_2","image_hover":"slider","countdown_style":"style_2","preload_product_image_logo":"aktive","image_raito_product":"","size_image":"cover","bg_raito":"#f5f5f5","quickview_enable":true,"quickview_availability":true,"quickview_quantity_selector":"text","quickview_variant_selector":"radio","filter_name_1":"Size","select_filter_1":"label","filter_name_2":"Color","select_filter_2":"color","filter_name_3":"Style","select_filter_3":"image","show_size_chart":true,"html_size_chart":"size-guide","collection_nofication":"dresses","start_time":3,"start_time_unit":"minute","user_purchased":"Jhon (Tokyo) | James (New York) | David (Ohio) | Jack (Monaco) | Lindan (California) | Grap (Texas) | Sabo (Florida) | Pain (Illinois) | Kakuzu (Washington) | Sukuna (Nevada)","time_suggest":"5 minutes ago | 10 minutes ago | 15 minutes ago | 20 minutes ago | 35 minutes ago | 50 minutes ago | 1 hours ago | 2 hours ago | 3 hours ago | 4 hours ago","limit_nofication":10,"cart_type":"modal","price_shipping_bar":"100","cart_fire_work":true,"show_gift_card":true,"product_gift_card":"a-cold-wall-logo-embroidered","content_gift_card":"Add gift wrap","content_terms_conditions":"I agree with the <a href=\"#\">terms and conditions<\/a>","alert_terms_conditions":"<p>Yodie supplies products listed on the Yodie, and Yodie websites, and in our stores under the following Terms and Conditions. Please read these Terms and Conditions, and our Privacy and Cookie Policies carefully before using any of our websites, or ordering from us.<\/p><p>The Terms and Conditions apply to your use of any Yodie website and to any products you purchase from them; regardless of how you access the website, including any technologies or devices where our website is available to you at home, on the move or in store<\/p><p>We reserve the right to update these Terms and Conditions at any time, and any updates affecting you or your purchases will be notified to you, by us in writing (via email), and on this page.<\/p><p>The headings in these Conditions are for convenience only and shall not affect their interpretation.<\/p><p>We recommend that you print and keep a copy of these Terms and Conditions for your future reference...<\/p>","cart_notes_enable":true,"cart_coupon_enable":true,"cart_shipping_enable":true,"shipping_calculator_heading":"Get shipping estimates","shipping_calculator_submit_button_label":"ESTIMATE","sidebar_position":"left","layout_blog":"grid","show_locale_selector":true,"show_currency_selector":true,"auto_currency":false,"currency_type":"2","flag_currency":true,"currency_format":"money_format","round_currency":true,"mess_currency":"All charges are billed in <span>[original_currency]<\/span>. While the content of your cart is currently displayed in [current_currency], the checkout will use <span>[original_currency]<\/span> at the most current exchange rate.","hover_currency":true,"show_come_back":true,"show_you_leave":true,"img_you_leave":"shopify:\/\/shop_images\/before.jpg","title_you_leave":"BEFORE YOU<br> LEAVE...","desc_you_leave":"Take <span>15% off<\/span> your first order","url_you_leave":"shopify:\/\/collections\/all","collection_you_leave":"accessory","limit_you_leave":3,"social_facebook_link":"#","social_twitter_link":"#","social_whatsapp_link":"#","social_instagram_link":"","social_snapchat_link":"","social_youtube_link":"","social_tiktok_link":"#","share_facebook":true,"favicon":"shopify:\/\/shop_images\/80x80.png","cookie_agree_button":"Agree","cookie_consent_button":"Not agree","newsletter_popup_enable":true,"newsletter_popup_image":"shopify:\/\/shop_images\/newsletter-image.jpg","newsletter_popup_title":"Join the our family","newsletter_popup_subtitle":"Sign up for our newsletter and receive updates you’re looking for: interior inspiration, the latest trends and discounts","newsletter_popup_mailchimp":false,"verify_popup_enable":false,"menu_link_list":"main-menu","headertop_link_list-2":"categories","checkout_logo_image":"shopify:\/\/shop_images\/logo_6c2c83c7-d9df-4e56-bdfb-2f8cda3894ce.png","checkout_logo_size":"small","headertop_link_list-4":"categories","headertop_link_list-3":"categories","login_bg":"shopify:\/\/shop_images\/Group_3_1d3a78dd-ee93-477c-bba0-25d5ba5387ba.jpg","id_ltr":"","id_rtl":"","custom_css":"","select-font-base":"google","font-family-base-google":"Jost","select-font-second":"google","font-family-second-google":"Jost","menu_link_list2":"menu-right","color_header_text":"#000000","menu_collection_search":"collection-search","cookie_policy_button":"<a href=\"\/policies\/privacy-policy\">Learn more<\/a>","color_footer_bg":"#f8f8f8","header_overlay":true,"mlvedaACS_autoSwitch":false,"mlvedaACS_isCustomized":true,"layout_article":"sidebar_left","mlvedaACS_borderLook":true,"mlvedaACS_textColor":"inherit","mlvedaACS_flagStyle":"circle","mlvedaACS_isMessageDisplay":true,"mlvedaACS_messageColor":"inherit","mlvedaACS_roundDecimal":false,"mlvedaACS_messageContent":"<<shop.name>> process all orders in <<shop.currency>>. While the content of your cart is currently displayed in <<shop.selected_currency>>, you will checkout using <<shop.currency>> at the most current exchange rate.","cart_quantity_selector":"text","mlvedaACS_os2":false,"mlvedaACS_positionTop":"10px","mlvedaACS_positionRight":"10px","show_shipping_bar":true,"mlvedaACS_positionLeft":"10px","mlvedaACS_defaultCurrency":"USD","mlvedaACS_positionBottom":"10px","mlvedaACS_messageBackgroundColor":"inherit","style_option":"circle","mlvedaACS_roundDecimalValue":1,"mlvedaACS_backgroundColor":"#ffffff","mlvedaACS_position":"top_with_right","style_nofication":"style_2","mlvedaACS_textHoverColor":"inherit","mlvedaACS_enable":true,"mlvedaACS_supportedCurrencies":"USD GBP EUR CAD AUD INR JPY VND","mlvedaACS_hideDecimal":false,"mlvedaACS_hoverBackgroundColor":"inherit","mlvedaACS_currencyFormat":"money_format","mlvedaACS_borderLineColor":"inherit","size_option":30,"mlvedaACS_displayFlag":false,"sections":{"page-breadcrumb":{"type":"page-breadcrumb","settings":{"enable":true,"bgimage":false}},"search-breadcrumb":{"type":"search-breadcrumb","settings":{"enable":true,"bgimage":false}},"blog-breadcrumb":{"type":"blog-breadcrumb","settings":{"enable":true,"bgimage":false,"show_pagetitle":true,"blog_categories_menu":"sidebar-blog","color_breadcrumb":"#000000","align_breadcrumb":"center"}},"blog-sidebar":{"type":"blog-sidebar","settings":{"search_enable":true,"search_title":"Search","categories_enable":true,"categories_title":"Categories","menu_categories":"sidebar-blog","relatedarticles_enable":true,"relatedarticles_title":"Related Posts","relatedarticles_limit":3,"tags_enable":true,"tags_title":"Tags","tags_limit":10}},"product-template":{"type":"product-template","settings":{"product_button_wishlist":true,"product_button_compare":true,"show_sticky_cart":false,"media_layout":"thumbnails","position_thumbnails":"bottom","thumbnail_count":6,"enable_video_looping":false}},"list-collections-template":{"type":"list-collections-template","blocks":{"96dd9fb7-8b60-46eb-9150-a8abad0a72dc":{"type":"collection","settings":{"collection":"accessory"}},"82b24bd2-86ee-4776-9e64-e5f14f1313c4":{"type":"collection","settings":{"collection":"jumpsuit"}},"0b807616-b4d3-4e42-9c90-0c8108060d57":{"type":"collection","settings":{"collection":"leggings"}},"3307c93b-0f22-42d3-83e6-a21151f2ba3e":{"type":"collection","settings":{"collection":"shorts"}},"431f5626-0370-43c3-a72c-09723cf03693":{"type":"collection","settings":{"collection":"t-shirt"}},"d8b2c29b-2dae-407e-975a-f75b0df9b94d":{"type":"collection","settings":{"collection":"tank-tops"}}},"block_order":["96dd9fb7-8b60-46eb-9150-a8abad0a72dc","82b24bd2-86ee-4776-9e64-e5f14f1313c4","0b807616-b4d3-4e42-9c90-0c8108060d57","3307c93b-0f22-42d3-83e6-a21151f2ba3e","431f5626-0370-43c3-a72c-09723cf03693","d8b2c29b-2dae-407e-975a-f75b0df9b94d"],"settings":{"display_type":"selected","style_collection_list":"style_2","sort":"alphabetical","column1":4,"column2":5,"column3":3,"column4":2}},"blog-template-search":{"type":"blog-template-search","settings":{"limit":5}},"blog-sidebar-search":{"type":"blog-sidebar-search","settings":{"search_enable":true,"categories_enable":true,"categories_title":"Categories","menu_categories":"sidebar-blog","relatedarticles_enable":true,"relatedarticles_title":"Related Articles","relatedarticles_limit":3}},"portfolio-template":{"type":"portfolio-template","settings":{"limit":3,"limit-coloumn":3,"limit-coloumn2":3,"layout":"normal","select_pagination":"pagination"}},"product-breadcrumb":{"type":"product-breadcrumb","settings":{}},"main-search":{"type":"main-search","settings":{"page_item":12}},"faq-template":{"type":"faq-template","blocks":{"b0ee95f9-a491-4ee7-b4df-d17e9163c68f":{"type":"faq","settings":{"title":"01. The order","content":"<p><strong>When do I receive my order?<\/strong><br\/>When placing the order, a day of shipment is indicated. After the order has been placed, the same delivery time will also be stated on the order confirmation. It is therefore never possible that during the order, the shipping day on the website, is different than on the order confirmation.<br\/><br\/><strong>I now see the longer delivery time of (a part of) my order. How can I cancel it?<\/strong><br\/>If the order has a longer delivery time than you had previously seen, it is of course possible to cancel (a part of) the order. For this you can contact our customer service. They will cancel the order for you. The purchase amount will be back on your bank account within two working days. When an order has already been shipped, it can no longer be cancelled.<\/p><p><br\/><strong>When will I receive the invoice for my order?<\/strong><br\/>When you have paid for the order, you will not automatically receive an invoice for your order. If you wish to receive an invoice, this can be done in two ways.The first way is through your account at our store. When you log in to your account you can see your orders and download the invoice.<\/p>","width":"50% | | | 100%","padding":"0 15px"}},"e0973b19-7458-4486-b7b0-6786c38b8dd0":{"type":"faq","settings":{"title":"02. Shipment","content":"<p><strong>When do I receive my order?<\/strong><br\/>When placing the order, a day of shipment is indicated. After the order has been placed, the same delivery time will also be stated on the order confirmation. It is therefore never possible that during the order, the shipping day on the website, is different than on the order confirmation.<br\/><br\/><strong>I now see the longer delivery time of (a part of) my order. How can I cancel it?<\/strong><br\/>If the order has a longer delivery time than you had previously seen, it is of course possible to cancel (a part of) the order. For this you can contact our customer service. They will cancel the order for you. The purchase amount will be back on your bank account within two working days. When an order has already been shipped, it can no longer be cancelled.<\/p><p><br\/><strong>When will I receive the invoice for my order?<\/strong><br\/>When you have paid for the order, you will not automatically receive an invoice for your order. If you wish to receive an invoice, this can be done in two ways.The first way is through your account at our store. When you log in to your account you can see your orders and download the invoice.<\/p>","width":"50% | | | 100%","padding":"0 15px"}},"1b943bbd-3c41-4d20-b1ba-5154c3f784d7":{"type":"faq","settings":{"title":"03. The order","content":"<p><strong>When do I receive my order?<\/strong><br\/>When placing the order, a day of shipment is indicated. After the order has been placed, the same delivery time will also be stated on the order confirmation. It is therefore never possible that during the order, the shipping day on the website, is different than on the order confirmation.<br\/><br\/><strong>I now see the longer delivery time of (a part of) my order. How can I cancel it?<\/strong><br\/>If the order has a longer delivery time than you had previously seen, it is of course possible to cancel (a part of) the order. For this you can contact our customer service. They will cancel the order for you. The purchase amount will be back on your bank account within two working days. When an order has already been shipped, it can no longer be cancelled.<\/p><p><br\/><strong>When will I receive the invoice for my order?<\/strong><br\/>When you have paid for the order, you will not automatically receive an invoice for your order. If you wish to receive an invoice, this can be done in two ways.The first way is through your account at our store. When you log in to your account you can see your orders and download the invoice.<\/p>","width":"50% | | | 100%","padding":"0 15px"}},"91f8c21c-0dd4-49ce-a52b-35de564327e4":{"type":"faq","settings":{"title":"04. Returns, exchanges and complaints","content":"<p><strong>When do I receive my order?<\/strong><br\/>When placing the order, a day of shipment is indicated. After the order has been placed, the same delivery time will also be stated on the order confirmation. It is therefore never possible that during the order, the shipping day on the website, is different than on the order confirmation.<br\/><br\/><strong>I now see the longer delivery time of (a part of) my order. How can I cancel it?<\/strong><br\/>If the order has a longer delivery time than you had previously seen, it is of course possible to cancel (a part of) the order. For this you can contact our customer service. They will cancel the order for you. The purchase amount will be back on your bank account within two working days. When an order has already been shipped, it can no longer be cancelled.<\/p><p><br\/><strong>When will I receive the invoice for my order?<\/strong><br\/>When you have paid for the order, you will not automatically receive an invoice for your order. If you wish to receive an invoice, this can be done in two ways.The first way is through your account at our store. When you log in to your account you can see your orders and download the invoice.<\/p>","width":"50% | | | 100%","padding":"0 15px"}}},"block_order":["b0ee95f9-a491-4ee7-b4df-d17e9163c68f","e0973b19-7458-4486-b7b0-6786c38b8dd0","1b943bbd-3c41-4d20-b1ba-5154c3f784d7","91f8c21c-0dd4-49ce-a52b-35de564327e4"],"settings":{}},"product-information":{"type":"product-information","settings":{"tab_layout":"tab"}},"recently-viewed":{"type":"recently-viewed","settings":{"heading":"Recently Viewed Products","navigation":true,"limit":5,"infinite":true,"autoplay":true,"autoplay_speed":"10000","columns":4,"column1440":4,"column1":4,"column2":3,"column3":1,"column4":1}},"blog-template":{"type":"blog-template","settings":{"limit":6,"limit-coloumn":3,"limit-coloumn2":3,"show_date":true,"show_category":true,"select_pagination":"loadmore"}},"collection-breadcrumb":{"type":"collection-breadcrumb","blocks":{"d43272b8-2a5b-432a-a9a5-59cabbd244ad":{"type":"item","settings":{"collection":"dresses"}},"item_UEgbKj":{"type":"item","settings":{"collection":""}}},"block_order":["d43272b8-2a5b-432a-a9a5-59cabbd244ad","item_UEgbKj"],"settings":{"enable":true,"bgimage":true,"show_pagetitle":true,"show_breadcrumb":true,"color_breadcrumb":"#000000","align_breadcrumb":"center","enable_collection":true,"categories_menu":"","style_collection":"style_2","navigation":true,"infinite":true,"columns":4,"column1440":4,"column1":4,"column2":4,"column3":3,"column4":2}},"article-breadcrumb":{"type":"article-breadcrumb","settings":{}},"portfolio-breadcrumb":{"type":"portfolio-breadcrumb","settings":{"enable":true,"bgimage":false}},"product-recommendations":{"type":"product-recommendations","settings":{"heading":"You may also like","navigation":true,"infinite":true,"autoplay":false,"autoplay_speed":"10000","columns":4,"column1440":4,"column1":4,"column2":3,"column3":3,"column4":2}},"header-campar":{"type":"header-campar","settings":{"show_campar":false,"max_width":"","fullwidth":true,"padding":"5px 0","margin":"","bg_background":"#000000","content_campar":"Free Delivery on orders over $100.","url_campar":"","color_content":"#ffffff","color_span":"#ff0000","font_size":14,"font_weight":"400","marquee_content":true,"marquee_loop":10,"marquee_time":4,"show_mobile":true}},"header-topbar":{"type":"header-topbar","blocks":{"a4de579f-d8d5-4a1b-99c0-69d98b156b3c":{"type":"custom-text","settings":{"custom_text_content":"Free shipping on orders $100+. <a href=\"#\">SHOP NOW!<\/a>","color_custom_text":"#ffffff","color_custom_text_link":"#ffffff","color_custom_text_link_hover":"#f11e1e","text_align":"center","show_mobile_custom_text":true}}},"block_order":["a4de579f-d8d5-4a1b-99c0-69d98b156b3c"],"settings":{"show_topbar":true,"max_width":"","fullwidth":false,"padding":"13px 0","margin":"","bg_background":"#212124","topbar_absolute":false,"bg_background2":"rgba(0,0,0,0)","font_size":14,"color_text":"#ffffff","font_weight":"500","border":false,"border_width":"0 0 1px 0","border_color":"#ffffff","border_opacity":0.1,"show_mobile":true}},"header_1":{"type":"header_1","blocks":{"mainmenu_item_NDUp8q":{"type":"_mainmenu-item","settings":{"title":"Home","menu_url":"\/","submenu_format":"mega","badge":"","position":"after","badge_color":"#000000"},"blocks":{"megamenu_container_AcYHfD":{"type":"_megamenu-container","settings":{"width":"custom","width_custom":"950px"},"blocks":{"megamenu_item_3FxGDx":{"type":"_megamenu-item","settings":{"widget":"image","menu_col":"25%","menu_heading":"","menu_link_list_child":"","image":"shopify:\/\/shop_images\/home-1.jpg","banner_title":"Home 1","banner_button":"","banner_link":"https:\/\/wpbingo-aktive.myshopify.com\/\/?preview_theme_id=130563211360","collection_widget":"","blog_widget":""}},"megamenu_item_dGgLBU":{"type":"_megamenu-item","settings":{"widget":"image","menu_col":"25%","menu_heading":"","menu_link_list_child":"","image":"shopify:\/\/shop_images\/home-2.jpg","banner_title":"Home 2","banner_button":"","banner_link":"https:\/\/wpbingo-aktive.myshopify.com\/\/?preview_theme_id=131036414048","collection_widget":"","blog_widget":""}},"megamenu_item_kP8M9r":{"type":"_megamenu-item","settings":{"widget":"image","menu_col":"25%","menu_heading":"","menu_link_list_child":"","image":"shopify:\/\/shop_images\/home-3.jpg","banner_title":"Home 3","banner_button":"","banner_link":"https:\/\/wpbingo-aktive.myshopify.com\/\/?preview_theme_id=131043721312","collection_widget":"","blog_widget":""}},"megamenu_item_natECV":{"type":"_megamenu-item","settings":{"widget":"image","menu_col":"25%","menu_heading":"","menu_link_list_child":"","image":"shopify:\/\/shop_images\/home-4.jpg","banner_title":"Home 4","banner_button":"","banner_link":"https:\/\/wpbingo-aktive.myshopify.com\/\/?preview_theme_id=131080585312","collection_widget":"","blog_widget":""}},"megamenu_item_iLkcPc":{"type":"_megamenu-item","settings":{"widget":"image","menu_col":"25%","menu_heading":"","menu_link_list_child":"","image":"shopify:\/\/shop_images\/home-5.jpg","banner_title":"Home 5","banner_button":"","banner_link":"https:\/\/wpbingo-aktive.myshopify.com\/\/?preview_theme_id=131083141216","collection_widget":"","blog_widget":""}},"megamenu_item_PaKEJk":{"type":"_megamenu-item","settings":{"widget":"image","menu_col":"25%","menu_heading":"","menu_link_list_child":"","image":"shopify:\/\/shop_images\/home-6.jpg","banner_title":"Home 6","banner_button":"","banner_link":"https:\/\/wpbingo-aktive.myshopify.com\/\/?preview_theme_id=131109027936","collection_widget":"","blog_widget":""}},"megamenu_item_khrdLN":{"type":"_megamenu-item","settings":{"widget":"image","menu_col":"25%","menu_heading":"","menu_link_list_child":"","image":"shopify:\/\/shop_images\/home-7.jpg","banner_title":"Home 7","banner_button":"","banner_link":"https:\/\/wpbingo-aktive.myshopify.com\/\/?preview_theme_id=131110076512","collection_widget":"","blog_widget":""}},"megamenu_item_PfT8Ne":{"type":"_megamenu-item","settings":{"widget":"image","menu_col":"25%","menu_heading":"","menu_link_list_child":"","image":"shopify:\/\/shop_images\/home-8.jpg","banner_title":"Home 8","banner_button":"","banner_link":"https:\/\/wpbingo-aktive.myshopify.com\/\/?preview_theme_id=131114106976","collection_widget":"","blog_widget":""}}},"block_order":["megamenu_item_3FxGDx","megamenu_item_dGgLBU","megamenu_item_kP8M9r","megamenu_item_natECV","megamenu_item_iLkcPc","megamenu_item_PaKEJk","megamenu_item_khrdLN","megamenu_item_PfT8Ne"]}},"block_order":["megamenu_container_AcYHfD"]},"mainmenu_item_g884pn":{"type":"_mainmenu-item","settings":{"title":"Shop","menu_url":"shopify:\/\/collections\/all","submenu_format":"mega","badge":"","position":"after","badge_color":"#000000"},"blocks":{"megamenu_container_LjwJGL":{"type":"_megamenu-container","settings":{"width":"full","width_custom":""},"blocks":{"megamenu_item_tDkJKH":{"type":"_megamenu-item","settings":{"widget":"image","menu_col":"25%","menu_heading":"","menu_link_list_child":"","image":"shopify:\/\/shop_images\/shop1.jpg","banner_title":"","banner_button":"Best Sellers","banner_link":"#","collection_widget":"","blog_widget":""}},"megamenu_item_3LicKT":{"type":"_megamenu-item","settings":{"widget":"image","menu_col":"25%","menu_heading":"","menu_link_list_child":"","image":"shopify:\/\/shop_images\/shop2.jpg","banner_title":"","banner_button":"New Arrivals","banner_link":"#","collection_widget":"","blog_widget":""}},"megamenu_item_gb6GKG":{"type":"_megamenu-item","settings":{"widget":"menu","menu_col":"16.66%","menu_heading":"Layout","menu_link_list_child":"layout","banner_title":"","banner_button":"","banner_link":"","collection_widget":"","blog_widget":""}},"megamenu_item_KfwiVm":{"type":"_megamenu-item","settings":{"widget":"menu","menu_col":"16.66%","menu_heading":"Filter","menu_link_list_child":"filter","banner_title":"","banner_button":"","banner_link":"","collection_widget":"","blog_widget":""}},"megamenu_item_kbtYY7":{"type":"_megamenu-item","settings":{"widget":"menu","menu_col":"16.66%","menu_heading":"Loader & Cart","menu_link_list_child":"loader-cart","banner_title":"","banner_button":"","banner_link":"","collection_widget":"","blog_widget":""}}},"block_order":["megamenu_item_tDkJKH","megamenu_item_3LicKT","megamenu_item_gb6GKG","megamenu_item_KfwiVm","megamenu_item_kbtYY7"]}},"block_order":["megamenu_container_LjwJGL"]},"mainmenu_item_W7rhGn":{"type":"_mainmenu-item","settings":{"title":"Product","menu_url":"#","submenu_format":"mega","badge":"","position":"after","badge_color":"#000000"},"blocks":{"megamenu_container_6dTCcK":{"type":"_megamenu-container","settings":{"width":"full","width_custom":""},"blocks":{"megamenu_item_9bH3nH":{"type":"_megamenu-item","settings":{"widget":"menu","menu_col":"25%","menu_heading":"Product Layout","menu_link_list_child":"product-layout","banner_title":"","banner_button":"","banner_link":"","collection_widget":"","blog_widget":""}},"megamenu_item_98YhFC":{"type":"_megamenu-item","settings":{"widget":"menu","menu_col":"25%","menu_heading":"Fretured","menu_link_list_child":"featured","banner_title":"","banner_button":"","banner_link":"","collection_widget":"","blog_widget":""}},"megamenu_item_WJiHBU":{"type":"_megamenu-item","settings":{"widget":"menu","menu_col":"25%","menu_heading":"Fretured","menu_link_list_child":"featured-1","banner_title":"","banner_button":"","banner_link":"","collection_widget":"","blog_widget":""}},"megamenu_item_MKWp9V":{"type":"_megamenu-item","settings":{"widget":"menu","menu_col":"25%","menu_heading":"Product Card","menu_link_list_child":"product-card","banner_title":"","banner_button":"","banner_link":"","collection_widget":"","blog_widget":""}}},"block_order":["megamenu_item_9bH3nH","megamenu_item_98YhFC","megamenu_item_WJiHBU","megamenu_item_MKWp9V"]}},"block_order":["megamenu_container_6dTCcK"]},"mainmenu_item_EtPCeD":{"type":"_mainmenu-item","settings":{"title":"Blog","menu_url":"shopify:\/\/blogs\/news","submenu_format":"mega","badge":"","position":"after","badge_color":"#000000"},"blocks":{"megamenu_container_9xe8H6":{"type":"_megamenu-container","settings":{"width":"custom","width_custom":"650px"},"blocks":{"megamenu_item_MRcf6G":{"type":"_megamenu-item","settings":{"widget":"menu","menu_col":"50%","menu_heading":"Layout & Post","menu_link_list_child":"layout-post","banner_title":"","banner_button":"","banner_link":"","collection_widget":"","blog_widget":""}},"megamenu_item_zM9JTE":{"type":"_megamenu-item","settings":{"widget":"blog","menu_col":"50%","menu_heading":"","menu_link_list_child":"","banner_title":"","banner_button":"","banner_link":"","collection_widget":"","blog_widget":"news"}}},"block_order":["megamenu_item_MRcf6G","megamenu_item_zM9JTE"]}},"block_order":["megamenu_container_9xe8H6"]},"mainmenu_item_7JnjnL":{"type":"_mainmenu-item","settings":{"title":"Featured","menu_url":"#","submenu_format":"mega","badge":"","position":"after","badge_color":"#000000"},"blocks":{"megamenu_container_W8nMH9":{"type":"_megamenu-container","settings":{"width":"full","width_custom":""},"blocks":{"megamenu_item_cb4wgw":{"type":"_megamenu-item","settings":{"widget":"menu","menu_col":"20%","menu_heading":"Page","menu_link_list_child":"page","banner_title":"","banner_button":"","banner_link":"","collection_widget":"","blog_widget":""}},"megamenu_item_zdzHWk":{"type":"_megamenu-item","settings":{"widget":"menu","menu_col":"20%","menu_heading":"Portfolio","menu_link_list_child":"featured-portfolio","banner_title":"","banner_button":"","banner_link":"","collection_widget":"","blog_widget":""}},"megamenu_item_JyVw49":{"type":"_megamenu-item","settings":{"widget":"menu","menu_col":"20%","menu_heading":"Featured","menu_link_list_child":"featured-featured","banner_title":"","banner_button":"","banner_link":"","collection_widget":"","blog_widget":""}},"megamenu_item_xVTfP7":{"type":"_megamenu-item","settings":{"widget":"menu","menu_col":"20%","menu_heading":"Lookbook","menu_link_list_child":"featured-lookbook","banner_title":"","banner_button":"","banner_link":"","collection_widget":"","blog_widget":""}},"megamenu_item_N8Hnc4":{"type":"_megamenu-item","settings":{"widget":"menu","menu_col":"20%","menu_heading":"Instagram Shop","menu_link_list_child":"featured-instagram-shop","banner_title":"","banner_button":"","banner_link":"","collection_widget":"","blog_widget":""}}},"block_order":["megamenu_item_cb4wgw","megamenu_item_zdzHWk","megamenu_item_JyVw49","megamenu_item_xVTfP7","megamenu_item_N8Hnc4"]}},"block_order":["megamenu_container_W8nMH9"]}},"block_order":["mainmenu_item_NDUp8q","mainmenu_item_g884pn","mainmenu_item_W7rhGn","mainmenu_item_EtPCeD","mainmenu_item_7JnjnL"],"settings":{"width_header":"","padding":"30px 0","header_sticky":true,"header_absolute":false,"color_homepage_text":"#000000","header_align":"logo-menu-icons","header_divider":false,"border_width":"0px 0px 1px 0px","border_style":"solid","border_color":"#000000","border_opacity":"0.15","logo":"shopify:\/\/shop_images\/logo.png","logo_max_width":115,"horizontal_align":"center","padding_menu":"0px 0px 0px 0px","show_header_search":true,"show_header_wishlist":true,"page_wishlist":"wishlist","show_header_user":true,"header_user_title":"Account","header_user_link_list":"","show_header_cart":true}},"faq-template2":{"type":"faq-template2","blocks":{"691b1f60-2251-4d0b-b2cb-1a06c318b21b":{"type":"faq","settings":{"title":"When do I receive my order?","content":"<p>When placing the order, a day of shipment is indicated. After the order has been placed, the same delivery time will also be stated on the order confirmation. It is therefore never possible that during the order, the shipping day on the website, is different than on the order confirmation.<\/p>"}},"1bdb23bd-d8d1-4780-b5ef-1c30fab61f9b":{"type":"faq","settings":{"title":"I now see the longer delivery time of (a part of) my order. How can I cancel it?","content":"<p>If the order has a longer delivery time than you had previously seen, it is of course possible to cancel (a part of) the order. For this you can contact our customer service. They will cancel the order for you. The purchase amount will be back on your bank account within two working days. When an order has already been shipped, it can no longer be cancelled<\/p>"}},"b990e18e-1627-4cad-9112-703bf6175852":{"type":"faq","settings":{"title":"When will I receive the invoice for my order?","content":"<p>When you have paid for the order, you will not automatically receive an invoice for your order. If you wish to receive an invoice, this can be done in two ways.The first way is through your account at our store. When you log in to your account you can see your orders and download the invoice.<\/p>"}},"e337eeba-1ef5-4ca4-ba65-987889d5f1e2":{"type":"faq","settings":{"title":"How long will my order take to be delivered?","content":"<p>When you have paid for the order, you will not automatically receive an invoice for your order. If you wish to receive an invoice, this can be done in two ways.The first way is through your account at our store. When you log in to your account you can see your orders and download the invoice.<\/p>"}},"a093e3a6-3153-47ae-a48f-62a051913df6":{"type":"faq","settings":{"title":"Do I need to create an account to place an order?","content":"<p>When you have paid for the order, you will not automatically receive an invoice for your order. If you wish to receive an invoice, this can be done in two ways.The first way is through your account at our store. When you log in to your account you can see your orders and download the invoice.<\/p>"}},"09d82ae8-b720-49d7-aaf6-370d48d60e0f":{"type":"faq","settings":{"title":"Can I choose my currency I pay in?","content":"<p>When you have paid for the order, you will not automatically receive an invoice for your order. If you wish to receive an invoice, this can be done in two ways.The first way is through your account at our store. When you log in to your account you can see your orders and download the invoice.<\/p>"}}},"block_order":["691b1f60-2251-4d0b-b2cb-1a06c318b21b","1bdb23bd-d8d1-4780-b5ef-1c30fab61f9b","b990e18e-1627-4cad-9112-703bf6175852","e337eeba-1ef5-4ca4-ba65-987889d5f1e2","a093e3a6-3153-47ae-a48f-62a051913df6","09d82ae8-b720-49d7-aaf6-370d48d60e0f"],"settings":{"title":"Frequently Asked Questions."}},"bccf919c-929e-43b6-9577-1510fb31e9d9":{"type":"featured-instagram-shop","blocks":{"bccf919c-929e-43b6-9577-1510fb31e9d9-1673930462ae07b6b5-0":{"type":"image","settings":{"name":"look-1","image":"shopify:\/\/shop_images\/1_5993ac0b-2ecf-4bcd-8b8a-c2106a2a8868.jpg","url_lookbook":"#"}},"bfc0a4aa-1cd2-4a8b-8af5-7511dccadded":{"type":"item","settings":{"name_pin":"look-1","product":"floral-print-mini-dress","display":"top-right","top":61,"left":42}},"bccf919c-929e-43b6-9577-1510fb31e9d9-1673930462ae07b6b5-1":{"type":"image","settings":{"name":"look-2","image":"shopify:\/\/shop_images\/2_7ae08f32-5ffe-458c-8fed-7c0280758e46.jpg","url_lookbook":"#"}},"540f4e69-2704-4c6a-bfed-3c2dd329759d":{"type":"item","settings":{"name_pin":"look-2","product":"short-shoulder-bag-black","display":"top-right","top":50,"left":50}},"bccf919c-929e-43b6-9577-1510fb31e9d9-1673930462ae07b6b5-2":{"type":"image","settings":{"name":"","image":"shopify:\/\/shop_images\/3_dbc32329-e2d7-4449-889f-579444323b98.jpg","url_lookbook":"#"}},"bccf919c-929e-43b6-9577-1510fb31e9d9-1673930462ae07b6b5-3":{"type":"image","settings":{"name":"look-3","image":"shopify:\/\/shop_images\/4_7106ab35-4b73-4495-beb1-c35e4bcc8871.jpg","url_lookbook":"#"}},"affa65e3-caf2-490b-976d-b290835ec5b6":{"type":"item","settings":{"name_pin":"look-3","product":"wool-coat-for-women","display":"center-top","top":65,"left":50}},"bccf919c-929e-43b6-9577-1510fb31e9d9-1673930462ae07b6b5-4":{"type":"image","settings":{"name":"","image":"shopify:\/\/shop_images\/5_c0f71094-6c2b-4098-922f-8631193ee8fc.jpg","url_lookbook":"#"}},"bccf919c-929e-43b6-9577-1510fb31e9d9-1673930462ae07b6b5-5":{"type":"image","settings":{"name":"","image":"shopify:\/\/shop_images\/6_54d02926-6140-4e4b-975f-587cd4425b70.jpg","url_lookbook":"#"}}},"block_order":["bccf919c-929e-43b6-9577-1510fb31e9d9-1673930462ae07b6b5-0","bfc0a4aa-1cd2-4a8b-8af5-7511dccadded","bccf919c-929e-43b6-9577-1510fb31e9d9-1673930462ae07b6b5-1","540f4e69-2704-4c6a-bfed-3c2dd329759d","bccf919c-929e-43b6-9577-1510fb31e9d9-1673930462ae07b6b5-2","bccf919c-929e-43b6-9577-1510fb31e9d9-1673930462ae07b6b5-3","affa65e3-caf2-490b-976d-b290835ec5b6","bccf919c-929e-43b6-9577-1510fb31e9d9-1673930462ae07b6b5-4","bccf919c-929e-43b6-9577-1510fb31e9d9-1673930462ae07b6b5-5"],"settings":{"max_width":"","fullwidth":true,"padding":"","margin":"","margin_content":"0","padding_item":"0","navigation":true,"pagination":false,"infinite":true,"autoplay":false,"autoplay_speed":"10000","rows":1,"columns":6,"column1440":5,"column1":4,"column2":3,"column3":2,"column4":2}},"custom-product-card":{"type":"custom-product-card","settings":{}}},"content_for_index":["bccf919c-929e-43b6-9577-1510fb31e9d9"],"blocks":{"14060646107696862457":{"type":"shopify:\/\/apps\/judge-me-reviews\/blocks\/judgeme_core\/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8","disabled":false,"settings":{}}}}}
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "current": {
+    "theme-color": "#d1b26e",
+    "color_secondary": "#231f20",
+    "gray-dark": "#231f20",
+    "hover-color": "#231f20",
+    "text-color": "#231f20",
+    "color_body_bg": "#ffffff",
+    "color_border": "#e9e9e9",
+    "font-family-second-google-link": "<link href=\"https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap\" rel=\"stylesheet\">",
+    "font-family-second": "Urbanist",
+    "font-size-heading": 25,
+    "font-weight-second-default": "400",
+    "font-weight-second-medium": "500",
+    "font-weight-second-bold": "700",
+    "font-family-base-google-link": "<link href=\"https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap\" rel=\"stylesheet\">",
+    "font-family-base": "Urbanist",
+    "font-size-base": 14,
+    "font-weight-base-light": "300",
+    "font-weight-base-medium": "500",
+    "font-weight-base-bold": "700",
+    "layout_header": "1",
+    "show_menu_bottom": true,
+    "color_header_bg": "#ffffff",
+    "color_menu_text": "#231f20",
+    "color_menu_text_hover": "#231f20",
+    "color_submenu_text": "#231f20",
+    "color_submenu_text_hover": "#231f20",
+    "enable_rtl": false,
+    "iso_rtl": "ar",
+    "login_style": "sideout",
+    "product_reviews_enable": false,
+    "scroll_to_top": true,
+    "preview_bar": true,
+    "enable_christmas": false,
+    "svg_christmas": "shopify://shop_images/flake.svg",
+    "show_search_blog": true,
+    "search_item_count": 8,
+    "shop_full": false,
+    "layout_filter": "sidebar_2",
+    "sidebar_enable": true,
+    "style_view_items": "viewmore",
+    "count_items": 20,
+    "views_enable": true,
+    "select_columns": "grid-4",
+    "sortby_enable": true,
+    "select_pagination": "loadmore",
+    "show_compare": false,
+    "sortby_variants": true,
+    "number_variants": 2,
+    "product_vendor_enable": false,
+    "product_within_collection": false,
+    "product_card_review": false,
+    "product_atc_mobile": true,
+    "quickview_enable_mobile": true,
+    "hover_style": "hover_style_2",
+    "image_hover": "slider",
+    "countdown_style": "style_2",
+    "preload_product_image_logo": "aktive",
+    "image_raito_product": "",
+    "size_image": "cover",
+    "bg_raito": "#f5f5f5",
+    "quickview_enable": true,
+    "quickview_availability": false,
+    "quickview_quantity_selector": "text",
+    "quickview_variant_selector": "radio",
+    "filter_name_1": "Size",
+    "select_filter_1": "label",
+    "filter_name_2": "Color",
+    "select_filter_2": "color",
+    "filter_name_3": "Style",
+    "select_filter_3": "image",
+    "show_size_chart": false,
+    "html_size_chart": "size-guide",
+    "collection_nofication": "dresses",
+    "start_time": 3,
+    "start_time_unit": "minute",
+    "user_purchased": "Jhon (Tokyo) | James (New York) | David (Ohio) | Jack (Monaco) | Lindan (California) | Grap (Texas) | Sabo (Florida) | Pain (Illinois) | Kakuzu (Washington) | Sukuna (Nevada)",
+    "time_suggest": "5 minutes ago | 10 minutes ago | 15 minutes ago | 20 minutes ago | 35 minutes ago | 50 minutes ago | 1 hours ago | 2 hours ago | 3 hours ago | 4 hours ago",
+    "limit_nofication": 10,
+    "cart_type": "modal",
+    "price_shipping_bar": "100",
+    "cart_fire_work": true,
+    "show_gift_card": false,
+    "product_gift_card": "a-cold-wall-logo-embroidered",
+    "content_gift_card": "Add gift wrap",
+    "show_terms_conditions": false,
+    "content_terms_conditions": "I agree with the <a href=\"#\">terms and conditions</a>",
+    "alert_terms_conditions": "<p>Yodie supplies products listed on the Yodie, and Yodie websites, and in our stores under the following Terms and Conditions. Please read these Terms and Conditions, and our Privacy and Cookie Policies carefully before using any of our websites, or ordering from us.</p><p>The Terms and Conditions apply to your use of any Yodie website and to any products you purchase from them; regardless of how you access the website, including any technologies or devices where our website is available to you at home, on the move or in store</p><p>We reserve the right to update these Terms and Conditions at any time, and any updates affecting you or your purchases will be notified to you, by us in writing (via email), and on this page.</p><p>The headings in these Conditions are for convenience only and shall not affect their interpretation.</p><p>We recommend that you print and keep a copy of these Terms and Conditions for your future reference...</p>",
+    "cart_notes_enable": true,
+    "cart_coupon_enable": true,
+    "cart_shipping_enable": false,
+    "shipping_calculator_heading": "Get shipping estimates",
+    "shipping_calculator_submit_button_label": "ESTIMATE",
+    "sidebar_position": "left",
+    "layout_blog": "grid",
+    "show_locale_selector": true,
+    "show_currency_selector": true,
+    "auto_currency": false,
+    "currency_type": "1",
+    "flag_currency": true,
+    "currency_format": "money_format",
+    "round_currency": true,
+    "mess_currency": "All charges are billed in <span>[original_currency]</span>. While the content of your cart is currently displayed in [current_currency], the checkout will use <span>[original_currency]</span> at the most current exchange rate.",
+    "hover_currency": true,
+    "show_come_back": false,
+    "show_you_leave": false,
+    "img_you_leave": "shopify://shop_images/before.jpg",
+    "title_you_leave": "BEFORE YOU<br> LEAVE...",
+    "desc_you_leave": "Take <span>15% off</span> your first order",
+    "url_you_leave": "shopify://collections/all",
+    "collection_you_leave": "accessory",
+    "limit_you_leave": 3,
+    "social_facebook_link": "",
+    "social_twitter_link": "",
+    "social_whatsapp_link": "",
+    "social_instagram_link": "",
+    "social_snapchat_link": "",
+    "social_youtube_link": "",
+    "social_tiktok_link": "",
+    "share_facebook": true,
+    "favicon": "shopify://shop_images/80x80.png",
+    "cookie_consent_enable": false,
+    "cookie_agree_button": "Agree",
+    "cookie_consent_button": "Not agree",
+    "newsletter_popup_enable": false,
+    "newsletter_popup_image": "shopify://shop_images/newsletter-image.jpg",
+    "newsletter_popup_title": "Join the our family",
+    "newsletter_popup_subtitle": "Sign up for our newsletter and receive updates you’re looking for: interior inspiration, the latest trends and discounts",
+    "newsletter_popup_form": false,
+    "newsletter_popup_mailchimp": false,
+    "verify_popup_enable": false,
+    "verify_popup_title": "Are you over 18 years of age",
+    "menu_link_list": "main-menu",
+    "headertop_link_list-2": "categories",
+    "checkout_logo_image": "shopify://shop_images/logo_6c2c83c7-d9df-4e56-bdfb-2f8cda3894ce.png",
+    "checkout_logo_size": "small",
+    "headertop_link_list-4": "categories",
+    "headertop_link_list-3": "categories",
+    "login_bg": "shopify://shop_images/Group_3_1d3a78dd-ee93-477c-bba0-25d5ba5387ba.jpg",
+    "id_ltr": "",
+    "id_rtl": "",
+    "custom_css": "",
+    "select-font-base": "google",
+    "font-family-base-google": "Jost",
+    "select-font-second": "google",
+    "font-family-second-google": "Jost",
+    "menu_link_list2": "menu-right",
+    "color_header_text": "#000000",
+    "menu_collection_search": "collection-search",
+    "cookie_policy_button": "<a href=\"/policies/privacy-policy\">Learn more</a>",
+    "color_footer_bg": "#f8f8f8",
+    "header_overlay": true,
+    "mlvedaACS_autoSwitch": false,
+    "mlvedaACS_isCustomized": true,
+    "layout_article": "sidebar_left",
+    "mlvedaACS_borderLook": true,
+    "mlvedaACS_textColor": "inherit",
+    "mlvedaACS_flagStyle": "circle",
+    "mlvedaACS_isMessageDisplay": true,
+    "mlvedaACS_messageColor": "inherit",
+    "mlvedaACS_roundDecimal": false,
+    "mlvedaACS_messageContent": "<<shop.name>> process all orders in <<shop.currency>>. While the content of your cart is currently displayed in <<shop.selected_currency>>, you will checkout using <<shop.currency>> at the most current exchange rate.",
+    "cart_quantity_selector": "text",
+    "mlvedaACS_os2": false,
+    "mlvedaACS_positionTop": "10px",
+    "mlvedaACS_positionRight": "10px",
+    "show_shipping_bar": true,
+    "mlvedaACS_positionLeft": "10px",
+    "mlvedaACS_defaultCurrency": "USD",
+    "mlvedaACS_positionBottom": "10px",
+    "mlvedaACS_messageBackgroundColor": "inherit",
+    "style_option": "circle",
+    "mlvedaACS_roundDecimalValue": 1,
+    "mlvedaACS_backgroundColor": "#ffffff",
+    "mlvedaACS_position": "top_with_right",
+    "style_nofication": "style_2",
+    "mlvedaACS_textHoverColor": "inherit",
+    "mlvedaACS_enable": true,
+    "mlvedaACS_supportedCurrencies": "USD GBP EUR CAD AUD INR JPY VND",
+    "mlvedaACS_hideDecimal": false,
+    "mlvedaACS_hoverBackgroundColor": "inherit",
+    "mlvedaACS_currencyFormat": "money_format",
+    "mlvedaACS_borderLineColor": "inherit",
+    "size_option": 30,
+    "mlvedaACS_displayFlag": false,
+    "sections": {
+      "page-breadcrumb": {
+        "type": "page-breadcrumb",
+        "settings": {
+          "enable": true,
+          "bgimage": false
+        }
+      },
+      "search-breadcrumb": {
+        "type": "search-breadcrumb",
+        "settings": {
+          "enable": true,
+          "bgimage": false
+        }
+      },
+      "blog-breadcrumb": {
+        "type": "blog-breadcrumb",
+        "settings": {
+          "enable": true,
+          "bgimage": false,
+          "show_pagetitle": true,
+          "blog_categories_menu": "sidebar-blog",
+          "color_breadcrumb": "#000000",
+          "align_breadcrumb": "center"
+        }
+      },
+      "blog-sidebar": {
+        "type": "blog-sidebar",
+        "settings": {
+          "search_enable": true,
+          "search_title": "Search",
+          "categories_enable": true,
+          "categories_title": "Categories",
+          "menu_categories": "sidebar-blog",
+          "relatedarticles_enable": true,
+          "relatedarticles_title": "Related Posts",
+          "relatedarticles_limit": 3,
+          "tags_enable": true,
+          "tags_title": "Tags",
+          "tags_limit": 10
+        }
+      },
+      "product-template": {
+        "type": "product-template",
+        "settings": {
+          "product_button_wishlist": true,
+          "product_button_compare": true,
+          "show_sticky_cart": false,
+          "media_layout": "thumbnails",
+          "position_thumbnails": "bottom",
+          "thumbnail_count": 6,
+          "enable_video_looping": false
+        }
+      },
+      "list-collections-template": {
+        "type": "list-collections-template",
+        "blocks": {
+          "96dd9fb7-8b60-46eb-9150-a8abad0a72dc": {
+            "type": "collection",
+            "settings": {
+              "collection": "accessory"
+            }
+          },
+          "82b24bd2-86ee-4776-9e64-e5f14f1313c4": {
+            "type": "collection",
+            "settings": {
+              "collection": "jumpsuit"
+            }
+          },
+          "0b807616-b4d3-4e42-9c90-0c8108060d57": {
+            "type": "collection",
+            "settings": {
+              "collection": "leggings"
+            }
+          },
+          "3307c93b-0f22-42d3-83e6-a21151f2ba3e": {
+            "type": "collection",
+            "settings": {
+              "collection": "shorts"
+            }
+          },
+          "431f5626-0370-43c3-a72c-09723cf03693": {
+            "type": "collection",
+            "settings": {
+              "collection": "t-shirt"
+            }
+          },
+          "d8b2c29b-2dae-407e-975a-f75b0df9b94d": {
+            "type": "collection",
+            "settings": {
+              "collection": "tank-tops"
+            }
+          }
+        },
+        "block_order": [
+          "96dd9fb7-8b60-46eb-9150-a8abad0a72dc",
+          "82b24bd2-86ee-4776-9e64-e5f14f1313c4",
+          "0b807616-b4d3-4e42-9c90-0c8108060d57",
+          "3307c93b-0f22-42d3-83e6-a21151f2ba3e",
+          "431f5626-0370-43c3-a72c-09723cf03693",
+          "d8b2c29b-2dae-407e-975a-f75b0df9b94d"
+        ],
+        "settings": {
+          "display_type": "selected",
+          "style_collection_list": "style_2",
+          "sort": "alphabetical",
+          "column1": 4,
+          "column2": 5,
+          "column3": 3,
+          "column4": 2
+        }
+      },
+      "blog-template-search": {
+        "type": "blog-template-search",
+        "settings": {
+          "limit": 5
+        }
+      },
+      "blog-sidebar-search": {
+        "type": "blog-sidebar-search",
+        "settings": {
+          "search_enable": true,
+          "categories_enable": true,
+          "categories_title": "Categories",
+          "menu_categories": "sidebar-blog",
+          "relatedarticles_enable": true,
+          "relatedarticles_title": "Related Articles",
+          "relatedarticles_limit": 3
+        }
+      },
+      "portfolio-template": {
+        "type": "portfolio-template",
+        "settings": {
+          "limit": 3,
+          "limit-coloumn": 3,
+          "limit-coloumn2": 3,
+          "layout": "normal",
+          "select_pagination": "pagination"
+        }
+      },
+      "product-breadcrumb": {
+        "type": "product-breadcrumb",
+        "settings": {}
+      },
+      "main-search": {
+        "type": "main-search",
+        "settings": {
+          "page_item": 12
+        }
+      },
+      "faq-template": {
+        "type": "faq-template",
+        "blocks": {
+          "b0ee95f9-a491-4ee7-b4df-d17e9163c68f": {
+            "type": "faq",
+            "settings": {
+              "title": "01. The order",
+              "content": "<p><strong>When do I receive my order?</strong><br/>When placing the order, a day of shipment is indicated. After the order has been placed, the same delivery time will also be stated on the order confirmation. It is therefore never possible that during the order, the shipping day on the website, is different than on the order confirmation.<br/><br/><strong>I now see the longer delivery time of (a part of) my order. How can I cancel it?</strong><br/>If the order has a longer delivery time than you had previously seen, it is of course possible to cancel (a part of) the order. For this you can contact our customer service. They will cancel the order for you. The purchase amount will be back on your bank account within two working days. When an order has already been shipped, it can no longer be cancelled.</p><p><br/><strong>When will I receive the invoice for my order?</strong><br/>When you have paid for the order, you will not automatically receive an invoice for your order. If you wish to receive an invoice, this can be done in two ways.The first way is through your account at our store. When you log in to your account you can see your orders and download the invoice.</p>",
+              "width": "50% | | | 100%",
+              "padding": "0 15px"
+            }
+          },
+          "e0973b19-7458-4486-b7b0-6786c38b8dd0": {
+            "type": "faq",
+            "settings": {
+              "title": "02. Shipment",
+              "content": "<p><strong>When do I receive my order?</strong><br/>When placing the order, a day of shipment is indicated. After the order has been placed, the same delivery time will also be stated on the order confirmation. It is therefore never possible that during the order, the shipping day on the website, is different than on the order confirmation.<br/><br/><strong>I now see the longer delivery time of (a part of) my order. How can I cancel it?</strong><br/>If the order has a longer delivery time than you had previously seen, it is of course possible to cancel (a part of) the order. For this you can contact our customer service. They will cancel the order for you. The purchase amount will be back on your bank account within two working days. When an order has already been shipped, it can no longer be cancelled.</p><p><br/><strong>When will I receive the invoice for my order?</strong><br/>When you have paid for the order, you will not automatically receive an invoice for your order. If you wish to receive an invoice, this can be done in two ways.The first way is through your account at our store. When you log in to your account you can see your orders and download the invoice.</p>",
+              "width": "50% | | | 100%",
+              "padding": "0 15px"
+            }
+          },
+          "1b943bbd-3c41-4d20-b1ba-5154c3f784d7": {
+            "type": "faq",
+            "settings": {
+              "title": "03. The order",
+              "content": "<p><strong>When do I receive my order?</strong><br/>When placing the order, a day of shipment is indicated. After the order has been placed, the same delivery time will also be stated on the order confirmation. It is therefore never possible that during the order, the shipping day on the website, is different than on the order confirmation.<br/><br/><strong>I now see the longer delivery time of (a part of) my order. How can I cancel it?</strong><br/>If the order has a longer delivery time than you had previously seen, it is of course possible to cancel (a part of) the order. For this you can contact our customer service. They will cancel the order for you. The purchase amount will be back on your bank account within two working days. When an order has already been shipped, it can no longer be cancelled.</p><p><br/><strong>When will I receive the invoice for my order?</strong><br/>When you have paid for the order, you will not automatically receive an invoice for your order. If you wish to receive an invoice, this can be done in two ways.The first way is through your account at our store. When you log in to your account you can see your orders and download the invoice.</p>",
+              "width": "50% | | | 100%",
+              "padding": "0 15px"
+            }
+          },
+          "91f8c21c-0dd4-49ce-a52b-35de564327e4": {
+            "type": "faq",
+            "settings": {
+              "title": "04. Returns, exchanges and complaints",
+              "content": "<p><strong>When do I receive my order?</strong><br/>When placing the order, a day of shipment is indicated. After the order has been placed, the same delivery time will also be stated on the order confirmation. It is therefore never possible that during the order, the shipping day on the website, is different than on the order confirmation.<br/><br/><strong>I now see the longer delivery time of (a part of) my order. How can I cancel it?</strong><br/>If the order has a longer delivery time than you had previously seen, it is of course possible to cancel (a part of) the order. For this you can contact our customer service. They will cancel the order for you. The purchase amount will be back on your bank account within two working days. When an order has already been shipped, it can no longer be cancelled.</p><p><br/><strong>When will I receive the invoice for my order?</strong><br/>When you have paid for the order, you will not automatically receive an invoice for your order. If you wish to receive an invoice, this can be done in two ways.The first way is through your account at our store. When you log in to your account you can see your orders and download the invoice.</p>",
+              "width": "50% | | | 100%",
+              "padding": "0 15px"
+            }
+          }
+        },
+        "block_order": [
+          "b0ee95f9-a491-4ee7-b4df-d17e9163c68f",
+          "e0973b19-7458-4486-b7b0-6786c38b8dd0",
+          "1b943bbd-3c41-4d20-b1ba-5154c3f784d7",
+          "91f8c21c-0dd4-49ce-a52b-35de564327e4"
+        ],
+        "settings": {}
+      },
+      "product-information": {
+        "type": "product-information",
+        "settings": {
+          "tab_layout": "tab"
+        }
+      },
+      "recently-viewed": {
+        "type": "recently-viewed",
+        "settings": {
+          "heading": "Recently Viewed Products",
+          "navigation": true,
+          "limit": 5,
+          "infinite": true,
+          "autoplay": true,
+          "autoplay_speed": "10000",
+          "columns": 4,
+          "column1440": 4,
+          "column1": 4,
+          "column2": 3,
+          "column3": 1,
+          "column4": 1
+        }
+      },
+      "blog-template": {
+        "type": "blog-template",
+        "settings": {
+          "limit": 6,
+          "limit-coloumn": 3,
+          "limit-coloumn2": 3,
+          "show_date": true,
+          "show_category": true,
+          "select_pagination": "loadmore"
+        }
+      },
+      "collection-breadcrumb": {
+        "type": "collection-breadcrumb",
+        "blocks": {
+          "d43272b8-2a5b-432a-a9a5-59cabbd244ad": {
+            "type": "item",
+            "settings": {
+              "collection": "dresses"
+            }
+          },
+          "item_UEgbKj": {
+            "type": "item",
+            "settings": {
+              "collection": ""
+            }
+          }
+        },
+        "block_order": [
+          "d43272b8-2a5b-432a-a9a5-59cabbd244ad",
+          "item_UEgbKj"
+        ],
+        "settings": {
+          "enable": true,
+          "bgimage": true,
+          "show_pagetitle": true,
+          "show_breadcrumb": true,
+          "color_breadcrumb": "#000000",
+          "align_breadcrumb": "center",
+          "enable_collection": true,
+          "categories_menu": "",
+          "style_collection": "style_2",
+          "navigation": true,
+          "infinite": true,
+          "columns": 4,
+          "column1440": 4,
+          "column1": 4,
+          "column2": 4,
+          "column3": 3,
+          "column4": 2
+        }
+      },
+      "article-breadcrumb": {
+        "type": "article-breadcrumb",
+        "settings": {}
+      },
+      "portfolio-breadcrumb": {
+        "type": "portfolio-breadcrumb",
+        "settings": {
+          "enable": true,
+          "bgimage": false
+        }
+      },
+      "product-recommendations": {
+        "type": "product-recommendations",
+        "settings": {
+          "heading": "You may also like",
+          "navigation": true,
+          "infinite": true,
+          "autoplay": false,
+          "autoplay_speed": "10000",
+          "columns": 4,
+          "column1440": 4,
+          "column1": 4,
+          "column2": 3,
+          "column3": 3,
+          "column4": 2
+        }
+      },
+      "header-campar": {
+        "type": "header-campar",
+        "settings": {
+          "show_campar": false,
+          "max_width": "",
+          "fullwidth": true,
+          "padding": "5px 0",
+          "margin": "",
+          "bg_background": "#000000",
+          "content_campar": "Free Delivery on orders over $100.",
+          "url_campar": "",
+          "color_content": "#ffffff",
+          "color_span": "#ff0000",
+          "font_size": 14,
+          "font_weight": "400",
+          "marquee_content": true,
+          "marquee_loop": 10,
+          "marquee_time": 4,
+          "show_mobile": true
+        }
+      },
+      "header-topbar": {
+        "type": "header-topbar",
+        "blocks": {
+          "a4de579f-d8d5-4a1b-99c0-69d98b156b3c": {
+            "type": "custom-text",
+            "settings": {
+              "custom_text_content": "Free shipping on orders $100+. <a href=\"#\">SHOP NOW!</a>",
+              "color_custom_text": "#ffffff",
+              "color_custom_text_link": "#ffffff",
+              "color_custom_text_link_hover": "#f11e1e",
+              "text_align": "center",
+              "show_mobile_custom_text": true
+            }
+          }
+        },
+        "block_order": [
+          "a4de579f-d8d5-4a1b-99c0-69d98b156b3c"
+        ],
+        "settings": {
+          "show_topbar": false,
+          "max_width": "",
+          "fullwidth": false,
+          "padding": "13px 0",
+          "margin": "",
+          "bg_background": "#212124",
+          "topbar_absolute": false,
+          "bg_background2": "rgba(0,0,0,0)",
+          "font_size": 14,
+          "color_text": "#ffffff",
+          "font_weight": "500",
+          "border": false,
+          "border_width": "0 0 1px 0",
+          "border_color": "#ffffff",
+          "border_opacity": 0.1,
+          "show_mobile": true
+        }
+      },
+      "header_1": {
+        "type": "header_1",
+        "blocks": {
+          "mainmenu_item_NDUp8q": {
+            "type": "_mainmenu-item",
+            "settings": {
+              "title": "Fashion",
+              "menu_url": "shopify://collections/fashion",
+              "submenu_format": "",
+              "badge": "",
+              "position": "after",
+              "badge_color": "#000000"
+            },
+            "blocks": {
+              "megamenu_container_AcYHfD": {
+                "type": "_megamenu-container",
+                "settings": {
+                  "width": "custom",
+                  "width_custom": "950px"
+                },
+                "blocks": {
+                  "megamenu_item_3FxGDx": {
+                    "type": "_megamenu-item",
+                    "settings": {
+                      "widget": "image",
+                      "menu_col": "25%",
+                      "menu_heading": "",
+                      "menu_link_list_child": "",
+                      "banner_title": "Home 1",
+                      "banner_button": "",
+                      "banner_link": "https://wpbingo-aktive.myshopify.com//?preview_theme_id=130563211360",
+                      "collection_widget": "",
+                      "blog_widget": ""
+                    },
+                    "blocks": {}
+                  },
+                  "megamenu_item_dGgLBU": {
+                    "type": "_megamenu-item",
+                    "settings": {
+                      "widget": "image",
+                      "menu_col": "25%",
+                      "menu_heading": "",
+                      "menu_link_list_child": "",
+                      "banner_title": "Home 2",
+                      "banner_button": "",
+                      "banner_link": "https://wpbingo-aktive.myshopify.com//?preview_theme_id=131036414048",
+                      "collection_widget": "",
+                      "blog_widget": ""
+                    },
+                    "blocks": {}
+                  },
+                  "megamenu_item_kP8M9r": {
+                    "type": "_megamenu-item",
+                    "settings": {
+                      "widget": "image",
+                      "menu_col": "25%",
+                      "menu_heading": "",
+                      "menu_link_list_child": "",
+                      "banner_title": "Home 3",
+                      "banner_button": "",
+                      "banner_link": "https://wpbingo-aktive.myshopify.com//?preview_theme_id=131043721312",
+                      "collection_widget": "",
+                      "blog_widget": ""
+                    },
+                    "blocks": {}
+                  },
+                  "megamenu_item_natECV": {
+                    "type": "_megamenu-item",
+                    "settings": {
+                      "widget": "image",
+                      "menu_col": "25%",
+                      "menu_heading": "",
+                      "menu_link_list_child": "",
+                      "banner_title": "Home 4",
+                      "banner_button": "",
+                      "banner_link": "https://wpbingo-aktive.myshopify.com//?preview_theme_id=131080585312",
+                      "collection_widget": "",
+                      "blog_widget": ""
+                    },
+                    "blocks": {}
+                  },
+                  "megamenu_item_iLkcPc": {
+                    "type": "_megamenu-item",
+                    "settings": {
+                      "widget": "image",
+                      "menu_col": "25%",
+                      "menu_heading": "",
+                      "menu_link_list_child": "",
+                      "banner_title": "Home 5",
+                      "banner_button": "",
+                      "banner_link": "https://wpbingo-aktive.myshopify.com//?preview_theme_id=131083141216",
+                      "collection_widget": "",
+                      "blog_widget": ""
+                    },
+                    "blocks": {}
+                  },
+                  "megamenu_item_PaKEJk": {
+                    "type": "_megamenu-item",
+                    "settings": {
+                      "widget": "image",
+                      "menu_col": "25%",
+                      "menu_heading": "",
+                      "menu_link_list_child": "",
+                      "banner_title": "Home 6",
+                      "banner_button": "",
+                      "banner_link": "https://wpbingo-aktive.myshopify.com//?preview_theme_id=131109027936",
+                      "collection_widget": "",
+                      "blog_widget": ""
+                    },
+                    "blocks": {}
+                  },
+                  "megamenu_item_khrdLN": {
+                    "type": "_megamenu-item",
+                    "settings": {
+                      "widget": "image",
+                      "menu_col": "25%",
+                      "menu_heading": "",
+                      "menu_link_list_child": "",
+                      "banner_title": "Home 7",
+                      "banner_button": "",
+                      "banner_link": "https://wpbingo-aktive.myshopify.com//?preview_theme_id=131110076512",
+                      "collection_widget": "",
+                      "blog_widget": ""
+                    },
+                    "blocks": {}
+                  },
+                  "megamenu_item_PfT8Ne": {
+                    "type": "_megamenu-item",
+                    "settings": {
+                      "widget": "image",
+                      "menu_col": "25%",
+                      "menu_heading": "",
+                      "menu_link_list_child": "",
+                      "banner_title": "Home 8",
+                      "banner_button": "",
+                      "banner_link": "https://wpbingo-aktive.myshopify.com//?preview_theme_id=131114106976",
+                      "collection_widget": "",
+                      "blog_widget": ""
+                    },
+                    "blocks": {}
+                  }
+                },
+                "block_order": [
+                  "megamenu_item_3FxGDx",
+                  "megamenu_item_dGgLBU",
+                  "megamenu_item_kP8M9r",
+                  "megamenu_item_natECV",
+                  "megamenu_item_iLkcPc",
+                  "megamenu_item_PaKEJk",
+                  "megamenu_item_khrdLN",
+                  "megamenu_item_PfT8Ne"
+                ]
+              }
+            },
+            "block_order": [
+              "megamenu_container_AcYHfD"
+            ]
+          },
+          "mainmenu_item_g884pn": {
+            "type": "_mainmenu-item",
+            "settings": {
+              "title": "Bags",
+              "menu_url": "shopify://collections/bags",
+              "submenu_format": "",
+              "badge": "",
+              "position": "after",
+              "badge_color": "#000000"
+            },
+            "blocks": {
+              "megamenu_container_LjwJGL": {
+                "type": "_megamenu-container",
+                "settings": {
+                  "width": "full",
+                  "width_custom": ""
+                },
+                "blocks": {
+                  "megamenu_item_tDkJKH": {
+                    "type": "_megamenu-item",
+                    "settings": {
+                      "widget": "image",
+                      "menu_col": "25%",
+                      "menu_heading": "",
+                      "menu_link_list_child": "",
+                      "banner_title": "",
+                      "banner_button": "Best Sellers",
+                      "banner_link": "#",
+                      "collection_widget": "",
+                      "blog_widget": ""
+                    },
+                    "blocks": {}
+                  },
+                  "megamenu_item_3LicKT": {
+                    "type": "_megamenu-item",
+                    "settings": {
+                      "widget": "image",
+                      "menu_col": "25%",
+                      "menu_heading": "",
+                      "menu_link_list_child": "",
+                      "banner_title": "",
+                      "banner_button": "New Arrivals",
+                      "banner_link": "#",
+                      "collection_widget": "",
+                      "blog_widget": ""
+                    },
+                    "blocks": {}
+                  },
+                  "megamenu_item_gb6GKG": {
+                    "type": "_megamenu-item",
+                    "settings": {
+                      "widget": "menu",
+                      "menu_col": "16.66%",
+                      "menu_heading": "Layout",
+                      "menu_link_list_child": "",
+                      "banner_title": "",
+                      "banner_button": "",
+                      "banner_link": "",
+                      "collection_widget": "",
+                      "blog_widget": ""
+                    },
+                    "blocks": {}
+                  },
+                  "megamenu_item_KfwiVm": {
+                    "type": "_megamenu-item",
+                    "settings": {
+                      "widget": "menu",
+                      "menu_col": "16.66%",
+                      "menu_heading": "Filter",
+                      "menu_link_list_child": "",
+                      "banner_title": "",
+                      "banner_button": "",
+                      "banner_link": "",
+                      "collection_widget": "",
+                      "blog_widget": ""
+                    },
+                    "blocks": {}
+                  },
+                  "megamenu_item_kbtYY7": {
+                    "type": "_megamenu-item",
+                    "settings": {
+                      "widget": "menu",
+                      "menu_col": "16.66%",
+                      "menu_heading": "Loader & Cart",
+                      "menu_link_list_child": "",
+                      "banner_title": "",
+                      "banner_button": "",
+                      "banner_link": "",
+                      "collection_widget": "",
+                      "blog_widget": ""
+                    },
+                    "blocks": {}
+                  }
+                },
+                "block_order": [
+                  "megamenu_item_tDkJKH",
+                  "megamenu_item_3LicKT",
+                  "megamenu_item_gb6GKG",
+                  "megamenu_item_KfwiVm",
+                  "megamenu_item_kbtYY7"
+                ]
+              }
+            },
+            "block_order": [
+              "megamenu_container_LjwJGL"
+            ]
+          },
+          "mainmenu_item_W7rhGn": {
+            "type": "_mainmenu-item",
+            "settings": {
+              "title": "Trophies & Awards",
+              "menu_url": "shopify://collections/trophies-awards",
+              "submenu_format": "",
+              "badge": "",
+              "position": "after",
+              "badge_color": "#000000"
+            },
+            "blocks": {
+              "megamenu_container_6dTCcK": {
+                "type": "_megamenu-container",
+                "settings": {
+                  "width": "full",
+                  "width_custom": ""
+                },
+                "blocks": {
+                  "megamenu_item_9bH3nH": {
+                    "type": "_megamenu-item",
+                    "settings": {
+                      "widget": "menu",
+                      "menu_col": "25%",
+                      "menu_heading": "Product Layout",
+                      "menu_link_list_child": "",
+                      "banner_title": "",
+                      "banner_button": "",
+                      "banner_link": "",
+                      "collection_widget": "",
+                      "blog_widget": ""
+                    },
+                    "blocks": {}
+                  },
+                  "megamenu_item_98YhFC": {
+                    "type": "_megamenu-item",
+                    "settings": {
+                      "widget": "menu",
+                      "menu_col": "25%",
+                      "menu_heading": "Fretured",
+                      "menu_link_list_child": "",
+                      "banner_title": "",
+                      "banner_button": "",
+                      "banner_link": "",
+                      "collection_widget": "",
+                      "blog_widget": ""
+                    },
+                    "blocks": {}
+                  },
+                  "megamenu_item_WJiHBU": {
+                    "type": "_megamenu-item",
+                    "settings": {
+                      "widget": "menu",
+                      "menu_col": "25%",
+                      "menu_heading": "Fretured",
+                      "menu_link_list_child": "",
+                      "banner_title": "",
+                      "banner_button": "",
+                      "banner_link": "",
+                      "collection_widget": "",
+                      "blog_widget": ""
+                    },
+                    "blocks": {}
+                  },
+                  "megamenu_item_MKWp9V": {
+                    "type": "_megamenu-item",
+                    "settings": {
+                      "widget": "menu",
+                      "menu_col": "25%",
+                      "menu_heading": "Product Card",
+                      "menu_link_list_child": "",
+                      "banner_title": "",
+                      "banner_button": "",
+                      "banner_link": "",
+                      "collection_widget": "",
+                      "blog_widget": ""
+                    },
+                    "blocks": {}
+                  }
+                },
+                "block_order": [
+                  "megamenu_item_9bH3nH",
+                  "megamenu_item_98YhFC",
+                  "megamenu_item_WJiHBU",
+                  "megamenu_item_MKWp9V"
+                ]
+              }
+            },
+            "block_order": [
+              "megamenu_container_6dTCcK"
+            ]
+          },
+          "mainmenu_item_EtPCeD": {
+            "type": "_mainmenu-item",
+            "settings": {
+              "title": "Toys",
+              "menu_url": "shopify://collections/toys",
+              "submenu_format": "",
+              "badge": "",
+              "position": "after",
+              "badge_color": "#000000"
+            },
+            "blocks": {
+              "megamenu_container_9xe8H6": {
+                "type": "_megamenu-container",
+                "settings": {
+                  "width": "custom",
+                  "width_custom": "650px"
+                },
+                "blocks": {
+                  "megamenu_item_MRcf6G": {
+                    "type": "_megamenu-item",
+                    "settings": {
+                      "widget": "menu",
+                      "menu_col": "50%",
+                      "menu_heading": "Layout & Post",
+                      "menu_link_list_child": "",
+                      "banner_title": "",
+                      "banner_button": "",
+                      "banner_link": "",
+                      "collection_widget": "",
+                      "blog_widget": ""
+                    },
+                    "blocks": {}
+                  },
+                  "megamenu_item_zM9JTE": {
+                    "type": "_megamenu-item",
+                    "settings": {
+                      "widget": "blog",
+                      "menu_col": "50%",
+                      "menu_heading": "",
+                      "menu_link_list_child": "",
+                      "banner_title": "",
+                      "banner_button": "",
+                      "banner_link": "",
+                      "collection_widget": "",
+                      "blog_widget": "news"
+                    },
+                    "blocks": {}
+                  }
+                },
+                "block_order": [
+                  "megamenu_item_MRcf6G",
+                  "megamenu_item_zM9JTE"
+                ]
+              }
+            },
+            "block_order": [
+              "megamenu_container_9xe8H6"
+            ]
+          },
+          "mainmenu_item_7JnjnL": {
+            "type": "_mainmenu-item",
+            "disabled": true,
+            "settings": {
+              "title": "Featured",
+              "menu_url": "#",
+              "submenu_format": "mega",
+              "badge": "",
+              "position": "after",
+              "badge_color": "#000000"
+            },
+            "blocks": {
+              "megamenu_container_W8nMH9": {
+                "type": "_megamenu-container",
+                "settings": {
+                  "width": "full",
+                  "width_custom": ""
+                },
+                "blocks": {
+                  "megamenu_item_cb4wgw": {
+                    "type": "_megamenu-item",
+                    "settings": {
+                      "widget": "menu",
+                      "menu_col": "20%",
+                      "menu_heading": "Page",
+                      "menu_link_list_child": "",
+                      "banner_title": "",
+                      "banner_button": "",
+                      "banner_link": "",
+                      "collection_widget": "",
+                      "blog_widget": ""
+                    },
+                    "blocks": {}
+                  },
+                  "megamenu_item_zdzHWk": {
+                    "type": "_megamenu-item",
+                    "settings": {
+                      "widget": "menu",
+                      "menu_col": "20%",
+                      "menu_heading": "Portfolio",
+                      "menu_link_list_child": "",
+                      "banner_title": "",
+                      "banner_button": "",
+                      "banner_link": "",
+                      "collection_widget": "",
+                      "blog_widget": ""
+                    },
+                    "blocks": {}
+                  },
+                  "megamenu_item_JyVw49": {
+                    "type": "_megamenu-item",
+                    "settings": {
+                      "widget": "menu",
+                      "menu_col": "20%",
+                      "menu_heading": "Featured",
+                      "menu_link_list_child": "",
+                      "banner_title": "",
+                      "banner_button": "",
+                      "banner_link": "",
+                      "collection_widget": "",
+                      "blog_widget": ""
+                    },
+                    "blocks": {}
+                  },
+                  "megamenu_item_xVTfP7": {
+                    "type": "_megamenu-item",
+                    "settings": {
+                      "widget": "menu",
+                      "menu_col": "20%",
+                      "menu_heading": "Lookbook",
+                      "menu_link_list_child": "",
+                      "banner_title": "",
+                      "banner_button": "",
+                      "banner_link": "",
+                      "collection_widget": "",
+                      "blog_widget": ""
+                    },
+                    "blocks": {}
+                  },
+                  "megamenu_item_N8Hnc4": {
+                    "type": "_megamenu-item",
+                    "settings": {
+                      "widget": "menu",
+                      "menu_col": "20%",
+                      "menu_heading": "Instagram Shop",
+                      "menu_link_list_child": "",
+                      "banner_title": "",
+                      "banner_button": "",
+                      "banner_link": "",
+                      "collection_widget": "",
+                      "blog_widget": ""
+                    },
+                    "blocks": {}
+                  }
+                },
+                "block_order": [
+                  "megamenu_item_cb4wgw",
+                  "megamenu_item_zdzHWk",
+                  "megamenu_item_JyVw49",
+                  "megamenu_item_xVTfP7",
+                  "megamenu_item_N8Hnc4"
+                ]
+              }
+            },
+            "block_order": [
+              "megamenu_container_W8nMH9"
+            ]
+          }
+        },
+        "block_order": [
+          "mainmenu_item_NDUp8q",
+          "mainmenu_item_g884pn",
+          "mainmenu_item_W7rhGn",
+          "mainmenu_item_EtPCeD",
+          "mainmenu_item_7JnjnL"
+        ],
+        "settings": {
+          "width_header": "",
+          "padding": "30px 0",
+          "header_sticky": true,
+          "header_absolute": false,
+          "color_homepage_text": "#000000",
+          "header_align": "logo-menu-icons",
+          "header_divider": false,
+          "border_width": "0px 0px 1px 0px",
+          "border_style": "solid",
+          "border_color": "#000000",
+          "border_opacity": "0.15",
+          "logo": "shopify://shop_images/EWC_TWO-LINE_LOGOTYPE-02.png",
+          "logo_max_width": 115,
+          "horizontal_align": "center",
+          "padding_menu": "0px 0px 0px 0px",
+          "show_header_search": true,
+          "show_header_wishlist": true,
+          "page_wishlist": "whislist",
+          "show_header_user": true,
+          "header_user_title": "Account",
+          "header_user_link_list": "",
+          "show_header_cart": true
+        }
+      },
+      "faq-template2": {
+        "type": "faq-template2",
+        "blocks": {
+          "691b1f60-2251-4d0b-b2cb-1a06c318b21b": {
+            "type": "faq",
+            "settings": {
+              "title": "When do I receive my order?",
+              "content": "<p>When placing the order, a day of shipment is indicated. After the order has been placed, the same delivery time will also be stated on the order confirmation. It is therefore never possible that during the order, the shipping day on the website, is different than on the order confirmation.</p>"
+            }
+          },
+          "1bdb23bd-d8d1-4780-b5ef-1c30fab61f9b": {
+            "type": "faq",
+            "settings": {
+              "title": "I now see the longer delivery time of (a part of) my order. How can I cancel it?",
+              "content": "<p>If the order has a longer delivery time than you had previously seen, it is of course possible to cancel (a part of) the order. For this you can contact our customer service. They will cancel the order for you. The purchase amount will be back on your bank account within two working days. When an order has already been shipped, it can no longer be cancelled</p>"
+            }
+          },
+          "b990e18e-1627-4cad-9112-703bf6175852": {
+            "type": "faq",
+            "settings": {
+              "title": "When will I receive the invoice for my order?",
+              "content": "<p>When you have paid for the order, you will not automatically receive an invoice for your order. If you wish to receive an invoice, this can be done in two ways.The first way is through your account at our store. When you log in to your account you can see your orders and download the invoice.</p>"
+            }
+          },
+          "e337eeba-1ef5-4ca4-ba65-987889d5f1e2": {
+            "type": "faq",
+            "settings": {
+              "title": "How long will my order take to be delivered?",
+              "content": "<p>When you have paid for the order, you will not automatically receive an invoice for your order. If you wish to receive an invoice, this can be done in two ways.The first way is through your account at our store. When you log in to your account you can see your orders and download the invoice.</p>"
+            }
+          },
+          "a093e3a6-3153-47ae-a48f-62a051913df6": {
+            "type": "faq",
+            "settings": {
+              "title": "Do I need to create an account to place an order?",
+              "content": "<p>When you have paid for the order, you will not automatically receive an invoice for your order. If you wish to receive an invoice, this can be done in two ways.The first way is through your account at our store. When you log in to your account you can see your orders and download the invoice.</p>"
+            }
+          },
+          "09d82ae8-b720-49d7-aaf6-370d48d60e0f": {
+            "type": "faq",
+            "settings": {
+              "title": "Can I choose my currency I pay in?",
+              "content": "<p>When you have paid for the order, you will not automatically receive an invoice for your order. If you wish to receive an invoice, this can be done in two ways.The first way is through your account at our store. When you log in to your account you can see your orders and download the invoice.</p>"
+            }
+          }
+        },
+        "block_order": [
+          "691b1f60-2251-4d0b-b2cb-1a06c318b21b",
+          "1bdb23bd-d8d1-4780-b5ef-1c30fab61f9b",
+          "b990e18e-1627-4cad-9112-703bf6175852",
+          "e337eeba-1ef5-4ca4-ba65-987889d5f1e2",
+          "a093e3a6-3153-47ae-a48f-62a051913df6",
+          "09d82ae8-b720-49d7-aaf6-370d48d60e0f"
+        ],
+        "settings": {
+          "title": "Frequently Asked Questions."
+        }
+      },
+      "bccf919c-929e-43b6-9577-1510fb31e9d9": {
+        "type": "featured-instagram-shop",
+        "blocks": {
+          "bccf919c-929e-43b6-9577-1510fb31e9d9-1673930462ae07b6b5-0": {
+            "type": "image",
+            "settings": {
+              "name": "look-1",
+              "image": "shopify://shop_images/1_5993ac0b-2ecf-4bcd-8b8a-c2106a2a8868.jpg",
+              "url_lookbook": "#"
+            }
+          },
+          "bfc0a4aa-1cd2-4a8b-8af5-7511dccadded": {
+            "type": "item",
+            "settings": {
+              "name_pin": "look-1",
+              "product": "floral-print-mini-dress",
+              "display": "top-right",
+              "top": 61,
+              "left": 42
+            }
+          },
+          "bccf919c-929e-43b6-9577-1510fb31e9d9-1673930462ae07b6b5-1": {
+            "type": "image",
+            "settings": {
+              "name": "look-2",
+              "image": "shopify://shop_images/2_7ae08f32-5ffe-458c-8fed-7c0280758e46.jpg",
+              "url_lookbook": "#"
+            }
+          },
+          "540f4e69-2704-4c6a-bfed-3c2dd329759d": {
+            "type": "item",
+            "settings": {
+              "name_pin": "look-2",
+              "product": "short-shoulder-bag-black",
+              "display": "top-right",
+              "top": 50,
+              "left": 50
+            }
+          },
+          "bccf919c-929e-43b6-9577-1510fb31e9d9-1673930462ae07b6b5-2": {
+            "type": "image",
+            "settings": {
+              "name": "",
+              "image": "shopify://shop_images/3_dbc32329-e2d7-4449-889f-579444323b98.jpg",
+              "url_lookbook": "#"
+            }
+          },
+          "bccf919c-929e-43b6-9577-1510fb31e9d9-1673930462ae07b6b5-3": {
+            "type": "image",
+            "settings": {
+              "name": "look-3",
+              "image": "shopify://shop_images/4_7106ab35-4b73-4495-beb1-c35e4bcc8871.jpg",
+              "url_lookbook": "#"
+            }
+          },
+          "affa65e3-caf2-490b-976d-b290835ec5b6": {
+            "type": "item",
+            "settings": {
+              "name_pin": "look-3",
+              "product": "wool-coat-for-women",
+              "display": "center-top",
+              "top": 65,
+              "left": 50
+            }
+          },
+          "bccf919c-929e-43b6-9577-1510fb31e9d9-1673930462ae07b6b5-4": {
+            "type": "image",
+            "settings": {
+              "name": "",
+              "image": "shopify://shop_images/5_c0f71094-6c2b-4098-922f-8631193ee8fc.jpg",
+              "url_lookbook": "#"
+            }
+          },
+          "bccf919c-929e-43b6-9577-1510fb31e9d9-1673930462ae07b6b5-5": {
+            "type": "image",
+            "settings": {
+              "name": "",
+              "image": "shopify://shop_images/6_54d02926-6140-4e4b-975f-587cd4425b70.jpg",
+              "url_lookbook": "#"
+            }
+          }
+        },
+        "block_order": [
+          "bccf919c-929e-43b6-9577-1510fb31e9d9-1673930462ae07b6b5-0",
+          "bfc0a4aa-1cd2-4a8b-8af5-7511dccadded",
+          "bccf919c-929e-43b6-9577-1510fb31e9d9-1673930462ae07b6b5-1",
+          "540f4e69-2704-4c6a-bfed-3c2dd329759d",
+          "bccf919c-929e-43b6-9577-1510fb31e9d9-1673930462ae07b6b5-2",
+          "bccf919c-929e-43b6-9577-1510fb31e9d9-1673930462ae07b6b5-3",
+          "affa65e3-caf2-490b-976d-b290835ec5b6",
+          "bccf919c-929e-43b6-9577-1510fb31e9d9-1673930462ae07b6b5-4",
+          "bccf919c-929e-43b6-9577-1510fb31e9d9-1673930462ae07b6b5-5"
+        ],
+        "settings": {
+          "max_width": "",
+          "fullwidth": true,
+          "padding": "",
+          "margin": "",
+          "margin_content": "0",
+          "padding_item": "0",
+          "navigation": true,
+          "pagination": false,
+          "infinite": true,
+          "autoplay": false,
+          "autoplay_speed": "10000",
+          "rows": 1,
+          "columns": 6,
+          "column1440": 5,
+          "column1": 4,
+          "column2": 3,
+          "column3": 2,
+          "column4": 2
+        }
+      },
+      "custom-product-card": {
+        "type": "custom-product-card",
+        "settings": {}
+      }
+    },
+    "content_for_index": [
+      "bccf919c-929e-43b6-9577-1510fb31e9d9"
+    ],
+    "blocks": {
+      "3767940252973401755": {
+        "type": "shopify://apps/smartcs-currency-switcher/blocks/cs-embed/00b86c75-58ec-4d3d-9b2c-137af9b84570",
+        "disabled": false,
+        "settings": {}
+      }
+    }
+  }
+}
