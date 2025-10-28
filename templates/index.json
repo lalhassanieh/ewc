@@ -1568,7 +1568,7 @@
             "banners_box_CPHtBL": {
               "type": "banners-box",
               "settings": {
-                "url": "shopify://collections/shorts",
+                "url": "shopify://collections/fashion",
                 "border_radius_img": "10px",
                 "margin_image": "",
                 "padding": "",
