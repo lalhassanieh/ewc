@@ -106,7 +106,7 @@
     "show_locale_selector": true,
     "show_currency_selector": true,
     "auto_currency": false,
-    "currency_type": "2",
+    "currency_type": "1",
     "flag_currency": true,
     "currency_format": "money_format",
     "round_currency": true,
