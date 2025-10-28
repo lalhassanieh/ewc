@@ -323,7 +323,7 @@
         "bg_section": "#ffffff",
         "padding_section": "0px 0px 0px 0px",
         "product_button_wishlist": true,
-        "product_button_compare": true,
+        "product_button_compare": false,
         "show_sticky_cart": true,
         "media_layout": "stacked",
         "position_thumbnails": "left",
