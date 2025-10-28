@@ -89,7 +89,7 @@
     "limit_nofication": 10,
     "cart_type": "modal",
     "price_shipping_bar": "100",
-    "cart_fire_work": true,
+    "cart_fire_work": false,
     "show_gift_card": false,
     "product_gift_card": "a-cold-wall-logo-embroidered",
     "content_gift_card": "Add gift wrap",
