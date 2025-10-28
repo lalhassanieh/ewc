@@ -33,15 +33,6 @@
 .bwp-header-topbar .content-topbar > div:last-child .item, .bwp-header-topbar .content-topbar > div:last-child .social-icons {
   justify-content: right;
 }
-.bwp-header-topbar .content-topbar > div.text-align-left {
-  text-align: left;
-}
-.bwp-header-topbar .content-topbar > div.text-align-center {
-  text-align: center;
-}
-.bwp-header-topbar .content-topbar > div.text-align-right {
-  text-align: right;
-}
 .bwp-header-topbar .language-currency {
   display: flex;
   align-items: center;
@@ -63,6 +54,9 @@
 }
 .bwp-header-topbar .content-item-custom-text a {
   display: initial;
+}
+.bwp-header-topbar .content-item-custom-text a:hover {
+  color: var(--theme-color);
 }
 .bwp-header-topbar .content-item-text-with-icon .custom-text {
   display: flex;

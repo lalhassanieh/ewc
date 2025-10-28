@@ -642,11 +642,11 @@ section.wpbingo-breadcrumbs.wpbingo-breadcrumbs--image.is_collection{
 }
 .collection-sidebar--open .page-collection.side_out .collection-sidebar__overlay {
 	display: block;
-	cursor:url(//wpbingo-aktive.myshopify.com/cdn/shop/t/4/assets/cross.svg?v=131277406248458886611738720154),auto;
+	cursor:url(//wpbingo-aktive.myshopify.com/cdn/shop/t/2/assets/cross.svg?v=131277406248458886611737435407),auto;
 }
 .collection-sidebar--open .page-collection.on_top .collection-sidebar__overlay {
 	display: block;
-	cursor:url(//wpbingo-aktive.myshopify.com/cdn/shop/t/4/assets/cross.svg?v=131277406248458886611738720154),auto;
+	cursor:url(//wpbingo-aktive.myshopify.com/cdn/shop/t/2/assets/cross.svg?v=131277406248458886611737435407),auto;
 }
 #JsCollectionProduct.grid-2 .products__col {
 	max-width: 50%;

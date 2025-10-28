@@ -1,53 +1,14 @@
 {%- assign image 		= block.settings.image -%}
 {%- assign image_url 	= block.settings.url -%}
-{% assign margin 			= block.settings.margin | split: "|" %}
-{% assign padding 			= block.settings.padding | split: "|" %}
-<style>
-	#shopify-block-{{ block.id }} .bwp-image{
-        border-radius:{{block.settings.border_radius}};
-    }
-	{%- if margin[0] != blank or padding[0] != blank -%}
-		#shopify-block-{{ block.id }} .content-image{
-			{%- if margin[0] != blank -%}margin: {{ margin[0] }};{%- endif -%}
-			{%- if padding[0] != blank -%}padding:{{ padding[0] }};{%- endif -%}
-		}
-	{%- endif -%}
-	{%- if margin[1] != blank or padding[1] != blank -%}
-		@media (max-width:1199px){
-			#shopify-block-{{ block.id }} .content-image{
-				{%- if margin[1] != blank -%}margin: {{ margin[1] }};{%- endif -%}
-				{%- if padding[1] != blank -%}padding:{{ padding[1] }};{%- endif -%}
-			}
-		}
-	{%- endif -%}
-	{%- if margin[2] != blank or padding[2] != blank -%}
-		@media (max-width:991px){
-			#shopify-block-{{ block.id }} .content-image{
-				{%- if margin[2] != blank -%}margin: {{ margin[2] }};{%- endif -%}
-				{%- if padding[2] != blank -%}padding:{{ padding[2] }};{%- endif -%}
-			}
-		}
-	{%- endif -%}
-	{%- if margin[3] != blank or padding[3] != blank -%}
-		@media (max-width:767px){
-			#shopify-block-{{ block.id }} .content-image{
-				{%- if margin[3] != blank -%}margin: {{ margin[3] }};{%- endif -%}
-				{%- if padding[3] != blank -%}padding:{{ padding[3] }};{%- endif -%}
-			}
-		}
-	{%- endif -%}
-</style>
 <div class="featured-banner bwp-effect-{{ block.settings.effect }}">
-	<div class="content-image">
-		<div class="bwp-image overflow-hidden" >
-			<a class="image image-effect" href="{{ image_url }}">
-				{%- if image -%}
-					{% render 'img-global' with image: image, class: "featured-slider__img", effect: "fade-in" %}
-				{%- else -%}
-					<img class="lazyload fade-in" src="{{ 'placeholder.svg' | asset_url }}" alt="image demo" width="960" height="730" />
-				{%- endif -%}
-			</a>
-		</div>
+	<div class="bwp-image overflow-hidden" >
+		<a class="image image-effect" href="{{ image_url }}">
+			{%- if image -%}
+				{% render 'img-global' with image: image, class: "featured-slider__img", effect: "fade-in" %}
+			{%- else -%}
+				<img class="lazyload fade-in" src="{{ 'placeholder.svg' | asset_url }}" alt="image demo" width="960" height="730" />
+			{%- endif -%}
+		</a>
 	</div>
 	{% content_for "blocks" %}
 </div>
@@ -57,20 +18,6 @@
     "blocks": [{ "type": "_banner-box" }],
     "settings": [
         {
-			"type": "textarea",
-			"id": "padding",
-			"label": "Padding",
-			"placeholder": "0px 0px 0px 0px",
-			"info":"Screen: desktop | 1200px | 991px | 767px"
-		},
-		{
-			"type": "textarea",
-			"id": "margin",
-			"label": "Margin",
-			"placeholder": "0px 0px 0px 0px",
-			"info":"Screen: desktop | 1200px | 991px | 767px"
-		},
-        {
             "type": "image_picker",
             "id": "image",
             "label": "Image"
@@ -79,13 +26,6 @@
             "type": "url",
             "id": "url",
             "label": "Url"
-        },
-		{
-            "type": "text",
-            "id": "border_radius",
-            "label": "Border radius",
-            "default": "0px 0px 0px 0px",
-            "info": "top right bottom left"
         },
         {
   			"type": "select",

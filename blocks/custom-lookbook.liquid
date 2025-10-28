@@ -108,26 +108,18 @@
         position:relative;
     }
 {%- endunless -%}
-@media(max-width:991px){
-    #shopify-section-{{ section.id }} .wpbingo-widget-lookbook .title{
-        font-size:{{ block.settings.font_size_title_tab }}px;
-        line-height:{{ block.settings.line_height_title_tab }}px;
-    }
-}
 @media(max-width:767px){
     #shopify-section-{{ section.id }} .wpbingo-widget-lookbook .subtitle{
         font-size:{{ block.settings.font_size_subtitle_mobi }}px;
         line-height:{{ block.settings.line_height_subtitle_mobi }}px;
         letter-spacing:{{ block.settings.letter_spacing_subtitle_mobi }}px;
         color:{{ block.settings.color_subtitle_mobi }};
-        margin:{{ block.settings.margin_subtitle_mobi }};
     }
     #shopify-section-{{ section.id }} .wpbingo-widget-lookbook .title{
         font-size:{{ block.settings.font_size_title_mobi }}px;
         line-height:{{ block.settings.line_height_title_mobi }}px;
         letter-spacing:{{ block.settings.letter_spacing_title_mobi }}px;
         color:{{ block.settings.color_title_mobi }};
-        margin:{{ block.settings.margin_title_mobi }};
     }
     #shopify-section-{{ section.id }} .wpbingo-widget-lookbook .wpbingo-button>a{
         font-size:{{ block.settings.font_size_button_mobi }}px;
@@ -383,7 +375,7 @@
         },
         {
             "type": "text",
-            "id": "border_radius_button",
+            "id": "border_radius",
             "label": "Border radius",
             "default": "0px 0px 0px 0px",
             "info": "top right bottom left"
@@ -481,29 +473,6 @@
 		},
         {
             "type": "header",
-            "content": "====== Tablet ======",
-            "info": "screen < 991px"
-        },
-        {
-            "type": "header",
-            "content": "====== Title ======"
-        },
-        {
-            "type": "number",
-            "id": "font_size_title_tab",
-            "label": "Font size",
-            "default": 30,
-            "info": "px"
-        },
-        {
-            "type": "number",
-            "id": "line_height_title_tab",
-            "label": "Line height",
-            "default": 35,
-            "info": "px"
-        },
-        {
-            "type": "header",
             "content": "====== Mobile ======",
             "info": "screen < 767px"
         },
@@ -539,13 +508,6 @@
             "info": "px"
         },
         {
-            "type": "text",
-            "id": "margin_subtitle_mobi",
-            "label": "margin",
-            "default": "0px 0px 0px 0px",
-            "placeholder":"0px 0px 0px 0px"
-        },
-        {
             "type": "header",
             "content": "====== Title ======"
         },
@@ -575,13 +537,6 @@
             "label": "Letter spacing",
             "default": 0,
             "info": "px"
-        },
-        {
-            "type": "text",
-            "id": "margin_title_mobi",
-            "label": "margin",
-            "default": "0px 0px 0px 0px",
-            "placeholder":"0px 0px 0px 0px"
         },
         {
             "type": "header",
@@ -624,7 +579,7 @@
         },
         {
             "type": "text",
-            "id": "border_radius_button_mobi",
+            "id": "border_radius_mobi",
             "label": "Border radius",
             "default": "0px 0px 0px 0px",
             "info": "top right bottom left"

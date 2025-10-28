@@ -1,1 +1,5 @@
 /*================== SECTION SOCIAL =============*/
+.wpbingo-widget--social {
+	display: flex;
+	align-items: center;
+}

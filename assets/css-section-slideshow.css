@@ -8,7 +8,7 @@
 }
 .wpbingo-slideshow .slick-dots {
 	position: absolute;
-  bottom: 50px;
+  bottom: 30px;
 }
 .wpbingo-slideshow .slick-dots li {
   width: 16px;
@@ -19,10 +19,10 @@
 }
 .wpbingo-slideshow .slick-dots li.slick-active {
   background: transparent;
-  box-shadow: inset 0px 0px 0px 1px var(--white);
+  box-shadow: inset 0px 0px 0px 1px var(--gray-dark);
 }
 .wpbingo-slideshow .slick-dots li:hover {
-  box-shadow: inset 0px 0px 0px 1px var(--white);
+  box-shadow: inset 0px 0px 0px 1px var(--gray-dark);
 }
 .wpbingo-slideshow .slick-dots li button {
 	width: 6px;
@@ -279,7 +279,8 @@
 }
 @media (max-width: 767px) {
 	.wpbingo-slideshow .slick-dots {
-    bottom: 30px;
+    position: unset;
+    justify-content: center;
   }
   .wpbingo-slideshow .slideshow-caption.disable_absolute {
     position: static;

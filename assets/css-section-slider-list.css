@@ -1,9 +1,23 @@
+.wpbingo-widget--slider-list .slick-arrow {
+    width: 35px;
+    height: 35px;
+    line-height: 35px;
+    border-radius: 50%;
+    background: var(--theme-color);
+    color: var(--white);
+}
+.wpbingo-widget--slider-list .slick-arrow:hover {
+    background: var(--gray-dark);
+}
+.wpbingo-widget--slider-list .slick-arrow:before{
+    font-size: 10px;
+}
 @media (min-width: 1200px) {
     .wpbingo-widget--slider-list .slick-prev {
-        left: -70px;
+        left: -15px;
     }
     .wpbingo-widget--slider-list .slick-next {
-        right: -70px;
+        right: -15px;
     }
 }
 .wpbingo-widget--slider-list .banner-wrapper-infor {

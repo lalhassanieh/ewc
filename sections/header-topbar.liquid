@@ -56,7 +56,6 @@
 			{% for block in section.blocks %}
 				{% assign color_custom_text 		= block.settings.color_custom_text %}
 				{% assign color_custom_text_link 	= block.settings.color_custom_text_link %}
-				{% assign color_custom_text_link_hover 	= block.settings.color_custom_text_link_hover %}
 				{%- if color_custom_text != blank -%}
 					.bwp-header-topbar .content-item-custom-text{
 						color: {{ color_custom_text }};
@@ -65,9 +64,6 @@
 				{%- if color_custom_text_link != blank -%}
 					.bwp-header-topbar .content-item-custom-text a{
 						color: {{ color_custom_text_link }};
-					}
-					.bwp-header-topbar .content-item-custom-text a:hover{
-						color: {{ color_custom_text_link_hover }};
 					}
 				{%- endif -%}
 				{%- if block.type == 'social' -%}
@@ -129,7 +125,7 @@
 								</div>
 							</div>
 							{%- when 'custom-text' -%}
-							<div class="content-item-custom-text text-align-{{ block.settings.text_align }}{% unless block.settings.show_mobile_custom_text %} hide_ipad{%- endunless -%}">
+							<div class="content-item-custom-text{% unless block.settings.show_mobile_custom_text %} hide_ipad{%- endunless -%}">
 								<div class="custom-text item" style="--color-link:{{ block.settings.color_custom_text_link }}">
 									{{ block.settings.custom_text_content }}
 								</div>
@@ -341,32 +337,6 @@
 					"id": "color_custom_text_link",
 					"label": "Color link",
 					"default": "#f11e1e"
-				},
-				{
-					"type": "color",
-					"id": "color_custom_text_link_hover",
-					"label": "Color link hover",
-					"default": "#f11e1e"
-				},
-				{
-					"type": "select",
-					"id": "text_align",
-					"label": "Text align",
-					"options": [
-						{
-							"value": "left",
-							"label": "Left"
-						},
-						{
-							"value": "center",
-							"label": "Center"
-						},
-						{
-							"value": "right",
-							"label": "Right"
-						}
-					],
-					"default": "center"
 				},
 				{
 					"type": "checkbox",
