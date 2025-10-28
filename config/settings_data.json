@@ -70,7 +70,7 @@
     "size_image": "cover",
     "bg_raito": "#f5f5f5",
     "quickview_enable": true,
-    "quickview_availability": true,
+    "quickview_availability": false,
     "quickview_quantity_selector": "text",
     "quickview_variant_selector": "radio",
     "filter_name_1": "Size",
