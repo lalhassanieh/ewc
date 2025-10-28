@@ -355,6 +355,7 @@
         },
         "81d03f48-fab1-46ad-85e1-22a1c518009a": {
           "type": "tab_review",
+          "disabled": true,
           "settings": {
             "title_review": "Review"
           }
