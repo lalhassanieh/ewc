@@ -43,19 +43,6 @@
 	show_come_back:{{ settings.show_come_back | json }},
   };
   wpbingo.loading = '<div class="wpbingo-loading"><div class="wpbingo-loading__icon"><span></span><span></span><span></span><span></span></div></div>';
-  
-  // SmartCS Currency Converter preparation
-  window.smartCSReady = false;
-  window.smartCSQueue = [];
-  
-  // Queue SmartCS operations until DOM is ready
-  window.queueSmartCSOperation = function(fn) {
-    if (window.smartCSReady) {
-      fn();
-    } else {
-      window.smartCSQueue.push(fn);
-    }
-  };
 </script>
 {%- if request.page_type contains 'customers/' -%}
 	<script src="{{ 'shopify_common.js' | shopify_asset_url }}" defer="defer"></script>
