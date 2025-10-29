@@ -41,8 +41,8 @@ a,
   font-family: "AcuminProCond-Regular" !important;
 }
 
-a,
-.bwp-block-desc,
-.bwp-block-title {
+.banner-wrapper-infor .bwp-block-title,
+.btn--add-to-cart,
+.swatch-items label {
   font-family: "RiformaMonoLL-Regular";
 }/*# sourceMappingURL=bi-custom.css.map */
