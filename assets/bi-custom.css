@@ -44,5 +44,5 @@ a,
 .banner-wrapper-infor .bwp-block-title,
 .btn--add-to-cart,
 .swatch-items label {
-  font-family: "RiformaMonoLL-Regular";
+  font-family: "RiformaMonoLL-Regular" !important;
 }/*# sourceMappingURL=bi-custom.css.map */
