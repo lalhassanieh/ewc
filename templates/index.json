@@ -1687,12 +1687,21 @@
             "collection": "toys",
             "limit": 8
           }
+        },
+        "tab_nLfL8Q": {
+          "type": "tab",
+          "settings": {
+            "title": "Trophies & Awards",
+            "collection": "trophies-awards",
+            "limit": 8
+          }
         }
       },
       "block_order": [
         "tab_Kizx7t",
         "tab_LqRQ7N",
-        "tab_ABHmqH"
+        "tab_ABHmqH",
+        "tab_nLfL8Q"
       ],
       "name": "Product tabs",
       "settings": {
