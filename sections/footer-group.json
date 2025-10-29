@@ -132,7 +132,7 @@
                 "padding": "",
                 "margin": "",
                 "heading_size": "h3",
-                "title": "HELP",
+                "title": "INFORMATION",
                 "list_style": "none",
                 "show_accordion": true,
                 "color": "#000000",
@@ -157,8 +157,8 @@
                 "list_item_ididdR": {
                   "type": "_list-item",
                   "settings": {
-                    "text": "FAQs",
-                    "url": "#",
+                    "text": "Privacy: Policy",
+                    "url": "shopify://pages/privacy-policy",
                     "icon": "",
                     "padding": "0 0 12px",
                     "margin": ""
@@ -168,8 +168,8 @@
                 "list_item_4nrXWm": {
                   "type": "_list-item",
                   "settings": {
-                    "text": "Shipping",
-                    "url": "#",
+                    "text": "Terms and Conditions",
+                    "url": "shopify://pages/terms-and-conditions",
                     "icon": "",
                     "padding": "0 0 12px",
                     "margin": ""
@@ -179,8 +179,8 @@
                 "list_item_YfbYfw": {
                   "type": "_list-item",
                   "settings": {
-                    "text": "Returns",
-                    "url": "#",
+                    "text": "Delivery & Shipping Information",
+                    "url": "shopify://pages/delivery-shipping-information",
                     "icon": "",
                     "padding": "0 0 12px",
                     "margin": ""
@@ -190,32 +190,10 @@
                 "list_item_EhAeyh": {
                   "type": "_list-item",
                   "settings": {
-                    "text": "Size Guides",
-                    "url": "#",
+                    "text": "Returns & Refunds",
+                    "url": "shopify://pages/returns-refunds",
                     "icon": "",
                     "padding": "0 0 12px",
-                    "margin": ""
-                  },
-                  "blocks": {}
-                },
-                "list_item_4YJLh9": {
-                  "type": "_list-item",
-                  "settings": {
-                    "text": "Materials & Care",
-                    "url": "#",
-                    "icon": "",
-                    "padding": "0 0 12px",
-                    "margin": ""
-                  },
-                  "blocks": {}
-                },
-                "list_item_FaAcRX": {
-                  "type": "_list-item",
-                  "settings": {
-                    "text": "Contact Us",
-                    "url": "#",
-                    "icon": "",
-                    "padding": "",
                     "margin": ""
                   },
                   "blocks": {}
@@ -225,9 +203,7 @@
                 "list_item_ididdR",
                 "list_item_4nrXWm",
                 "list_item_YfbYfw",
-                "list_item_EhAeyh",
-                "list_item_4YJLh9",
-                "list_item_FaAcRX"
+                "list_item_EhAeyh"
               ]
             }
           },
@@ -376,7 +352,7 @@
                 "padding": "",
                 "margin": "",
                 "heading_size": "h3",
-                "title": "INFORMATION",
+                "title": "HELP",
                 "list_style": "none",
                 "show_accordion": true,
                 "color": "#000000",
