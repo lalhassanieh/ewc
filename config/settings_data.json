@@ -1308,7 +1308,7 @@
     "custom_css": [
       ".doubly-nice-select.open,.doubly-nice-select:active,.doubly-nice-select:focus {border-color: #d1b26e !important;}",
       ".doubly-float {left: unset !important; right: 55px !important;}",
-      " section.wpbingo-breadcrumbs .wpbingo-breadcrumbs__inner .wpbingo-breadcrumbs__title {margin-bottom: 0 !important;}",
+      ".wpbingo-breadcrumbs {margin-bottom: 0 !important;}",
       "@media (max-width: 767px) {section.wpbingo-breadcrumbs .wpbingo-breadcrumbs__inner .wpbingo-breadcrumbs__title {text-align: left !important; }}",
       "@media (max-width: 600px) {.doubly-float {right: 24px !important; bottom: 54px !important; }}"
     ]
