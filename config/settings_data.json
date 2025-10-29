@@ -99,8 +99,12 @@
     "cart_notes_enable": true,
     "cart_coupon_enable": true,
     "cart_shipping_enable": false,
-    "shipping_calculator_heading": "Get shipping estimates",
-    "shipping_calculator_submit_button_label": "ESTIMATE",
+    "shipping_calculator_heading": "",
+    "shipping_calculator_default_country": "",
+    "shipping_calculator_submit_button_label": "",
+    "shipping_calculator_submit_button_label_disabled": "",
+    "calculate_mess_success": "",
+    "calculate_mess_price": "",
     "sidebar_position": "left",
     "layout_blog": "grid",
     "show_locale_selector": true,
@@ -1301,7 +1305,7 @@
   },
   "platform_customizations": {
     "custom_css": [
-      ".doubly-nice-select.open, .doubly-nice-select:active, .doubly-nice-select:focus{border-color: #d1b26e !important;}"
+      ".doubly-nice-select.open,.doubly-nice-select:active,.doubly-nice-select:focus {border-color: #d1b26e !important;}"
     ]
   }
 }
