@@ -157,7 +157,7 @@
                 "list_item_ididdR": {
                   "type": "_list-item",
                   "settings": {
-                    "text": "Privacy: Policy",
+                    "text": "Privacy Policy",
                     "url": "shopify://pages/privacy-policy",
                     "icon": "",
                     "padding": "0 0 12px",
