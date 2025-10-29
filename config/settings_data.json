@@ -1307,7 +1307,8 @@
   "platform_customizations": {
     "custom_css": [
       ".doubly-nice-select.open,.doubly-nice-select:active,.doubly-nice-select:focus {border-color: #d1b26e !important;}",
-      ".doubly-float {left: unset !important; right: 55px !important;}"
+      ".doubly-float {left: unset !important; right: 55px !important;}",
+      "@media (max-width: 600px) {.doubly-float {right: 24px !important; bottom: 54px !important;}}"
     ]
   }
 }
