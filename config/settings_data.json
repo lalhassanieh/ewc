@@ -89,7 +89,7 @@
     "limit_nofication": 10,
     "cart_type": "modal",
     "price_shipping_bar": "100",
-    "cart_fire_work": true,
+    "cart_fire_work": false,
     "show_gift_card": false,
     "product_gift_card": "a-cold-wall-logo-embroidered",
     "content_gift_card": "Add gift wrap",
@@ -1289,9 +1289,19 @@
     "blocks": {
       "3767940252973401755": {
         "type": "shopify://apps/smartcs-currency-switcher/blocks/cs-embed/00b86c75-58ec-4d3d-9b2c-137af9b84570",
+        "disabled": true,
+        "settings": {}
+      },
+      "18423266570658624584": {
+        "type": "shopify://apps/beast-currency-converter/blocks/doubly/267afa86-a419-4d5b-a61b-556038e7294d",
         "disabled": false,
         "settings": {}
       }
     }
+  },
+  "platform_customizations": {
+    "custom_css": [
+      ".doubly-nice-select.open, .doubly-nice-select:active, .doubly-nice-select:focus{border-color: #d1b26e !important;}"
+    ]
   }
 }
