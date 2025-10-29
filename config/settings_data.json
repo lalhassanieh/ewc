@@ -1099,7 +1099,7 @@
           "border_color": "#000000",
           "border_opacity": "0.15",
           "logo": "shopify://shop_images/EWC_TWO-LINE_LOGOTYPE-02.png",
-          "logo_max_width": 115,
+          "logo_max_width": 150,
           "horizontal_align": "center",
           "padding_menu": "0px 0px 0px 0px",
           "show_header_search": true,
@@ -1309,7 +1309,7 @@
       ".doubly-nice-select.open,.doubly-nice-select:active,.doubly-nice-select:focus {border-color: #d1b26e !important;}",
       ".doubly-float {left: unset !important; right: 55px !important;}",
       ".wpbingo-breadcrumbs {margin-bottom: 0 !important;}",
-      ".bwp-single-info .product-back_in_stock{display:none;}",
+      ".bwp-single-info .product-back_in_stock {display: none;}",
       "@media (max-width: 767px) {section.wpbingo-breadcrumbs .wpbingo-breadcrumbs__inner .wpbingo-breadcrumbs__title {text-align: left !important; }}",
       "@media (max-width: 600px) {.doubly-float {right: 24px !important; bottom: 54px !important; }}"
     ]
