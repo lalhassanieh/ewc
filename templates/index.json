@@ -1667,7 +1667,7 @@
         "tab_Kizx7t": {
           "type": "tab",
           "settings": {
-            "title": "Tab heading",
+            "title": "Fashion",
             "collection": "fashion",
             "limit": 8
           }
@@ -1675,7 +1675,7 @@
         "tab_LqRQ7N": {
           "type": "tab",
           "settings": {
-            "title": "Tab heading",
+            "title": "Bags",
             "collection": "bags",
             "limit": 8
           }
@@ -1683,7 +1683,7 @@
         "tab_ABHmqH": {
           "type": "tab",
           "settings": {
-            "title": "Tab heading",
+            "title": "Toys",
             "collection": "toys",
             "limit": 8
           }
