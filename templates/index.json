@@ -1553,7 +1553,7 @@
             "border_width": "0px 0px 0px 0px",
             "border_color": "#ffffff",
             "border_style": "solid",
-            "width": 33.3,
+            "width": 100,
             "padding": "0 15px",
             "margin": "| | 0 0 20px",
             "width_lap": 33.3,
@@ -1576,7 +1576,7 @@
                 "line_height": 48,
                 "letter_spacing": 0,
                 "font_weight": "500",
-                "align": "left",
+                "align": "center",
                 "padding": "",
                 "margin": "",
                 "font_size_lap": 35,
@@ -1667,7 +1667,7 @@
         "tab_Kizx7t": {
           "type": "tab",
           "settings": {
-            "title": "Tab heading",
+            "title": "Fashion",
             "collection": "fashion",
             "limit": 8
           }
@@ -1675,7 +1675,7 @@
         "tab_LqRQ7N": {
           "type": "tab",
           "settings": {
-            "title": "Tab heading",
+            "title": "Bags",
             "collection": "bags",
             "limit": 8
           }
@@ -1683,8 +1683,16 @@
         "tab_ABHmqH": {
           "type": "tab",
           "settings": {
-            "title": "Tab heading",
+            "title": "Toys",
             "collection": "toys",
+            "limit": 8
+          }
+        },
+        "tab_nLfL8Q": {
+          "type": "tab",
+          "settings": {
+            "title": "Trophies & Awards",
+            "collection": "trophies-awards",
             "limit": 8
           }
         }
@@ -1692,7 +1700,13 @@
       "block_order": [
         "tab_Kizx7t",
         "tab_LqRQ7N",
-        "tab_ABHmqH"
+        "tab_ABHmqH",
+        "tab_nLfL8Q"
+      ],
+      "custom_css": [
+        ".product-tabs__nav {margin: 0px 0px 45px 0px; padding: 10px 0px 10px 0px; text-align: center;}",
+        ".pagination-fraction {text-align: center;}",
+        ".product-tabs__nav-link {font-size: 18px; line-height: 34px; font-weight: 600; letter-spacing: 0px; margin: 0px 13px 0px 13px; padding: 0px 0px 0px 0px; background: rgba(0, 0, 0, 0); border-radius: 25px;}"
       ],
       "name": "Product tabs",
       "settings": {

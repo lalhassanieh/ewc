@@ -82,13 +82,14 @@
     "show_size_chart": false,
     "html_size_chart": "size-guide",
     "collection_nofication": "dresses",
+    "cartpage_nofication": true,
     "start_time": 3,
     "start_time_unit": "minute",
     "user_purchased": "Jhon (Tokyo) | James (New York) | David (Ohio) | Jack (Monaco) | Lindan (California) | Grap (Texas) | Sabo (Florida) | Pain (Illinois) | Kakuzu (Washington) | Sukuna (Nevada)",
     "time_suggest": "5 minutes ago | 10 minutes ago | 15 minutes ago | 20 minutes ago | 35 minutes ago | 50 minutes ago | 1 hours ago | 2 hours ago | 3 hours ago | 4 hours ago",
     "limit_nofication": 10,
-    "cart_type": "modal",
-    "price_shipping_bar": "100",
+    "cart_type": "drawer",
+    "price_shipping_bar": "",
     "cart_fire_work": false,
     "show_gift_card": false,
     "product_gift_card": "a-cold-wall-logo-embroidered",
@@ -100,7 +101,11 @@
     "cart_coupon_enable": true,
     "cart_shipping_enable": false,
     "shipping_calculator_heading": "Get shipping estimates",
+    "shipping_calculator_default_country": "United States",
     "shipping_calculator_submit_button_label": "ESTIMATE",
+    "shipping_calculator_submit_button_label_disabled": "Calculating...",
+    "calculate_mess_success": "We found one shipping rate available for",
+    "calculate_mess_price": "at",
     "sidebar_position": "left",
     "layout_blog": "grid",
     "show_locale_selector": true,
@@ -1301,7 +1306,11 @@
   },
   "platform_customizations": {
     "custom_css": [
-      ".doubly-nice-select.open, .doubly-nice-select:active, .doubly-nice-select:focus{border-color: #d1b26e !important;}"
+      ".doubly-nice-select.open,.doubly-nice-select:active,.doubly-nice-select:focus {border-color: #d1b26e !important;}",
+      ".doubly-float {left: unset !important; right: 55px !important;}",
+      ".wpbingo-breadcrumbs {margin-bottom: 0 !important;}",
+      "@media (max-width: 767px) {section.wpbingo-breadcrumbs .wpbingo-breadcrumbs__inner .wpbingo-breadcrumbs__title {text-align: left !important; }}",
+      "@media (max-width: 600px) {.doubly-float {right: 24px !important; bottom: 54px !important; }}"
     ]
   }
 }
