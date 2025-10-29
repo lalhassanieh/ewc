@@ -426,11 +426,25 @@
         "column3": 2,
         "column4": 1
       }
+    },
+    "1761746971f3abeb3c": {
+      "type": "apps",
+      "blocks": {
+        "sc_back_in_stock_app_block_WAa8ke": {
+          "type": "shopify://apps/sc-back-in-stock/blocks/app-block/839cbcb7-0406-4c2b-8e74-a54d987b90ab",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "sc_back_in_stock_app_block_WAa8ke"
+      ],
+      "settings": {}
     }
   },
   "order": [
     "breadcrumb",
     "product-template",
+    "1761746971f3abeb3c",
     "buy-together",
     "17616635041ed8cc03",
     "product-tab",
