@@ -1703,6 +1703,10 @@
         "tab_ABHmqH",
         "tab_nLfL8Q"
       ],
+      "custom_css": [
+        ".product-tabs__nav {margin: 0px 0px 45px 0px; padding: 10px 0px 10px 0px; text-align: center;}",
+        ".pagination-fraction{text-align: center;}"
+      ],
       "name": "Product tabs",
       "settings": {
         "max_width": "",
