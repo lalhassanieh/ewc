@@ -1298,5 +1298,10 @@
         "settings": {}
       }
     }
+  },
+  "platform_customizations": {
+    "custom_css": [
+      ".doubly-nice-select.open, .doubly-nice-select:active, .doubly-nice-select:focus{border-color: #d1b26e !important;}"
+    ]
   }
 }
