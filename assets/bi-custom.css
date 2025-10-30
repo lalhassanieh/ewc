@@ -71,39 +71,9 @@ a,
   background-color: #808080 !important;
 }
 
-.wpb-variants-swatch .Gold\/Black,
-.wpb-variants-swatch .gold-black,
-.facet-checkbox.Gold\/Black,
-.Gold\/Black.facet-checkbox,
-label[class*="Gold / Black"] {
-  background: linear-gradient(45deg, #FFD700 0%, #FFD700 50%, #000000 50%, #000000 100%) !important;
-  border: 1px solid #ccc !important;
-  position: relative;
-}
-
-.filter-color .facet-checkbox[class*="Gold / Black"] .color,
-.filter-color .Gold\/Black .color {
+[class="Gold / Black facet-checkbox"], .Gold\ \/\ Black.facet-checkbox {
   background: linear-gradient(45deg, #FFD700 0%, #FFD700 50%, #000000 50%, #000000 100%) !important;
   border: 1px solid #ddd !important;
-}
-
-.wpb-variants-swatch .Gold\/Black.diagonal {
-  background: linear-gradient(135deg, #FFD700 0%, #FFD700 49%, #000000 51%, #000000 100%) !important;
-}
-
-.wpb-variants-swatch .Gold\/Black.split {
-  background: linear-gradient(90deg, #FFD700 0%, #FFD700 50%, #000000 50%, #000000 100%) !important;
-}
-
-.facet-checkbox.Gold\ \/\ Black,
-.facet-checkbox.Gold\/Black {
-  background: linear-gradient(45deg, #FFD700 0%, #FFD700 50%, #000000 50%, #000000 100%) !important;
-}
-
-.facet-checkbox.Gold-Black,
-.facet-checkbox.gold-black,
-.facet-checkbox.Gold_Black {
-  background: linear-gradient(45deg, #FFD700 0%, #FFD700 50%, #000000 50%, #000000 100%) !important;
 }
 
 .wpb-variants-swatch .Green {
