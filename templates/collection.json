@@ -50,7 +50,7 @@
           "type": "collection-sidebarbottom",
           "static": true,
           "settings": {
-            "products_enbale": true,
+            "products_enbale": false,
             "products_title": "Products",
             "collection_handle": "accessory",
             "products_limit": "3",
