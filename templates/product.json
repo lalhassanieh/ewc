@@ -375,6 +375,7 @@
         },
         "35ba8ad6-8d45-4c06-818d-4fe29a1bdf75": {
           "type": "tab_custom",
+          "disabled": true,
           "settings": {
             "title_custom": "Shipping",
             "content_custom": "<p>For orders placed before 7am AEDT, we endeavour to process the same business day. Orders placed after 11am AEDT will be processed the next business day.</p>\n<p>During sale events and new collection launches, there may be a slighly longer processing time.</p>\n<p>All Auguste orders are hand-picked and packed with love from Byron Bay, Australie.</p>"
@@ -382,6 +383,7 @@
         },
         "1c519445-14ba-4b4f-a8df-6bf711832c78": {
           "type": "tab_custom",
+          "disabled": true,
           "settings": {
             "title_custom": "Return",
             "content_custom": "<p>You can choose between a refund or a credit note on full priced items.</p>\n<ul>\n<li>Item(s) must be returned in their original condition and packaging: unworn, unwashed and with all tags attached.</li>\n<li>Earrings cannot be returned due to health and safety reasons.</li>\n<li>Return shipping methods and associated costs are the responsibility of the customer.</li>\n<li>Sale items can not be refunded for change of mind.</li>\n</ul>"
