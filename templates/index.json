@@ -500,7 +500,7 @@
         "fade": true,
         "autoplay": true,
         "autoplay_speed": "8000",
-        "min_height_slider": "600px | 350px",
+        "min_height_slider": "",
         "border_arrow": "0px 0px 0px 0px",
         "border_radius_arrow": "0px 0px 0px 0px",
         "bg_arrow": "#000000",
