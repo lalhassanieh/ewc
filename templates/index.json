@@ -520,6 +520,193 @@
         "border_color_dots_hover": "#000000"
       }
     },
+    "featured_custom_section_JFFQyz": {
+      "type": "featured-custom-section",
+      "blocks": {
+        "column_wncNTT": {
+          "type": "_column",
+          "settings": {
+            "border": false,
+            "border_width": "0px 0px 0px 0px",
+            "border_color": "#ffffff",
+            "border_style": "solid",
+            "width": 100,
+            "padding": "60px 15px 0 15px",
+            "margin": "| | 0 0 20px",
+            "width_lap": 33.3,
+            "width_tab": 100,
+            "border_mobi": false,
+            "border_width_mobi": "0px 0px 0px 0px",
+            "border_color_mobi": "#ffffff",
+            "border_style_mobi": "solid",
+            "width_mobi": 100
+          },
+          "blocks": {
+            "title_qRJ9Rg": {
+              "type": "title",
+              "settings": {
+                "heading_size": "h3",
+                "title": "Trending Now",
+                "font": "--font-family-second",
+                "color": "#000000",
+                "font_size": 48,
+                "line_height": 48,
+                "letter_spacing": 0,
+                "font_weight": "500",
+                "align": "center",
+                "padding": "",
+                "margin": "",
+                "font_size_lap": 35,
+                "line_height_lap": 35,
+                "align_lap": "left",
+                "font_size_tab": 35,
+                "line_height_tab": 35,
+                "align_tab": "center",
+                "color_mobi": "#000000",
+                "font_size_mobi": 30,
+                "line_height_mobi": 35,
+                "letter_spacing_mobi": 0,
+                "align_mobi": "center"
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "title_qRJ9Rg"
+          ]
+        },
+        "column_Xa3jrM": {
+          "type": "_column",
+          "settings": {
+            "border": false,
+            "border_width": "0px 0px 0px 0px",
+            "border_color": "#ffffff",
+            "border_style": "solid",
+            "width": 48.7,
+            "padding": "0 15px",
+            "margin": "| | 0 0 20px",
+            "width_lap": 48.7,
+            "width_tab": 100,
+            "border_mobi": false,
+            "border_width_mobi": "0px 0px 0px 0px",
+            "border_color_mobi": "#ffffff",
+            "border_style_mobi": "solid",
+            "width_mobi": 100
+          },
+          "blocks": {}
+        },
+        "column_aJNkEd": {
+          "type": "_column",
+          "settings": {
+            "border": false,
+            "border_width": "0px 0px 0px 0px",
+            "border_color": "#ffffff",
+            "border_style": "solid",
+            "width": 17.6,
+            "padding": "0 15px",
+            "margin": "",
+            "width_lap": 17.6,
+            "width_tab": 100,
+            "border_mobi": false,
+            "border_width_mobi": "0px 0px 0px 0px",
+            "border_color_mobi": "#ffffff",
+            "border_style_mobi": "solid",
+            "width_mobi": 100
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "column_wncNTT",
+        "column_Xa3jrM",
+        "column_aJNkEd"
+      ],
+      "settings": {
+        "max_width": "",
+        "fullwidth": false,
+        "half_overflow": true,
+        "background_gradient": "",
+        "background_fixed": false,
+        "background_size": "cover",
+        "background_pos": "center center",
+        "background_color": "",
+        "width_bg": "container",
+        "padding_bg": "",
+        "padding": "",
+        "margin": "0 0 40px",
+        "vertical_align": "middle",
+        "horizontal_align": "left"
+      }
+    },
+    "featured_product_tabs_BVzBap": {
+      "type": "featured-product-tabs",
+      "blocks": {
+        "tab_Kizx7t": {
+          "type": "tab",
+          "settings": {
+            "title": "Fashion",
+            "collection": "fashion",
+            "limit": 8
+          }
+        },
+        "tab_LqRQ7N": {
+          "type": "tab",
+          "settings": {
+            "title": "Bags",
+            "collection": "bags",
+            "limit": 8
+          }
+        },
+        "tab_ABHmqH": {
+          "type": "tab",
+          "settings": {
+            "title": "Toys",
+            "collection": "toys",
+            "limit": 8
+          }
+        },
+        "tab_nLfL8Q": {
+          "type": "tab",
+          "settings": {
+            "title": "Trophies & Awards",
+            "collection": "trophies-awards",
+            "limit": 8
+          }
+        }
+      },
+      "block_order": [
+        "tab_Kizx7t",
+        "tab_LqRQ7N",
+        "tab_ABHmqH",
+        "tab_nLfL8Q"
+      ],
+      "custom_css": [
+        ".product-tabs__nav {margin: 0px 0px 45px 0px; padding: 10px 0px 10px 0px; text-align: center;}",
+        ".pagination-fraction {text-align: center;}",
+        ".product-tabs__nav-link {font-size: 18px; line-height: 34px; font-weight: 600; letter-spacing: 0px; margin: 0px 13px 0px 13px; padding: 0px 0px 0px 0px; background: rgba(0, 0, 0, 0); border-radius: 25px;}"
+      ],
+      "name": "Product tabs",
+      "settings": {
+        "max_width": "",
+        "fullwidth": false,
+        "padding": "",
+        "margin": "0 0 85px",
+        "layout_product": "layout-2",
+        "navigation": false,
+        "pag_fraction": true,
+        "infinite": true,
+        "autoplay": false,
+        "half_slider": true,
+        "autoplay_speed": "10000",
+        "row": 1,
+        "columns": 4,
+        "column1440": 4,
+        "column1": 4,
+        "column2": 3,
+        "column3": 1,
+        "column4": 1
+      }
+    },
     "featured_custom_section_eUzjf3": {
       "type": "featured-custom-section",
       "blocks": {
@@ -1552,193 +1739,6 @@
         "horizontal_align": "left"
       }
     },
-    "featured_custom_section_JFFQyz": {
-      "type": "featured-custom-section",
-      "blocks": {
-        "column_wncNTT": {
-          "type": "_column",
-          "settings": {
-            "border": false,
-            "border_width": "0px 0px 0px 0px",
-            "border_color": "#ffffff",
-            "border_style": "solid",
-            "width": 100,
-            "padding": "0 15px",
-            "margin": "| | 0 0 20px",
-            "width_lap": 33.3,
-            "width_tab": 100,
-            "border_mobi": false,
-            "border_width_mobi": "0px 0px 0px 0px",
-            "border_color_mobi": "#ffffff",
-            "border_style_mobi": "solid",
-            "width_mobi": 100
-          },
-          "blocks": {
-            "title_qRJ9Rg": {
-              "type": "title",
-              "settings": {
-                "heading_size": "h3",
-                "title": "Trending Now",
-                "font": "--font-family-second",
-                "color": "#000000",
-                "font_size": 48,
-                "line_height": 48,
-                "letter_spacing": 0,
-                "font_weight": "500",
-                "align": "center",
-                "padding": "",
-                "margin": "",
-                "font_size_lap": 35,
-                "line_height_lap": 35,
-                "align_lap": "left",
-                "font_size_tab": 35,
-                "line_height_tab": 35,
-                "align_tab": "center",
-                "color_mobi": "#000000",
-                "font_size_mobi": 30,
-                "line_height_mobi": 35,
-                "letter_spacing_mobi": 0,
-                "align_mobi": "center"
-              },
-              "blocks": {}
-            }
-          },
-          "block_order": [
-            "title_qRJ9Rg"
-          ]
-        },
-        "column_Xa3jrM": {
-          "type": "_column",
-          "settings": {
-            "border": false,
-            "border_width": "0px 0px 0px 0px",
-            "border_color": "#ffffff",
-            "border_style": "solid",
-            "width": 48.7,
-            "padding": "0 15px",
-            "margin": "| | 0 0 20px",
-            "width_lap": 48.7,
-            "width_tab": 100,
-            "border_mobi": false,
-            "border_width_mobi": "0px 0px 0px 0px",
-            "border_color_mobi": "#ffffff",
-            "border_style_mobi": "solid",
-            "width_mobi": 100
-          },
-          "blocks": {}
-        },
-        "column_aJNkEd": {
-          "type": "_column",
-          "settings": {
-            "border": false,
-            "border_width": "0px 0px 0px 0px",
-            "border_color": "#ffffff",
-            "border_style": "solid",
-            "width": 17.6,
-            "padding": "0 15px",
-            "margin": "",
-            "width_lap": 17.6,
-            "width_tab": 100,
-            "border_mobi": false,
-            "border_width_mobi": "0px 0px 0px 0px",
-            "border_color_mobi": "#ffffff",
-            "border_style_mobi": "solid",
-            "width_mobi": 100
-          },
-          "blocks": {}
-        }
-      },
-      "block_order": [
-        "column_wncNTT",
-        "column_Xa3jrM",
-        "column_aJNkEd"
-      ],
-      "settings": {
-        "max_width": "",
-        "fullwidth": false,
-        "half_overflow": true,
-        "background_gradient": "",
-        "background_fixed": false,
-        "background_size": "cover",
-        "background_pos": "center center",
-        "background_color": "",
-        "width_bg": "container",
-        "padding_bg": "",
-        "padding": "",
-        "margin": "0 0 40px",
-        "vertical_align": "middle",
-        "horizontal_align": "left"
-      }
-    },
-    "featured_product_tabs_BVzBap": {
-      "type": "featured-product-tabs",
-      "blocks": {
-        "tab_Kizx7t": {
-          "type": "tab",
-          "settings": {
-            "title": "Fashion",
-            "collection": "fashion",
-            "limit": 8
-          }
-        },
-        "tab_LqRQ7N": {
-          "type": "tab",
-          "settings": {
-            "title": "Bags",
-            "collection": "bags",
-            "limit": 8
-          }
-        },
-        "tab_ABHmqH": {
-          "type": "tab",
-          "settings": {
-            "title": "Toys",
-            "collection": "toys",
-            "limit": 8
-          }
-        },
-        "tab_nLfL8Q": {
-          "type": "tab",
-          "settings": {
-            "title": "Trophies & Awards",
-            "collection": "trophies-awards",
-            "limit": 8
-          }
-        }
-      },
-      "block_order": [
-        "tab_Kizx7t",
-        "tab_LqRQ7N",
-        "tab_ABHmqH",
-        "tab_nLfL8Q"
-      ],
-      "custom_css": [
-        ".product-tabs__nav {margin: 0px 0px 45px 0px; padding: 10px 0px 10px 0px; text-align: center;}",
-        ".pagination-fraction {text-align: center;}",
-        ".product-tabs__nav-link {font-size: 18px; line-height: 34px; font-weight: 600; letter-spacing: 0px; margin: 0px 13px 0px 13px; padding: 0px 0px 0px 0px; background: rgba(0, 0, 0, 0); border-radius: 25px;}"
-      ],
-      "name": "Product tabs",
-      "settings": {
-        "max_width": "",
-        "fullwidth": false,
-        "padding": "",
-        "margin": "0 0 85px",
-        "layout_product": "layout-2",
-        "navigation": false,
-        "pag_fraction": true,
-        "infinite": true,
-        "autoplay": false,
-        "half_slider": true,
-        "autoplay_speed": "10000",
-        "row": 1,
-        "columns": 4,
-        "column1440": 4,
-        "column1": 4,
-        "column2": 3,
-        "column3": 1,
-        "column4": 1
-      }
-    },
     "featured_custom_section_m4kR83": {
       "type": "featured-custom-section",
       "blocks": {
@@ -2740,13 +2740,13 @@
   },
   "order": [
     "slidershow_UCrHLW",
+    "featured_custom_section_JFFQyz",
+    "featured_product_tabs_BVzBap",
     "featured_custom_section_eUzjf3",
     "featured_custom_section_mR7jzX",
     "featured_custom_section_mzGr9V",
     "featured_custom_section_JQqpcL",
     "featured_custom_section_CzkNYP",
-    "featured_custom_section_JFFQyz",
-    "featured_product_tabs_BVzBap",
     "featured_custom_section_m4kR83",
     "featured_custom_section_CGNBJB",
     "featured_custom_section_nxRpXp",
