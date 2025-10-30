@@ -21,7 +21,7 @@
             "border_width": "0px 0px 0px 0px",
             "border_color": "#ffffff",
             "border_style": "solid",
-            "width": 36.2,
+            "width": 50,
             "padding": "0 15px",
             "margin": "",
             "width_lap": 36.2,
@@ -114,7 +114,7 @@
             "border_width": "0px 0px 0px 0px",
             "border_color": "#ffffff",
             "border_style": "solid",
-            "width": 21,
+            "width": 50,
             "padding": "0 15px",
             "margin": "| | 0 0 30px",
             "width_lap": 21,
@@ -213,6 +213,7 @@
         },
         "column_iUJTMj": {
           "type": "_column",
+          "disabled": true,
           "settings": {
             "border": false,
             "border_width": "0px 0px 0px 0px",
@@ -329,6 +330,7 @@
         },
         "column_ejcYnq": {
           "type": "_column",
+          "disabled": true,
           "settings": {
             "border": false,
             "border_width": "0px 0px 0px 0px",
