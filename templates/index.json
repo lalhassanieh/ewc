@@ -707,233 +707,6 @@
         "column4": 1
       }
     },
-    "featured_custom_section_eUzjf3": {
-      "type": "featured-custom-section",
-      "blocks": {
-        "column_jw4UjU": {
-          "type": "_column",
-          "settings": {
-            "border": true,
-            "border_width": "0px 1px 0px 0px",
-            "border_color": "#00000026",
-            "border_style": "solid",
-            "width": 33.3,
-            "padding": "0 15px",
-            "margin": "| | | 0 0 30px",
-            "width_lap": 33.3,
-            "width_tab": 33.3,
-            "border_mobi": true,
-            "border_width_mobi": "0px 0px 0px 0px",
-            "border_color_mobi": "#ffffff",
-            "border_style_mobi": "solid",
-            "width_mobi": 100
-          },
-          "blocks": {
-            "policy_QKXf9B": {
-              "type": "policy",
-              "settings": {
-                "padding": "",
-                "margin": "",
-                "size": "45px",
-                "align": "center",
-                "effects": "wobble-horizontal"
-              },
-              "blocks": {
-                "title_wApR8p": {
-                  "type": "title",
-                  "settings": {
-                    "heading_size": "h3",
-                    "title": "Home and collection point delivery <br> from £50",
-                    "font": "--font-family-second",
-                    "color": "#000000",
-                    "font_size": 15,
-                    "line_height": 24,
-                    "letter_spacing": 0,
-                    "font_weight": "500",
-                    "align": "center",
-                    "padding": "",
-                    "margin": "10px 0 0",
-                    "font_size_lap": 15,
-                    "line_height_lap": 24,
-                    "align_lap": "center",
-                    "font_size_tab": 15,
-                    "line_height_tab": 24,
-                    "align_tab": "center",
-                    "color_mobi": "#000000",
-                    "font_size_mobi": 15,
-                    "line_height_mobi": 24,
-                    "letter_spacing_mobi": 0,
-                    "align_mobi": "center"
-                  },
-                  "blocks": {}
-                }
-              },
-              "block_order": [
-                "title_wApR8p"
-              ]
-            }
-          },
-          "block_order": [
-            "policy_QKXf9B"
-          ]
-        },
-        "column_9DpQkR": {
-          "type": "_column",
-          "settings": {
-            "border": true,
-            "border_width": "0px 1px 0px 0px",
-            "border_color": "#00000026",
-            "border_style": "solid",
-            "width": 33.3,
-            "padding": "0 15px",
-            "margin": "| | | 0 0 30px",
-            "width_lap": 33.3,
-            "width_tab": 33.3,
-            "border_mobi": true,
-            "border_width_mobi": "0px 0px 0px 0px",
-            "border_color_mobi": "#ffffff",
-            "border_style_mobi": "solid",
-            "width_mobi": 100
-          },
-          "blocks": {
-            "policy_XF8h6q": {
-              "type": "policy",
-              "settings": {
-                "padding": "",
-                "margin": "",
-                "size": "40px",
-                "align": "center",
-                "effects": "wobble-horizontal"
-              },
-              "blocks": {
-                "title_V7ECxj": {
-                  "type": "title",
-                  "settings": {
-                    "heading_size": "h3",
-                    "title": "Money Guarantee. Within 30 days <br> for an exchange.",
-                    "font": "--font-family-second",
-                    "color": "#000000",
-                    "font_size": 15,
-                    "line_height": 24,
-                    "letter_spacing": 0,
-                    "font_weight": "500",
-                    "align": "center",
-                    "padding": "",
-                    "margin": "10px 0 0",
-                    "font_size_lap": 15,
-                    "line_height_lap": 24,
-                    "align_lap": "center",
-                    "font_size_tab": 15,
-                    "line_height_tab": 24,
-                    "align_tab": "center",
-                    "color_mobi": "#000000",
-                    "font_size_mobi": 15,
-                    "line_height_mobi": 24,
-                    "letter_spacing_mobi": 0,
-                    "align_mobi": "center"
-                  },
-                  "blocks": {}
-                }
-              },
-              "block_order": [
-                "title_V7ECxj"
-              ]
-            }
-          },
-          "block_order": [
-            "policy_XF8h6q"
-          ]
-        },
-        "column_RMnDCc": {
-          "type": "_column",
-          "settings": {
-            "border": false,
-            "border_width": "0px 1px 0px 0px",
-            "border_color": "#000000",
-            "border_style": "solid",
-            "width": 33.3,
-            "padding": "0 15px",
-            "margin": "",
-            "width_lap": 33.3,
-            "width_tab": 33.3,
-            "border_mobi": false,
-            "border_width_mobi": "0px 0px 0px 0px",
-            "border_color_mobi": "#ffffff",
-            "border_style_mobi": "solid",
-            "width_mobi": 100
-          },
-          "blocks": {
-            "policy_fn74LP": {
-              "type": "policy",
-              "settings": {
-                "padding": "",
-                "margin": "",
-                "size": "45px",
-                "align": "center",
-                "effects": "wobble-horizontal"
-              },
-              "blocks": {
-                "title_wqtWri": {
-                  "type": "title",
-                  "settings": {
-                    "heading_size": "h3",
-                    "title": "Flexible Payment. Pay with Multiple <br> Credit Cards",
-                    "font": "--font-family-second",
-                    "color": "#000000",
-                    "font_size": 15,
-                    "line_height": 24,
-                    "letter_spacing": 0,
-                    "font_weight": "500",
-                    "align": "center",
-                    "padding": "",
-                    "margin": "10px 0 0",
-                    "font_size_lap": 15,
-                    "line_height_lap": 24,
-                    "align_lap": "center",
-                    "font_size_tab": 15,
-                    "line_height_tab": 24,
-                    "align_tab": "center",
-                    "color_mobi": "#000000",
-                    "font_size_mobi": 15,
-                    "line_height_mobi": 24,
-                    "letter_spacing_mobi": 0,
-                    "align_mobi": "center"
-                  },
-                  "blocks": {}
-                }
-              },
-              "block_order": [
-                "title_wqtWri"
-              ]
-            }
-          },
-          "block_order": [
-            "policy_fn74LP"
-          ]
-        }
-      },
-      "block_order": [
-        "column_jw4UjU",
-        "column_9DpQkR",
-        "column_RMnDCc"
-      ],
-      "settings": {
-        "max_width": "",
-        "fullwidth": false,
-        "half_overflow": true,
-        "background_gradient": "",
-        "background_fixed": false,
-        "background_size": "cover",
-        "background_pos": "center center",
-        "background_color": "",
-        "width_bg": "container",
-        "padding_bg": "",
-        "padding": "",
-        "margin": "85px 0",
-        "vertical_align": "top",
-        "horizontal_align": "left"
-      }
-    },
     "featured_custom_section_mR7jzX": {
       "type": "featured-custom-section",
       "blocks": {
@@ -2649,6 +2422,7 @@
         "column_yK8RG7",
         "column_wYmgCB"
       ],
+      "disabled": true,
       "settings": {
         "max_width": "",
         "fullwidth": false,
@@ -2720,6 +2494,7 @@
       "block_order": [
         "column_wmmwGC"
       ],
+      "disabled": true,
       "settings": {
         "max_width": "",
         "fullwidth": false,
@@ -2736,13 +2511,239 @@
         "vertical_align": "top",
         "horizontal_align": "left"
       }
+    },
+    "featured_custom_section_eUzjf3": {
+      "type": "featured-custom-section",
+      "blocks": {
+        "column_jw4UjU": {
+          "type": "_column",
+          "settings": {
+            "border": true,
+            "border_width": "0px 1px 0px 0px",
+            "border_color": "#00000026",
+            "border_style": "solid",
+            "width": 33.3,
+            "padding": "0 15px",
+            "margin": "| | | 0 0 30px",
+            "width_lap": 33.3,
+            "width_tab": 33.3,
+            "border_mobi": true,
+            "border_width_mobi": "0px 0px 0px 0px",
+            "border_color_mobi": "#ffffff",
+            "border_style_mobi": "solid",
+            "width_mobi": 100
+          },
+          "blocks": {
+            "policy_QKXf9B": {
+              "type": "policy",
+              "settings": {
+                "padding": "",
+                "margin": "",
+                "size": "45px",
+                "align": "center",
+                "effects": "wobble-horizontal"
+              },
+              "blocks": {
+                "title_wApR8p": {
+                  "type": "title",
+                  "settings": {
+                    "heading_size": "h3",
+                    "title": "Home and collection point delivery <br> from £50",
+                    "font": "--font-family-second",
+                    "color": "#000000",
+                    "font_size": 15,
+                    "line_height": 24,
+                    "letter_spacing": 0,
+                    "font_weight": "500",
+                    "align": "center",
+                    "padding": "",
+                    "margin": "10px 0 0",
+                    "font_size_lap": 15,
+                    "line_height_lap": 24,
+                    "align_lap": "center",
+                    "font_size_tab": 15,
+                    "line_height_tab": 24,
+                    "align_tab": "center",
+                    "color_mobi": "#000000",
+                    "font_size_mobi": 15,
+                    "line_height_mobi": 24,
+                    "letter_spacing_mobi": 0,
+                    "align_mobi": "center"
+                  },
+                  "blocks": {}
+                }
+              },
+              "block_order": [
+                "title_wApR8p"
+              ]
+            }
+          },
+          "block_order": [
+            "policy_QKXf9B"
+          ]
+        },
+        "column_9DpQkR": {
+          "type": "_column",
+          "settings": {
+            "border": true,
+            "border_width": "0px 1px 0px 0px",
+            "border_color": "#00000026",
+            "border_style": "solid",
+            "width": 33.3,
+            "padding": "0 15px",
+            "margin": "| | | 0 0 30px",
+            "width_lap": 33.3,
+            "width_tab": 33.3,
+            "border_mobi": true,
+            "border_width_mobi": "0px 0px 0px 0px",
+            "border_color_mobi": "#ffffff",
+            "border_style_mobi": "solid",
+            "width_mobi": 100
+          },
+          "blocks": {
+            "policy_XF8h6q": {
+              "type": "policy",
+              "settings": {
+                "padding": "",
+                "margin": "",
+                "size": "40px",
+                "align": "center",
+                "effects": "wobble-horizontal"
+              },
+              "blocks": {
+                "title_V7ECxj": {
+                  "type": "title",
+                  "settings": {
+                    "heading_size": "h3",
+                    "title": "Money Guarantee. Within 30 days <br> for an exchange.",
+                    "font": "--font-family-second",
+                    "color": "#000000",
+                    "font_size": 15,
+                    "line_height": 24,
+                    "letter_spacing": 0,
+                    "font_weight": "500",
+                    "align": "center",
+                    "padding": "",
+                    "margin": "10px 0 0",
+                    "font_size_lap": 15,
+                    "line_height_lap": 24,
+                    "align_lap": "center",
+                    "font_size_tab": 15,
+                    "line_height_tab": 24,
+                    "align_tab": "center",
+                    "color_mobi": "#000000",
+                    "font_size_mobi": 15,
+                    "line_height_mobi": 24,
+                    "letter_spacing_mobi": 0,
+                    "align_mobi": "center"
+                  },
+                  "blocks": {}
+                }
+              },
+              "block_order": [
+                "title_V7ECxj"
+              ]
+            }
+          },
+          "block_order": [
+            "policy_XF8h6q"
+          ]
+        },
+        "column_RMnDCc": {
+          "type": "_column",
+          "settings": {
+            "border": false,
+            "border_width": "0px 1px 0px 0px",
+            "border_color": "#000000",
+            "border_style": "solid",
+            "width": 33.3,
+            "padding": "0 15px",
+            "margin": "",
+            "width_lap": 33.3,
+            "width_tab": 33.3,
+            "border_mobi": false,
+            "border_width_mobi": "0px 0px 0px 0px",
+            "border_color_mobi": "#ffffff",
+            "border_style_mobi": "solid",
+            "width_mobi": 100
+          },
+          "blocks": {
+            "policy_fn74LP": {
+              "type": "policy",
+              "settings": {
+                "padding": "",
+                "margin": "",
+                "size": "45px",
+                "align": "center",
+                "effects": "wobble-horizontal"
+              },
+              "blocks": {
+                "title_wqtWri": {
+                  "type": "title",
+                  "settings": {
+                    "heading_size": "h3",
+                    "title": "Flexible Payment. Pay with Multiple <br> Credit Cards",
+                    "font": "--font-family-second",
+                    "color": "#000000",
+                    "font_size": 15,
+                    "line_height": 24,
+                    "letter_spacing": 0,
+                    "font_weight": "500",
+                    "align": "center",
+                    "padding": "",
+                    "margin": "10px 0 0",
+                    "font_size_lap": 15,
+                    "line_height_lap": 24,
+                    "align_lap": "center",
+                    "font_size_tab": 15,
+                    "line_height_tab": 24,
+                    "align_tab": "center",
+                    "color_mobi": "#000000",
+                    "font_size_mobi": 15,
+                    "line_height_mobi": 24,
+                    "letter_spacing_mobi": 0,
+                    "align_mobi": "center"
+                  },
+                  "blocks": {}
+                }
+              },
+              "block_order": [
+                "title_wqtWri"
+              ]
+            }
+          },
+          "block_order": [
+            "policy_fn74LP"
+          ]
+        }
+      },
+      "block_order": [
+        "column_jw4UjU",
+        "column_9DpQkR",
+        "column_RMnDCc"
+      ],
+      "settings": {
+        "max_width": "",
+        "fullwidth": false,
+        "half_overflow": true,
+        "background_gradient": "",
+        "background_fixed": false,
+        "background_size": "cover",
+        "background_pos": "center center",
+        "background_color": "",
+        "width_bg": "container",
+        "padding_bg": "",
+        "padding": "",
+        "margin": "85px 0",
+        "vertical_align": "top",
+        "horizontal_align": "left"
+      }
     }
   },
   "order": [
     "slidershow_UCrHLW",
     "featured_custom_section_JFFQyz",
     "featured_product_tabs_BVzBap",
-    "featured_custom_section_eUzjf3",
     "featured_custom_section_mR7jzX",
     "featured_custom_section_mzGr9V",
     "featured_custom_section_JQqpcL",
@@ -2750,6 +2751,7 @@
     "featured_custom_section_m4kR83",
     "featured_custom_section_CGNBJB",
     "featured_custom_section_nxRpXp",
-    "featured_custom_section_4VMgVA"
+    "featured_custom_section_4VMgVA",
+    "featured_custom_section_eUzjf3"
   ]
 }
