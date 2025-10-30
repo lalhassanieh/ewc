@@ -7,20 +7,19 @@
  * made to this file may be overwritten.
  * ------------------------------------------------------------
  */
- {
+{
   "sections": {
     "breadcrumb": {
       "type": "collection-breadcrumb",
       "settings": {
         "enable": true,
         "bgimage": false,
-        "image": "shopify://shop_images/breadcumd.jpg",
         "show_pagetitle": true,
         "show_breadcrumb": true,
         "color_breadcrumb": "#000000",
         "align_breadcrumb": "center",
         "enable_collection": true,
-        "categories_menu": "categories",
+        "categories_menu": "",
         "style_collection": "style_1",
         "navigation": true,
         "infinite": true,
@@ -41,10 +40,11 @@
           "settings": {
             "categories_enable": true,
             "categories_title": "Collection",
-            "categories_menu": "categories",
+            "categories_menu": "main-menu-1",
             "show_count": true,
             "enable_filtering": true
-          }
+          },
+          "blocks": {}
         },
         "collection-sidebarbottom": {
           "type": "collection-sidebarbottom",
@@ -56,7 +56,8 @@
             "products_limit": "3",
             "sidebar_banner_enable": false,
             "link": "/"
-          }
+          },
+          "blocks": {}
         },
         "collection-template": {
           "type": "collection-template",
@@ -64,12 +65,13 @@
           "settings": {
             "categories_enable": true,
             "categories_title": "Collection",
-            "categories_menu": "categories",
+            "categories_menu": "",
             "show_count": true,
             "layput_shop": "simple",
             "page_item": 12,
             "numproduct_enable": true
-          }
+          },
+          "blocks": {}
         }
       },
       "settings": {}
