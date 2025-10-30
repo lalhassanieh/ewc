@@ -24,7 +24,7 @@
     "font-weight-second-bold": "700",
     "font-family-base-google-link": "<link href=\"https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap\" rel=\"stylesheet\">",
     "font-family-base": "Urbanist",
-    "font-size-base": 15,
+    "font-size-base": 16,
     "font-weight-base-light": "300",
     "font-weight-base-medium": "500",
     "font-weight-base-bold": "700",
@@ -1312,7 +1312,7 @@
       ".bwp-single-info .product-back_in_stock {display: none;}",
       "#esc-out-of-stock-inputs .esc-out-of-stock-title {text-align: left;}",
       "#esc-out-of-stock-inputs {border: none;}",
-      ".esc-email-container input{padding-left:10px;}",
+      ".esc-email-container input {padding-left: 10px;}",
       "@media (max-width: 767px) {section.wpbingo-breadcrumbs .wpbingo-breadcrumbs__inner .wpbingo-breadcrumbs__title {text-align: left !important; }}",
       "@media (max-width: 600px) {.doubly-float {right: 24px !important; bottom: 54px !important; }}"
     ]

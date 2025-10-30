@@ -11,11 +11,22 @@
   "sections": {
     "breadcrumb": {
       "type": "page-breadcrumb",
-      "settings": {}
+      "settings": {
+        "enable": true,
+        "bgimage": false,
+        "show_pagetitle": true,
+        "show_breadcrumb": true,
+        "color_breadcrumb": "#000000",
+        "align_breadcrumb": "left"
+      }
     },
     "main": {
       "type": "main-page",
+      "custom_css": [
+        "p ,ul{font-family: \"RiformaMonoLL-Regular\" !important;}"
+      ],
       "settings": {
+        "enable": true,
         "padding_top": 28,
         "padding_bottom": 28
       }
