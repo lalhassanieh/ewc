@@ -51,11 +51,36 @@ a,
   background-color: #989486 !important;
 }
 
+.wpb-variants-swatch .CREAM {
+  background-color: #FFFDD0;
+}
+
 .wpb-variants-swatch .Beige {
   background-color: #EAD8AB !important;
 }
 
-.wpb-variants-swatch .Black {
+.wpb-variants-swatch .Gold {
+  background-color: #FFD700 !important;
+}
+
+.wpb-variants-swatch .MINT {
+  background-color: #98FF98 !important;
+}
+
+.wpb-variants-swatch .Multi.colors {
+  background: linear-gradient(to right, #ff0000, #ff9900, #ffff00, #00ff00, #0000ff, #9900ff);
+}
+
+.wpb-variants-swatch .Ecru {
+  background-color: #C2B280 !important;
+}
+
+.wpb-variants-swatch .Silver {
+  background-color: #c0c0c0 !important;
+}
+
+.wpb-variants-swatch .Black,
+.wpb-variants-swatch .BLACK {
   background-color: #000000 !important;
 }
 
@@ -71,7 +96,8 @@ a,
   background-color: #808080 !important;
 }
 
-[class="Gold / Black facet-checkbox"], .Gold\ \/\ Black.facet-checkbox {
+[class="Gold / Black facet-checkbox"],
+.Gold\ \/\ Black.facet-checkbox {
   background: linear-gradient(45deg, #FFD700 0%, #FFD700 50%, #000000 50%, #000000 100%) !important;
   border: 1px solid #ddd !important;
 }
@@ -92,7 +118,8 @@ a,
   background-color: #A54DCF !important;
 }
 
-.wpb-variants-swatch .White, .wpb-variants-swatch .WHITE {
+.wpb-variants-swatch .White,
+.wpb-variants-swatch .WHITE {
   background-color: #FFFFFF !important;
 }
 
