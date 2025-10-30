@@ -492,6 +492,9 @@
         "slide_PfBt8t",
         "slide_LpwFcn"
       ],
+      "custom_css": [
+        ".wpbingo-slideshow .slick-arrow {border-radius: 50% !important;}"
+      ],
       "settings": {
         "max_width": "",
         "fullwidth": true,
@@ -503,169 +506,35 @@
         "min_height_slider": "862px | 700px | 600px | 350px",
         "border_arrow": "0px 0px 0px 0px",
         "border_radius_arrow": "0px 0px 0px 0px",
-        "bg_arrow": "#000000",
-        "border_color_arrow": "#000000",
-        "color_arrow": "#000000",
-        "bg_arrow_hover": "#000000",
+        "bg_arrow": "linear-gradient(0deg, rgba(255, 255, 255, 1) 100%, rgba(255, 204, 75, 1) 100%)",
+        "border_color_arrow": "#231f20",
+        "color_arrow": "#231f20",
+        "bg_arrow_hover": "#d1b26eff",
         "border_color_arrow_hover": "#000000",
-        "color_arrow_hover": "#000000",
+        "color_arrow_hover": "#231f20",
         "border_dots": "0px 0px 0px 0px",
         "border_radius_dots": "50px",
-        "bg_dots": "#ffffff",
+        "bg_dots": "#d1b26e",
         "border_color_dots": "#000000",
-        "bg_dots_hover": "#ffffff",
+        "bg_dots_hover": "#d1b26e",
         "border_color_dots_hover": "#000000"
       }
     },
-    "featured_custom_section_eUzjf3": {
+    "featured_custom_section_JFFQyz": {
       "type": "featured-custom-section",
       "blocks": {
-        "column_jw4UjU": {
-          "type": "_column",
-          "settings": {
-            "border": true,
-            "border_width": "0px 1px 0px 0px",
-            "border_color": "#00000026",
-            "border_style": "solid",
-            "width": 33.3,
-            "padding": "0 15px",
-            "margin": "| | | 0 0 30px",
-            "width_lap": 33.3,
-            "width_tab": 33.3,
-            "border_mobi": true,
-            "border_width_mobi": "0px 0px 0px 0px",
-            "border_color_mobi": "#ffffff",
-            "border_style_mobi": "solid",
-            "width_mobi": 100
-          },
-          "blocks": {
-            "policy_QKXf9B": {
-              "type": "policy",
-              "settings": {
-                "padding": "",
-                "margin": "",
-                "size": "45px",
-                "align": "center",
-                "effects": "wobble-horizontal"
-              },
-              "blocks": {
-                "title_wApR8p": {
-                  "type": "title",
-                  "settings": {
-                    "heading_size": "h3",
-                    "title": "Home and collection point delivery <br> from £50",
-                    "font": "--font-family-second",
-                    "color": "#000000",
-                    "font_size": 15,
-                    "line_height": 24,
-                    "letter_spacing": 0,
-                    "font_weight": "500",
-                    "align": "center",
-                    "padding": "",
-                    "margin": "10px 0 0",
-                    "font_size_lap": 15,
-                    "line_height_lap": 24,
-                    "align_lap": "center",
-                    "font_size_tab": 15,
-                    "line_height_tab": 24,
-                    "align_tab": "center",
-                    "color_mobi": "#000000",
-                    "font_size_mobi": 15,
-                    "line_height_mobi": 24,
-                    "letter_spacing_mobi": 0,
-                    "align_mobi": "center"
-                  },
-                  "blocks": {}
-                }
-              },
-              "block_order": [
-                "title_wApR8p"
-              ]
-            }
-          },
-          "block_order": [
-            "policy_QKXf9B"
-          ]
-        },
-        "column_9DpQkR": {
-          "type": "_column",
-          "settings": {
-            "border": true,
-            "border_width": "0px 1px 0px 0px",
-            "border_color": "#00000026",
-            "border_style": "solid",
-            "width": 33.3,
-            "padding": "0 15px",
-            "margin": "| | | 0 0 30px",
-            "width_lap": 33.3,
-            "width_tab": 33.3,
-            "border_mobi": true,
-            "border_width_mobi": "0px 0px 0px 0px",
-            "border_color_mobi": "#ffffff",
-            "border_style_mobi": "solid",
-            "width_mobi": 100
-          },
-          "blocks": {
-            "policy_XF8h6q": {
-              "type": "policy",
-              "settings": {
-                "padding": "",
-                "margin": "",
-                "size": "40px",
-                "align": "center",
-                "effects": "wobble-horizontal"
-              },
-              "blocks": {
-                "title_V7ECxj": {
-                  "type": "title",
-                  "settings": {
-                    "heading_size": "h3",
-                    "title": "Money Guarantee. Within 30 days <br> for an exchange.",
-                    "font": "--font-family-second",
-                    "color": "#000000",
-                    "font_size": 15,
-                    "line_height": 24,
-                    "letter_spacing": 0,
-                    "font_weight": "500",
-                    "align": "center",
-                    "padding": "",
-                    "margin": "10px 0 0",
-                    "font_size_lap": 15,
-                    "line_height_lap": 24,
-                    "align_lap": "center",
-                    "font_size_tab": 15,
-                    "line_height_tab": 24,
-                    "align_tab": "center",
-                    "color_mobi": "#000000",
-                    "font_size_mobi": 15,
-                    "line_height_mobi": 24,
-                    "letter_spacing_mobi": 0,
-                    "align_mobi": "center"
-                  },
-                  "blocks": {}
-                }
-              },
-              "block_order": [
-                "title_V7ECxj"
-              ]
-            }
-          },
-          "block_order": [
-            "policy_XF8h6q"
-          ]
-        },
-        "column_RMnDCc": {
+        "column_wncNTT": {
           "type": "_column",
           "settings": {
             "border": false,
-            "border_width": "0px 1px 0px 0px",
-            "border_color": "#000000",
+            "border_width": "0px 0px 0px 0px",
+            "border_color": "#ffffff",
             "border_style": "solid",
-            "width": 33.3,
-            "padding": "0 15px",
-            "margin": "",
+            "width": 100,
+            "padding": "60px 15px 0 15px",
+            "margin": "| | 0 0 20px",
             "width_lap": 33.3,
-            "width_tab": 33.3,
+            "width_tab": 100,
             "border_mobi": false,
             "border_width_mobi": "0px 0px 0px 0px",
             "border_color_mobi": "#ffffff",
@@ -673,59 +542,84 @@
             "width_mobi": 100
           },
           "blocks": {
-            "policy_fn74LP": {
-              "type": "policy",
+            "title_qRJ9Rg": {
+              "type": "title",
               "settings": {
+                "heading_size": "h3",
+                "title": "Trending Now",
+                "font": "--font-family-second",
+                "color": "#000000",
+                "font_size": 48,
+                "line_height": 48,
+                "letter_spacing": 0,
+                "font_weight": "500",
+                "align": "center",
                 "padding": "",
                 "margin": "",
-                "size": "45px",
-                "align": "center",
-                "effects": "wobble-horizontal"
+                "font_size_lap": 35,
+                "line_height_lap": 35,
+                "align_lap": "left",
+                "font_size_tab": 35,
+                "line_height_tab": 35,
+                "align_tab": "center",
+                "color_mobi": "#000000",
+                "font_size_mobi": 30,
+                "line_height_mobi": 35,
+                "letter_spacing_mobi": 0,
+                "align_mobi": "center"
               },
-              "blocks": {
-                "title_wqtWri": {
-                  "type": "title",
-                  "settings": {
-                    "heading_size": "h3",
-                    "title": "Flexible Payment. Pay with Multiple <br> Credit Cards",
-                    "font": "--font-family-second",
-                    "color": "#000000",
-                    "font_size": 15,
-                    "line_height": 24,
-                    "letter_spacing": 0,
-                    "font_weight": "500",
-                    "align": "center",
-                    "padding": "",
-                    "margin": "10px 0 0",
-                    "font_size_lap": 15,
-                    "line_height_lap": 24,
-                    "align_lap": "center",
-                    "font_size_tab": 15,
-                    "line_height_tab": 24,
-                    "align_tab": "center",
-                    "color_mobi": "#000000",
-                    "font_size_mobi": 15,
-                    "line_height_mobi": 24,
-                    "letter_spacing_mobi": 0,
-                    "align_mobi": "center"
-                  },
-                  "blocks": {}
-                }
-              },
-              "block_order": [
-                "title_wqtWri"
-              ]
+              "blocks": {}
             }
           },
           "block_order": [
-            "policy_fn74LP"
+            "title_qRJ9Rg"
           ]
+        },
+        "column_Xa3jrM": {
+          "type": "_column",
+          "settings": {
+            "border": false,
+            "border_width": "0px 0px 0px 0px",
+            "border_color": "#ffffff",
+            "border_style": "solid",
+            "width": 48.7,
+            "padding": "0 15px",
+            "margin": "| | 0 0 20px",
+            "width_lap": 48.7,
+            "width_tab": 100,
+            "border_mobi": false,
+            "border_width_mobi": "0px 0px 0px 0px",
+            "border_color_mobi": "#ffffff",
+            "border_style_mobi": "solid",
+            "width_mobi": 100
+          },
+          "blocks": {}
+        },
+        "column_aJNkEd": {
+          "type": "_column",
+          "settings": {
+            "border": false,
+            "border_width": "0px 0px 0px 0px",
+            "border_color": "#ffffff",
+            "border_style": "solid",
+            "width": 17.6,
+            "padding": "0 15px",
+            "margin": "",
+            "width_lap": 17.6,
+            "width_tab": 100,
+            "border_mobi": false,
+            "border_width_mobi": "0px 0px 0px 0px",
+            "border_color_mobi": "#ffffff",
+            "border_style_mobi": "solid",
+            "width_mobi": 100
+          },
+          "blocks": {}
         }
       },
       "block_order": [
-        "column_jw4UjU",
-        "column_9DpQkR",
-        "column_RMnDCc"
+        "column_wncNTT",
+        "column_Xa3jrM",
+        "column_aJNkEd"
       ],
       "settings": {
         "max_width": "",
@@ -739,9 +633,78 @@
         "width_bg": "container",
         "padding_bg": "",
         "padding": "",
-        "margin": "85px 0",
-        "vertical_align": "top",
+        "margin": "0 0 40px",
+        "vertical_align": "middle",
         "horizontal_align": "left"
+      }
+    },
+    "featured_product_tabs_BVzBap": {
+      "type": "featured-product-tabs",
+      "blocks": {
+        "tab_Kizx7t": {
+          "type": "tab",
+          "settings": {
+            "title": "Fashion",
+            "collection": "fashion",
+            "limit": 8
+          }
+        },
+        "tab_LqRQ7N": {
+          "type": "tab",
+          "settings": {
+            "title": "Bags",
+            "collection": "bags",
+            "limit": 8
+          }
+        },
+        "tab_ABHmqH": {
+          "type": "tab",
+          "settings": {
+            "title": "Toys",
+            "collection": "toys",
+            "limit": 8
+          }
+        },
+        "tab_nLfL8Q": {
+          "type": "tab",
+          "settings": {
+            "title": "Trophies & Awards",
+            "collection": "trophies-awards",
+            "limit": 8
+          }
+        }
+      },
+      "block_order": [
+        "tab_Kizx7t",
+        "tab_LqRQ7N",
+        "tab_ABHmqH",
+        "tab_nLfL8Q"
+      ],
+      "custom_css": [
+        ".product-tabs__nav {margin: 0px 0px 45px 0px; padding: 10px 0px 10px 0px; text-align: center;}",
+        ".pagination-fraction {text-align: center;}",
+        ".product-tabs__nav-link {font-size: 18px; line-height: 34px; font-weight: 600; letter-spacing: 0px; margin: 0px 13px 0px 13px; padding: 0px 0px 0px 0px; background: rgba(0, 0, 0, 0); border-radius: 25px;}"
+      ],
+      "name": "Product tabs",
+      "settings": {
+        "max_width": "",
+        "fullwidth": false,
+        "padding": "",
+        "margin": "0 0 85px",
+        "layout_product": "layout-2",
+        "navigation": false,
+        "pag_fraction": true,
+        "infinite": true,
+        "autoplay": false,
+        "half_slider": true,
+        "autoplay_speed": "10000",
+        "row": 1,
+        "columns": 4,
+        "column1440": 4,
+        "column1": 4,
+        "column2": 3,
+        "column3": 1,
+        "column4": 1
       }
     },
     "featured_custom_section_mR7jzX": {
@@ -797,7 +760,7 @@
               "type": "title",
               "settings": {
                 "heading_size": "h3",
-                "title": "Explore <br> our collection",
+                "title": "Explore  our collection",
                 "font": "--font-family-second",
                 "color": "#000000",
                 "font_size": 60,
@@ -935,7 +898,7 @@
                   "settings": {
                     "padding": "",
                     "margin": "0 0 25px",
-                    "url": "shopify://collections/accessory",
+                    "url": "shopify://collections/fashion",
                     "border_radius": "10px",
                     "effect": "grow"
                   },
@@ -956,8 +919,8 @@
                         "button_zYp8cp": {
                           "type": "button",
                           "settings": {
-                            "title": "Accessories",
-                            "button_link": "shopify://collections/accessory",
+                            "title": "Fashion",
+                            "button_link": "shopify://collections/fashion",
                             "font": "--font-family-second",
                             "icon_title": "icon-next",
                             "font_icon": 18,
@@ -1032,7 +995,7 @@
                   "settings": {
                     "padding": "",
                     "margin": "0 0 25px",
-                    "url": "shopify://collections/shorts",
+                    "url": "shopify://collections/bags",
                     "border_radius": "10px",
                     "effect": "grow"
                   },
@@ -1053,8 +1016,8 @@
                         "button_dJW6VT": {
                           "type": "button",
                           "settings": {
-                            "title": "Waist Shorts",
-                            "button_link": "shopify://collections/shorts",
+                            "title": "Bags",
+                            "button_link": "shopify://collections/bags",
                             "font": "--font-family-second",
                             "icon_title": "icon-next",
                             "font_icon": 18,
@@ -1129,7 +1092,7 @@
                   "settings": {
                     "padding": "",
                     "margin": "0 0 25px",
-                    "url": "shopify://collections/accessory",
+                    "url": "shopify://collections/trophies-awards",
                     "border_radius": "10px",
                     "effect": "grow"
                   },
@@ -1150,8 +1113,8 @@
                         "button_4n4hae": {
                           "type": "button",
                           "settings": {
-                            "title": "Accessories",
-                            "button_link": "shopify://collections/accessory",
+                            "title": "Trophies & Awards",
+                            "button_link": "shopify://collections/trophies-awards",
                             "font": "--font-family-second",
                             "icon_title": "icon-next",
                             "font_icon": 18,
@@ -1220,12 +1183,110 @@
                   "block_order": [
                     "banner_box_zyjn4w"
                   ]
+                },
+                "slider_list_Q3kgVC": {
+                  "type": "_slider-list",
+                  "settings": {
+                    "padding": "",
+                    "margin": "0 0 25px",
+                    "url": "shopify://collections/toys",
+                    "border_radius": "10px",
+                    "effect": "grow"
+                  },
+                  "blocks": {
+                    "banner_box_6aXwWh": {
+                      "type": "_banner-box",
+                      "settings": {
+                        "content_position": "unset",
+                        "vertical_position": "bottom",
+                        "horizontal_position": "left",
+                        "text_align": "left",
+                        "background_content": "rgba(0,0,0,0)",
+                        "border_radius_content": "0px 0px 0px 0px",
+                        "padding": "",
+                        "margin": ""
+                      },
+                      "blocks": {
+                        "button_LkhCkC": {
+                          "type": "button",
+                          "settings": {
+                            "title": "Toys",
+                            "button_link": "shopify://collections/toys",
+                            "font": "--font-family-second",
+                            "icon_title": "icon-next",
+                            "font_icon": 18,
+                            "margin_icon": "0px 0px 0px 30px",
+                            "top_icon": 0,
+                            "width_icon": 44,
+                            "height_icon": 44,
+                            "border_radius_icon": "50px",
+                            "border_icon": true,
+                            "border_width_icon": "1px",
+                            "border_style_icon": "solid",
+                            "color_icon": "#000000",
+                            "background_icon": "rgba(0,0,0,0)",
+                            "border_color_icon": "#000000",
+                            "color_hover_icon": "#ffffff",
+                            "background_hover_icon": "#000000",
+                            "border_color_hover_icon": "#000000",
+                            "align_icon": "center",
+                            "button_hover": "default",
+                            "border": false,
+                            "border_width": "0px 0px 0px 0px",
+                            "border_style": "solid",
+                            "border_radius": "0px 0px 0px 0px",
+                            "color": "#000000",
+                            "background": "rgba(0,0,0,0)",
+                            "border_color": "#ffffff",
+                            "color_hover": "#000000",
+                            "background_hover": "rgba(0,0,0,0)",
+                            "border_color_hover": "#ffffff",
+                            "font_size": 20,
+                            "line_height": 30,
+                            "letter_spacing": 0,
+                            "font_weight": "600",
+                            "min_width": "",
+                            "padding": "",
+                            "margin": "",
+                            "align": "left",
+                            "align_lap": "left",
+                            "align_tab": "left",
+                            "font_size_mobi": 20,
+                            "font_icon_mobi": 18,
+                            "margin_icon_mobi": "0px 0px 0px 20px",
+                            "top_icon_mobi": 0,
+                            "line_height_mobi": 30,
+                            "letter_spacing_mobi": 0,
+                            "border_radius_mobi": "0px 0px 0px 0px",
+                            "border_mobi": false,
+                            "border_width_mobi": "0px 0px 0px 0px",
+                            "border_style_mobi": "solid",
+                            "color_mobi": "#000000",
+                            "background_mobi": "rgba(0,0,0,0)",
+                            "border_color_mobi": "#ffffff",
+                            "color_hover_mobi": "#000000",
+                            "background_hover_mobi": "rgba(0,0,0,0)",
+                            "border_color_hover_mobi": "#ffffff",
+                            "align_mobi": "left"
+                          },
+                          "blocks": {}
+                        }
+                      },
+                      "block_order": [
+                        "button_LkhCkC"
+                      ]
+                    }
+                  },
+                  "block_order": [
+                    "banner_box_6aXwWh"
+                  ]
                 }
               },
               "block_order": [
                 "slider_list_gn4Uxn",
                 "slider_list_J79Lwy",
-                "slider_list_TPVGmR"
+                "slider_list_TPVGmR",
+                "slider_list_Q3kgVC"
               ]
             }
           },
@@ -1549,193 +1610,6 @@
         "horizontal_align": "left"
       }
     },
-    "featured_custom_section_JFFQyz": {
-      "type": "featured-custom-section",
-      "blocks": {
-        "column_wncNTT": {
-          "type": "_column",
-          "settings": {
-            "border": false,
-            "border_width": "0px 0px 0px 0px",
-            "border_color": "#ffffff",
-            "border_style": "solid",
-            "width": 100,
-            "padding": "0 15px",
-            "margin": "| | 0 0 20px",
-            "width_lap": 33.3,
-            "width_tab": 100,
-            "border_mobi": false,
-            "border_width_mobi": "0px 0px 0px 0px",
-            "border_color_mobi": "#ffffff",
-            "border_style_mobi": "solid",
-            "width_mobi": 100
-          },
-          "blocks": {
-            "title_qRJ9Rg": {
-              "type": "title",
-              "settings": {
-                "heading_size": "h3",
-                "title": "Trending Now",
-                "font": "--font-family-second",
-                "color": "#000000",
-                "font_size": 48,
-                "line_height": 48,
-                "letter_spacing": 0,
-                "font_weight": "500",
-                "align": "center",
-                "padding": "",
-                "margin": "",
-                "font_size_lap": 35,
-                "line_height_lap": 35,
-                "align_lap": "left",
-                "font_size_tab": 35,
-                "line_height_tab": 35,
-                "align_tab": "center",
-                "color_mobi": "#000000",
-                "font_size_mobi": 30,
-                "line_height_mobi": 35,
-                "letter_spacing_mobi": 0,
-                "align_mobi": "center"
-              },
-              "blocks": {}
-            }
-          },
-          "block_order": [
-            "title_qRJ9Rg"
-          ]
-        },
-        "column_Xa3jrM": {
-          "type": "_column",
-          "settings": {
-            "border": false,
-            "border_width": "0px 0px 0px 0px",
-            "border_color": "#ffffff",
-            "border_style": "solid",
-            "width": 48.7,
-            "padding": "0 15px",
-            "margin": "| | 0 0 20px",
-            "width_lap": 48.7,
-            "width_tab": 100,
-            "border_mobi": false,
-            "border_width_mobi": "0px 0px 0px 0px",
-            "border_color_mobi": "#ffffff",
-            "border_style_mobi": "solid",
-            "width_mobi": 100
-          },
-          "blocks": {}
-        },
-        "column_aJNkEd": {
-          "type": "_column",
-          "settings": {
-            "border": false,
-            "border_width": "0px 0px 0px 0px",
-            "border_color": "#ffffff",
-            "border_style": "solid",
-            "width": 17.6,
-            "padding": "0 15px",
-            "margin": "",
-            "width_lap": 17.6,
-            "width_tab": 100,
-            "border_mobi": false,
-            "border_width_mobi": "0px 0px 0px 0px",
-            "border_color_mobi": "#ffffff",
-            "border_style_mobi": "solid",
-            "width_mobi": 100
-          },
-          "blocks": {}
-        }
-      },
-      "block_order": [
-        "column_wncNTT",
-        "column_Xa3jrM",
-        "column_aJNkEd"
-      ],
-      "settings": {
-        "max_width": "",
-        "fullwidth": false,
-        "half_overflow": true,
-        "background_gradient": "",
-        "background_fixed": false,
-        "background_size": "cover",
-        "background_pos": "center center",
-        "background_color": "",
-        "width_bg": "container",
-        "padding_bg": "",
-        "padding": "",
-        "margin": "0 0 40px",
-        "vertical_align": "middle",
-        "horizontal_align": "left"
-      }
-    },
-    "featured_product_tabs_BVzBap": {
-      "type": "featured-product-tabs",
-      "blocks": {
-        "tab_Kizx7t": {
-          "type": "tab",
-          "settings": {
-            "title": "Fashion",
-            "collection": "fashion",
-            "limit": 8
-          }
-        },
-        "tab_LqRQ7N": {
-          "type": "tab",
-          "settings": {
-            "title": "Bags",
-            "collection": "bags",
-            "limit": 8
-          }
-        },
-        "tab_ABHmqH": {
-          "type": "tab",
-          "settings": {
-            "title": "Toys",
-            "collection": "toys",
-            "limit": 8
-          }
-        },
-        "tab_nLfL8Q": {
-          "type": "tab",
-          "settings": {
-            "title": "Trophies & Awards",
-            "collection": "trophies-awards",
-            "limit": 8
-          }
-        }
-      },
-      "block_order": [
-        "tab_Kizx7t",
-        "tab_LqRQ7N",
-        "tab_ABHmqH",
-        "tab_nLfL8Q"
-      ],
-      "custom_css": [
-        ".product-tabs__nav {margin: 0px 0px 45px 0px; padding: 10px 0px 10px 0px; text-align: center;}",
-        ".pagination-fraction {text-align: center;}",
-        ".product-tabs__nav-link {font-size: 18px; line-height: 34px; font-weight: 600; letter-spacing: 0px; margin: 0px 13px 0px 13px; padding: 0px 0px 0px 0px; background: rgba(0, 0, 0, 0); border-radius: 25px;}"
-      ],
-      "name": "Product tabs",
-      "settings": {
-        "max_width": "",
-        "fullwidth": false,
-        "padding": "",
-        "margin": "0 0 85px",
-        "layout_product": "layout-2",
-        "navigation": false,
-        "pag_fraction": true,
-        "infinite": true,
-        "autoplay": false,
-        "half_slider": true,
-        "autoplay_speed": "10000",
-        "row": 1,
-        "columns": 4,
-        "column1440": 4,
-        "column1": 4,
-        "column2": 3,
-        "column3": 1,
-        "column4": 1
-      }
-    },
     "featured_custom_section_m4kR83": {
       "type": "featured-custom-section",
       "blocks": {
@@ -1761,6 +1635,7 @@
             "banners_box_CPHtBL": {
               "type": "banners-box",
               "settings": {
+                "image": "shopify://shop_images/80-Esport-3.jpg",
                 "url": "shopify://collections/fashion",
                 "border_radius_img": "10px",
                 "margin_image": "",
@@ -2274,6 +2149,7 @@
         "column_XFEFkd",
         "column_rd3caK"
       ],
+      "disabled": true,
       "settings": {
         "max_width": "",
         "fullwidth": false,
@@ -2644,6 +2520,7 @@
         "column_yK8RG7",
         "column_wYmgCB"
       ],
+      "disabled": true,
       "settings": {
         "max_width": "",
         "fullwidth": false,
@@ -2715,6 +2592,7 @@
       "block_order": [
         "column_wmmwGC"
       ],
+      "disabled": true,
       "settings": {
         "max_width": "",
         "fullwidth": false,
@@ -2731,20 +2609,247 @@
         "vertical_align": "top",
         "horizontal_align": "left"
       }
+    },
+    "featured_custom_section_eUzjf3": {
+      "type": "featured-custom-section",
+      "blocks": {
+        "column_jw4UjU": {
+          "type": "_column",
+          "settings": {
+            "border": true,
+            "border_width": "0px 1px 0px 0px",
+            "border_color": "#00000026",
+            "border_style": "solid",
+            "width": 33.3,
+            "padding": "0 15px",
+            "margin": "| | | 0 0 30px",
+            "width_lap": 33.3,
+            "width_tab": 33.3,
+            "border_mobi": true,
+            "border_width_mobi": "0px 0px 0px 0px",
+            "border_color_mobi": "#ffffff",
+            "border_style_mobi": "solid",
+            "width_mobi": 100
+          },
+          "blocks": {
+            "policy_QKXf9B": {
+              "type": "policy",
+              "settings": {
+                "padding": "",
+                "margin": "",
+                "size": "45px",
+                "align": "center",
+                "effects": "wobble-horizontal"
+              },
+              "blocks": {
+                "title_wApR8p": {
+                  "type": "title",
+                  "settings": {
+                    "heading_size": "h3",
+                    "title": "Home and collection point delivery <br> from £50",
+                    "font": "--font-family-second",
+                    "color": "#000000",
+                    "font_size": 15,
+                    "line_height": 24,
+                    "letter_spacing": 0,
+                    "font_weight": "500",
+                    "align": "center",
+                    "padding": "",
+                    "margin": "10px 0 0",
+                    "font_size_lap": 15,
+                    "line_height_lap": 24,
+                    "align_lap": "center",
+                    "font_size_tab": 15,
+                    "line_height_tab": 24,
+                    "align_tab": "center",
+                    "color_mobi": "#000000",
+                    "font_size_mobi": 15,
+                    "line_height_mobi": 24,
+                    "letter_spacing_mobi": 0,
+                    "align_mobi": "center"
+                  },
+                  "blocks": {}
+                }
+              },
+              "block_order": [
+                "title_wApR8p"
+              ]
+            }
+          },
+          "block_order": [
+            "policy_QKXf9B"
+          ]
+        },
+        "column_9DpQkR": {
+          "type": "_column",
+          "settings": {
+            "border": true,
+            "border_width": "0px 1px 0px 0px",
+            "border_color": "#00000026",
+            "border_style": "solid",
+            "width": 33.3,
+            "padding": "0 15px",
+            "margin": "| | | 0 0 30px",
+            "width_lap": 33.3,
+            "width_tab": 33.3,
+            "border_mobi": true,
+            "border_width_mobi": "0px 0px 0px 0px",
+            "border_color_mobi": "#ffffff",
+            "border_style_mobi": "solid",
+            "width_mobi": 100
+          },
+          "blocks": {
+            "policy_XF8h6q": {
+              "type": "policy",
+              "settings": {
+                "padding": "",
+                "margin": "",
+                "size": "40px",
+                "align": "center",
+                "effects": "wobble-horizontal"
+              },
+              "blocks": {
+                "title_V7ECxj": {
+                  "type": "title",
+                  "settings": {
+                    "heading_size": "h3",
+                    "title": "Money Guarantee. Within 30 days <br> for an exchange.",
+                    "font": "--font-family-second",
+                    "color": "#000000",
+                    "font_size": 15,
+                    "line_height": 24,
+                    "letter_spacing": 0,
+                    "font_weight": "500",
+                    "align": "center",
+                    "padding": "",
+                    "margin": "10px 0 0",
+                    "font_size_lap": 15,
+                    "line_height_lap": 24,
+                    "align_lap": "center",
+                    "font_size_tab": 15,
+                    "line_height_tab": 24,
+                    "align_tab": "center",
+                    "color_mobi": "#000000",
+                    "font_size_mobi": 15,
+                    "line_height_mobi": 24,
+                    "letter_spacing_mobi": 0,
+                    "align_mobi": "center"
+                  },
+                  "blocks": {}
+                }
+              },
+              "block_order": [
+                "title_V7ECxj"
+              ]
+            }
+          },
+          "block_order": [
+            "policy_XF8h6q"
+          ]
+        },
+        "column_RMnDCc": {
+          "type": "_column",
+          "settings": {
+            "border": false,
+            "border_width": "0px 1px 0px 0px",
+            "border_color": "#000000",
+            "border_style": "solid",
+            "width": 33.3,
+            "padding": "0 15px",
+            "margin": "",
+            "width_lap": 33.3,
+            "width_tab": 33.3,
+            "border_mobi": false,
+            "border_width_mobi": "0px 0px 0px 0px",
+            "border_color_mobi": "#ffffff",
+            "border_style_mobi": "solid",
+            "width_mobi": 100
+          },
+          "blocks": {
+            "policy_fn74LP": {
+              "type": "policy",
+              "settings": {
+                "padding": "",
+                "margin": "",
+                "size": "45px",
+                "align": "center",
+                "effects": "wobble-horizontal"
+              },
+              "blocks": {
+                "title_wqtWri": {
+                  "type": "title",
+                  "settings": {
+                    "heading_size": "h3",
+                    "title": "Flexible Payment. Pay with Multiple <br> Credit Cards",
+                    "font": "--font-family-second",
+                    "color": "#000000",
+                    "font_size": 15,
+                    "line_height": 24,
+                    "letter_spacing": 0,
+                    "font_weight": "500",
+                    "align": "center",
+                    "padding": "",
+                    "margin": "10px 0 0",
+                    "font_size_lap": 15,
+                    "line_height_lap": 24,
+                    "align_lap": "center",
+                    "font_size_tab": 15,
+                    "line_height_tab": 24,
+                    "align_tab": "center",
+                    "color_mobi": "#000000",
+                    "font_size_mobi": 15,
+                    "line_height_mobi": 24,
+                    "letter_spacing_mobi": 0,
+                    "align_mobi": "center"
+                  },
+                  "blocks": {}
+                }
+              },
+              "block_order": [
+                "title_wqtWri"
+              ]
+            }
+          },
+          "block_order": [
+            "policy_fn74LP"
+          ]
+        }
+      },
+      "block_order": [
+        "column_jw4UjU",
+        "column_9DpQkR",
+        "column_RMnDCc"
+      ],
+      "settings": {
+        "max_width": "",
+        "fullwidth": false,
+        "half_overflow": true,
+        "background_gradient": "",
+        "background_fixed": false,
+        "background_size": "cover",
+        "background_pos": "center center",
+        "background_color": "",
+        "width_bg": "container",
+        "padding_bg": "",
+        "padding": "",
+        "margin": "85px 0",
+        "vertical_align": "top",
+        "horizontal_align": "left"
+      }
     }
   },
   "order": [
     "slidershow_UCrHLW",
-    "featured_custom_section_eUzjf3",
+    "featured_custom_section_JFFQyz",
+    "featured_product_tabs_BVzBap",
     "featured_custom_section_mR7jzX",
     "featured_custom_section_mzGr9V",
     "featured_custom_section_JQqpcL",
     "featured_custom_section_CzkNYP",
-    "featured_custom_section_JFFQyz",
-    "featured_product_tabs_BVzBap",
     "featured_custom_section_m4kR83",
     "featured_custom_section_CGNBJB",
     "featured_custom_section_nxRpXp",
-    "featured_custom_section_4VMgVA"
+    "featured_custom_section_4VMgVA",
+    "featured_custom_section_eUzjf3"
   ]
 }
