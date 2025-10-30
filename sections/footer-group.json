@@ -21,7 +21,7 @@
             "border_width": "0px 0px 0px 0px",
             "border_color": "#ffffff",
             "border_style": "solid",
-            "width": 50,
+            "width": 36.2,
             "padding": "0 15px",
             "margin": "",
             "width_lap": 36.2,
@@ -114,7 +114,7 @@
             "border_width": "0px 0px 0px 0px",
             "border_color": "#ffffff",
             "border_style": "solid",
-            "width": 50,
+            "width": 36,
             "padding": "0 15px",
             "margin": "| | 0 0 30px",
             "width_lap": 21,
@@ -213,7 +213,6 @@
         },
         "column_iUJTMj": {
           "type": "_column",
-          "disabled": true,
           "settings": {
             "border": false,
             "border_width": "0px 0px 0px 0px",
@@ -237,7 +236,7 @@
                 "padding": "",
                 "margin": "",
                 "heading_size": "h3",
-                "title": "ABOUT US",
+                "title": "SHOP BY CATEGORY",
                 "list_style": "none",
                 "show_accordion": true,
                 "color": "#000000",
@@ -262,8 +261,8 @@
                 "list_item_j3QPVn": {
                   "type": "_list-item",
                   "settings": {
-                    "text": "Our Story",
-                    "url": "#",
+                    "text": "fashion",
+                    "url": "shopify://collections/fashion",
                     "icon": "",
                     "padding": "0 0 12px",
                     "margin": ""
@@ -273,8 +272,8 @@
                 "list_item_CtYK6w": {
                   "type": "_list-item",
                   "settings": {
-                    "text": "The Rewards Stack",
-                    "url": "#",
+                    "text": "Bags",
+                    "url": "shopify://collections/bags",
                     "icon": "",
                     "padding": "0 0 12px",
                     "margin": ""
@@ -284,8 +283,8 @@
                 "list_item_NNFaMx": {
                   "type": "_list-item",
                   "settings": {
-                    "text": "Sustainability",
-                    "url": "#",
+                    "text": "Trophies & Awards",
+                    "url": "shopify://collections/trophies-awards",
                     "icon": "",
                     "padding": "0 0 12px",
                     "margin": ""
@@ -295,21 +294,10 @@
                 "list_item_KTH9zf": {
                   "type": "_list-item",
                   "settings": {
-                    "text": "Careers",
-                    "url": "#",
+                    "text": "Toys",
+                    "url": "shopify://collections/toys",
                     "icon": "",
                     "padding": "0 0 12px",
-                    "margin": ""
-                  },
-                  "blocks": {}
-                },
-                "list_item_6NzhYr": {
-                  "type": "_list-item",
-                  "settings": {
-                    "text": "Blog",
-                    "url": "#",
-                    "icon": "",
-                    "padding": "",
                     "margin": ""
                   },
                   "blocks": {}
@@ -319,8 +307,7 @@
                 "list_item_j3QPVn",
                 "list_item_CtYK6w",
                 "list_item_NNFaMx",
-                "list_item_KTH9zf",
-                "list_item_6NzhYr"
+                "list_item_KTH9zf"
               ]
             }
           },
