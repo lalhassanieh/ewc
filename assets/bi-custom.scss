@@ -88,6 +88,24 @@ a,
     background-color: #808080 !important;
 }
 
+// Gold / Black combination swatch
+.wpb-variants-swatch .Gold\/Black,
+.wpb-variants-swatch .gold-black,
+.facet-checkbox.gold-black {
+    background: linear-gradient(45deg, #FFD700 0%, #FFD700 50%, #000000 50%, #000000 100%) !important;
+    border: 1px solid #ccc !important;
+}
+
+// Alternative diagonal split version
+.wpb-variants-swatch .Gold\/Black.diagonal {
+    background: linear-gradient(135deg, #FFD700 0%, #FFD700 49%, #000000 51%, #000000 100%) !important;
+}
+
+// Alternative half-and-half version
+.wpb-variants-swatch .Gold\/Black.split {
+    background: linear-gradient(90deg, #FFD700 0%, #FFD700 50%, #000000 50%, #000000 100%) !important;
+}
+
 .wpb-variants-swatch .Green {
     background-color: #05AA3D !important;
 }
