@@ -898,7 +898,7 @@
                   "settings": {
                     "padding": "",
                     "margin": "0 0 25px",
-                    "url": "shopify://collections/accessory",
+                    "url": "shopify://collections/fashion",
                     "border_radius": "10px",
                     "effect": "grow"
                   },
@@ -919,8 +919,8 @@
                         "button_zYp8cp": {
                           "type": "button",
                           "settings": {
-                            "title": "Accessories",
-                            "button_link": "shopify://collections/accessory",
+                            "title": "Fashion",
+                            "button_link": "shopify://collections/fashion",
                             "font": "--font-family-second",
                             "icon_title": "icon-next",
                             "font_icon": 18,
@@ -995,7 +995,7 @@
                   "settings": {
                     "padding": "",
                     "margin": "0 0 25px",
-                    "url": "shopify://collections/shorts",
+                    "url": "shopify://collections/bags",
                     "border_radius": "10px",
                     "effect": "grow"
                   },
@@ -1016,8 +1016,8 @@
                         "button_dJW6VT": {
                           "type": "button",
                           "settings": {
-                            "title": "Waist Shorts",
-                            "button_link": "shopify://collections/shorts",
+                            "title": "Bags",
+                            "button_link": "shopify://collections/bags",
                             "font": "--font-family-second",
                             "icon_title": "icon-next",
                             "font_icon": 18,
@@ -1092,7 +1092,7 @@
                   "settings": {
                     "padding": "",
                     "margin": "0 0 25px",
-                    "url": "shopify://collections/accessory",
+                    "url": "shopify://collections/trophies-awards",
                     "border_radius": "10px",
                     "effect": "grow"
                   },
@@ -1113,8 +1113,8 @@
                         "button_4n4hae": {
                           "type": "button",
                           "settings": {
-                            "title": "Accessories",
-                            "button_link": "shopify://collections/accessory",
+                            "title": "Trophies & Awards",
+                            "button_link": "shopify://collections/trophies-awards",
                             "font": "--font-family-second",
                             "icon_title": "icon-next",
                             "font_icon": 18,
@@ -1183,12 +1183,110 @@
                   "block_order": [
                     "banner_box_zyjn4w"
                   ]
+                },
+                "slider_list_Q3kgVC": {
+                  "type": "_slider-list",
+                  "settings": {
+                    "padding": "",
+                    "margin": "0 0 25px",
+                    "url": "shopify://collections/toys",
+                    "border_radius": "10px",
+                    "effect": "grow"
+                  },
+                  "blocks": {
+                    "banner_box_6aXwWh": {
+                      "type": "_banner-box",
+                      "settings": {
+                        "content_position": "unset",
+                        "vertical_position": "bottom",
+                        "horizontal_position": "left",
+                        "text_align": "left",
+                        "background_content": "rgba(0,0,0,0)",
+                        "border_radius_content": "0px 0px 0px 0px",
+                        "padding": "",
+                        "margin": ""
+                      },
+                      "blocks": {
+                        "button_LkhCkC": {
+                          "type": "button",
+                          "settings": {
+                            "title": "Toys",
+                            "button_link": "shopify://collections/toys",
+                            "font": "--font-family-second",
+                            "icon_title": "icon-next",
+                            "font_icon": 18,
+                            "margin_icon": "0px 0px 0px 30px",
+                            "top_icon": 0,
+                            "width_icon": 44,
+                            "height_icon": 44,
+                            "border_radius_icon": "50px",
+                            "border_icon": true,
+                            "border_width_icon": "1px",
+                            "border_style_icon": "solid",
+                            "color_icon": "#000000",
+                            "background_icon": "rgba(0,0,0,0)",
+                            "border_color_icon": "#000000",
+                            "color_hover_icon": "#ffffff",
+                            "background_hover_icon": "#000000",
+                            "border_color_hover_icon": "#000000",
+                            "align_icon": "center",
+                            "button_hover": "default",
+                            "border": false,
+                            "border_width": "0px 0px 0px 0px",
+                            "border_style": "solid",
+                            "border_radius": "0px 0px 0px 0px",
+                            "color": "#000000",
+                            "background": "rgba(0,0,0,0)",
+                            "border_color": "#ffffff",
+                            "color_hover": "#000000",
+                            "background_hover": "rgba(0,0,0,0)",
+                            "border_color_hover": "#ffffff",
+                            "font_size": 20,
+                            "line_height": 30,
+                            "letter_spacing": 0,
+                            "font_weight": "600",
+                            "min_width": "",
+                            "padding": "",
+                            "margin": "",
+                            "align": "left",
+                            "align_lap": "left",
+                            "align_tab": "left",
+                            "font_size_mobi": 20,
+                            "font_icon_mobi": 18,
+                            "margin_icon_mobi": "0px 0px 0px 20px",
+                            "top_icon_mobi": 0,
+                            "line_height_mobi": 30,
+                            "letter_spacing_mobi": 0,
+                            "border_radius_mobi": "0px 0px 0px 0px",
+                            "border_mobi": false,
+                            "border_width_mobi": "0px 0px 0px 0px",
+                            "border_style_mobi": "solid",
+                            "color_mobi": "#000000",
+                            "background_mobi": "rgba(0,0,0,0)",
+                            "border_color_mobi": "#ffffff",
+                            "color_hover_mobi": "#000000",
+                            "background_hover_mobi": "rgba(0,0,0,0)",
+                            "border_color_hover_mobi": "#ffffff",
+                            "align_mobi": "left"
+                          },
+                          "blocks": {}
+                        }
+                      },
+                      "block_order": [
+                        "button_LkhCkC"
+                      ]
+                    }
+                  },
+                  "block_order": [
+                    "banner_box_6aXwWh"
+                  ]
                 }
               },
               "block_order": [
                 "slider_list_gn4Uxn",
                 "slider_list_J79Lwy",
-                "slider_list_TPVGmR"
+                "slider_list_TPVGmR",
+                "slider_list_Q3kgVC"
               ]
             }
           },
