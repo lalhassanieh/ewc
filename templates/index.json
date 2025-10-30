@@ -800,7 +800,7 @@
               "type": "title",
               "settings": {
                 "heading_size": "h3",
-                "title": "Explore <br> our collection",
+                "title": "Explore  our collection",
                 "font": "--font-family-second",
                 "color": "#000000",
                 "font_size": 60,
@@ -1764,6 +1764,7 @@
             "banners_box_CPHtBL": {
               "type": "banners-box",
               "settings": {
+                "image": "shopify://shop_images/80-Esport-3.jpg",
                 "url": "shopify://collections/fashion",
                 "border_radius_img": "10px",
                 "margin_image": "",
@@ -2277,6 +2278,7 @@
         "column_XFEFkd",
         "column_rd3caK"
       ],
+      "disabled": true,
       "settings": {
         "max_width": "",
         "fullwidth": false,
