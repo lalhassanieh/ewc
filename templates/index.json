@@ -1855,10 +1855,109 @@
               "block_order": [
                 "banner_box_L8Prpz"
               ]
+            },
+            "banners_box_de39dE": {
+              "type": "banners-box",
+              "settings": {
+                "url": "shopify://collections/fashion",
+                "border_radius_img": "10px",
+                "margin_image": "",
+                "padding": "",
+                "margin": "",
+                "effect": "grow"
+              },
+              "blocks": {
+                "banner_box_Fdk7c4": {
+                  "type": "_banner-box",
+                  "settings": {
+                    "content_position": "absolute",
+                    "vertical_position": "bottom",
+                    "horizontal_position": "center",
+                    "text_align": "center",
+                    "background_content": "rgba(0,0,0,0)",
+                    "border_radius_content": "0px 0px 0px 0px",
+                    "padding": "0 15px 35px",
+                    "margin": ""
+                  },
+                  "blocks": {
+                    "button_gJdQVq": {
+                      "type": "button",
+                      "settings": {
+                        "title": "Trophies & Awards",
+                        "button_link": "shopify://collections/trophies-awards",
+                        "font": "--font-family-second",
+                        "icon_title": "",
+                        "font_icon": 14,
+                        "margin_icon": "0px 0px 0px 0px",
+                        "top_icon": 0,
+                        "width_icon": 80,
+                        "height_icon": 80,
+                        "border_radius_icon": "0px 0px 0px 0px",
+                        "border_icon": false,
+                        "border_width_icon": "0px 0px 0px 0px",
+                        "border_style_icon": "solid",
+                        "color_icon": "#ffffff",
+                        "background_icon": "#ed5d43",
+                        "border_color_icon": "#ffffff",
+                        "color_hover_icon": "#ffffff",
+                        "background_hover_icon": "#ed5d43",
+                        "border_color_hover_icon": "#ffffff",
+                        "align_icon": "left",
+                        "button_hover": "hover_style_14",
+                        "border": false,
+                        "border_width": "0px 0px 0px 0px",
+                        "border_style": "solid",
+                        "border_radius": "50px",
+                        "color": "#ffffff",
+                        "background": "#000000",
+                        "border_color": "#ffffff",
+                        "color_hover": "#ffffff",
+                        "background_hover": "#000000",
+                        "border_color_hover": "#ffffff",
+                        "font_size": 16,
+                        "line_height": 45,
+                        "letter_spacing": 0,
+                        "font_weight": "600",
+                        "min_width": "183px | 160px",
+                        "padding": "0 42px",
+                        "margin": "",
+                        "align": "center",
+                        "align_lap": "center",
+                        "align_tab": "center",
+                        "font_size_mobi": 16,
+                        "font_icon_mobi": 14,
+                        "margin_icon_mobi": "0px 0px 0px 0px",
+                        "top_icon_mobi": 0,
+                        "line_height_mobi": 45,
+                        "letter_spacing_mobi": 0,
+                        "border_radius_mobi": "50px",
+                        "border_mobi": false,
+                        "border_width_mobi": "0px 0px 0px 0px",
+                        "border_style_mobi": "solid",
+                        "color_mobi": "#ffffff",
+                        "background_mobi": "#000000",
+                        "border_color_mobi": "#ffffff",
+                        "color_hover_mobi": "#ffffff",
+                        "background_hover_mobi": "#000000",
+                        "border_color_hover_mobi": "#ffffff",
+                        "align_mobi": "center"
+                      },
+                      "blocks": {}
+                    }
+                  },
+                  "block_order": [
+                    "button_gJdQVq"
+                  ]
+                }
+              },
+              "block_order": [
+                "banner_box_Fdk7c4"
+              ]
             }
           },
           "block_order": [
-            "banners_box_CPHtBL"
+            "banners_box_CPHtBL",
+            "banners_box_de39dE"
           ]
         },
         "column_rd3caK": {
@@ -2327,6 +2426,7 @@
       "block_order": [
         "column_k3TDkL"
       ],
+      "disabled": true,
       "settings": {
         "max_width": "",
         "fullwidth": true,
