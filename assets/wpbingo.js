@@ -352,7 +352,10 @@ wpbingo.collectionPages = (function() {
 			e.preventDefault();
 			if (!$(this).hasClass('active')) {
 				$('.product-card__image-wrapper.slider',wpbingoFilterContentProduct).each(function() {
-					$('.js-carousel',$(this)).slick('refresh');
+					var $carousel = $('.js-carousel',$(this));
+					if ($carousel.hasClass('slick-initialized')) {
+						$carousel.slick('refresh');
+					}
 				});
 				wpbingo.setCookie("wpbingo_view_collection", $(this).data('view'), 1);
 				$(bwpChangeView).removeClass('active');
@@ -3255,7 +3258,10 @@ wpbingo.QuickView = (function() {
 							var slickIndex = $(this).closest('.slick-carousel__item').data('slick-index');
 							setTimeout(function(){
 								if (slickIndex !== undefined && slickIndex !== null) {
-									$(selectors.quickViewImages, selectors.quickViewContainer).slick('slickGoTo', slickIndex);
+									var $quickViewImages = $(selectors.quickViewImages, selectors.quickViewContainer);
+									if ($quickViewImages.hasClass('slick-initialized')) {
+										$quickViewImages.slick('slickGoTo', slickIndex);
+									}
 								}
 							}, 100);
 						}
@@ -3268,7 +3274,10 @@ wpbingo.QuickView = (function() {
 					if (variant.featured_media.id == imageID) {
 						var slickIndex = $(this).closest('.slick-carousel__item').data('slick-index');
 						if (slickIndex !== undefined && slickIndex !== null) {
-							$(selectors.quickViewImages, selectors.quickViewContainer).slick('slickGoTo', slickIndex);
+							var $quickViewImages = $(selectors.quickViewImages, selectors.quickViewContainer);
+							if ($quickViewImages.hasClass('slick-initialized')) {
+								$quickViewImages.slick('slickGoTo', slickIndex);
+							}
 						}
 					}
 				});
@@ -4555,7 +4564,11 @@ wpbingo.slickCarousel = function() {
 	$('.product-tabs__nav-link').on('shown.bs.tab', function() {
 		var productTabs = $(this).closest('.product-tabs');
 		if (productTabs.find(bwpCarousel).length > 0) {
-			productTabs.find(bwpCarousel).slick('setPosition');
+			productTabs.find(bwpCarousel).each(function() {
+				if ($(this).hasClass('slick-initialized')) {
+					$(this).slick('setPosition');
+				}
+			});
 		}
 	});
 };
@@ -4770,7 +4783,10 @@ wpbingo.click_atribute_image = function(){
 										prodImg = variant.featured_media.preview_image.src.replace(/(\.[^.]*)$/, '_600x$1').replace('http:', '');
 										if($('.product-card__image-wrapper',$current).hasClass('slider')){
 											var variant_slick = $('.product-card__image-wrapper .product-card__image-link[data-variant_id="'+variant.featured_media.id+'"]',$current).data('slick-index');
-											$('.product-card__image',$current).slick('slickGoTo',variant_slick);
+											var $productImage = $('.product-card__image',$current);
+											if ($productImage.hasClass('slick-initialized')) {
+												$productImage.slick('slickGoTo',variant_slick);
+											}
 										}else{
 											$(".product-card__image img.variant",$current).attr("src", prodImg);
 											$(".product-card__image img.variant",$current).attr("srcset", prodImg);
