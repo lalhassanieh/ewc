@@ -516,7 +516,7 @@
         "border_radius_dots": "50px",
         "bg_dots": "#d1b26e",
         "border_color_dots": "#000000",
-        "bg_dots_hover": "#ffffff",
+        "bg_dots_hover": "#d1b26e",
         "border_color_dots_hover": "#000000"
       }
     },
