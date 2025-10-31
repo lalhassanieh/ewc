@@ -2197,11 +2197,12 @@
               "settings": {
                 "padding": "",
                 "margin": "",
+                "image": "shopify://shop_images/80-Esport-3.jpg",
                 "box_content": true,
                 "subtitle_lookbook": "",
                 "title_lookbook": "Mauve  5mm yoga",
                 "button_lookbook": "Shop Collection",
-                "button_lookbook_url": "shopify://collections/all",
+                "button_lookbook_url": "shopify://products/2025-cloud9-official-pro-alternate-jersey",
                 "icon_title": "",
                 "content_position": "absolute",
                 "vertical_position": "bottom",
@@ -2305,7 +2306,6 @@
       "block_order": [
         "column_k3TDkL"
       ],
-      "disabled": true,
       "settings": {
         "max_width": "",
         "fullwidth": true,
