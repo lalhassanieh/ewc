@@ -687,7 +687,6 @@
                   "type": "_collection-image",
                   "settings": {
                     "collection": "t-shirts",
-                    "image": "shopify://shop_images/04-JERSEY-A.jpg",
                     "count": false
                   },
                   "blocks": {}
