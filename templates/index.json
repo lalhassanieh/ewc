@@ -24,7 +24,6 @@
           "blocks": {
             "group_content_slide_YwiDm4": {
               "type": "_group-content-slide",
-              "disabled": true,
               "settings": {
                 "caption_width": "",
                 "vertical_align": "bottom",
@@ -41,6 +40,7 @@
               "blocks": {
                 "description_Y3eEUg": {
                   "type": "description",
+                  "disabled": true,
                   "settings": {
                     "desc": "Yoga and Emotional",
                     "font": "--font-family-second",
@@ -68,6 +68,7 @@
                 },
                 "title_nYkP6Y": {
                   "type": "title",
+                  "disabled": true,
                   "settings": {
                     "heading_size": "h3",
                     "title": "Well-being",
@@ -182,7 +183,6 @@
           "blocks": {
             "group_content_slide_KgpNYX": {
               "type": "_group-content-slide",
-              "disabled": true,
               "settings": {
                 "caption_width": "",
                 "vertical_align": "bottom",
@@ -199,6 +199,7 @@
               "blocks": {
                 "description_qT6te3": {
                   "type": "description",
+                  "disabled": true,
                   "settings": {
                     "desc": "Techniques to Calm Your Mind",
                     "font": "--font-family-second",
@@ -226,6 +227,7 @@
                 },
                 "title_XEEV7C": {
                   "type": "title",
+                  "disabled": true,
                   "settings": {
                     "heading_size": "h3",
                     "title": "Power Yoga",
@@ -340,7 +342,6 @@
           "blocks": {
             "group_content_slide_rAbmFn": {
               "type": "_group-content-slide",
-              "disabled": true,
               "settings": {
                 "caption_width": "",
                 "vertical_align": "bottom",
@@ -357,6 +358,7 @@
               "blocks": {
                 "description_xMALUm": {
                   "type": "description",
+                  "disabled": true,
                   "settings": {
                     "desc": "Poses to Strengthen Your",
                     "font": "--font-family-second",
@@ -384,6 +386,7 @@
                 },
                 "title_by7efm": {
                   "type": "title",
+                  "disabled": true,
                   "settings": {
                     "heading_size": "h3",
                     "title": "Heart Health",
