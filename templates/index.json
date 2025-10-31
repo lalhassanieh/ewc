@@ -827,7 +827,7 @@
         "background_color": "",
         "width_bg": "container",
         "padding_bg": "",
-        "padding": "",
+        "padding": "50px 50px 50px 50px",
         "margin": "",
         "vertical_align": "top",
         "horizontal_align": "left"
@@ -859,7 +859,7 @@
               "type": "banners-lookbook",
               "settings": {
                 "padding": "",
-                "margin": "85px 0 0 0",
+                "margin": "",
                 "image": "shopify://shop_images/Image-01.jpg",
                 "box_content": true,
                 "subtitle_lookbook": "",
@@ -868,11 +868,11 @@
                 "button_lookbook_url": "shopify://products/2025-cloud9-official-pro-alternate-jersey",
                 "icon_title": "",
                 "content_position": "absolute",
-                "vertical_position": "bottom",
-                "horizontal_position": "left",
-                "text_align": "left",
+                "vertical_position": "top",
+                "horizontal_position": "right",
+                "text_align": "right",
                 "padding_content": "0 0 125px 360px | 0 0 30px 15px | | 30px 15px 0",
-                "button_hover": "default",
+                "button_hover": "hover_style_5",
                 "disable_absolute": true,
                 "vertical_position_mobi": "middle",
                 "horizontal_position_mobi": "center",
@@ -884,8 +884,8 @@
                   "settings": {
                     "product": "ewc-2025-windbreaker-beige",
                     "display": "bottom-left",
-                    "top": 41,
-                    "left": 52
+                    "top": 66,
+                    "left": 17
                   },
                   "blocks": {}
                 },
@@ -1012,7 +1012,7 @@
               "type": "banners-box",
               "name": "Banners box",
               "settings": {
-                "image": "shopify://shop_images/banner-23_360x_fba5dd1d-2677-4033-8969-c410f70943b6.avif",
+                "image": "shopify://shop_images/tropjhy_replicas.png",
                 "url": "",
                 "border_radius_img": "0px 0px 0px 0px",
                 "margin_image": "",
