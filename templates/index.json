@@ -509,7 +509,7 @@
         "bg_arrow": "linear-gradient(0deg, rgba(255, 255, 255, 1) 100%, rgba(255, 204, 75, 1) 100%)",
         "border_color_arrow": "#231f20",
         "color_arrow": "#231f20",
-        "bg_arrow_hover": "#d1b26eff",
+        "bg_arrow_hover": "#d1b26e",
         "border_color_arrow_hover": "#000000",
         "color_arrow_hover": "#231f20",
         "border_dots": "0px 0px 0px 0px",
@@ -2637,6 +2637,7 @@
               "settings": {
                 "padding": "",
                 "margin": "",
+                "image": "shopify://shop_images/delivery.svg",
                 "size": "45px",
                 "align": "center",
                 "effects": "wobble-horizontal"
@@ -2704,6 +2705,7 @@
               "settings": {
                 "padding": "",
                 "margin": "",
+                "image": "shopify://shop_images/money.svg",
                 "size": "40px",
                 "align": "center",
                 "effects": "wobble-horizontal"
@@ -2771,6 +2773,7 @@
               "settings": {
                 "padding": "",
                 "margin": "",
+                "image": "shopify://shop_images/payment.svg",
                 "size": "45px",
                 "align": "center",
                 "effects": "wobble-horizontal"
