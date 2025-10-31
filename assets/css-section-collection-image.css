@@ -67,7 +67,7 @@
   top: calc(50% - 23px);
 }
 
-.wpbingo-widget--collections-image .bwp-image {
+.wpbingo-widget--collections-image .collection-item__image {
   display: flex;
   margin-bottom: 22px;
 }
