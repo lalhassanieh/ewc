@@ -1023,7 +1023,7 @@
                     "vertical_position": "bottom",
                     "horizontal_position": "center",
                     "text_align": "center",
-                    "background_content": "#fff",
+                    "background_content": "rgba(0,0,0,0)",
                     "border_radius_content": "0px 0px 0px 0px",
                     "padding": "",
                     "margin": ""
@@ -1037,7 +1037,7 @@
                         "title": "Trophy replicas",
                         "font": "--font-family-second",
                         "color": "#231f20",
-                        "font_size": 35,
+                        "font_size": 25,
                         "line_height": 70,
                         "letter_spacing": 0,
                         "font_weight": "300",
