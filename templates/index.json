@@ -813,24 +813,24 @@
         "column_G9rNeW"
       ],
       "custom_css": [
-        ".collection-item__image a img {aspect-ratio: 2/3; object-fit: cover;}"
+        ".collection-item__image a img {aspect-ratio: 1/1; object-fit: cover;}"
       ],
       "name": "Custom Section",
       "settings": {
-        "max_width": "",
+        "max_width": "1440",
         "fullwidth": false,
         "half_overflow": true,
         "background_gradient": "",
         "background_fixed": false,
-        "background_size": "cover",
+        "background_size": "contain",
         "background_pos": "center center",
         "background_color": "",
         "width_bg": "container",
-        "padding_bg": "",
-        "padding": "50px 50px 50px 50px",
-        "margin": "",
-        "vertical_align": "top",
-        "horizontal_align": "left"
+        "padding_bg": "12px 24px 12px 24px",
+        "padding": "12px 24px 12px 24px",
+        "margin": "12px 24px 12px 24px",
+        "vertical_align": "middle",
+        "horizontal_align": "center"
       }
     },
     "featured_custom_section_CGNBJB": {
