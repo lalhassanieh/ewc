@@ -829,6 +829,159 @@
         "horizontal_align": "left"
       }
     },
+    "featured_custom_section_CGNBJB": {
+      "type": "featured-custom-section",
+      "blocks": {
+        "column_k3TDkL": {
+          "type": "_column",
+          "settings": {
+            "border": false,
+            "border_width": "0px 0px 0px 0px",
+            "border_color": "#fff",
+            "border_style": "solid",
+            "width": 100,
+            "padding": "",
+            "margin": "",
+            "width_lap": 100,
+            "width_tab": 100,
+            "border_mobi": false,
+            "border_width_mobi": "0px 0px 0px 0px",
+            "border_color_mobi": "#ffffff",
+            "border_style_mobi": "solid",
+            "width_mobi": 100
+          },
+          "blocks": {
+            "banners_lookbook_dmGzHn": {
+              "type": "banners-lookbook",
+              "settings": {
+                "padding": "",
+                "margin": "85px 0 0 0",
+                "image": "shopify://shop_images/80-Esport-3.jpg",
+                "box_content": true,
+                "subtitle_lookbook": "",
+                "title_lookbook": "EWC Limited edition products",
+                "button_lookbook": "Shop Collection",
+                "button_lookbook_url": "shopify://products/2025-cloud9-official-pro-alternate-jersey",
+                "icon_title": "",
+                "content_position": "absolute",
+                "vertical_position": "bottom",
+                "horizontal_position": "left",
+                "text_align": "left",
+                "padding_content": "0 0 125px 360px | 0 0 30px 15px | | 30px 15px 0",
+                "button_hover": "default",
+                "disable_absolute": true,
+                "vertical_position_mobi": "middle",
+                "horizontal_position_mobi": "center",
+                "text_align_mobi": "center"
+              },
+              "blocks": {
+                "lookbook_pin_RxLxFx": {
+                  "type": "_lookbook-pin",
+                  "settings": {
+                    "product": "dye-skipping-rope",
+                    "display": "bottom-left",
+                    "top": 41,
+                    "left": 52
+                  },
+                  "blocks": {}
+                },
+                "custom-lookbook": {
+                  "type": "custom-lookbook",
+                  "static": true,
+                  "settings": {
+                    "color_subtitle": "#000000",
+                    "font_subtitle": "--font-family-second",
+                    "font_size_subtitle": 16,
+                    "line_height_subtitle": 22,
+                    "font_weight_subtitle": "500",
+                    "margin_subtitle": "0px 0px 0px 0px",
+                    "text_transfrom_subtitle": "default",
+                    "color_title": "#000000",
+                    "font_title": "--font-family-second",
+                    "font_size_title": 96,
+                    "line_height_title": 96,
+                    "font_weight_title": "500",
+                    "letter_spacing_title": 0,
+                    "margin_title": "0px 0px 50px 0px",
+                    "text_transfrom_title": "default",
+                    "font_button": "--font-family-second",
+                    "text_transfrom_button": "default",
+                    "font_icon": 14,
+                    "margin_icon": 0,
+                    "border_radius_button": "50px",
+                    "border": true,
+                    "border_width": "1px",
+                    "color_button": "#000000",
+                    "background_button": "rgba(0,0,0,0)",
+                    "border_color": "#000000",
+                    "color_button_hover": "#ffffff",
+                    "background_hover": "#000000",
+                    "border_color_hover": "#000000",
+                    "font_size_button": 16,
+                    "line_height_button": 55,
+                    "letter_spacing_button": 0,
+                    "font_weight_button": "600",
+                    "padding_button": "0 40px",
+                    "font_size_title_tab": 35,
+                    "line_height_title_tab": 40,
+                    "color_subtitle_mobi": "#ffffff",
+                    "font_size_subtitle_mobi": 30,
+                    "line_height_subtitle_mobi": 35,
+                    "letter_spacing_subtitle_mobi": 0,
+                    "margin_subtitle_mobi": "0px 0px 0px 0px",
+                    "color_title_mobi": "#000000",
+                    "font_size_title_mobi": 30,
+                    "line_height_title_mobi": 35,
+                    "letter_spacing_title_mobi": 0,
+                    "margin_title_mobi": "0px 0px 0px 0px",
+                    "font_size_button_mobi": 16,
+                    "font_icon_mobi": 14,
+                    "margin_icon_mobi": 0,
+                    "line_height_button_mobi": 50,
+                    "letter_spacing_button_mobi": 0,
+                    "border_radius_button_mobi": "50px",
+                    "border_mobi": false,
+                    "border_width_mobi": "0px 0px 0px 0px",
+                    "color_button_mobi": "#000000",
+                    "background_button_mobi": "rgba(0,0,0,0)",
+                    "border_color_mobi": "#ffffff",
+                    "color_button_hover_mobi": "#ffffff",
+                    "background_hover_mobi": "#000000",
+                    "border_color_hover_mobi": "#ffffff"
+                  },
+                  "blocks": {}
+                }
+              },
+              "block_order": [
+                "lookbook_pin_RxLxFx"
+              ]
+            }
+          },
+          "block_order": [
+            "banners_lookbook_dmGzHn"
+          ]
+        }
+      },
+      "block_order": [
+        "column_k3TDkL"
+      ],
+      "settings": {
+        "max_width": "",
+        "fullwidth": true,
+        "half_overflow": false,
+        "background_gradient": "",
+        "background_fixed": false,
+        "background_size": "cover",
+        "background_pos": "center center",
+        "background_color": "",
+        "width_bg": "container",
+        "padding_bg": "",
+        "padding": "",
+        "margin": "0 0 85px",
+        "vertical_align": "top",
+        "horizontal_align": "left"
+      }
+    },
     "featured_custom_section_JFFQyz": {
       "type": "featured-custom-section",
       "blocks": {
@@ -2476,159 +2629,6 @@
         "horizontal_align": "left"
       }
     },
-    "featured_custom_section_CGNBJB": {
-      "type": "featured-custom-section",
-      "blocks": {
-        "column_k3TDkL": {
-          "type": "_column",
-          "settings": {
-            "border": false,
-            "border_width": "0px 0px 0px 0px",
-            "border_color": "#fff",
-            "border_style": "solid",
-            "width": 100,
-            "padding": "",
-            "margin": "",
-            "width_lap": 100,
-            "width_tab": 100,
-            "border_mobi": false,
-            "border_width_mobi": "0px 0px 0px 0px",
-            "border_color_mobi": "#ffffff",
-            "border_style_mobi": "solid",
-            "width_mobi": 100
-          },
-          "blocks": {
-            "banners_lookbook_dmGzHn": {
-              "type": "banners-lookbook",
-              "settings": {
-                "padding": "",
-                "margin": "",
-                "image": "shopify://shop_images/80-Esport-3.jpg",
-                "box_content": true,
-                "subtitle_lookbook": "",
-                "title_lookbook": "Mauve  5mm yoga",
-                "button_lookbook": "Shop Collection",
-                "button_lookbook_url": "shopify://products/2025-cloud9-official-pro-alternate-jersey",
-                "icon_title": "",
-                "content_position": "absolute",
-                "vertical_position": "bottom",
-                "horizontal_position": "left",
-                "text_align": "left",
-                "padding_content": "0 0 125px 360px | 0 0 30px 15px | | 30px 15px 0",
-                "button_hover": "default",
-                "disable_absolute": true,
-                "vertical_position_mobi": "middle",
-                "horizontal_position_mobi": "center",
-                "text_align_mobi": "center"
-              },
-              "blocks": {
-                "lookbook_pin_RxLxFx": {
-                  "type": "_lookbook-pin",
-                  "settings": {
-                    "product": "dye-skipping-rope",
-                    "display": "bottom-left",
-                    "top": 41,
-                    "left": 52
-                  },
-                  "blocks": {}
-                },
-                "custom-lookbook": {
-                  "type": "custom-lookbook",
-                  "static": true,
-                  "settings": {
-                    "color_subtitle": "#000000",
-                    "font_subtitle": "--font-family-second",
-                    "font_size_subtitle": 16,
-                    "line_height_subtitle": 22,
-                    "font_weight_subtitle": "500",
-                    "margin_subtitle": "0px 0px 0px 0px",
-                    "text_transfrom_subtitle": "default",
-                    "color_title": "#000000",
-                    "font_title": "--font-family-second",
-                    "font_size_title": 96,
-                    "line_height_title": 96,
-                    "font_weight_title": "500",
-                    "letter_spacing_title": 0,
-                    "margin_title": "0px 0px 50px 0px",
-                    "text_transfrom_title": "default",
-                    "font_button": "--font-family-second",
-                    "text_transfrom_button": "default",
-                    "font_icon": 14,
-                    "margin_icon": 0,
-                    "border_radius_button": "50px",
-                    "border": true,
-                    "border_width": "1px",
-                    "color_button": "#000000",
-                    "background_button": "rgba(0,0,0,0)",
-                    "border_color": "#000000",
-                    "color_button_hover": "#ffffff",
-                    "background_hover": "#000000",
-                    "border_color_hover": "#000000",
-                    "font_size_button": 16,
-                    "line_height_button": 55,
-                    "letter_spacing_button": 0,
-                    "font_weight_button": "600",
-                    "padding_button": "0 40px",
-                    "font_size_title_tab": 35,
-                    "line_height_title_tab": 40,
-                    "color_subtitle_mobi": "#ffffff",
-                    "font_size_subtitle_mobi": 30,
-                    "line_height_subtitle_mobi": 35,
-                    "letter_spacing_subtitle_mobi": 0,
-                    "margin_subtitle_mobi": "0px 0px 0px 0px",
-                    "color_title_mobi": "#000000",
-                    "font_size_title_mobi": 30,
-                    "line_height_title_mobi": 35,
-                    "letter_spacing_title_mobi": 0,
-                    "margin_title_mobi": "0px 0px 0px 0px",
-                    "font_size_button_mobi": 16,
-                    "font_icon_mobi": 14,
-                    "margin_icon_mobi": 0,
-                    "line_height_button_mobi": 50,
-                    "letter_spacing_button_mobi": 0,
-                    "border_radius_button_mobi": "50px",
-                    "border_mobi": false,
-                    "border_width_mobi": "0px 0px 0px 0px",
-                    "color_button_mobi": "#000000",
-                    "background_button_mobi": "rgba(0,0,0,0)",
-                    "border_color_mobi": "#ffffff",
-                    "color_button_hover_mobi": "#ffffff",
-                    "background_hover_mobi": "#000000",
-                    "border_color_hover_mobi": "#ffffff"
-                  },
-                  "blocks": {}
-                }
-              },
-              "block_order": [
-                "lookbook_pin_RxLxFx"
-              ]
-            }
-          },
-          "block_order": [
-            "banners_lookbook_dmGzHn"
-          ]
-        }
-      },
-      "block_order": [
-        "column_k3TDkL"
-      ],
-      "settings": {
-        "max_width": "",
-        "fullwidth": true,
-        "half_overflow": false,
-        "background_gradient": "",
-        "background_fixed": false,
-        "background_size": "cover",
-        "background_pos": "center center",
-        "background_color": "",
-        "width_bg": "container",
-        "padding_bg": "",
-        "padding": "",
-        "margin": "0 0 85px",
-        "vertical_align": "top",
-        "horizontal_align": "left"
-      }
-    },
     "featured_custom_section_nxRpXp": {
       "type": "featured-custom-section",
       "blocks": {
@@ -3154,6 +3154,7 @@
     "slidershow_UCrHLW",
     "featured_custom_section_739mBP",
     "featured_custom_section_D9PQNp",
+    "featured_custom_section_CGNBJB",
     "featured_custom_section_JFFQyz",
     "featured_product_tabs_BVzBap",
     "featured_custom_section_mR7jzX",
@@ -3161,7 +3162,6 @@
     "featured_custom_section_JQqpcL",
     "featured_custom_section_CzkNYP",
     "featured_custom_section_m4kR83",
-    "featured_custom_section_CGNBJB",
     "featured_custom_section_nxRpXp",
     "featured_custom_section_4VMgVA",
     "featured_custom_section_eUzjf3"
