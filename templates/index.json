@@ -523,21 +523,21 @@
         "border_color_dots_hover": "#000000"
       }
     },
-    "featured_custom_section_zXgVm8": {
+    "featured_custom_section_739mBP": {
       "type": "featured-custom-section",
       "blocks": {
-        "column_TEAwqW": {
+        "column_ztBQhR": {
           "type": "_column",
           "settings": {
             "border": false,
             "border_width": "0px 0px 0px 0px",
-            "border_color": "#ffffff",
+            "border_color": "#fff",
             "border_style": "solid",
-            "width": 50,
-            "padding": "60px 15px 0 15px",
-            "margin": "| | 0 0 20px",
-            "width_lap": 33.3,
-            "width_tab": 100,
+            "width": 29.3,
+            "padding": "0 15px",
+            "margin": "| | | 0 0 15px",
+            "width_lap": 29.3,
+            "width_tab": 29.3,
             "border_mobi": false,
             "border_width_mobi": "0px 0px 0px 0px",
             "border_color_mobi": "#ffffff",
@@ -545,7 +545,7 @@
             "width_mobi": 100
           },
           "blocks": {
-            "title_PKYb9F": {
+            "title_FzRrfE": {
               "type": "title",
               "settings": {
                 "heading_size": "h3",
@@ -558,16 +558,16 @@
                 "font_weight": "500",
                 "align": "left",
                 "padding": "",
-                "margin": "",
+                "margin": "0",
                 "font_size_lap": 35,
                 "line_height_lap": 35,
                 "align_lap": "left",
                 "font_size_tab": 35,
                 "line_height_tab": 35,
-                "align_tab": "center",
+                "align_tab": "left",
                 "color_mobi": "#000000",
                 "font_size_mobi": 30,
-                "line_height_mobi": 35,
+                "line_height_mobi": 30,
                 "letter_spacing_mobi": 0,
                 "align_mobi": "center"
               },
@@ -575,21 +575,21 @@
             }
           },
           "block_order": [
-            "title_PKYb9F"
+            "title_FzRrfE"
           ]
         },
-        "column_RHp77m": {
+        "column_PC3bmF": {
           "type": "_column",
           "settings": {
             "border": false,
             "border_width": "0px 0px 0px 0px",
-            "border_color": "#ffffff",
+            "border_color": "#fff",
             "border_style": "solid",
-            "width": 48.7,
+            "width": 70.7,
             "padding": "0 15px",
-            "margin": "| | 0 0 20px",
-            "width_lap": 48.7,
-            "width_tab": 100,
+            "margin": "",
+            "width_lap": 10.7,
+            "width_tab": 70.7,
             "border_mobi": false,
             "border_width_mobi": "0px 0px 0px 0px",
             "border_color_mobi": "#ffffff",
@@ -597,7 +597,7 @@
             "width_mobi": 100
           },
           "blocks": {
-            "button_azUC8W": {
+            "button_mwbAW4": {
               "type": "button",
               "settings": {
                 "title": "View All",
@@ -663,34 +663,13 @@
             }
           },
           "block_order": [
-            "button_azUC8W"
+            "button_mwbAW4"
           ]
-        },
-        "column_mgHRmJ": {
-          "type": "_column",
-          "settings": {
-            "border": false,
-            "border_width": "0px 0px 0px 0px",
-            "border_color": "#ffffff",
-            "border_style": "solid",
-            "width": 17.6,
-            "padding": "0 15px",
-            "margin": "",
-            "width_lap": 17.6,
-            "width_tab": 100,
-            "border_mobi": false,
-            "border_width_mobi": "0px 0px 0px 0px",
-            "border_color_mobi": "#ffffff",
-            "border_style_mobi": "solid",
-            "width_mobi": 100
-          },
-          "blocks": {}
         }
       },
       "block_order": [
-        "column_TEAwqW",
-        "column_RHp77m",
-        "column_mgHRmJ"
+        "column_ztBQhR",
+        "column_PC3bmF"
       ],
       "settings": {
         "max_width": "",
@@ -703,7 +682,7 @@
         "background_color": "",
         "width_bg": "container",
         "padding_bg": "",
-        "padding": "",
+        "padding": "60px 0px 0px 0px",
         "margin": "0 0 40px",
         "vertical_align": "middle",
         "horizontal_align": "left"
@@ -3173,7 +3152,7 @@
   },
   "order": [
     "slidershow_UCrHLW",
-    "featured_custom_section_zXgVm8",
+    "featured_custom_section_739mBP",
     "featured_custom_section_D9PQNp",
     "featured_custom_section_JFFQyz",
     "featured_product_tabs_BVzBap",
