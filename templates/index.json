@@ -982,6 +982,175 @@
         "horizontal_align": "left"
       }
     },
+    "featured_custom_section_DMqghc": {
+      "type": "featured-custom-section",
+      "blocks": {
+        "column_ACCfhe": {
+          "type": "_column",
+          "settings": {
+            "border": false,
+            "border_width": "0px 0px 0px 0px",
+            "border_color": "#fff",
+            "border_style": "solid",
+            "width": 50,
+            "padding": "0 15px | 0 7.5px",
+            "margin": "",
+            "width_lap": 100,
+            "width_tab": 100,
+            "border_mobi": false,
+            "border_width_mobi": "0px 0px 0px 0px",
+            "border_color_mobi": "#fff",
+            "border_style_mobi": "solid",
+            "width_mobi": 100
+          },
+          "blocks": {
+            "banners_box_JXMy7g": {
+              "type": "banners-box",
+              "name": "Banners box",
+              "settings": {
+                "url": "",
+                "border_radius_img": "0px 0px 0px 0px",
+                "margin_image": "",
+                "padding": "",
+                "margin": "",
+                "effect": "none"
+              },
+              "blocks": {
+                "banner_box_7qCwnN": {
+                  "type": "_banner-box",
+                  "settings": {
+                    "content_position": "absolute",
+                    "vertical_position": "bottom",
+                    "horizontal_position": "center",
+                    "text_align": "center",
+                    "background_content": "#fff",
+                    "border_radius_content": "0px 0px 0px 0px",
+                    "padding": "",
+                    "margin": ""
+                  },
+                  "blocks": {
+                    "title_EqJ4h8": {
+                      "type": "title",
+                      "name": "Title",
+                      "settings": {
+                        "heading_size": "h3",
+                        "title": "Trophy replicas",
+                        "font": "--font-family-second",
+                        "color": "#231f20",
+                        "font_size": 35,
+                        "line_height": 70,
+                        "letter_spacing": 0,
+                        "font_weight": "300",
+                        "align": "left",
+                        "padding": "",
+                        "margin": "",
+                        "font_size_lap": 30,
+                        "line_height_lap": 35,
+                        "align_lap": "left",
+                        "font_size_tab": 30,
+                        "line_height_tab": 35,
+                        "align_tab": "left",
+                        "color_mobi": "#ffffff",
+                        "font_size_mobi": 30,
+                        "line_height_mobi": 35,
+                        "letter_spacing_mobi": 0,
+                        "align_mobi": "left"
+                      },
+                      "blocks": {}
+                    }
+                  },
+                  "block_order": [
+                    "title_EqJ4h8"
+                  ]
+                }
+              },
+              "block_order": [
+                "banner_box_7qCwnN"
+              ]
+            }
+          },
+          "block_order": [
+            "banners_box_JXMy7g"
+          ]
+        },
+        "column_AdeCqj": {
+          "type": "_column",
+          "settings": {
+            "border": false,
+            "border_width": "0px 0px 0px 0px",
+            "border_color": "#fff",
+            "border_style": "solid",
+            "width": 50,
+            "padding": "0 15px | 0 7.5px",
+            "margin": "",
+            "width_lap": 100,
+            "width_tab": 100,
+            "border_mobi": false,
+            "border_width_mobi": "0px 0px 0px 0px",
+            "border_color_mobi": "#fff",
+            "border_style_mobi": "solid",
+            "width_mobi": 100
+          },
+          "blocks": {
+            "banners_box_TVEm76": {
+              "type": "banners-box",
+              "name": "Banners box",
+              "settings": {
+                "url": "",
+                "border_radius_img": "0px 0px 0px 0px",
+                "margin_image": "",
+                "padding": "",
+                "margin": "",
+                "effect": "none"
+              },
+              "blocks": {
+                "banner_box_M3AwUx": {
+                  "type": "_banner-box",
+                  "settings": {
+                    "content_position": "absolute",
+                    "vertical_position": "middle",
+                    "horizontal_position": "center",
+                    "text_align": "center",
+                    "background_content": "#fff",
+                    "border_radius_content": "0px 0px 0px 0px",
+                    "padding": "",
+                    "margin": ""
+                  },
+                  "blocks": {}
+                }
+              },
+              "block_order": [
+                "banner_box_M3AwUx"
+              ]
+            }
+          },
+          "block_order": [
+            "banners_box_TVEm76"
+          ]
+        }
+      },
+      "block_order": [
+        "column_ACCfhe",
+        "column_AdeCqj"
+      ],
+      "name": "Custom Section",
+      "settings": {
+        "max_width": "",
+        "fullwidth": false,
+        "half_overflow": true,
+        "background_gradient": "",
+        "background_fixed": false,
+        "background_size": "cover",
+        "background_pos": "center center",
+        "background_color": "",
+        "width_bg": "container",
+        "padding_bg": "",
+        "padding": "",
+        "margin": "",
+        "vertical_align": "top",
+        "horizontal_align": "left"
+      }
+    },
     "featured_custom_section_JFFQyz": {
       "type": "featured-custom-section",
       "blocks": {
@@ -3155,6 +3324,7 @@
     "featured_custom_section_739mBP",
     "featured_custom_section_D9PQNp",
     "featured_custom_section_CGNBJB",
+    "featured_custom_section_DMqghc",
     "featured_custom_section_JFFQyz",
     "featured_product_tabs_BVzBap",
     "featured_custom_section_mR7jzX",
