@@ -771,7 +771,7 @@
                   "static": true,
                   "settings": {
                     "border_image": "10px",
-                    "color": "#000000",
+                    "color": "#231f20",
                     "background": "rgba(0,0,0,0)",
                     "color_hover": "#000000",
                     "background_hover": "rgba(0,0,0,0)",
