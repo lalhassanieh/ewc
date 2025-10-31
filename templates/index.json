@@ -24,7 +24,6 @@
           "blocks": {
             "group_content_slide_YwiDm4": {
               "type": "_group-content-slide",
-              "disabled": true,
               "settings": {
                 "caption_width": "",
                 "vertical_align": "bottom",
@@ -41,6 +40,7 @@
               "blocks": {
                 "description_Y3eEUg": {
                   "type": "description",
+                  "disabled": true,
                   "settings": {
                     "desc": "Yoga and Emotional",
                     "font": "--font-family-second",
@@ -68,6 +68,7 @@
                 },
                 "title_nYkP6Y": {
                   "type": "title",
+                  "disabled": true,
                   "settings": {
                     "heading_size": "h3",
                     "title": "Well-being",
@@ -126,7 +127,7 @@
                     "background": "#ffffff",
                     "border_color": "#ffffff",
                     "color_hover": "#ffffff",
-                    "background_hover": "#000000",
+                    "background_hover": "#d1b26e",
                     "border_color_hover": "#ffffff",
                     "font_size": 18,
                     "line_height": 54,
@@ -182,7 +183,6 @@
           "blocks": {
             "group_content_slide_KgpNYX": {
               "type": "_group-content-slide",
-              "disabled": true,
               "settings": {
                 "caption_width": "",
                 "vertical_align": "bottom",
@@ -199,6 +199,7 @@
               "blocks": {
                 "description_qT6te3": {
                   "type": "description",
+                  "disabled": true,
                   "settings": {
                     "desc": "Techniques to Calm Your Mind",
                     "font": "--font-family-second",
@@ -226,6 +227,7 @@
                 },
                 "title_XEEV7C": {
                   "type": "title",
+                  "disabled": true,
                   "settings": {
                     "heading_size": "h3",
                     "title": "Power Yoga",
@@ -284,7 +286,7 @@
                     "background": "#ffffff",
                     "border_color": "#ffffff",
                     "color_hover": "#ffffff",
-                    "background_hover": "#000000",
+                    "background_hover": "#d1b26e",
                     "border_color_hover": "#ffffff",
                     "font_size": 18,
                     "line_height": 54,
@@ -340,7 +342,6 @@
           "blocks": {
             "group_content_slide_rAbmFn": {
               "type": "_group-content-slide",
-              "disabled": true,
               "settings": {
                 "caption_width": "",
                 "vertical_align": "bottom",
@@ -357,6 +358,7 @@
               "blocks": {
                 "description_xMALUm": {
                   "type": "description",
+                  "disabled": true,
                   "settings": {
                     "desc": "Poses to Strengthen Your",
                     "font": "--font-family-second",
@@ -384,6 +386,7 @@
                 },
                 "title_by7efm": {
                   "type": "title",
+                  "disabled": true,
                   "settings": {
                     "heading_size": "h3",
                     "title": "Heart Health",
@@ -442,7 +445,7 @@
                     "background": "#ffffff",
                     "border_color": "#ffffff",
                     "color_hover": "#ffffff",
-                    "background_hover": "#000000",
+                    "background_hover": "#d1b26e",
                     "border_color_hover": "#ffffff",
                     "font_size": 18,
                     "line_height": 54,
@@ -509,7 +512,7 @@
         "bg_arrow": "linear-gradient(0deg, rgba(255, 255, 255, 1) 100%, rgba(255, 204, 75, 1) 100%)",
         "border_color_arrow": "#231f20",
         "color_arrow": "#231f20",
-        "bg_arrow_hover": "#d1b26eff",
+        "bg_arrow_hover": "#d1b26e",
         "border_color_arrow_hover": "#000000",
         "color_arrow_hover": "#231f20",
         "border_dots": "0px 0px 0px 0px",
@@ -518,6 +521,262 @@
         "border_color_dots": "#000000",
         "bg_dots_hover": "#d1b26e",
         "border_color_dots_hover": "#000000"
+      }
+    },
+    "featured_custom_section_zXgVm8": {
+      "type": "featured-custom-section",
+      "blocks": {
+        "column_TEAwqW": {
+          "type": "_column",
+          "settings": {
+            "border": false,
+            "border_width": "0px 0px 0px 0px",
+            "border_color": "#ffffff",
+            "border_style": "solid",
+            "width": 100,
+            "padding": "60px 15px 0 15px",
+            "margin": "| | 0 0 20px",
+            "width_lap": 33.3,
+            "width_tab": 100,
+            "border_mobi": false,
+            "border_width_mobi": "0px 0px 0px 0px",
+            "border_color_mobi": "#ffffff",
+            "border_style_mobi": "solid",
+            "width_mobi": 100
+          },
+          "blocks": {
+            "title_PKYb9F": {
+              "type": "title",
+              "settings": {
+                "heading_size": "h3",
+                "title": "Shop EWC Apparel",
+                "font": "--font-family-second",
+                "color": "#000000",
+                "font_size": 48,
+                "line_height": 48,
+                "letter_spacing": 0,
+                "font_weight": "500",
+                "align": "left",
+                "padding": "",
+                "margin": "",
+                "font_size_lap": 35,
+                "line_height_lap": 35,
+                "align_lap": "left",
+                "font_size_tab": 35,
+                "line_height_tab": 35,
+                "align_tab": "center",
+                "color_mobi": "#000000",
+                "font_size_mobi": 30,
+                "line_height_mobi": 35,
+                "letter_spacing_mobi": 0,
+                "align_mobi": "center"
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "title_PKYb9F"
+          ]
+        },
+        "column_RHp77m": {
+          "type": "_column",
+          "settings": {
+            "border": false,
+            "border_width": "0px 0px 0px 0px",
+            "border_color": "#ffffff",
+            "border_style": "solid",
+            "width": 48.7,
+            "padding": "0 15px",
+            "margin": "| | 0 0 20px",
+            "width_lap": 48.7,
+            "width_tab": 100,
+            "border_mobi": false,
+            "border_width_mobi": "0px 0px 0px 0px",
+            "border_color_mobi": "#ffffff",
+            "border_style_mobi": "solid",
+            "width_mobi": 100
+          },
+          "blocks": {}
+        },
+        "column_mgHRmJ": {
+          "type": "_column",
+          "settings": {
+            "border": false,
+            "border_width": "0px 0px 0px 0px",
+            "border_color": "#ffffff",
+            "border_style": "solid",
+            "width": 17.6,
+            "padding": "0 15px",
+            "margin": "",
+            "width_lap": 17.6,
+            "width_tab": 100,
+            "border_mobi": false,
+            "border_width_mobi": "0px 0px 0px 0px",
+            "border_color_mobi": "#ffffff",
+            "border_style_mobi": "solid",
+            "width_mobi": 100
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "column_TEAwqW",
+        "column_RHp77m",
+        "column_mgHRmJ"
+      ],
+      "settings": {
+        "max_width": "",
+        "fullwidth": false,
+        "half_overflow": true,
+        "background_gradient": "",
+        "background_fixed": false,
+        "background_size": "cover",
+        "background_pos": "center center",
+        "background_color": "",
+        "width_bg": "container",
+        "padding_bg": "",
+        "padding": "",
+        "margin": "0 0 40px",
+        "vertical_align": "middle",
+        "horizontal_align": "left"
+      }
+    },
+    "featured_custom_section_D9PQNp": {
+      "type": "featured-custom-section",
+      "blocks": {
+        "column_G9rNeW": {
+          "type": "_column",
+          "settings": {
+            "border": false,
+            "border_width": "0px 0px 0px 0px",
+            "border_color": "#fff",
+            "border_style": "solid",
+            "width": 100,
+            "padding": "",
+            "margin": "",
+            "width_lap": 100,
+            "width_tab": 100,
+            "border_mobi": false,
+            "border_width_mobi": "0px 0px 0px 0px",
+            "border_color_mobi": "#fff",
+            "border_style_mobi": "solid",
+            "width_mobi": 100
+          },
+          "blocks": {
+            "collection_image_7CwxWB": {
+              "type": "collection-image",
+              "name": "Collections image",
+              "settings": {
+                "padding": "",
+                "margin": "",
+                "navigation": true,
+                "infinite": true,
+                "autoplay": false,
+                "autoplay_speed": "10000",
+                "half_slider": true,
+                "columns": 4,
+                "column1440": 4,
+                "column1": 4,
+                "column2": 3,
+                "column3": 1,
+                "column4": 1,
+                "effects": "grow"
+              },
+              "blocks": {
+                "collection_image_MhCYap": {
+                  "type": "_collection-image",
+                  "settings": {
+                    "collection": "t-shirts",
+                    "count": false
+                  },
+                  "blocks": {}
+                },
+                "collection_image_6kGzTn": {
+                  "type": "_collection-image",
+                  "settings": {
+                    "collection": "hoodies",
+                    "count": false
+                  },
+                  "blocks": {}
+                },
+                "collection_image_aMVDDT": {
+                  "type": "_collection-image",
+                  "settings": {
+                    "collection": "jackets",
+                    "count": false
+                  },
+                  "blocks": {}
+                },
+                "collection_image_HP8Jga": {
+                  "type": "_collection-image",
+                  "settings": {
+                    "collection": "jersey",
+                    "count": false
+                  },
+                  "blocks": {}
+                },
+                "custom-colleciont-image": {
+                  "type": "custom-collection-image",
+                  "static": true,
+                  "settings": {
+                    "border_image": "10px",
+                    "color": "#000",
+                    "background": "rgba(0,0,0,0)",
+                    "color_hover": "#000000",
+                    "background_hover": "rgba(0,0,0,0)",
+                    "font_size": 16,
+                    "line_height": 24,
+                    "letter_spacing": 0,
+                    "font_weight": "600",
+                    "padding_title": "0px 0px 0px 0px",
+                    "text_transform": "none",
+                    "text_align": "center",
+                    "font_size_count": 16,
+                    "line_height_count": 22,
+                    "letter_spacing_count": 0,
+                    "font_weight_count": "500",
+                    "margin_count": "",
+                    "font_size_mobi": 16,
+                    "line_height_mobi": 22,
+                    "letter_spacing_mobi": 0,
+                    "font_weight_mobi": "500",
+                    "padding_title_mobi": "0px 0px 0px 0px"
+                  },
+                  "blocks": {}
+                }
+              },
+              "block_order": [
+                "collection_image_MhCYap",
+                "collection_image_6kGzTn",
+                "collection_image_aMVDDT",
+                "collection_image_HP8Jga"
+              ]
+            }
+          },
+          "block_order": [
+            "collection_image_7CwxWB"
+          ]
+        }
+      },
+      "block_order": [
+        "column_G9rNeW"
+      ],
+      "name": "Custom Section",
+      "settings": {
+        "max_width": "",
+        "fullwidth": false,
+        "half_overflow": true,
+        "background_gradient": "",
+        "background_fixed": false,
+        "background_size": "cover",
+        "background_pos": "center center",
+        "background_color": "",
+        "width_bg": "container",
+        "padding_bg": "",
+        "padding": "",
+        "margin": "",
+        "vertical_align": "top",
+        "horizontal_align": "left"
       }
     },
     "featured_custom_section_JFFQyz": {
@@ -1439,7 +1698,7 @@
             "width": 70.7,
             "padding": "0 15px",
             "margin": "",
-            "width_lap": 70.7,
+            "width_lap": 10.7,
             "width_tab": 70.7,
             "border_mobi": false,
             "border_width_mobi": "0px 0px 0px 0px",
@@ -1489,7 +1748,7 @@
                 "min_width": "",
                 "padding": "",
                 "margin": "",
-                "align": "left",
+                "align": "right",
                 "align_lap": "left",
                 "align_tab": "left",
                 "font_size_mobi": 16,
@@ -2194,11 +2453,12 @@
               "settings": {
                 "padding": "",
                 "margin": "",
+                "image": "shopify://shop_images/80-Esport-3.jpg",
                 "box_content": true,
                 "subtitle_lookbook": "",
                 "title_lookbook": "Mauve  5mm yoga",
                 "button_lookbook": "Shop Collection",
-                "button_lookbook_url": "shopify://collections/all",
+                "button_lookbook_url": "shopify://products/2025-cloud9-official-pro-alternate-jersey",
                 "icon_title": "",
                 "content_position": "absolute",
                 "vertical_position": "bottom",
@@ -2302,7 +2562,6 @@
       "block_order": [
         "column_k3TDkL"
       ],
-      "disabled": true,
       "settings": {
         "max_width": "",
         "fullwidth": true,
@@ -2637,6 +2896,7 @@
               "settings": {
                 "padding": "",
                 "margin": "",
+                "image": "shopify://shop_images/delivery.svg",
                 "size": "45px",
                 "align": "center",
                 "effects": "wobble-horizontal"
@@ -2704,6 +2964,7 @@
               "settings": {
                 "padding": "",
                 "margin": "",
+                "image": "shopify://shop_images/money.svg",
                 "size": "40px",
                 "align": "center",
                 "effects": "wobble-horizontal"
@@ -2771,6 +3032,7 @@
               "settings": {
                 "padding": "",
                 "margin": "",
+                "image": "shopify://shop_images/payment.svg",
                 "size": "45px",
                 "align": "center",
                 "effects": "wobble-horizontal"
@@ -2840,6 +3102,8 @@
   },
   "order": [
     "slidershow_UCrHLW",
+    "featured_custom_section_zXgVm8",
+    "featured_custom_section_D9PQNp",
     "featured_custom_section_JFFQyz",
     "featured_product_tabs_BVzBap",
     "featured_custom_section_mR7jzX",

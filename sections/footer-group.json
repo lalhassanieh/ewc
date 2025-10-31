@@ -583,6 +583,7 @@
           "blocks": {
             "image_zjexV3": {
               "type": "image",
+              "disabled": true,
               "settings": {
                 "image": "shopify://shop_images/payment.png",
                 "url": "",
