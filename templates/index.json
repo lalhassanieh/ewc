@@ -734,6 +734,7 @@
                   "type": "_collection-image",
                   "settings": {
                     "collection": "t-shirts",
+                    "image": "shopify://shop_images/FULLLIFE-1088.png",
                     "count": false
                   },
                   "blocks": {}
@@ -742,6 +743,7 @@
                   "type": "_collection-image",
                   "settings": {
                     "collection": "hoodies",
+                    "image": "shopify://shop_images/FULLLIFE-1140.png",
                     "count": false
                   },
                   "blocks": {}
@@ -750,6 +752,7 @@
                   "type": "_collection-image",
                   "settings": {
                     "collection": "jackets",
+                    "image": "shopify://shop_images/72-Esport-1.jpg",
                     "count": false
                   },
                   "blocks": {}
@@ -758,6 +761,7 @@
                   "type": "_collection-image",
                   "settings": {
                     "collection": "jersey",
+                    "image": "shopify://shop_images/49_Esports_1_3.jpg",
                     "count": false
                   },
                   "blocks": {}
@@ -1008,6 +1012,7 @@
               "type": "banners-box",
               "name": "Banners box",
               "settings": {
+                "image": "shopify://shop_images/Keyring-Spinner3.jpg",
                 "url": "",
                 "border_radius_img": "0px 0px 0px 0px",
                 "margin_image": "",
@@ -1161,6 +1166,7 @@
               "type": "banners-box",
               "name": "Banners box",
               "settings": {
+                "image": "shopify://shop_images/Whats-App-Image-2025-08-03-at-7-43-37-PM.jpg",
                 "url": "",
                 "border_radius_img": "0px 0px 0px 0px",
                 "margin_image": "",
