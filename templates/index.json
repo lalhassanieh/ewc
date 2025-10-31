@@ -1935,7 +1935,7 @@
             "border_color": "#fff",
             "border_style": "solid",
             "width": 100,
-            "padding": "",
+            "padding": "0 15px",
             "margin": "",
             "width_lap": 100,
             "width_tab": 100,
