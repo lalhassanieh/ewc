@@ -2714,7 +2714,7 @@
           "type": "tab",
           "settings": {
             "title": "Jerseys",
-            "collection": "jersey",
+            "collection": "jerseys",
             "limit": 8
           }
         },
@@ -2722,7 +2722,7 @@
           "type": "tab",
           "settings": {
             "title": "Tshirts",
-            "collection": "t-shirts",
+            "collection": "t-shirts-1",
             "limit": 8
           }
         },
@@ -2730,7 +2730,7 @@
           "type": "tab",
           "settings": {
             "title": "Hoodies",
-            "collection": "hoodies",
+            "collection": "hoodies-1",
             "limit": 8
           }
         },
@@ -2738,7 +2738,7 @@
           "type": "tab",
           "settings": {
             "title": "Jackets",
-            "collection": "jackets",
+            "collection": "jackets-1",
             "limit": 8
           }
         },
@@ -2746,7 +2746,7 @@
           "type": "tab",
           "settings": {
             "title": "Accessories",
-            "collection": "accessories",
+            "collection": "accessories-1",
             "limit": 8
           }
         }
