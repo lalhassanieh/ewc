@@ -1039,7 +1039,7 @@
                       "name": "Title",
                       "settings": {
                         "heading_size": "h3",
-                        "title": "Trophy replicas",
+                        "title": "Own the Glory",
                         "font": "--font-family-second",
                         "color": "#231f20",
                         "font_size": 25,
@@ -1053,6 +1053,34 @@
                         "line_height_lap": 35,
                         "align_lap": "left",
                         "font_size_tab": 30,
+                        "line_height_tab": 35,
+                        "align_tab": "left",
+                        "color_mobi": "#ffffff",
+                        "font_size_mobi": 30,
+                        "line_height_mobi": 35,
+                        "letter_spacing_mobi": 0,
+                        "align_mobi": "left"
+                      },
+                      "blocks": {}
+                    },
+                    "description_KyQG9M": {
+                      "type": "description",
+                      "name": "desc",
+                      "settings": {
+                        "desc": "Bring home the spirit of champions with<br>exclusive EWC trophy replicas.",
+                        "font": "--font-family-second",
+                        "color": "#231f20",
+                        "font_size": 20,
+                        "line_height": 25,
+                        "letter_spacing": 0,
+                        "font_weight": "300",
+                        "align": "left",
+                        "padding": "",
+                        "margin": "0 0 15px 0",
+                        "font_size_lap": 15,
+                        "line_height_lap": 35,
+                        "align_lap": "left",
+                        "font_size_tab": 15,
                         "line_height_tab": 35,
                         "align_tab": "left",
                         "color_mobi": "#ffffff",
@@ -1130,6 +1158,7 @@
                   },
                   "block_order": [
                     "title_EqJ4h8",
+                    "description_KyQG9M",
                     "button_wpBThY"
                   ]
                 }
@@ -2011,7 +2040,7 @@
                     "width_mobi": 100
                   },
                   "blocks": {
-                    "description_zMBhRc": {
+                    "description_4xcRjp": {
                       "type": "description",
                       "name": "desc",
                       "settings": {
@@ -2134,7 +2163,7 @@
                     }
                   },
                   "block_order": [
-                    "description_zMBhRc",
+                    "description_4xcRjp",
                     "title_GmMCTy",
                     "button_UyDXKX"
                   ]
