@@ -560,10 +560,9 @@
         "blocks": {
           "mainmenu_item_NDUp8q": {
             "type": "_mainmenu-item",
-            "disabled": true,
             "settings": {
-              "title": "Fashion",
-              "menu_url": "shopify://collections/fashion",
+              "title": "EWC Merch",
+              "menu_url": "shopify://collections/ewc-merch",
               "submenu_format": "",
               "badge": "",
               "position": "after",
@@ -718,7 +717,7 @@
             "type": "_mainmenu-item",
             "disabled": true,
             "settings": {
-              "title": "Bags",
+              "title": "Club Partner Merch",
               "menu_url": "shopify://collections/bags",
               "submenu_format": "",
               "badge": "",
