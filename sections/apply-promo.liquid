@@ -1,0 +1,97 @@
+<!-- sections/apply-promo.liquid -->
+<section id="apply-promo-section" class="apply-promo-section">
+  <div class="apply-promo-inner">
+    <h2 class="apply-promo-title">{{ section.settings.title }}</h2>
+    <p class="apply-promo-subtitle">{{ section.settings.subtitle }}</p>
+
+    <form id="applyPromoForm" class="apply-promo-form" onsubmit="return false;">
+      <label for="applyPromoCode" class="visually-hidden">Promo code</label>
+      <input id="applyPromoCode"
+             name="code"
+             type="text"
+             placeholder="{{ section.settings.placeholder }}"
+             aria-label="Promo code"
+             class="apply-promo-input" />
+
+      <button id="applyPromoBtn" type="button" class="apply-promo-btn">
+        {{ section.settings.button_text }}
+      </button>
+      <div id="applyPromoMsg" class="apply-promo-msg" aria-live="polite"></div>
+    </form>
+  </div>
+
+  <style>
+    /* basic styling - adjust values as you like */
+    #apply-promo-section.apply-promo-section { padding: 30px 20px; text-align:center; background: {{ section.settings.bg_color }}; }
+    .apply-promo-inner { max-width: 900px; margin: 0 auto; display:flex; flex-direction:column; gap:12px; align-items:center; }
+    .apply-promo-title { margin:0; font-size:24px; color:{{ section.settings.title_color }}; }
+    .apply-promo-subtitle { margin:0; font-size:14px; color:{{ section.settings.subtitle_color }}; }
+    .apply-promo-form { display:flex; gap:10px; width:100%; justify-content:center; flex-wrap:wrap; }
+    .apply-promo-input { padding:10px 14px; min-width:220px; max-width:420px; border:1px solid #ccc; border-radius:4px; }
+    .apply-promo-btn { padding:10px 16px; border:none; cursor:pointer; border-radius:4px; background:{{ section.settings.button_bg }}; color:{{ section.settings.button_color }}; }
+    .apply-promo-msg { margin-top:8px; font-size:13px; color:#e74c3c; min-height:18px; }
+    .visually-hidden { position:absolute !important; height:1px; width:1px; overflow:hidden; clip:rect(1px,1px,1px,1px); white-space:nowrap; }
+    @media (min-width: 700px) {
+      .apply-promo-form { flex-wrap:nowrap; }
+    }
+  </style>
+
+  <script>
+    (function(){
+      const form = document.getElementById('applyPromoForm');
+      const input = document.getElementById('applyPromoCode');
+      const btn = document.getElementById('applyPromoBtn');
+      const msg = document.getElementById('applyPromoMsg');
+
+      function setMessage(text, isError){
+        msg.textContent = text || '';
+        msg.style.color = isError ? '#e74c3c' : '#2ecc71';
+      }
+
+      btn.addEventListener('click', function(){
+        const code = input.value.trim();
+        if(!code){
+          setMessage('{{ "Please enter a promo code." | t }}', true);
+          input.focus();
+          return;
+        }
+
+        // Redirect to discount link — Shopify will apply the discount at checkout
+        // Use encodeURIComponent to avoid issues with special characters.
+        const redirectUrl = '/discount/' + encodeURIComponent(code) + '?redirect=/cart';
+        // Show user something immediately
+        setMessage('{{ "Applying promo code…" | t }}', false);
+        // Small delay for UX, then redirect
+        setTimeout(function(){
+          window.location.href = redirectUrl;
+        }, 250);
+      });
+
+      // Allow Enter key
+      input.addEventListener('keydown', function(e){
+        if(e.key === 'Enter'){ btn.click(); }
+      });
+    })();
+  </script>
+</section>
+
+{% schema %}
+{
+  "name": "Apply promo code",
+  "settings": [
+    { "type": "text", "id": "title", "label": "Title", "default": "Apply your promo code" },
+    { "type": "text", "id": "subtitle", "label": "Subtitle", "default": "Enter a promo code to get a discount" },
+    { "type": "text", "id": "placeholder", "label": "Input placeholder", "default": "Enter promo code" },
+    { "type": "text", "id": "button_text", "label": "Button text", "default": "Apply" },
+    { "type": "color", "id": "bg_color", "label": "Background color", "default": "#ffffff" },
+    { "type": "color", "id": "title_color", "label": "Title color", "default": "#111111" },
+    { "type": "color", "id": "subtitle_color", "label": "Subtitle color", "default": "#666666" },
+    { "type": "color", "id": "button_bg", "label": "Button background", "default": "#111111" },
+    { "type": "color", "id": "button_color", "label": "Button text color", "default": "#ffffff" }
+  ],
+  "presets": [{
+    "name": "Apply promo code",
+    "category": "Promotions"
+  }]
+}
+{% endschema %}
