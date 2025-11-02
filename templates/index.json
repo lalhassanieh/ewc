@@ -871,7 +871,7 @@
                 "vertical_position": "bottom",
                 "horizontal_position": "right",
                 "text_align": "left",
-                "padding_content": "50px 50px 125px 360px | 0 0 30px 15px | | 30px 15px 0",
+                "padding_content": "0 0 125px 360px | 0 0 30px 15px | | 30px 15px 0",
                 "button_hover": "hover_style_5",
                 "disable_absolute": true,
                 "vertical_position_mobi": "middle",
