@@ -1343,7 +1343,7 @@
       ".esc-email-container input {padding-left: 10px;}",
       "@media (max-width: 767px) {section.wpbingo-breadcrumbs .wpbingo-breadcrumbs__inner .wpbingo-breadcrumbs__title {text-align: left !important; }}",
       "@media (max-width: 600px) {.doubly-float {right: 24px !important; bottom: 54px !important; }}",
-      "/* === Limit Site Width to 1400px on Desktop === */@media screen and (min-width: 1200px) {body .container, body .page-width, body .site-wrapper, body .main-content {max-width: 1200px !important; margin-left: auto !important; margin-right: auto !important; }}"
+      "/* === Limit grid width to 1400px but keep banners full width === */@media screen and (min-width: 1200px) {/* Limit overall layout */ body .container, body .page-width, body .main-content, body .site-wrapper {max-width: 1400px !important; margin-left: auto !important; margin-right: auto !important; padding-left: 20px !important; padding-right: 20px !important; } /* Exclude full-width banners and sliders */ body .hero-slider .container, body .slideshow-section .container, body .banner-section .container, body .image-banner .container {max-width: 100% !important; padding: 0 !important; }}"
     ]
   }
 }
