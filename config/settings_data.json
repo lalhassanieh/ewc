@@ -29,6 +29,7 @@
     "font-weight-base-medium": "500",
     "font-weight-base-bold": "700",
     "layout_header": "1",
+    "menu_link_mobile": "main-menu-1",
     "show_menu_bottom": true,
     "color_header_bg": "#ffffff",
     "color_menu_text": "#231f20",
