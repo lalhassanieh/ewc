@@ -558,6 +558,65 @@
       "header_1": {
         "type": "header_1",
         "blocks": {
+          "mainmenu_item_EtPCeD": {
+            "type": "_mainmenu-item",
+            "settings": {
+              "title": "Home",
+              "menu_url": "https://shop.esportsworldcup.com/",
+              "submenu_format": "",
+              "badge": "",
+              "position": "after",
+              "badge_color": "#000000"
+            },
+            "blocks": {
+              "megamenu_container_9xe8H6": {
+                "type": "_megamenu-container",
+                "settings": {
+                  "width": "custom",
+                  "width_custom": "650px"
+                },
+                "blocks": {
+                  "megamenu_item_MRcf6G": {
+                    "type": "_megamenu-item",
+                    "settings": {
+                      "widget": "menu",
+                      "menu_col": "50%",
+                      "menu_heading": "Layout & Post",
+                      "menu_link_list_child": "",
+                      "banner_title": "",
+                      "banner_button": "",
+                      "banner_link": "",
+                      "collection_widget": "",
+                      "blog_widget": ""
+                    },
+                    "blocks": {}
+                  },
+                  "megamenu_item_zM9JTE": {
+                    "type": "_megamenu-item",
+                    "settings": {
+                      "widget": "blog",
+                      "menu_col": "50%",
+                      "menu_heading": "",
+                      "menu_link_list_child": "",
+                      "banner_title": "",
+                      "banner_button": "",
+                      "banner_link": "",
+                      "collection_widget": "",
+                      "blog_widget": "news"
+                    },
+                    "blocks": {}
+                  }
+                },
+                "block_order": [
+                  "megamenu_item_MRcf6G",
+                  "megamenu_item_zM9JTE"
+                ]
+              }
+            },
+            "block_order": [
+              "megamenu_container_9xe8H6"
+            ]
+          },
           "mainmenu_item_NDUp8q": {
             "type": "_mainmenu-item",
             "settings": {
@@ -715,7 +774,6 @@
           },
           "mainmenu_item_g884pn": {
             "type": "_mainmenu-item",
-            "disabled": true,
             "settings": {
               "title": "Club Partner Merch",
               "menu_url": "shopify://collections/club-partner-merch",
@@ -823,7 +881,6 @@
           },
           "mainmenu_item_W7rhGn": {
             "type": "_mainmenu-item",
-            "disabled": true,
             "settings": {
               "title": "Esports teams Merch",
               "menu_url": "shopify://collections/esports-teams-merch",
@@ -911,66 +968,6 @@
             },
             "block_order": [
               "megamenu_container_6dTCcK"
-            ]
-          },
-          "mainmenu_item_EtPCeD": {
-            "type": "_mainmenu-item",
-            "disabled": true,
-            "settings": {
-              "title": "Home",
-              "menu_url": "https://shop.esportsworldcup.com/",
-              "submenu_format": "",
-              "badge": "",
-              "position": "after",
-              "badge_color": "#000000"
-            },
-            "blocks": {
-              "megamenu_container_9xe8H6": {
-                "type": "_megamenu-container",
-                "settings": {
-                  "width": "custom",
-                  "width_custom": "650px"
-                },
-                "blocks": {
-                  "megamenu_item_MRcf6G": {
-                    "type": "_megamenu-item",
-                    "settings": {
-                      "widget": "menu",
-                      "menu_col": "50%",
-                      "menu_heading": "Layout & Post",
-                      "menu_link_list_child": "",
-                      "banner_title": "",
-                      "banner_button": "",
-                      "banner_link": "",
-                      "collection_widget": "",
-                      "blog_widget": ""
-                    },
-                    "blocks": {}
-                  },
-                  "megamenu_item_zM9JTE": {
-                    "type": "_megamenu-item",
-                    "settings": {
-                      "widget": "blog",
-                      "menu_col": "50%",
-                      "menu_heading": "",
-                      "menu_link_list_child": "",
-                      "banner_title": "",
-                      "banner_button": "",
-                      "banner_link": "",
-                      "collection_widget": "",
-                      "blog_widget": "news"
-                    },
-                    "blocks": {}
-                  }
-                },
-                "block_order": [
-                  "megamenu_item_MRcf6G",
-                  "megamenu_item_zM9JTE"
-                ]
-              }
-            },
-            "block_order": [
-              "megamenu_container_9xe8H6"
             ]
           },
           "mainmenu_item_7JnjnL": {
@@ -1083,10 +1080,10 @@
           }
         },
         "block_order": [
+          "mainmenu_item_EtPCeD",
           "mainmenu_item_NDUp8q",
           "mainmenu_item_g884pn",
           "mainmenu_item_W7rhGn",
-          "mainmenu_item_EtPCeD",
           "mainmenu_item_7JnjnL"
         ],
         "settings": {
