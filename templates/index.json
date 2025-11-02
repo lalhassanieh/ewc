@@ -3934,6 +3934,21 @@
         "vertical_align": "top",
         "horizontal_align": "left"
       }
+    },
+    "apply_promo_4Akj9E": {
+      "type": "apply-promo",
+      "name": "Apply promo code",
+      "settings": {
+        "title": "Apply your promo code",
+        "subtitle": "Enter a promo code to get a discount",
+        "placeholder": "Enter promo code",
+        "button_text": "Apply",
+        "bg_color": "#ffffff",
+        "title_color": "#111111",
+        "subtitle_color": "#666666",
+        "button_bg": "#111111",
+        "button_color": "#ffffff"
+      }
     }
   },
   "order": [
@@ -3954,6 +3969,7 @@
     "featured_custom_section_m4kR83",
     "featured_custom_section_nxRpXp",
     "featured_custom_section_4VMgVA",
-    "featured_custom_section_eUzjf3"
+    "featured_custom_section_eUzjf3",
+    "apply_promo_4Akj9E"
   ]
 }
