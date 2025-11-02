@@ -64,7 +64,7 @@
 							</div>
 							{%- if shop.checkout.guest_login -%}
 								<div class="guest-form">
-									<h2 class="login-register__heading guest-form__heading">{{ 'customer.login.guest_title' | t }}</h2>
+									{% comment %} <h2 class="login-register__heading guest-form__heading">{{ 'customer.login.guest_title' | t }}</h2> {% endcomment %}
 									{% form 'guest_login' %}
 										<input type="submit" class="btn" value="{{ 'customer.login.guest_title' | t }}">
 									{% endform %}
