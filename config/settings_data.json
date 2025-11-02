@@ -1111,7 +1111,7 @@
           "page_wishlist": "whislist",
           "show_header_user": true,
           "header_user_title": "Account",
-          "header_user_link_list": "main-menu-1",
+          "header_user_link_list": "main-menu",
           "show_header_cart": true
         }
       },
