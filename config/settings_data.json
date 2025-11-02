@@ -1352,7 +1352,7 @@
       " /* Make product images smaller on desktop */@media screen and (min-width: 768px) {.product-single__main-media, .product-media__wrapper img {max-width: 500px !important; height: auto !important; margin: 0 auto; }}",
       ".template-index.drawer--open .doubly-float {display: none;}",
       ".header-cart__link,.header-page-link .wishlist {top: 4px;}",
-      ".banner-wrapper-infor .bwp-block-title,.btn--add-to-cart,.swatch-items label {font-family: AcuminProCond-Regular !important;}"
+      ".banner-wrapper-infor .bwp-block-title,.btn--add-to-cart,.swatch-items label, .btn {font-family: AcuminProCond-Regular !important;}"
     ]
   }
 }
