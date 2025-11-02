@@ -1353,7 +1353,7 @@
       "body.drawer--open .doubly-float {display: none;}",
       ".header-cart__link,.header-page-link .wishlist {top: 4px;}",
       ".banner-wrapper-infor .bwp-block-title,.btn--add-to-cart,.swatch-items label,.btn {font-family: AcuminProCond-Regular !important;}",
-      "#customer_login_guest .btn {margin-left: 0; text-decoration: underline; padding-left: 0; font-size: 16px;}"
+      "#customer_login_guest .btn {margin-left: 0; text-decoration: underline; padding-left: 0; font-size: 16px; text-transform: none;}"
     ]
   }
 }
