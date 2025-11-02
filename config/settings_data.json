@@ -718,7 +718,7 @@
             "disabled": true,
             "settings": {
               "title": "Club Partner Merch",
-              "menu_url": "shopify://collections/bags",
+              "menu_url": "shopify://collections/club-partner-merch",
               "submenu_format": "",
               "badge": "",
               "position": "after",
@@ -825,8 +825,8 @@
             "type": "_mainmenu-item",
             "disabled": true,
             "settings": {
-              "title": "Trophies & Awards",
-              "menu_url": "shopify://collections/trophies-awards",
+              "title": "Esports teams Merch",
+              "menu_url": "shopify://collections/esports-teams-merch",
               "submenu_format": "",
               "badge": "",
               "position": "after",
@@ -917,8 +917,8 @@
             "type": "_mainmenu-item",
             "disabled": true,
             "settings": {
-              "title": "Toys",
-              "menu_url": "shopify://collections/toys",
+              "title": "Home",
+              "menu_url": "https://shop.esportsworldcup.com/",
               "submenu_format": "",
               "badge": "",
               "position": "after",
