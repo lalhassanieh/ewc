@@ -403,7 +403,6 @@
     },
     "product-recommendations": {
       "type": "product-recommendations",
-      "disabled": true,
       "settings": {
         "margin": "0 0 50px",
         "heading": "Related Products",
