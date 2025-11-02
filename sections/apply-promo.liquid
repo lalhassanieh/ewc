@@ -51,7 +51,7 @@
       btn.addEventListener('click', function(){
         const code = input.value.trim();
         if(!code){
-          setMessage('{{ "Please enter a promo code." | t }}', true);
+          setMessage('Please enter a promo code.', true);
           input.focus();
           return;
         }
@@ -60,7 +60,7 @@
         // Use encodeURIComponent to avoid issues with special characters.
         const redirectUrl = '/discount/' + encodeURIComponent(code) + '?redirect=/cart';
         // Show user something immediately
-        setMessage('{{ "Applying promo code…" | t }}', false);
+        setMessage('Applying promocode...', true);
         // Small delay for UX, then redirect
         setTimeout(function(){
           window.location.href = redirectUrl;
