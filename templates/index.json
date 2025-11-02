@@ -2017,7 +2017,7 @@
                       "settings": {
                         "desc": "Shop our club partner teams official merchandise",
                         "font": "--font-family-second",
-                        "color": "#231f20",
+                        "color": "#ffffff",
                         "font_size": 20,
                         "line_height": 70,
                         "letter_spacing": 0,
@@ -2046,7 +2046,7 @@
                         "heading_size": "h3",
                         "title": "Club championship",
                         "font": "--font-family-second",
-                        "color": "#231f20",
+                        "color": "#ffffff",
                         "font_size": 70,
                         "line_height": 70,
                         "letter_spacing": 0,
