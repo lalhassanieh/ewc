@@ -560,6 +560,7 @@
         "blocks": {
           "mainmenu_item_NDUp8q": {
             "type": "_mainmenu-item",
+            "disabled": true,
             "settings": {
               "title": "Fashion",
               "menu_url": "shopify://collections/fashion",
@@ -715,6 +716,7 @@
           },
           "mainmenu_item_g884pn": {
             "type": "_mainmenu-item",
+            "disabled": true,
             "settings": {
               "title": "Bags",
               "menu_url": "shopify://collections/bags",
@@ -822,6 +824,7 @@
           },
           "mainmenu_item_W7rhGn": {
             "type": "_mainmenu-item",
+            "disabled": true,
             "settings": {
               "title": "Trophies & Awards",
               "menu_url": "shopify://collections/trophies-awards",
@@ -913,6 +916,7 @@
           },
           "mainmenu_item_EtPCeD": {
             "type": "_mainmenu-item",
+            "disabled": true,
             "settings": {
               "title": "Toys",
               "menu_url": "shopify://collections/toys",
