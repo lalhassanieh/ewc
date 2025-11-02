@@ -1343,7 +1343,7 @@
       ".esc-email-container input {padding-left: 10px;}",
       "@media (max-width: 767px) {section.wpbingo-breadcrumbs .wpbingo-breadcrumbs__inner .wpbingo-breadcrumbs__title {text-align: left !important; }}",
       "@media (max-width: 600px) {.doubly-float {right: 24px !important; bottom: 54px !important; }}",
-      "/* === Limit Site Width to 1400px on Desktop === */@media screen and (min-width: 1200px) {body .container, body .page-width, body .site-wrapper, body .main-content {max-width: 1400px !important; margin-left: auto !important; margin-right: auto !important; }}"
+      "/* === Limit Site Width to 1400px on Desktop === */@media screen and (min-width: 1200px) {body .container, body .page-width, body .site-wrapper, body .main-content {max-width: 1200px !important; margin-left: auto !important; margin-right: auto !important; }}"
     ]
   }
 }
