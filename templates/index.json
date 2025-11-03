@@ -2128,6 +2128,7 @@
                     },
                     "button_UyDXKX": {
                       "type": "button",
+                      "disabled": true,
                       "settings": {
                         "title": "Shop Collection",
                         "button_link": "shopify://collections/all",
