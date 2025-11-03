@@ -2216,7 +2216,7 @@
       "name": "Custom Section",
       "settings": {
         "max_width": "",
-        "fullwidth": false,
+        "fullwidth": true,
         "half_overflow": true,
         "background_gradient": "",
         "background_fixed": false,
