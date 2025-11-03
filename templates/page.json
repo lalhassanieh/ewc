@@ -23,7 +23,7 @@
     "main": {
       "type": "main-page",
       "custom_css": [
-        "p ,ul{font-family: \"RiformaMonoLL-Regular\" !important;}"
+        "p,ul {}"
       ],
       "settings": {
         "enable": true,
