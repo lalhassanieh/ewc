@@ -549,7 +549,7 @@
               "type": "title",
               "settings": {
                 "heading_size": "h3",
-                "title": "Suit Up Like a Champion<br>Official EWC Merch",
+                "title": "SUIT UP LIKE A CHAMPION OFFICIAL EWC MERCH",
                 "font": "--font-family-second",
                 "color": "#231f20",
                 "font_size": 48,
@@ -863,7 +863,7 @@
                 "image": "shopify://shop_images/Image-01_2.jpg",
                 "box_content": true,
                 "subtitle_lookbook": "",
-                "title_lookbook": "EWC Limited<br>edition products",
+                "title_lookbook": "EWC LIMITED EDITION PRODUCTS",
                 "button_lookbook": "Shop Collection",
                 "button_lookbook_url": "shopify://products/2025-cloud9-official-pro-alternate-jersey",
                 "icon_title": "",
@@ -1039,7 +1039,7 @@
                       "name": "Title",
                       "settings": {
                         "heading_size": "h3",
-                        "title": "Own the Glory",
+                        "title": "OWN THE GLORY",
                         "font": "--font-family-second",
                         "color": "#231f20",
                         "font_size": 25,
@@ -1222,7 +1222,7 @@
                       "name": "Title",
                       "settings": {
                         "heading_size": "h3",
-                        "title": "Gear Up. Game On.",
+                        "title": "GEAR UP. GAME ON.",
                         "font": "--font-family-second",
                         "color": "#231f20",
                         "font_size": 25,
@@ -2102,7 +2102,7 @@
                       "name": "Title",
                       "settings": {
                         "heading_size": "h3",
-                        "title": "Club championship",
+                        "title": "CLUB CHAMPIONSHIP",
                         "font": "--font-family-second",
                         "color": "#ffffff",
                         "font_size": 70,
@@ -2316,7 +2316,7 @@
               "type": "title",
               "settings": {
                 "heading_size": "h3",
-                "title": "Club Partner Program",
+                "title": "CLUB PARTNER PROGRAM",
                 "font": "--font-family-second",
                 "color": "#231f20",
                 "font_size": 48,
@@ -2507,7 +2507,7 @@
               "type": "title",
               "settings": {
                 "heading_size": "h3",
-                "title": "Trending Now",
+                "title": "TRENDING NOW",
                 "font": "--font-family-second",
                 "color": "#231f20",
                 "font_size": 48,
@@ -3997,7 +3997,7 @@
       "type": "apply-promo",
       "name": "Apply promo code",
       "settings": {
-        "title": "Apply your promo code",
+        "title": "APPLY YOUR PROMO CODE",
         "subtitle": "Enter a promo code to get a discount",
         "placeholder": "Enter promo code",
         "button_text": "Apply",
