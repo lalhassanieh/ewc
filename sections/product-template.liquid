@@ -337,11 +337,11 @@
 																					{% comment %} <div class="short_description" style="margin:{{ block.settings.description_margin }};--description-color:{{ block.settings.description_color }};--description-font-size:{{ block.settings.description_size }}px;">
 												{{ short_description }}
 											</div> {% endcomment %}
-											{% if product.metafields.custom.short_product_description != blank %}
+									
   <div class="short-description">
     {{ product.metafields.custom.short_product_description }}
   </div>
-{% endif %}
+
 										{%- when 'product_tags' -%}
 											{%- assign limit = block.settings.product_tags_limit -%}
 											<div class="product__organization">
