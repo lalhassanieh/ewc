@@ -67,7 +67,7 @@
     "image_hover": "slider",
     "countdown_style": "style_2",
     "preload_product_image_logo": "EWC",
-    "image_raito_product": "2/3",
+    "image_raito_product": "1/1",
     "size_image": "cover",
     "bg_raito": "#f5f5f5",
     "quickview_enable": true,
@@ -1333,6 +1333,11 @@
       },
       "14060646107696862457": {
         "type": "shopify://apps/judge-me-reviews/blocks/judgeme_core/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+        "disabled": false,
+        "settings": {}
+      },
+      "74204263759510710": {
+        "type": "shopify://apps/dcart-discount-in-cart/blocks/app-embed/731e2611-8bdf-4514-b5e4-f64f1cae3fb7",
         "disabled": false,
         "settings": {}
       }
