@@ -16,7 +16,7 @@
 {%- assign filter_name_3 			= settings.filter_name_3 -%}
 {%- assign select_filter_3 			= settings.select_filter_3 -%}
 {%- assign short_description 		= product.metafields.bwp_fields.shortdesc -%}
-
+{%- assign custom_short_description = product.metafields.custom.short_product_description -%}
 {%- assign first_3d_model 			= product.media | where: "media_type", "model" | first -%}
 {%- assign full_width 				= false -%}
 
@@ -333,15 +333,16 @@
 													</a>
 												{%- endif -%}
 											</div>
-																						{% if product.metafields.custom.short_product_description != blank %}
-  <div class="short-description">
-    {{ product.metafields.custom.short_product_description }}
-  </div>
-{% endif %}
-										{%- when 'short_description' -%}
-											<div class="short_description" style="margin:{{ block.settings.description_margin }};--description-color:{{ block.settings.description_color }};--description-font-size:{{ block.settings.description_size }}px;">
-												{{ short_description }}
-											</div>
+					{%- when 'short_description' -%}
+											{%- if custom_short_description != blank -%}
+												<div class="short_description" style="margin:{{ block.settings.description_margin }};--description-color:{{ block.settings.description_color }};--description-font-size:{{ block.settings.description_size }}px;">
+													{{ custom_short_description }}
+												</div>
+											{%- elsif short_description != blank -%}
+												<div class="short_description" style="margin:{{ block.settings.description_margin }};--description-color:{{ block.settings.description_color }};--description-font-size:{{ block.settings.description_size }}px;">
+													{{ short_description }}
+												</div>
+											{%- endif -%}
 										{%- when 'product_tags' -%}
 											{%- assign limit = block.settings.product_tags_limit -%}
 											<div class="product__organization">
