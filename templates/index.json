@@ -1014,7 +1014,7 @@
               "settings": {
                 "image": "shopify://shop_images/tropjhy_replicas.png",
                 "url": "",
-                "border_radius_img": "0px 0px 0px 0px",
+                "border_radius_img": "5px",
                 "margin_image": "",
                 "padding": "",
                 "margin": "",
@@ -1197,7 +1197,7 @@
               "settings": {
                 "image": "shopify://shop_images/banner-24.webp",
                 "url": "",
-                "border_radius_img": "0px 0px 0px 0px",
+                "border_radius_img": "5px",
                 "margin_image": "",
                 "padding": "",
                 "margin": "",
@@ -2018,7 +2018,7 @@
               "name": "Inner Section",
               "settings": {
                 "max_width": "",
-                "fullwidth": false,
+                "fullwidth": true,
                 "background_gradient": "",
                 "background_color": "",
                 "border_radius": "0px 0px 0px 0px",
