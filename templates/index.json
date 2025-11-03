@@ -752,7 +752,7 @@
                   "type": "_collection-image",
                   "settings": {
                     "collection": "jackets",
-                    "image": "shopify://shop_images/72-Esport-1.jpg",
+                    "image": "shopify://shop_images/79__Esport_1.jpg",
                     "count": false
                   },
                   "blocks": {}
@@ -761,7 +761,7 @@
                   "type": "_collection-image",
                   "settings": {
                     "collection": "jersey",
-                    "image": "shopify://shop_images/49_Esports_1_3.jpg",
+                    "image": "shopify://shop_images/Front-Jersey.png",
                     "count": false
                   },
                   "blocks": {}
