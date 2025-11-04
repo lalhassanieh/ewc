@@ -921,7 +921,7 @@
                     "border_color": "#ffffff",
                     "color_button_hover": "#ffffff",
                     "background_hover": "#000000",
-                    "border_color_hover": "#ffffff",
+                    "border_color_hover": "rgba(0,0,0,0)",
                     "font_size_button": 16,
                     "line_height_button": 55,
                     "letter_spacing_button": 0,
@@ -949,7 +949,7 @@
                     "border_width_mobi": "0px 0px 0px 0px",
                     "color_button_mobi": "#ffffff",
                     "background_button_mobi": "rgba(0,0,0,0)",
-                    "border_color_mobi": "#ffffff",
+                    "border_color_mobi": "rgba(0,0,0,0)",
                     "color_button_hover_mobi": "#ffffff",
                     "background_hover_mobi": "#000000",
                     "border_color_hover_mobi": "rgba(0,0,0,0)"
