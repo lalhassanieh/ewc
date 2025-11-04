@@ -25,7 +25,7 @@
             "product_title_margin": "0 0 20px",
             "title_size": 28,
             "title_color": "#000000",
-            "title_transform": "unset"
+            "title_transform": "uppercase"
           }
         },
         "505a99c5-19bc-4c99-a9a8-61b58bd03a3c": {
