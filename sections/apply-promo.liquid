@@ -59,18 +59,64 @@
           return;
         }
 
-        // Product code mapping
+        // Dynamic product code mapping from theme settings
         const productCodes = {
-          'EWC25-TEE-15-EYT19SL4': {
-            title: 'Worlds2025 gift - EWC Tshirt',
-            handle: 'worlds2025-gift-ewc-tshirt', // Update this with actual handle
-            quantity: 1,
-          },
-          'EWC25-TEE-15-31080404': {
-            title: 'Free Worlds2025 gift - EWC Hat',
-            handle: 'docapp-free-gift-free-worlds2025-gift-ewc-hat-6751', // Update this with actual handle
-            quantity: 1,
-          },
+          {%- if section.settings.code_1 != blank and section.settings.product_handle_1 != blank -%}
+          '{{ section.settings.code_1 }}': {
+            title: '{{ section.settings.product_title_1 | default: "Product 1" }}',
+            handle: '{{ section.settings.product_handle_1 }}',
+            quantity: {{ section.settings.quantity_1 | default: 1 }}
+          }{%- if section.settings.code_2 != blank and section.settings.product_handle_2 != blank -%},{%- endif -%}
+          {%- endif -%}
+          {%- if section.settings.code_2 != blank and section.settings.product_handle_2 != blank -%}
+          '{{ section.settings.code_2 }}': {
+            title: '{{ section.settings.product_title_2 | default: "Product 2" }}',
+            handle: '{{ section.settings.product_handle_2 }}',
+            quantity: {{ section.settings.quantity_2 | default: 1 }}
+          }{%- if section.settings.code_3 != blank and section.settings.product_handle_3 != blank -%},{%- endif -%}
+          {%- endif -%}
+          {%- if section.settings.code_3 != blank and section.settings.product_handle_3 != blank -%}
+          '{{ section.settings.code_3 }}': {
+            title: '{{ section.settings.product_title_3 | default: "Product 3" }}',
+            handle: '{{ section.settings.product_handle_3 }}',
+            quantity: {{ section.settings.quantity_3 | default: 1 }}
+          }{%- if section.settings.code_4 != blank and section.settings.product_handle_4 != blank -%},{%- endif -%}
+          {%- endif -%}
+          {%- if section.settings.code_4 != blank and section.settings.product_handle_4 != blank -%}
+          '{{ section.settings.code_4 }}': {
+            title: '{{ section.settings.product_title_4 | default: "Product 4" }}',
+            handle: '{{ section.settings.product_handle_4 }}',
+            quantity: {{ section.settings.quantity_4 | default: 1 }}
+          }{%- if section.settings.code_5 != blank and section.settings.product_handle_5 != blank -%},{%- endif -%}
+          {%- endif -%}
+          {%- if section.settings.code_5 != blank and section.settings.product_handle_5 != blank -%}
+          '{{ section.settings.code_5 }}': {
+            title: '{{ section.settings.product_title_5 | default: "Product 5" }}',
+            handle: '{{ section.settings.product_handle_5 }}',
+            quantity: {{ section.settings.quantity_5 | default: 1 }}
+          }{%- if section.settings.code_6 != blank and section.settings.product_handle_6 != blank -%},{%- endif -%}
+          {%- endif -%}
+          {%- if section.settings.code_6 != blank and section.settings.product_handle_6 != blank -%}
+          '{{ section.settings.code_6 }}': {
+            title: '{{ section.settings.product_title_6 | default: "Product 6" }}',
+            handle: '{{ section.settings.product_handle_6 }}',
+            quantity: {{ section.settings.quantity_6 | default: 1 }}
+          }{%- if section.settings.code_7 != blank and section.settings.product_handle_7 != blank -%},{%- endif -%}
+          {%- endif -%}
+          {%- if section.settings.code_7 != blank and section.settings.product_handle_7 != blank -%}
+          '{{ section.settings.code_7 }}': {
+            title: '{{ section.settings.product_title_7 | default: "Product 7" }}',
+            handle: '{{ section.settings.product_handle_7 }}',
+            quantity: {{ section.settings.quantity_7 | default: 1 }}
+          }{%- if section.settings.code_8 != blank and section.settings.product_handle_8 != blank -%},{%- endif -%}
+          {%- endif -%}
+          {%- if section.settings.code_8 != blank and section.settings.product_handle_8 != blank -%}
+          '{{ section.settings.code_8 }}': {
+            title: '{{ section.settings.product_title_8 | default: "Product 8" }}',
+            handle: '{{ section.settings.product_handle_8 }}',
+            quantity: {{ section.settings.quantity_8 | default: 1 }}
+          }
+          {%- endif -%}
         };
 
         // Check if code matches a product
@@ -135,6 +181,7 @@
 {
   "name": "Apply promo code",
   "settings": [
+    { "type": "header", "content": "Section Settings" },
     { "type": "text", "id": "title", "label": "Title", "default": "Apply your promo code" },
     { "type": "text", "id": "subtitle", "label": "Subtitle", "default": "Enter a promo code to get a discount" },
     { "type": "text", "id": "placeholder", "label": "Input placeholder", "default": "Enter promo code" },
@@ -143,7 +190,55 @@
     { "type": "color", "id": "title_color", "label": "Title color", "default": "#111111" },
     { "type": "color", "id": "subtitle_color", "label": "Subtitle color", "default": "#666666" },
     { "type": "color", "id": "button_bg", "label": "Button background", "default": "#111111" },
-    { "type": "color", "id": "button_color", "label": "Button text color", "default": "#ffffff" }
+    { "type": "color", "id": "button_color", "label": "Button text color", "default": "#ffffff" },
+    
+    { "type": "header", "content": "Promo Code 1" },
+    { "type": "text", "id": "code_1", "label": "Promo Code 1", "info": "Enter the promo code (e.g., EWC25-TEE-15-EYT19SL4)" },
+    { "type": "product", "id": "product_handle_1", "label": "Product for Code 1" },
+    { "type": "text", "id": "product_title_1", "label": "Product Title 1 (Optional)", "info": "Leave blank to use product title" },
+    { "type": "number", "id": "quantity_1", "label": "Quantity 1", "default": 1 },
+    
+    { "type": "header", "content": "Promo Code 2" },
+    { "type": "text", "id": "code_2", "label": "Promo Code 2" },
+    { "type": "product", "id": "product_handle_2", "label": "Product for Code 2" },
+    { "type": "text", "id": "product_title_2", "label": "Product Title 2 (Optional)" },
+    { "type": "number", "id": "quantity_2", "label": "Quantity 2", "default": 1 },
+    
+    { "type": "header", "content": "Promo Code 3" },
+    { "type": "text", "id": "code_3", "label": "Promo Code 3" },
+    { "type": "product", "id": "product_handle_3", "label": "Product for Code 3" },
+    { "type": "text", "id": "product_title_3", "label": "Product Title 3 (Optional)" },
+    { "type": "number", "id": "quantity_3", "label": "Quantity 3", "default": 1 },
+    
+    { "type": "header", "content": "Promo Code 4" },
+    { "type": "text", "id": "code_4", "label": "Promo Code 4" },
+    { "type": "product", "id": "product_handle_4", "label": "Product for Code 4" },
+    { "type": "text", "id": "product_title_4", "label": "Product Title 4 (Optional)" },
+    { "type": "number", "id": "quantity_4", "label": "Quantity 4", "default": 1 },
+    
+    { "type": "header", "content": "Promo Code 5" },
+    { "type": "text", "id": "code_5", "label": "Promo Code 5" },
+    { "type": "product", "id": "product_handle_5", "label": "Product for Code 5" },
+    { "type": "text", "id": "product_title_5", "label": "Product Title 5 (Optional)" },
+    { "type": "number", "id": "quantity_5", "label": "Quantity 5", "default": 1 },
+    
+    { "type": "header", "content": "Promo Code 6" },
+    { "type": "text", "id": "code_6", "label": "Promo Code 6" },
+    { "type": "product", "id": "product_handle_6", "label": "Product for Code 6" },
+    { "type": "text", "id": "product_title_6", "label": "Product Title 6 (Optional)" },
+    { "type": "number", "id": "quantity_6", "label": "Quantity 6", "default": 1 },
+    
+    { "type": "header", "content": "Promo Code 7" },
+    { "type": "text", "id": "code_7", "label": "Promo Code 7" },
+    { "type": "product", "id": "product_handle_7", "label": "Product for Code 7" },
+    { "type": "text", "id": "product_title_7", "label": "Product Title 7 (Optional)" },
+    { "type": "number", "id": "quantity_7", "label": "Quantity 7", "default": 1 },
+    
+    { "type": "header", "content": "Promo Code 8" },
+    { "type": "text", "id": "code_8", "label": "Promo Code 8" },
+    { "type": "product", "id": "product_handle_8", "label": "Product for Code 8" },
+    { "type": "text", "id": "product_title_8", "label": "Product Title 8 (Optional)" },
+    { "type": "number", "id": "quantity_8", "label": "Quantity 8", "default": 1 }
   ],
   "presets": [
     {
