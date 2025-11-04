@@ -52,7 +52,7 @@
 .bwp-button-text,
 .product-card__name,
 .product-tabs__nav-link,
-.list-item a {
+.list-item a, .breadcrumb__link span, .block-sidebar__title {
   text-transform: uppercase;
 }
 
