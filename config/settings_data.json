@@ -1338,11 +1338,6 @@
         "type": "shopify://apps/dcart-discount-in-cart/blocks/app-embed/731e2611-8bdf-4514-b5e4-f64f1cae3fb7",
         "disabled": true,
         "settings": {}
-      },
-      "18071877742361319197": {
-        "type": "shopify://apps/dr-free-gift/blocks/instant-load/5942fed7-47f4-451f-a42f-9077b6214264",
-        "disabled": true,
-        "settings": {}
       }
     }
   },
@@ -1363,7 +1358,9 @@
       ".banner-wrapper-infor .bwp-block-title,.btn--add-to-cart,.swatch-items label,.btn {font-family: AcuminProCond-Regular !important;}",
       "#customer_login_guest .btn {margin-left: 0; text-decoration: underline; padding-left: 0; font-size: 16px; text-transform: none;}",
       ".pswp__img {object-fit: cover;}",
-      ".riyal-font {display: none;}"
+      ".riyal-font {display: none;}",
+      ".jdgm-write-rev-link {border-radius: 50px !important;}",
+      ".jdgm-review-widget--small .jdgm-rev-widg {padding: 16px 20px !important;}"
     ]
   }
 }
