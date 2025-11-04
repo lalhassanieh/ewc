@@ -1152,7 +1152,7 @@
                         "color_hover_mobi": "#ffffff",
                         "background_hover_mobi": "#000000",
                         "border_color_hover_mobi": "#ffffff",
-                        "align_mobi": "center"
+                        "align_mobi": "left"
                       },
                       "blocks": {}
                     }
@@ -1335,7 +1335,7 @@
                         "color_hover_mobi": "#ffffff",
                         "background_hover_mobi": "#000000",
                         "border_color_hover_mobi": "#ffffff",
-                        "align_mobi": "center"
+                        "align_mobi": "left"
                       },
                       "blocks": {}
                     }
