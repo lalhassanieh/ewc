@@ -185,5 +185,121 @@
       src="{{ '//cdn.shopify.com/s/files/1/0194/1736/6592/t/1/assets/booster-page-speed-optimizer.js?23' }}"
       defer="defer"
     ></script>
+
+<script>
+// Global Riyal Font Script for Product Prices
+(function() {
+    'use strict';
+    
+    console.log('GLOBAL: Initializing riyal font script for product prices');
+    
+    function detectCurrentCurrency() {
+        // Method 1: Check BEAST Currency Converter attributes
+        const priceElements = document.querySelectorAll('[doubly-currency]');
+        if (priceElements.length > 0) {
+            const currency = priceElements[0].getAttribute('doubly-currency');
+            if (currency) {
+                console.log('GLOBAL: Currency from BEAST converter:', currency);
+                return currency;
+            }
+        }
+        
+        // Method 2: Text analysis fallback
+        const allPrices = document.querySelectorAll('.js-product-price, .price-container, .ajaxcart__price');
+        for (const priceEl of allPrices) {
+            const text = priceEl.textContent || '';
+            if (text.includes('SAR') || text.includes('ر.س')) {
+                console.log('GLOBAL: SAR detected via text analysis');
+                return 'SAR';
+            }
+        }
+        
+        console.log('GLOBAL: No SAR currency detected');
+        return null;
+    }
+    
+    function updateRiyalFontVisibility() {
+        const currentCurrency = detectCurrentCurrency();
+        console.log('GLOBAL: Updating riyal font visibility, currency:', currentCurrency);
+        
+        // Update riyal font spans visibility
+        const riyalFonts = document.querySelectorAll('.riyal-font');
+        riyalFonts.forEach(span => {
+            if (currentCurrency === 'SAR') {
+                span.style.display = 'inline';
+            } else {
+                span.style.display = 'none';
+            }
+        });
+        
+        // Update SAR currency classes for padding
+        const priceElements = document.querySelectorAll('.js-product-price, .js-product-compare-price, .price-container, .ajaxcart__price, .cart-total__subtotal-price, .cart-product-info__price, .cart-table__price, .cart__price, .order-discount, .product-price');
+        priceElements.forEach(element => {
+            if (currentCurrency === 'SAR') {
+                element.classList.add('sar-currency');
+            } else {
+                element.classList.remove('sar-currency');
+            }
+        });
+        
+        // Remove SAR text when SAR is selected
+        if (currentCurrency === 'SAR') {
+            const textElements = document.querySelectorAll('.js-product-price, .price-container, .ajaxcart__price');
+            textElements.forEach(element => {
+                let text = element.innerHTML;
+                if (text.includes('SAR')) {
+                    text = text.replace(/SAR\s*/g, '');
+                    element.innerHTML = text;
+                    console.log('GLOBAL: Removed SAR text');
+                }
+            });
+        }
+    }
+    
+    // Initial update
+    updateRiyalFontVisibility();
+    
+    // Monitor for BEAST Currency Converter changes
+    const observer = new MutationObserver(function(mutations) {
+        let shouldUpdate = false;
+        
+        mutations.forEach(function(mutation) {
+            if (mutation.type === 'attributes' && mutation.attributeName === 'doubly-currency') {
+                shouldUpdate = true;
+            }
+            if (mutation.type === 'childList') {
+                const target = mutation.target;
+                if (target.closest && (target.closest('.js-product-price') || target.closest('.price-container') || target.closest('.ajaxcart__price'))) {
+                    shouldUpdate = true;
+                }
+            }
+        });
+        
+        if (shouldUpdate) {
+            console.log('GLOBAL: DOM change detected, updating riyal fonts');
+            setTimeout(updateRiyalFontVisibility, 100);
+        }
+    });
+    
+    // Observe the entire document for changes
+    observer.observe(document.body, {
+        childList: true,
+        subtree: true,
+        attributes: true,
+        attributeFilter: ['doubly-currency']
+    });
+    
+    // Listen for BEAST Currency Converter events
+    document.addEventListener('currencyChanged', function(e) {
+        console.log('GLOBAL: BEAST currency change event detected:', e.detail);
+        setTimeout(updateRiyalFontVisibility, 200);
+    });
+    
+    // Periodic check as backup
+    setInterval(updateRiyalFontVisibility, 3000);
+    
+    console.log('GLOBAL: Riyal font script initialized successfully');
+})();
+</script>
   </body>
 </html>
