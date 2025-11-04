@@ -814,7 +814,7 @@
       ],
       "custom_css": [
         ".collection-item__image a img {aspect-ratio: 1/1; object-fit: cover;}",
-        ".collection-item__link::before{display:none;}"
+        ".collection-item__link::before {display: none;}"
       ],
       "name": "Custom Section",
       "settings": {
@@ -827,7 +827,7 @@
         "background_pos": "center center",
         "background_color": "",
         "width_bg": "container",
-        "padding_bg": "12px 24px 12px 24px",
+        "padding_bg": "12px 24px 40px 24px",
         "padding": "12px 24px 12px 24px",
         "margin": "12px 24px 12px 24px",
         "vertical_align": "middle",
