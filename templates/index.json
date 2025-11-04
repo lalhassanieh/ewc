@@ -3943,7 +3943,7 @@
         "placeholder": "Enter promo code",
         "button_text": "Apply",
         "bg_image": "shopify://shop_images/Banner-01.2.jpg",
-        "bg_overlay_opacity": 0,
+        "bg_overlay_opacity": 30,
         "section_height": 60,
         "bg_color": "#ffffff",
         "title_color": "#ffffff",
