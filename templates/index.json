@@ -2232,7 +2232,7 @@
         "width_bg": "container",
         "padding_bg": "",
         "padding": "",
-        "margin": "0 0 85px",
+        "margin": "0 0 85px | 0 0",
         "vertical_align": "top",
         "horizontal_align": "left"
       }
@@ -2428,7 +2428,7 @@
         "max_width": "",
         "fullwidth": false,
         "padding": "",
-        "margin": "0 0 85px",
+        "margin": "0 0 85px | 0 0",
         "layout_product": "layout-2",
         "navigation": false,
         "pag_fraction": false,
