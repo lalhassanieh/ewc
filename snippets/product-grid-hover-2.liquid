@@ -370,11 +370,30 @@ document.addEventListener('DOMContentLoaded', function() {
           font.style.display = 'none';
         }
       });
+
+      // Hide/show SAR text when SAR is selected
+      moneyElements.forEach(function(moneyElement) {
+        if (currentCurrency === 'SAR') {
+          // Hide the SAR text by replacing it
+          let textContent = moneyElement.textContent || moneyElement.innerText;
+          if (textContent.includes(' SAR')) {
+            moneyElement.textContent = textContent.replace(' SAR', '');
+          }
+        }
+      });
     } else {
-      // Fallback: check Shopify's default currency
+  
       riyalFonts.forEach(function(font) {
         if (Shopify && Shopify.currency && Shopify.currency.active === 'SAR') {
           font.style.display = 'inline';
+          // Also handle SAR text removal for default Shopify currency
+          const moneyElementsDefault = document.querySelectorAll('.money');
+          moneyElementsDefault.forEach(function(moneyElement) {
+            let textContent = moneyElement.textContent || moneyElement.innerText;
+            if (textContent.includes(' SAR')) {
+              moneyElement.textContent = textContent.replace(' SAR', '');
+            }
+          });
         } else {
           font.style.display = 'none';
         }
@@ -393,16 +412,30 @@ document.addEventListener('DOMContentLoaded', function() {
            mutation.target.classList.contains('money'))) {
         updateRiyalFontVisibility();
       }
+      // Also watch for text changes in money elements
+      if (mutation.type === 'childList' && 
+          mutation.target.classList.contains('money')) {
+        setTimeout(updateRiyalFontVisibility, 100); // Small delay to ensure content is updated
+      }
     });
   });
 
   // Observe changes to money elements
   document.querySelectorAll('.money').forEach(function(element) {
-    observer.observe(element, { attributes: true, attributeFilter: ['doubly-currency'] });
+    observer.observe(element, { 
+      attributes: true, 
+      attributeFilter: ['doubly-currency'],
+      childList: true,
+      subtree: true 
+    });
   });
 
   // Also listen for currency change events that might be triggered by BEAST
-  document.addEventListener('currencyChanged', updateRiyalFontVisibility);
-  document.addEventListener('doubly:currency:changed', updateRiyalFontVisibility);
+  document.addEventListener('currencyChanged', function() {
+    setTimeout(updateRiyalFontVisibility, 200);
+  });
+  document.addEventListener('doubly:currency:changed', function() {
+    setTimeout(updateRiyalFontVisibility, 200);
+  });
 });
 </script>
