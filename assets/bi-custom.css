@@ -63,7 +63,7 @@
 .product-single .product-single__buttons .btn--add-to-cart,
 .shopify-payment-button__button,
 .ajaxcart__product-name,
-.cart-modal__btn {
+.cart-modal__btn, .page-cart__title {
   text-transform: uppercase;
 }
 
