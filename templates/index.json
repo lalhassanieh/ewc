@@ -2024,7 +2024,7 @@
                 "max_width": "",
                 "fullwidth": true,
                 "background_gradient": "",
-                "background_color": "",
+                "background_color": "rgba(0,0,0,0)",
                 "border_radius": "0px 0px 0px 0px",
                 "background": "shopify://shop_images/Banner-02.jpg",
                 "background_fixed": false,
