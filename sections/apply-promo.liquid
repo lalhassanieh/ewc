@@ -15,12 +15,21 @@
         class="apply-promo-input"
       >
 
+      {% comment %}
+        <div class="wpbingo-button">
+          <button id="applyPromoBtn" type="button" class="bwp-button default apply-promo-btn" tabindex="0">
+            <span class="bwp-button-content-wrapper">
+              <span class="bwp-button-text">{{ section.settings.button_text }}</span>
+            </span>
+          </button>
+        </div>
+      {% endcomment %}
       <div class="wpbingo-button">
-        <button id="applyPromoBtn" type="button" class="bwp-button default apply-promo-btn" tabindex="0">
+        <div id="applyPromoBtn" class="bwp-button default apply-promo-btn">
           <span class="bwp-button-content-wrapper">
             <span class="bwp-button-text">{{ section.settings.button_text }}</span>
           </span>
-        </button>
+        </div>
       </div>
       <div id="applyPromoMsg" class="apply-promo-msg" aria-live="polite"></div>
     </form>
