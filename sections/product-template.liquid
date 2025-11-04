@@ -91,7 +91,7 @@
                       {%- when 'price' -%}
                         {%- if group_product != blank -%}
                           <div
-                            class="price-container"
+                            class="price-container sar-currency"
                             style="margin:{{ block.settings.product_price_margin }};--price-color:{{ block.settings.price_color }};--price-color-sale:{{ block.settings.price_color_sale }};--price-color-on-sale:{{ block.settings.price_color_on_sale }};--price-font-size:{{ block.settings.price_size }}px;--price-font-size-sale:{{ block.settings.price_size_sale }}px;"
                           >
                             {% for group_ids in group_product_array %}
@@ -120,7 +120,7 @@
                                 {% assign max_price = operator %}
                               {% endif %}
                             {% endfor %}
-                            {{ min_price | money }} - {{ max_price | money }}
+                            <span class="riyal-font"></span>{{ min_price | money }} - {{ max_price | money }}
                           </div>
                         {% else %}
                           <div

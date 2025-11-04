@@ -1,9 +1,9 @@
-<div class="price-container{% if variant.unit_price_measurement %} price-container--unit-available{% endif %}" data-price-container{% if block.settings.product_price_margin != blank %} style="margin:{{ block.settings.product_price_margin }}"{% endif %}>
+<div class="price-container sar-currency{% if variant.unit_price_measurement %} price-container--unit-available{% endif %}" data-price-container{% if block.settings.product_price_margin != blank %} style="margin:{{ block.settings.product_price_margin }}"{% endif %}>
 	{%- if variant.compare_at_price > variant.price -%}
 		<span class="js-product-price-a11y sr-only invisible">{{ 'products.general.regular_price' | t }}</span>
 		<span class="product-single__price--wrapper" aria-hidden="false">
 			<span class="js-product-compare-price product-single__price--compare-at">
-				{{ variant.compare_at_price | money }}
+				<span class="riyal-font"></span>{{ variant.compare_at_price | money }}
 			</span>
 		</span>
 		<span class="js-product-compare-price-a11y sr-only invisible" aria-hidden="false">{{ 'products.general.sale_price' | t }}</span>
@@ -17,7 +17,7 @@
 	<span class="js-product-price product-single__price{% if variant.compare_at_price > variant.price %} on-sale{% endif %}"
 		itemprop="price"
 		content="{{ variant.price | divided_by: 100.00 }}">
-		{{ variant.price | money }}
+		<span class="riyal-font"></span>{{ variant.price | money }}
 	</span>
 	
 	<div class="product-single__unit">
