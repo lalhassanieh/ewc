@@ -760,7 +760,7 @@
                 "collection_image_HP8Jga": {
                   "type": "_collection-image",
                   "settings": {
-                    "collection": "jersey",
+                    "collection": "jerseys-1",
                     "image": "shopify://shop_images/Front-Jersey.png",
                     "count": false
                   },
