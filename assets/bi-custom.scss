@@ -46,6 +46,18 @@
     font-style: normal;
     font-display: swap;
 }
+
+.riyal-font::after {
+    position: absolute;
+    top: 50%;
+    content: "A";
+    inset-inline-end: 6px;
+    font-family: MHE-Riyal-Sign !important;
+    font-weight: 700;
+    transform: translateY(-50%);
+    font-size: 20px;
+}
+
 body,
 .h1,
 .h2,
