@@ -141,17 +141,17 @@
 				<div class="product-group-price" data-handle="{{ product.handle }}">
 					{% if group_product == blank %}
 						{%- if on_sale -%}
-							<div class="product-price product-price--regular"><span class="riyal-font"></span>{{ product.selected_or_first_available_variant.compare_at_price | money }}</div>
+							<div class="product-price product-price--regular">{% if cart.currency.iso_code == 'SAR' %}<span class="riyal-font"></span>{% endif %}{{ product.selected_or_first_available_variant.compare_at_price | money }}</div>
 							{%- if variant_count > 1 -%}
-								<div class="product-price variant-price price-sale"><span class="riyal-font"></span>{{ variant.price | money }}</div>
+								<div class="product-price variant-price price-sale">{% if cart.currency.iso_code == 'SAR' %}<span class="riyal-font"></span>{% endif %}{{ variant.price | money }}</div>
 							{%- else -%}
-								<div class="product-price price-sale"><span class="riyal-font"></span>{{ product.price | money }}</div>
+								<div class="product-price price-sale">{% if cart.currency.iso_code == 'SAR' %}<span class="riyal-font"></span>{% endif %}{{ product.price | money }}</div>
 							{%- endif -%}
 						{%- else -%}
 							{%- if variant_count > 1 -%}
-								<div class="product-price variant-price"><span class="riyal-font"></span>{{ variant.price | money }}</div>
+								<div class="product-price variant-price">{% if cart.currency.iso_code == 'SAR' %}<span class="riyal-font"></span>{% endif %}{{ variant.price | money }}</div>
 							{%- else -%}
-								<div class="product-price"><span class="riyal-font"></span>{{ product.price | money }}</div>
+								<div class="product-price">{% if cart.currency.iso_code == 'SAR' %}<span class="riyal-font"></span>{% endif %}{{ product.price | money }}</div>
 							{%- endif -%}
 						{%- endif -%}
 						{%- if product.price_varies == false and variant.unit_price_measurement -%}
@@ -168,7 +168,7 @@
 							{%- endcapture -%}
 							<span class="product-unit-price">
 								<span class="d-none">{{ 'products.general.unit_price' | t }}</span>
-								<span><span class="riyal-font"></span>{{ variant.unit_price | money }}</span>{{- unit_price_separator -}}{{- unit_price_base_unit -}}
+								<span>{% if cart.currency.iso_code == 'SAR' %}<span class="riyal-font"></span>{% endif %}{{ variant.unit_price | money }}</span>{{- unit_price_separator -}}{{- unit_price_base_unit -}}
 							</span>
 						{%- endif -%}
 					{%- else -%}
@@ -199,9 +199,9 @@
 								{% endif %}	
 							{% endfor %}
 							{%- if template contains 'collection' -%}
-								<span class="riyal-font"></span>{{ product.price | money }}
+								{% if cart.currency.iso_code == 'SAR' %}<span class="riyal-font"></span>{% endif %}{{ product.price | money }}
 							{% else %}	
-								<span class="riyal-font"></span>{{  min_price | money }} - {{  max_price | money }}
+								{% if cart.currency.iso_code == 'SAR' %}<span class="riyal-font"></span>{% endif %}{{  min_price | money }} - {{  max_price | money }}
 							{% endif %}	
 						</div>
 					{%- endif -%}
