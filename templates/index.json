@@ -971,7 +971,7 @@
         "column_k3TDkL"
       ],
       "custom_css": [
-        ".lookbook-card {width: 100%;}",
+        ".lookbook-card,.lookbook-image,.lookbook-image img {width: 100%;}",
         "@media (max-width: 500px) {.wpbingo-widget-lookbook .box-title .content-info.box-horizontal-right {justify-content: center; }}"
       ],
       "settings": {
