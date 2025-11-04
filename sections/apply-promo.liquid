@@ -64,49 +64,49 @@
           {%- if section.settings.code_1 != blank and section.settings.product_handle_1 != blank -%}
           '{{ section.settings.code_1 }}': {
             handle: '{{ section.settings.product_handle_1 }}',
-            quantity: {{ section.settings.quantity_1 | default: 1 }}
+            quantity: 1
           }{%- if section.settings.code_2 != blank and section.settings.product_handle_2 != blank -%},{%- endif -%}
           {%- endif -%}
           {%- if section.settings.code_2 != blank and section.settings.product_handle_2 != blank -%}
           '{{ section.settings.code_2 }}': {
             handle: '{{ section.settings.product_handle_2 }}',
-            quantity: {{ section.settings.quantity_2 | default: 1 }}
+            quantity: 1
           }{%- if section.settings.code_3 != blank and section.settings.product_handle_3 != blank -%},{%- endif -%}
           {%- endif -%}
           {%- if section.settings.code_3 != blank and section.settings.product_handle_3 != blank -%}
           '{{ section.settings.code_3 }}': {
             handle: '{{ section.settings.product_handle_3 }}',
-            quantity: {{ section.settings.quantity_3 | default: 1 }}
+            quantity: 1
           }{%- if section.settings.code_4 != blank and section.settings.product_handle_4 != blank -%},{%- endif -%}
           {%- endif -%}
           {%- if section.settings.code_4 != blank and section.settings.product_handle_4 != blank -%}
           '{{ section.settings.code_4 }}': {
             handle: '{{ section.settings.product_handle_4 }}',
-            quantity: {{ section.settings.quantity_4 | default: 1 }}
+            quantity: 1
           }{%- if section.settings.code_5 != blank and section.settings.product_handle_5 != blank -%},{%- endif -%}
           {%- endif -%}
           {%- if section.settings.code_5 != blank and section.settings.product_handle_5 != blank -%}
           '{{ section.settings.code_5 }}': {
             handle: '{{ section.settings.product_handle_5 }}',
-            quantity: {{ section.settings.quantity_5 | default: 1 }}
+            quantity: 1
           }{%- if section.settings.code_6 != blank and section.settings.product_handle_6 != blank -%},{%- endif -%}
           {%- endif -%}
           {%- if section.settings.code_6 != blank and section.settings.product_handle_6 != blank -%}
           '{{ section.settings.code_6 }}': {
             handle: '{{ section.settings.product_handle_6 }}',
-            quantity: {{ section.settings.quantity_6 | default: 1 }}
+            quantity: 1
           }{%- if section.settings.code_7 != blank and section.settings.product_handle_7 != blank -%},{%- endif -%}
           {%- endif -%}
           {%- if section.settings.code_7 != blank and section.settings.product_handle_7 != blank -%}
           '{{ section.settings.code_7 }}': {
             handle: '{{ section.settings.product_handle_7 }}',
-            quantity: {{ section.settings.quantity_7 | default: 1 }}
+            quantity: 1
           }{%- if section.settings.code_8 != blank and section.settings.product_handle_8 != blank -%},{%- endif -%}
           {%- endif -%}
           {%- if section.settings.code_8 != blank and section.settings.product_handle_8 != blank -%}
           '{{ section.settings.code_8 }}': {
             handle: '{{ section.settings.product_handle_8 }}',
-            quantity: {{ section.settings.quantity_8 | default: 1 }}
+            quantity: 1
           }
           {%- endif -%}
         };
@@ -196,42 +196,34 @@
     { "type": "header", "content": "Promo Code 1" },
     { "type": "text", "id": "code_1", "label": "Promo Code 1", "info": "Enter the promo code (e.g., EWC25-TEE-15-EYT19SL4)" },
     { "type": "text", "id": "product_handle_1", "label": "Product Handle for Code 1", "info": "Enter the product handle (found in product URL). Use unlisted/hidden products only." },
-    { "type": "number", "id": "quantity_1", "label": "Quantity 1", "default": 1 },
     
     { "type": "header", "content": "Promo Code 2" },
     { "type": "text", "id": "code_2", "label": "Promo Code 2" },
     { "type": "text", "id": "product_handle_2", "label": "Product Handle for Code 2", "info": "Enter the product handle (found in product URL). Use unlisted/hidden products only." },
-    { "type": "number", "id": "quantity_2", "label": "Quantity 2", "default": 1 },
     
     { "type": "header", "content": "Promo Code 3" },
     { "type": "text", "id": "code_3", "label": "Promo Code 3" },
     { "type": "text", "id": "product_handle_3", "label": "Product Handle for Code 3", "info": "Enter the product handle (found in product URL). Use unlisted/hidden products only." },
-    { "type": "number", "id": "quantity_3", "label": "Quantity 3", "default": 1 },
     
     { "type": "header", "content": "Promo Code 4" },
     { "type": "text", "id": "code_4", "label": "Promo Code 4" },
     { "type": "text", "id": "product_handle_4", "label": "Product Handle for Code 4", "info": "Enter the product handle (found in product URL). Use unlisted/hidden products only." },
-    { "type": "number", "id": "quantity_4", "label": "Quantity 4", "default": 1 },
     
     { "type": "header", "content": "Promo Code 5" },
     { "type": "text", "id": "code_5", "label": "Promo Code 5" },
     { "type": "text", "id": "product_handle_5", "label": "Product Handle for Code 5", "info": "Enter the product handle (found in product URL). Use unlisted/hidden products only." },
-    { "type": "number", "id": "quantity_5", "label": "Quantity 5", "default": 1 },
     
     { "type": "header", "content": "Promo Code 6" },
     { "type": "text", "id": "code_6", "label": "Promo Code 6" },
     { "type": "text", "id": "product_handle_6", "label": "Product Handle for Code 6", "info": "Enter the product handle (found in product URL). Use unlisted/hidden products only." },
-    { "type": "number", "id": "quantity_6", "label": "Quantity 6", "default": 1 },
     
     { "type": "header", "content": "Promo Code 7" },
     { "type": "text", "id": "code_7", "label": "Promo Code 7" },
     { "type": "text", "id": "product_handle_7", "label": "Product Handle for Code 7", "info": "Enter the product handle (found in product URL). Use unlisted/hidden products only." },
-    { "type": "number", "id": "quantity_7", "label": "Quantity 7", "default": 1 },
     
     { "type": "header", "content": "Promo Code 8" },
     { "type": "text", "id": "code_8", "label": "Promo Code 8" },
-    { "type": "text", "id": "product_handle_8", "label": "Product Handle for Code 8", "info": "Enter the product handle (found in product URL). Use unlisted/hidden products only." },
-    { "type": "number", "id": "quantity_8", "label": "Quantity 8", "default": 1 }
+    { "type": "text", "id": "product_handle_8", "label": "Product Handle for Code 8", "info": "Enter the product handle (found in product URL). Use unlisted/hidden products only." }
   ],
   "presets": [
     {
