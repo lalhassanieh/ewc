@@ -95,13 +95,13 @@
 													<span class="order-discount order-discount--cart">
 														<span class="fa fa-tag" aria-hidden="true"></span><span class="d-none">{{ 'customer.order.discount' | t }}:</span>{{- discount_application.title -}}: 
 													</span>
-													<span class="order-discount order-discount--cart"> -{{ discount_application.total_allocated_amount | money }}</span>
+													<span class="order-discount order-discount--cart"><span class="riyal-font" style="display: none;"></span> -{{ discount_application.total_allocated_amount | money }}</span>
 												{%- endfor -%}
 											</div>
 										{%- endif -%}
 										<div class="cart-total__subtotal">
 											<span class="cart-total__subtotal-title">{{ 'cart.general.subtotal' | t }} </span>
-											<span class="cart-total__subtotal-price">{{ cart.total_price | money }}</span>
+											<span class="cart-total__subtotal-price"><span class="riyal-font" style="display: none;"></span>{{ cart.total_price | money }}</span>
 										</div>
 										{%- capture taxes_shipping_checkout -%}
 											{%- if shop.taxes_included and shop.shipping_policy.body != blank -%}
@@ -186,7 +186,7 @@
 									{{/each}}
 								{{/properties}}
 								<div class="cart-product-info__price">
-								{{{ price }}}
+								<span class="riyal-font" style="display: none;"></span>{{{ price }}}
 								{% endraw %}<div class="pre_order hidden">( {{ 'products.product.pre_order' | t }} )</div>
 								</div>
 								{% raw %}{{#if variant}}{% endraw %}
@@ -219,14 +219,14 @@
                         <div class="cart-table__price-container">
                             <div class="content">
         						<div class="cart-table__price">
-        							{{#if discountsApplied}}<span class="cart__price cart__price--regular">{{{ discountprice }}}</span>{{/if}}
-        							<span class="price-discount cart__price">{{{ finalPrice }}}</span>
+        							{{#if discountsApplied}}<span class="cart__price cart__price--regular"><span class="riyal-font" style="display: none;"></span>{{{ discountprice }}}</span>{{/if}}
+        							<span class="price-discount cart__price"><span class="riyal-font" style="display: none;"></span>{{{ finalPrice }}}</span>
         						</div>
         						{{#if discountsApplied}}
         							<ul class="product-discount product-discount--ajax-cart" aria-label="{% endraw %}{{ 'customer.order.discount' | t }}{% raw %}">
         								{{#each discounts}}
         									<li class="product-discount__item">
-        										<span class="fa fa-tag" aria-hidden="true"></span>{{ this.discount_application.title }} (-{{{ this.formattedAmount }}})
+        										<span class="fa fa-tag" aria-hidden="true"></span>{{ this.discount_application.title }} (<span class="riyal-font" style="display: none;"></span>-{{{ this.formattedAmount }}})
         									</li>
         								{{/each}}
         							</ul>

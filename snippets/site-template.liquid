@@ -661,7 +661,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const moneyElements = document.querySelectorAll('.money[doubly-currency]');
     const allMoneyElements = document.querySelectorAll('.money');
     const riyalFonts = document.querySelectorAll('.riyal-font');
-    const productPrices = document.querySelectorAll('.product-price, .ajaxcart__price');
+    const productPrices = document.querySelectorAll('.product-price, .ajaxcart__price, .cart-total__subtotal-price, .cart-product-info__price, .cart-table__price, .cart__price, .order-discount');
     
     let currentCurrency = null;
     
@@ -743,12 +743,17 @@ document.addEventListener('DOMContentLoaded', function() {
           if (node.nodeType === 1) { // Element node
             if (node.classList && (node.classList.contains('money') || 
                 node.classList.contains('ajaxcart__price') ||
+                node.classList.contains('cart-total__subtotal-price') ||
+                node.classList.contains('cart-product-info__price') ||
+                node.classList.contains('cart-table__price') ||
+                node.classList.contains('cart__price') ||
+                node.classList.contains('order-discount') ||
                 node.classList.contains('riyal-font'))) {
               shouldUpdate = true;
             }
             // Also check if any descendants have these classes
             if (node.querySelectorAll && 
-                (node.querySelectorAll('.money, .ajaxcart__price, .riyal-font').length > 0)) {
+                (node.querySelectorAll('.money, .ajaxcart__price, .cart-total__subtotal-price, .cart-product-info__price, .cart-table__price, .cart__price, .order-discount, .riyal-font').length > 0)) {
               shouldUpdate = true;
             }
           }

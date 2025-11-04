@@ -76,6 +76,18 @@
     }
 }
 
+.cart-total__subtotal-price,
+.cart-product-info__price,
+.cart-table__price,
+.cart__price,
+.order-discount {
+    position: relative;
+    
+    &.sar-currency {
+        padding-left: 28px;
+    }
+}
+
 .product-recommendations__inner .wpbingo-title__heading,
 .jdgm-rev-widg__title {
     text-transform: uppercase;
