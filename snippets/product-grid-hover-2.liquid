@@ -168,7 +168,7 @@
 							{%- endcapture -%}
 							<span class="product-unit-price">
 								<span class="d-none">{{ 'products.general.unit_price' | t }}</span>
-								<span>{%- if cart.currency == shop.currency -%}<span class="riyal-font"></span>{%- endif -%}{{ variant.unit_price | money }}</span>{{- unit_price_separator -}}{{- unit_price_base_unit -}}
+								<span>{%- if shop.currency == 'SAR' -%}<span class="riyal-font"></span>{%- endif -%}{{ variant.unit_price | money }}</span>{{- unit_price_separator -}}{{- unit_price_base_unit -}}
 							</span>
 						{%- endif -%}
 					{%- else -%}
