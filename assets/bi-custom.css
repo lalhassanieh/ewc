@@ -43,6 +43,9 @@
 .content-bottom-custom .product-price {
   position: relative;
 }
+.content-bottom-custom .product-price.sar-currency {
+  padding-left: 28px;
+}
 
 .product-recommendations__inner .wpbingo-title__heading,
 .jdgm-rev-widg__title {

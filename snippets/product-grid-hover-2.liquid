@@ -358,6 +358,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Check for BEAST currency converter attributes
     const moneyElements = document.querySelectorAll('.money[doubly-currency]');
     const riyalFonts = document.querySelectorAll('.riyal-font');
+    const productPrices = document.querySelectorAll('.product-price');
     
     if (moneyElements.length > 0) {
       // Get current currency from BEAST converter
@@ -368,6 +369,15 @@ document.addEventListener('DOMContentLoaded', function() {
           font.style.display = 'inline';
         } else {
           font.style.display = 'none';
+        }
+      });
+
+      // Add/remove SAR currency class for padding
+      productPrices.forEach(function(priceElement) {
+        if (currentCurrency === 'SAR') {
+          priceElement.classList.add('sar-currency');
+        } else {
+          priceElement.classList.remove('sar-currency');
         }
       });
 
@@ -382,9 +392,11 @@ document.addEventListener('DOMContentLoaded', function() {
         }
       });
     } else {
+      // Fallback: check Shopify's default currency
+      const isSAR = Shopify && Shopify.currency && Shopify.currency.active === 'SAR';
   
       riyalFonts.forEach(function(font) {
-        if (Shopify && Shopify.currency && Shopify.currency.active === 'SAR') {
+        if (isSAR) {
           font.style.display = 'inline';
           // Also handle SAR text removal for default Shopify currency
           const moneyElementsDefault = document.querySelectorAll('.money');
@@ -396,6 +408,15 @@ document.addEventListener('DOMContentLoaded', function() {
           });
         } else {
           font.style.display = 'none';
+        }
+      });
+
+      // Add/remove SAR currency class for padding (fallback)
+      productPrices.forEach(function(priceElement) {
+        if (isSAR) {
+          priceElement.classList.add('sar-currency');
+        } else {
+          priceElement.classList.remove('sar-currency');
         }
       });
     }
