@@ -130,6 +130,9 @@
                             {% include 'product-price', variant: current_variant %}
                           </div>
                         {% endif %}
+                        <div class="price-vat-notice" style="font-size: 12px; color: #231e1f; margin-top: 5px;">
+                          (Price include VAT)
+                        </div>
                       {%- when 'vendor' -%}
                         <div
                           class="product__vendor"
