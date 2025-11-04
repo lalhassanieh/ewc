@@ -66,13 +66,17 @@
 
 .product-recommendations__inner .wpbingo-title__heading,
 .jdgm-rev-widg__title {
+    text-transform: uppercase;
     font-size: clamp(20px, 2vw + 1rem, 28px);
 }
 
 .bwp-button-text,
 .product-card__name,
 .product-tabs__nav-link,
-.list-item a ,.breadcrumb__link span,.block-sidebar__title{
+.list-item a,
+.breadcrumb__link span,
+.block-sidebar__title,
+.facet-filters__sort ,.loadmore-button-text,.jdgm-write-rev-link,.more-info-tabs__nav-item{
     text-transform: uppercase;
 }
 
