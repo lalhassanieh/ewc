@@ -2537,7 +2537,7 @@
         "width_bg": "container",
         "padding_bg": "",
         "padding": "",
-        "margin": "0 0 40px",
+        "margin": "0 0 40px | 0 0",
         "vertical_align": "middle",
         "horizontal_align": "left"
       }
