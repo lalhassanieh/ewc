@@ -6,12 +6,14 @@
 
     <form id="applyPromoForm" class="apply-promo-form" onsubmit="return false;">
       <label for="applyPromoCode" class="visually-hidden">Promo code</label>
-      <input id="applyPromoCode"
-             name="code"
-             type="text"
-             placeholder="{{ section.settings.placeholder }}"
-             aria-label="Promo code"
-             class="apply-promo-input" />
+      <input
+        id="applyPromoCode"
+        name="code"
+        type="text"
+        placeholder="{{ section.settings.placeholder }}"
+        aria-label="Promo code"
+        class="apply-promo-input"
+      >
 
       <button id="applyPromoBtn" type="button" class="apply-promo-btn">
         {{ section.settings.button_text }}
@@ -21,36 +23,37 @@
   </div>
 
   <style>
-    /* basic styling - adjust values as you like */
-    #apply-promo-section.apply-promo-section { padding: 30px 20px; text-align:center; background: {{ section.settings.bg_color }}; }
-    .apply-promo-inner { max-width: 900px; margin: 0 auto; display:flex; flex-direction:column; gap:12px; align-items:center; }
-    .apply-promo-title { margin:0; font-size:48px; color:{{ section.settings.title_color }}; }
-    .apply-promo-subtitle { margin:0; font-weight:600; font-size:18px; color:{{ section.settings.subtitle_color }}; }
-    .apply-promo-form { display:flex; gap:10px; width:100%; justify-content:center; flex-wrap:wrap; }
-    .apply-promo-input { padding:10px 14px; min-width:220px; max-width:420px; border:1px solid #ccc; border-radius:4px; }
-    .apply-promo-btn { padding:10px 16px; border:none; cursor:pointer; border-radius:4px; background:{{ section.settings.button_bg }}; color:{{ section.settings.button_color }}; }
-    .apply-promo-msg { margin-top:8px; font-size:13px; color:#e74c3c; min-height:18px; }
-    .visually-hidden { position:absolute !important; height:1px; width:1px; overflow:hidden; clip:rect(1px,1px,1px,1px); white-space:nowrap; }
-    @media (min-width: 700px) {
-      .apply-promo-form { flex-wrap:nowrap; }
-    }
+      /* basic styling - adjust values as you like */
+      #apply-promo-section.apply-promo-section { padding: 30px 20px 50px 20px; text-align:center; background: {{ section.settings.bg_color }}; }
+      .apply-promo-inner { max-width: 900px; margin: 0 auto; display:flex; flex-direction:column; gap:12px; align-items:center; }
+      .apply-promo-title { margin:0; font-size:48px; color:{{ section.settings.title_color }}; }
+      .apply-promo-subtitle { margin:0; font-size:18px; color:{{ section.settings.subtitle_color }}; }
+      .apply-promo-form { display:flex; gap:10px; width:100%; justify-content:center; flex-wrap:wrap; }
+      .apply-promo-input { padding:10px 14px; min-width:220px; max-width:420px; border:1px solid #ccc; border-radius:4px; }
+      .apply-promo-btn { text-transform:uppercase; padding:10px 16px; border:none; cursor:pointer; border-radius:4px; background:{{ section.settings.button_bg }}; color:{{ section.settings.button_color }}; }
+      .apply-promo-msg { position: absolute;
+    bottom: -23px;margin-top:8px; font-size:13px; color:#e74c3c; min-height:18px; }
+      .visually-hidden { position:absolute !important; height:1px; width:1px; overflow:hidden; clip:rect(1px,1px,1px,1px); white-space:nowrap; }
+      @media (min-width: 700px) {
+        .apply-promo-form { flex-wrap:nowrap; }
+      }
   </style>
 
   <script>
-    (function(){
+    (function () {
       const form = document.getElementById('applyPromoForm');
       const input = document.getElementById('applyPromoCode');
       const btn = document.getElementById('applyPromoBtn');
       const msg = document.getElementById('applyPromoMsg');
 
-      function setMessage(text, isError){
+      function setMessage(text, isError) {
         msg.textContent = text || '';
         msg.style.color = isError ? '#e74c3c' : '#2ecc71';
       }
 
-      btn.addEventListener('click', function(){
+      btn.addEventListener('click', function () {
         const code = input.value.trim();
-        if(!code){
+        if (!code) {
           setMessage('Please enter a promo code.', true);
           input.focus();
           return;
@@ -61,13 +64,13 @@
           'EWC25-TEE-15-EYT19SL4': {
             title: 'Worlds2025 gift - EWC Tshirt',
             handle: 'worlds2025-gift-ewc-tshirt', // Update this with actual handle
-            quantity: 1
+            quantity: 1,
           },
           'EWC25-TEE-15-31080404': {
             title: 'Free Worlds2025 gift - EWC Hat',
             handle: 'docapp-free-gift-free-worlds2025-gift-ewc-hat-6751', // Update this with actual handle
-            quantity: 1
-          }
+            quantity: 1,
+          },
         };
 
         // Check if code matches a product
@@ -82,15 +85,15 @@
 
         // First, get the product data to find variant ID
         fetch(`/products/${productData.handle}.js`)
-          .then(response => response.json())
-          .then(product => {
+          .then((response) => response.json())
+          .then((product) => {
             if (!product || !product.variants || product.variants.length === 0) {
               throw new Error('Product not found or no variants available');
             }
-            
+
             // Get the first available variant
-            const variant = product.variants.find(v => v.available) || product.variants[0];
-            
+            const variant = product.variants.find((v) => v.available) || product.variants[0];
+
             // Add to cart
             return fetch('/cart/add.js', {
               method: 'POST',
@@ -99,19 +102,19 @@
               },
               body: JSON.stringify({
                 id: variant.id,
-                quantity: productData.quantity
-              })
+                quantity: productData.quantity,
+              }),
             });
           })
-          .then(response => response.json())
-          .then(item => {
+          .then((response) => response.json())
+          .then((item) => {
             setMessage('Product added successfully! Redirecting to checkout...', false);
             // Redirect to checkout after successful add
-            setTimeout(function(){
+            setTimeout(function () {
               window.location.href = '/checkout';
             }, 500);
           })
-          .catch(error => {
+          .catch((error) => {
             console.error('Error:', error);
             setMessage('Error adding product to cart. Please try again.', true);
             btn.disabled = false;
@@ -119,8 +122,10 @@
       });
 
       // Allow Enter key
-      input.addEventListener('keydown', function(e){
-        if(e.key === 'Enter'){ btn.click(); }
+      input.addEventListener('keydown', function (e) {
+        if (e.key === 'Enter') {
+          btn.click();
+        }
       });
     })();
   </script>
@@ -140,9 +145,11 @@
     { "type": "color", "id": "button_bg", "label": "Button background", "default": "#111111" },
     { "type": "color", "id": "button_color", "label": "Button text color", "default": "#ffffff" }
   ],
-  "presets": [{
-    "name": "Apply promo code",
-    "category": "Promotions"
-  }]
+  "presets": [
+    {
+      "name": "Apply promo code",
+      "category": "Promotions"
+    }
+  ]
 }
 {% endschema %}
