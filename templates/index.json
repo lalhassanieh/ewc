@@ -1012,7 +1012,7 @@
               "type": "banners-box",
               "name": "Banners box",
               "settings": {
-                "image": "shopify://shop_images/tropjhy_replicas.png",
+                "image": "shopify://shop_images/1.png",
                 "url": "",
                 "border_radius_img": "5px",
                 "margin_image": "",
@@ -1195,7 +1195,7 @@
               "type": "banners-box",
               "name": "Banners box",
               "settings": {
-                "image": "shopify://shop_images/banner-24.webp",
+                "image": "shopify://shop_images/Accessories.png",
                 "url": "",
                 "border_radius_img": "5px",
                 "margin_image": "",
