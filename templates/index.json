@@ -1031,7 +1031,7 @@
                     "text_align": "left",
                     "background_content": "rgba(0,0,0,0)",
                     "border_radius_content": "0px 0px 0px 0px",
-                    "padding": "0 15px 65px 40px | 0 15px 30px 30px | 0 15px 15px",
+                    "padding": "0 15px 65px 40px | 0 15px 30px 30px | 20px 20px 20px",
                     "margin": ""
                   },
                   "blocks": {
@@ -1057,7 +1057,7 @@
                         "line_height_tab": 35,
                         "align_tab": "left",
                         "color_mobi": "#ffffff",
-                        "font_size_mobi": 30,
+                        "font_size_mobi": 17,
                         "line_height_mobi": 35,
                         "letter_spacing_mobi": 0,
                         "align_mobi": "left"
@@ -1085,8 +1085,8 @@
                         "line_height_tab": 35,
                         "align_tab": "left",
                         "color_mobi": "#ffffff",
-                        "font_size_mobi": 30,
-                        "line_height_mobi": 35,
+                        "font_size_mobi": 14,
+                        "line_height_mobi": 20,
                         "letter_spacing_mobi": 0,
                         "align_mobi": "left"
                       },
@@ -1240,7 +1240,7 @@
                         "line_height_tab": 35,
                         "align_tab": "left",
                         "color_mobi": "#ffffff",
-                        "font_size_mobi": 30,
+                        "font_size_mobi": 15,
                         "line_height_mobi": 35,
                         "letter_spacing_mobi": 0,
                         "align_mobi": "left"
@@ -1268,8 +1268,8 @@
                         "line_height_tab": 35,
                         "align_tab": "left",
                         "color_mobi": "#ffffff",
-                        "font_size_mobi": 30,
-                        "line_height_mobi": 35,
+                        "font_size_mobi": 14,
+                        "line_height_mobi": 20,
                         "letter_spacing_mobi": 0,
                         "align_mobi": "left"
                       },
