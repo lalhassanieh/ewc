@@ -15,9 +15,13 @@
         class="apply-promo-input"
       >
 
-      <button id="applyPromoBtn" type="button" class="apply-promo-btn">
-        {{ section.settings.button_text }}
-      </button>
+      <div class="wpbingo-button">
+        <button id="applyPromoBtn" type="button" class="bwp-button default apply-promo-btn" tabindex="0">
+          <span class="bwp-button-content-wrapper">
+            <span class="bwp-button-text">{{ section.settings.button_text }}</span>
+          </span>
+        </button>
+      </div>
       <div id="applyPromoMsg" class="apply-promo-msg" aria-live="polite"></div>
     </form>
   </div>
@@ -66,7 +70,8 @@
           .apply-promo-subtitle { margin:0; font-size:18px; color:{{ section.settings.subtitle_color }}; }
           .apply-promo-form {position:relative; display:flex; gap:10px; width:100%; justify-content:center; flex-wrap:wrap; }
           .apply-promo-input { padding:10px 14px; min-width:220px; max-width:420px; border:1px solid #ccc; border-radius:4px; }
-          .apply-promo-btn { text-transform:uppercase; padding:10px 16px; border:none; cursor:pointer; border-radius:4px; background:{{ section.settings.button_bg }}; color:{{ section.settings.button_color }}; }
+          .apply-promo-btn.bwp-button { text-transform:uppercase; padding:10px 16px; border:none; cursor:pointer; border-radius:4px; background:{{ section.settings.button_bg }}; color:{{ section.settings.button_color }}; }
+          .apply-promo-btn .bwp-button-text { color: {{ section.settings.button_color }}; }
           .apply-promo-msg { position: absolute;
         bottom: -23px;margin-top:8px; font-size:13px; color:#e74c3c; min-height:18px; }
           .visually-hidden { position:absolute !important; height:1px; width:1px; overflow:hidden; clip:rect(1px,1px,1px,1px); white-space:nowrap; }
