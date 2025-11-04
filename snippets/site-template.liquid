@@ -305,10 +305,10 @@
 							</div>
 							<div class="ajaxcart__product-price-wrapper">
 								{{#if discountsApplied}}
-									<del class="ajaxcart__price ajaxcart__price--regular">{{{price}}}</del>
-									<span class="ajaxcart__price ajaxcart__price--sale">{{{discountedPrice}}}</span>
+									<del class="ajaxcart__price ajaxcart__price--regular"><span class="riyal-font" style="display: none;"></span>{{{price}}}</del>
+									<span class="ajaxcart__price ajaxcart__price--sale"><span class="riyal-font" style="display: none;"></span>{{{discountedPrice}}}</span>
 								{{else}}
-									<span class="ajaxcart__price">{{{price}}}</span>
+									<span class="ajaxcart__price"><span class="riyal-font" style="display: none;"></span>{{{price}}}</span>
 								{{/if}}
 								{{#if unitPrice}}
 									<span class="d-none">{% endraw %}{{ 'products.general.unit_price' | t }}{% raw %}</span>
@@ -401,7 +401,7 @@
 						<span class="d-none">{% endraw %}{{ 'customer.order.discount' | t }}{% raw %}:</span> {{ this.title }}
 					</div>
 					<div class="order-discount__value text-right">
-						<span class="ajaxcart__price">-{{{ this.formattedAmount }}}</span>
+						<span class="ajaxcart__price"><span class="riyal-font" style="display: none;"></span>-{{{ this.formattedAmount }}}</span>
 					</div>
 				{{/each}}
 			</div>
@@ -652,4 +652,122 @@
 		</div>
 	</div>
 {% endraw %}
+</script>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  function updateRiyalFontVisibilityGlobal() {
+    // Check for BEAST currency converter attributes
+    const moneyElements = document.querySelectorAll('.money[doubly-currency]');
+    const riyalFonts = document.querySelectorAll('.riyal-font');
+    const productPrices = document.querySelectorAll('.product-price, .ajaxcart__price');
+    
+    if (moneyElements.length > 0) {
+      // Get current currency from BEAST converter
+      const currentCurrency = moneyElements[0].getAttribute('doubly-currency');
+      
+      riyalFonts.forEach(function(font) {
+        if (currentCurrency === 'SAR') {
+          font.style.display = 'inline';
+        } else {
+          font.style.display = 'none';
+        }
+      });
+
+      // Add/remove SAR currency class for padding
+      productPrices.forEach(function(priceElement) {
+        if (currentCurrency === 'SAR') {
+          priceElement.classList.add('sar-currency');
+        } else {
+          priceElement.classList.remove('sar-currency');
+        }
+      });
+
+      // Hide/show SAR text when SAR is selected
+      moneyElements.forEach(function(moneyElement) {
+        if (currentCurrency === 'SAR') {
+          // Hide the SAR text by replacing it
+          let textContent = moneyElement.textContent || moneyElement.innerText;
+          if (textContent.includes(' SAR')) {
+            moneyElement.textContent = textContent.replace(' SAR', '');
+          }
+        }
+      });
+    } else {
+      // Fallback: check Shopify's default currency
+      const isSAR = Shopify && Shopify.currency && Shopify.currency.active === 'SAR';
+  
+      riyalFonts.forEach(function(font) {
+        if (isSAR) {
+          font.style.display = 'inline';
+          // Also handle SAR text removal for default Shopify currency
+          const moneyElementsDefault = document.querySelectorAll('.money');
+          moneyElementsDefault.forEach(function(moneyElement) {
+            let textContent = moneyElement.textContent || moneyElement.innerText;
+            if (textContent.includes(' SAR')) {
+              moneyElement.textContent = textContent.replace(' SAR', '');
+            }
+          });
+        } else {
+          font.style.display = 'none';
+        }
+      });
+
+      // Add/remove SAR currency class for padding (fallback)
+      productPrices.forEach(function(priceElement) {
+        if (isSAR) {
+          priceElement.classList.add('sar-currency');
+        } else {
+          priceElement.classList.remove('sar-currency');
+        }
+      });
+    }
+  }
+
+  // Initial check
+  updateRiyalFontVisibilityGlobal();
+  
+  // Monitor for currency changes by BEAST converter
+  const observer = new MutationObserver(function(mutations) {
+    mutations.forEach(function(mutation) {
+      if (mutation.type === 'attributes' && 
+          (mutation.attributeName === 'doubly-currency' || 
+           mutation.target.classList.contains('money'))) {
+        updateRiyalFontVisibilityGlobal();
+      }
+      // Also watch for text changes in money elements
+      if (mutation.type === 'childList' && 
+          (mutation.target.classList.contains('money') ||
+           mutation.target.classList.contains('ajaxcart__price'))) {
+        setTimeout(updateRiyalFontVisibilityGlobal, 100);
+      }
+    });
+  });
+
+  // Observe changes to money elements and ajaxcart prices
+  document.querySelectorAll('.money, .ajaxcart__price').forEach(function(element) {
+    observer.observe(element, { 
+      attributes: true, 
+      attributeFilter: ['doubly-currency'],
+      childList: true,
+      subtree: true 
+    });
+  });
+
+  // Also listen for currency change events that might be triggered by BEAST
+  document.addEventListener('currencyChanged', function() {
+    setTimeout(updateRiyalFontVisibilityGlobal, 200);
+  });
+  document.addEventListener('doubly:currency:changed', function() {
+    setTimeout(updateRiyalFontVisibilityGlobal, 200);
+  });
+
+  // Listen for cart updates to refresh riyal fonts in ajax cart
+  document.addEventListener('cart:updated', function() {
+    setTimeout(updateRiyalFontVisibilityGlobal, 300);
+  });
+  document.addEventListener('cart:refreshed', function() {
+    setTimeout(updateRiyalFontVisibilityGlobal, 300);
+  });
+});
 </script>

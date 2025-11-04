@@ -47,6 +47,13 @@
   padding-left: 28px;
 }
 
+.ajaxcart__price {
+  position: relative;
+}
+.ajaxcart__price.sar-currency {
+  padding-left: 28px;
+}
+
 .product-recommendations__inner .wpbingo-title__heading,
 .jdgm-rev-widg__title {
   text-transform: uppercase;
