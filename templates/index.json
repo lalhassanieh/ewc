@@ -829,7 +829,7 @@
         "width_bg": "container",
         "padding_bg": "12px 24px 40px 24px",
         "padding": "12px 24px 12px 24px",
-        "margin": "12px 24px 12px 24px",
+        "margin": "12px 24px 12px 24px | margin: 0 0 85px;",
         "vertical_align": "middle",
         "horizontal_align": "center"
       }
