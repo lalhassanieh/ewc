@@ -60,7 +60,8 @@
 .loadmore-button-text,
 .jdgm-write-rev-link,
 .more-info-tabs__nav-item,
-.product-single .product-single__buttons .btn--add-to-cart {
+.product-single .product-single__buttons .btn--add-to-cart,
+.shopify-payment-button__button {
   text-transform: uppercase;
 }
 
