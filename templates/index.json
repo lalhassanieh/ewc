@@ -813,7 +813,8 @@
         "column_G9rNeW"
       ],
       "custom_css": [
-        ".collection-item__image a img {aspect-ratio: 1/1; object-fit: cover;}"
+        ".collection-item__image a img {aspect-ratio: 1/1; object-fit: cover;}",
+        ".collection-item__link::before {display: none;}"
       ],
       "name": "Custom Section",
       "settings": {
@@ -826,7 +827,7 @@
         "background_pos": "center center",
         "background_color": "",
         "width_bg": "container",
-        "padding_bg": "12px 24px 12px 24px",
+        "padding_bg": "12px 24px 40px 24px",
         "padding": "12px 24px 12px 24px",
         "margin": "12px 24px 12px 24px",
         "vertical_align": "middle",
@@ -1041,7 +1042,7 @@
                         "heading_size": "h3",
                         "title": "OWN THE GLORY",
                         "font": "--font-family-second",
-                        "color": "#231f20",
+                        "color": "#ffffff",
                         "font_size": 25,
                         "line_height": 70,
                         "letter_spacing": 0,
@@ -1069,7 +1070,7 @@
                       "settings": {
                         "desc": "Bring home the spirit of champions with<br>exclusive EWC trophy replicas.",
                         "font": "--font-family-second",
-                        "color": "#231f20",
+                        "color": "#ffffff",
                         "font_size": 20,
                         "line_height": 25,
                         "letter_spacing": 0,
@@ -1224,7 +1225,7 @@
                         "heading_size": "h3",
                         "title": "GEAR UP. GAME ON.",
                         "font": "--font-family-second",
-                        "color": "#231f20",
+                        "color": "#ffffff",
                         "font_size": 25,
                         "line_height": 70,
                         "letter_spacing": 0,
@@ -1252,7 +1253,7 @@
                       "settings": {
                         "desc": "From the arena to the streets — <br>accessories built for every player.",
                         "font": "--font-family-second",
-                        "color": "#231f20",
+                        "color": "#ffffff",
                         "font_size": 20,
                         "line_height": 25,
                         "letter_spacing": 0,

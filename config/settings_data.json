@@ -1087,6 +1087,9 @@
           "mainmenu_item_W7rhGn",
           "mainmenu_item_7JnjnL"
         ],
+        "custom_css": [
+          ".main-menu__nav-item > a{text-transform: uppercase;}"
+        ],
         "settings": {
           "width_header": "",
           "padding": "30px 0",
@@ -1360,7 +1363,7 @@
       ".banner-wrapper-infor .bwp-block-title,.btn--add-to-cart,.swatch-items label,.btn {font-family: AcuminProCond-Regular !important;}",
       "#customer_login_guest .btn {margin-left: 0; text-decoration: underline; padding-left: 0; font-size: 16px; text-transform: none;}",
       ".pswp__img {object-fit: cover;}",
-      ".riyal-font{display: none;}"
+      ".riyal-font {display: none;}"
     ]
   }
 }
