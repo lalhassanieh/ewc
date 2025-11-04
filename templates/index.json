@@ -813,7 +813,8 @@
         "column_G9rNeW"
       ],
       "custom_css": [
-        ".collection-item__image a img {aspect-ratio: 1/1; object-fit: cover;}"
+        ".collection-item__image a img {aspect-ratio: 1/1; object-fit: cover;}",
+        ".collection-item__link::before{display:none;}"
       ],
       "name": "Custom Section",
       "settings": {
