@@ -24,8 +24,31 @@
 
   <style>
       /* basic styling - adjust values as you like */
-      #apply-promo-section.apply-promo-section { padding: 30px 20px 100px 20px; text-align:center; background: {{ section.settings.bg_color }}; }
-      .apply-promo-inner { max-width: 900px; margin: 0 auto; display:flex; flex-direction:column; gap:12px; align-items:center; }
+      #apply-promo-section.apply-promo-section { 
+        padding: 30px 20px 100px 20px; 
+        text-align:center; 
+        background: {{ section.settings.bg_color }}; 
+        {% if section.settings.bg_image != blank %}
+        background-image: url('{{ section.settings.bg_image | image_url: width: 1920 }}');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        {% endif %}
+        position: relative;
+      }
+      {% if section.settings.bg_image != blank and section.settings.bg_overlay_opacity > 0 %}
+      #apply-promo-section.apply-promo-section::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, {{ section.settings.bg_overlay_opacity | divided_by: 100.0 }});
+        z-index: 1;
+      }
+      {% endif %}
+      .apply-promo-inner { max-width: 900px; margin: 0 auto; display:flex; flex-direction:column; gap:12px; align-items:center; position: relative; z-index: 2; }
       .apply-promo-title { margin:0;  font-size: clamp(28px, 4vw, 48px); color:{{ section.settings.title_color }}; }
       .apply-promo-subtitle { margin:0; font-size:18px; color:{{ section.settings.subtitle_color }}; }
       .apply-promo-form {position:relative; display:flex; gap:10px; width:100%; justify-content:center; flex-wrap:wrap; }
@@ -187,6 +210,8 @@
     { "type": "text", "id": "subtitle", "label": "Subtitle", "default": "Enter a promo code to get a discount" },
     { "type": "text", "id": "placeholder", "label": "Input placeholder", "default": "Enter promo code" },
     { "type": "text", "id": "button_text", "label": "Button text", "default": "Apply" },
+    { "type": "image_picker", "id": "bg_image", "label": "Background Image", "info": "Optional background image for the entire section" },
+    { "type": "range", "id": "bg_overlay_opacity", "label": "Background Overlay Opacity", "min": 0, "max": 100, "step": 5, "default": 0, "unit": "%", "info": "Add a dark overlay over the background image to improve text readability" },
     { "type": "color", "id": "bg_color", "label": "Background color", "default": "#ffffff" },
     { "type": "color", "id": "title_color", "label": "Title color", "default": "#111111" },
     { "type": "color", "id": "subtitle_color", "label": "Subtitle color", "default": "#666666" },
