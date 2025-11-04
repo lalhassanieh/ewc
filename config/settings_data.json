@@ -1358,7 +1358,6 @@
       ".banner-wrapper-infor .bwp-block-title,.btn--add-to-cart,.swatch-items label,.btn {font-family: AcuminProCond-Regular !important;}",
       "#customer_login_guest .btn {margin-left: 0; text-decoration: underline; padding-left: 0; font-size: 16px; text-transform: none;}",
       ".pswp__img {object-fit: cover;}",
-      ".riyal-font {display: none;}",
       ".jdgm-write-rev-link {border-radius: 50px !important;}",
       ".jdgm-review-widget--small .jdgm-rev-widg {padding: 16px 20px !important;}"
     ]
