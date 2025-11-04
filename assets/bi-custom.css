@@ -69,6 +69,15 @@
   padding-left: 28px;
 }
 
+.js-product-price.product-single__price,
+.js-product-compare-price.product-single__price--compare-at {
+  position: relative;
+}
+.js-product-price.product-single__price.sar-currency,
+.js-product-compare-price.product-single__price--compare-at.sar-currency {
+  padding-left: 28px;
+}
+
 .product-recommendations__inner .wpbingo-title__heading,
 .jdgm-rev-widg__title {
   text-transform: uppercase;
