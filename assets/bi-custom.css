@@ -49,6 +49,10 @@
   font-size: clamp(20px, 2vw + 1rem, 28px);
 }
 
+.bwp-button-text {
+  text-transform: uppercase;
+}
+
 body,
 .h1,
 .h2,
