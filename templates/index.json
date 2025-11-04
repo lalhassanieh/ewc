@@ -1278,7 +1278,7 @@
                       "type": "button",
                       "settings": {
                         "title": "Shop Now",
-                        "button_link": "shopify://collections/all",
+                        "button_link": "shopify://collections/accessories-1",
                         "font": "--font-family-second",
                         "icon_title": "",
                         "font_icon": 14,
