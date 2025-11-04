@@ -58,10 +58,15 @@
     font-size: 20px;
 }
 
-.content-bottom-custom{
-    .product-price{
+.content-bottom-custom {
+    .product-price {
         position: relative;
     }
+}
+
+.product-recommendations__inner .wpbingo-title__heading,
+.jdgm-rev-widg__title {
+    font-size: clamp(20px, 2vw + 1rem, 28px);
 }
 
 body,

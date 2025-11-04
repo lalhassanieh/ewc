@@ -44,6 +44,11 @@
   position: relative;
 }
 
+.product-recommendations__inner .wpbingo-title__heading,
+.jdgm-rev-widg__title {
+  font-size: clamp(20px, 2vw + 1rem, 28px);
+}
+
 body,
 .h1,
 .h2,
