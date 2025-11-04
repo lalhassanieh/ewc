@@ -191,4 +191,12 @@ a,
 
 .wpb-variants-swatch .Yellow {
   background-color: #FFE500 !important;
+}
+
+.jdgm-write-rev-link {
+  border-radius: 50px;
+}
+
+.jdgm-review-widget--small .jdgm-rev-widg {
+  padding: 16px 20px;
 }/*# sourceMappingURL=bi-custom.css.map */
