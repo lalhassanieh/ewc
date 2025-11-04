@@ -553,7 +553,7 @@
                 "font": "--font-family-second",
                 "color": "#231f20",
                 "font_size": 35,
-                "line_height": 48,
+                "line_height": 38,
                 "letter_spacing": 0,
                 "font_weight": "500",
                 "align": "left",
@@ -827,9 +827,9 @@
         "background_pos": "center center",
         "background_color": "",
         "width_bg": "container",
-        "padding_bg": "12px 24px 40px 24px",
-        "padding": "12px 24px 12px 24px",
-        "margin": "12px 24px 12px 24px",
+        "padding_bg": "12px 24px 40px 24px | 12px 0 40px 0",
+        "padding": "12px 24px 12px 24px | 12px 0",
+        "margin": "12px 24px 12px 24px | margin: 0 0 85px | 0 0",
         "vertical_align": "middle",
         "horizontal_align": "center"
       }
@@ -861,7 +861,7 @@
               "settings": {
                 "padding": "",
                 "margin": "",
-                "image": "shopify://shop_images/Image-01_2.jpg",
+                "image": "shopify://shop_images/Untitled-1.jpg",
                 "box_content": true,
                 "subtitle_lookbook": "",
                 "title_lookbook": "EWC LIMITED EDITION PRODUCTS",
@@ -873,7 +873,7 @@
                 "horizontal_position": "right",
                 "text_align": "left",
                 "padding_content": "0 360px 125px 360px | 0 0 30px 15px | | 50px 15px 50px",
-                "button_hover": "hover_style_5",
+                "button_hover": "default",
                 "disable_absolute": true,
                 "vertical_position_mobi": "top",
                 "horizontal_position_mobi": "center",
@@ -920,8 +920,8 @@
                     "background_button": "rgba(0,0,0,0)",
                     "border_color": "#ffffff",
                     "color_button_hover": "#ffffff",
-                    "background_hover": "#000000",
-                    "border_color_hover": "#ffffff",
+                    "background_hover": "#d1b26e",
+                    "border_color_hover": "rgba(0,0,0,0)",
                     "font_size_button": 16,
                     "line_height_button": 55,
                     "letter_spacing_button": 0,
@@ -949,10 +949,10 @@
                     "border_width_mobi": "0px 0px 0px 0px",
                     "color_button_mobi": "#ffffff",
                     "background_button_mobi": "rgba(0,0,0,0)",
-                    "border_color_mobi": "#ffffff",
+                    "border_color_mobi": "rgba(0,0,0,0)",
                     "color_button_hover_mobi": "#ffffff",
                     "background_hover_mobi": "#000000",
-                    "border_color_hover_mobi": "#ffffff"
+                    "border_color_hover_mobi": "rgba(0,0,0,0)"
                   },
                   "blocks": {}
                 }
@@ -971,6 +971,7 @@
         "column_k3TDkL"
       ],
       "custom_css": [
+        ".lookbook-card,.lookbook-image,.lookbook-image img {width: 100%;}",
         "@media (max-width: 500px) {.wpbingo-widget-lookbook .box-title .content-info.box-horizontal-right {justify-content: center; }}"
       ],
       "settings": {
@@ -2024,14 +2025,14 @@
                 "max_width": "",
                 "fullwidth": true,
                 "background_gradient": "",
-                "background_color": "#231f20",
+                "background_color": "rgba(0,0,0,0)",
                 "border_radius": "0px 0px 0px 0px",
                 "background": "shopify://shop_images/Banner-02.jpg",
                 "background_fixed": false,
                 "background_size": "cover",
                 "background_pos": "center center",
                 "padding": "235px 0 190px | 200px 0 150px | | 150px 0 100px",
-                "margin": "80px 0 0 0"
+                "margin": "80px 0 0 0 | 55px 0 0 0"
               },
               "blocks": {
                 "column_TqAtAC": {
@@ -2081,11 +2082,11 @@
                         "font": "--font-family-second",
                         "color": "#ffffff",
                         "font_size": 20,
-                        "line_height": 70,
+                        "line_height": 35,
                         "letter_spacing": 0,
                         "font_weight": "300",
                         "align": "left",
-                        "padding": "",
+                        "padding": "0 | 0 | 0 20px",
                         "margin": "",
                         "font_size_lap": 30,
                         "line_height_lap": 35,
@@ -2094,7 +2095,7 @@
                         "line_height_tab": 35,
                         "align_tab": "left",
                         "color_mobi": "#ffffff",
-                        "font_size_mobi": 30,
+                        "font_size_mobi": 20,
                         "line_height_mobi": 35,
                         "letter_spacing_mobi": 0,
                         "align_mobi": "left"
@@ -2109,12 +2110,12 @@
                         "title": "CLUB CHAMPIONSHIP",
                         "font": "--font-family-second",
                         "color": "#ffffff",
-                        "font_size": 35,
-                        "line_height": 70,
+                        "font_size": 48,
+                        "line_height": 35,
                         "letter_spacing": 0,
                         "font_weight": "300",
                         "align": "left",
-                        "padding": "",
+                        "padding": "20px 0 0 0 | 0 | 0 20px",
                         "margin": "",
                         "font_size_lap": 30,
                         "line_height_lap": 35,
