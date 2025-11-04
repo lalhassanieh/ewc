@@ -971,8 +971,8 @@
         "column_k3TDkL"
       ],
       "custom_css": [
-        "@media (max-width: 500px) {.wpbingo-widget-lookbook .box-title .content-info.box-horizontal-right {justify-content: center; }}",
-        " .lookbook-card{width:100%}"
+        ".lookbook-card {width: 100%;}",
+        "@media (max-width: 500px) {.wpbingo-widget-lookbook .box-title .content-info.box-horizontal-right {justify-content: center; }}"
       ],
       "settings": {
         "max_width": "",
