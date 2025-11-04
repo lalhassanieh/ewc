@@ -94,11 +94,11 @@
 															{% assign max_price = operator %}
 														{% endif %}		
 													{% endfor %}
-													{{  min_price | money }} - {{  max_price | money }}
+													<span class="riyal-font"></span>{{  min_price | money }} - {{  max_price | money }}
 												</div>
 											{% else %}
-												<div class="price-single-product" style="margin:{{ block.settings.product_price_margin }};--price-color:{{ block.settings.price_color }};--price-color-sale:{{ block.settings.price_color_sale }};--price-color-on-sale:{{ block.settings.price_color_on_sale }};--price-font-size:{{ block.settings.price_size }}px;--price-font-size-sale:{{ block.settings.price_size_sale }}px;">
-													{% include 'product-price', variant: current_variant %}
+												<div class="price-single-product sar-currency" style="margin:{{ block.settings.product_price_margin }};--price-color:{{ block.settings.price_color }};--price-color-sale:{{ block.settings.price_color_sale }};--price-color-on-sale:{{ block.settings.price_color_on_sale }};--price-font-size:{{ block.settings.price_size }}px;--price-font-size-sale:{{ block.settings.price_size_sale }}px;">
+													<span class="riyal-font"></span>{% include 'product-price', variant: current_variant %}
 												</div>
 											{% endif %}			
 										{%- when 'vendor' -%}
@@ -1658,6 +1658,130 @@
     ]
 }
 {% endschema %}
+
+<script>
+// Product Template Riyal Font Script - Scoped to avoid conflicts
+(function() {
+    'use strict';
+    
+    // Prevent conflicts with global script
+    if (window.hasGlobalRiyalFontScript) {
+        console.log('PRODUCT-TEMPLATE: Global riyal font script detected, skipping local implementation');
+        return;
+    }
+    
+    console.log('PRODUCT-TEMPLATE: Initializing local riyal font script');
+    
+    function detectCurrentCurrency() {
+        // Method 1: Check BEAST Currency Converter attributes
+        const priceElements = document.querySelectorAll('[doubly-currency]');
+        if (priceElements.length > 0) {
+            const currency = priceElements[0].getAttribute('doubly-currency');
+            if (currency) {
+                console.log('PRODUCT-TEMPLATE: Currency from BEAST converter:', currency);
+                return currency;
+            }
+        }
+        
+        // Method 2: Text analysis fallback
+        const allPrices = document.querySelectorAll('.price-single-product, .price-container');
+        for (const priceEl of allPrices) {
+            const text = priceEl.textContent || '';
+            if (text.includes('SAR') || text.includes('ر.س')) {
+                console.log('PRODUCT-TEMPLATE: SAR detected via text analysis');
+                return 'SAR';
+            }
+        }
+        
+        console.log('PRODUCT-TEMPLATE: No SAR currency detected');
+        return null;
+    }
+    
+    function updateRiyalFontVisibility() {
+        const currentCurrency = detectCurrentCurrency();
+        console.log('PRODUCT-TEMPLATE: Updating riyal font visibility, currency:', currentCurrency);
+        
+        // Update riyal font spans
+        const riyalFonts = document.querySelectorAll('.price-single-product .riyal-font, .price-container .riyal-font');
+        riyalFonts.forEach(span => {
+            if (currentCurrency === 'SAR') {
+                span.style.display = 'inline';
+                console.log('PRODUCT-TEMPLATE: Showing riyal font');
+            } else {
+                span.style.display = 'none';
+                console.log('PRODUCT-TEMPLATE: Hiding riyal font');
+            }
+        });
+        
+        // Update SAR currency class and padding
+        const priceContainers = document.querySelectorAll('.price-single-product');
+        priceContainers.forEach(container => {
+            if (currentCurrency === 'SAR') {
+                container.classList.add('sar-currency');
+            } else {
+                container.classList.remove('sar-currency');
+            }
+        });
+        
+        // Remove SAR text when SAR is selected
+        if (currentCurrency === 'SAR') {
+            const priceElements = document.querySelectorAll('.price-single-product, .price-container');
+            priceElements.forEach(element => {
+                let text = element.innerHTML;
+                if (text.includes('SAR')) {
+                    text = text.replace(/SAR\s*/g, '');
+                    element.innerHTML = text;
+                    console.log('PRODUCT-TEMPLATE: Removed SAR text');
+                }
+            });
+        }
+    }
+    
+    // Initial update
+    updateRiyalFontVisibility();
+    
+    // Monitor for BEAST Currency Converter changes
+    const observer = new MutationObserver(function(mutations) {
+        let shouldUpdate = false;
+        
+        mutations.forEach(function(mutation) {
+            if (mutation.type === 'attributes' && mutation.attributeName === 'doubly-currency') {
+                shouldUpdate = true;
+            }
+            if (mutation.type === 'childList') {
+                const target = mutation.target;
+                if (target.closest && (target.closest('.price-single-product') || target.closest('.price-container'))) {
+                    shouldUpdate = true;
+                }
+            }
+        });
+        
+        if (shouldUpdate) {
+            console.log('PRODUCT-TEMPLATE: DOM change detected, updating riyal fonts');
+            setTimeout(updateRiyalFontVisibility, 100);
+        }
+    });
+    
+    // Observe the entire document for changes
+    observer.observe(document.body, {
+        childList: true,
+        subtree: true,
+        attributes: true,
+        attributeFilter: ['doubly-currency']
+    });
+    
+    // Listen for BEAST Currency Converter events
+    document.addEventListener('currencyChanged', function(e) {
+        console.log('PRODUCT-TEMPLATE: BEAST currency change event detected:', e.detail);
+        setTimeout(updateRiyalFontVisibility, 200);
+    });
+    
+    // Periodic check as backup
+    setInterval(updateRiyalFontVisibility, 3000);
+    
+    console.log('PRODUCT-TEMPLATE: Riyal font script initialized successfully');
+})();
+</script>
 
 <!-- Start of Judge.me code --> 
   <div style='clear:both'></div> 
