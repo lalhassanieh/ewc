@@ -56,15 +56,66 @@
           return;
         }
 
-        // Redirect to discount link — Shopify will apply the discount at checkout
-        // Use encodeURIComponent to avoid issues with special characters.
-        const redirectUrl = '/discount/' + encodeURIComponent(code) + '?redirect=/cart';
-        // Show user something immediately
-        setMessage('Applying promocode...', true);
-        // Small delay for UX, then redirect
-        setTimeout(function(){
-          window.location.href = redirectUrl;
-        }, 250);
+        // Product code mapping
+        const productCodes = {
+          'EWC25-TEE-15-EYT19SL4': {
+            title: 'Worlds2025 gift - EWC Tshirt',
+            handle: 'worlds2025-gift-ewc-tshirt', // Update this with actual handle
+            quantity: 1
+          },
+          'EWC25-TEE-15-31080404': {
+            title: 'Free Worlds2025 gift - EWC Hat',
+            handle: 'docapp-free-gift-free-worlds2025-gift-ewc-hat-6751', // Update this with actual handle
+            quantity: 1
+          }
+        };
+
+        // Check if code matches a product
+        const productData = productCodes[code];
+        if (!productData) {
+          setMessage('Invalid promo code. Please try again.', true);
+          return;
+        }
+
+        setMessage('Adding product to cart...', false);
+        btn.disabled = true;
+
+        // First, get the product data to find variant ID
+        fetch(`/products/${productData.handle}.js`)
+          .then(response => response.json())
+          .then(product => {
+            if (!product || !product.variants || product.variants.length === 0) {
+              throw new Error('Product not found or no variants available');
+            }
+            
+            // Get the first available variant
+            const variant = product.variants.find(v => v.available) || product.variants[0];
+            
+            // Add to cart
+            return fetch('/cart/add.js', {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+              },
+              body: JSON.stringify({
+                id: variant.id,
+                quantity: productData.quantity
+              })
+            });
+          })
+          .then(response => response.json())
+          .then(item => {
+            setMessage('Product added successfully! Redirecting to checkout...', false);
+            // Redirect to checkout after successful add
+            setTimeout(function(){
+              window.location.href = '/checkout';
+            }, 500);
+          })
+          .catch(error => {
+            console.error('Error:', error);
+            setMessage('Error adding product to cart. Please try again.', true);
+            btn.disabled = false;
+          });
       });
 
       // Allow Enter key
