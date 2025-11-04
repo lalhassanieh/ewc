@@ -2346,52 +2346,10 @@
           "block_order": [
             "title_qRJ9Rg"
           ]
-        },
-        "column_Xa3jrM": {
-          "type": "_column",
-          "settings": {
-            "border": false,
-            "border_width": "0px 0px 0px 0px",
-            "border_color": "#ffffff",
-            "border_style": "solid",
-            "width": 48.7,
-            "padding": "0 15px",
-            "margin": "| | 0 0 20px",
-            "width_lap": 48.7,
-            "width_tab": 100,
-            "border_mobi": false,
-            "border_width_mobi": "0px 0px 0px 0px",
-            "border_color_mobi": "#ffffff",
-            "border_style_mobi": "solid",
-            "width_mobi": 100
-          },
-          "blocks": {}
-        },
-        "column_aJNkEd": {
-          "type": "_column",
-          "settings": {
-            "border": false,
-            "border_width": "0px 0px 0px 0px",
-            "border_color": "#ffffff",
-            "border_style": "solid",
-            "width": 17.6,
-            "padding": "0 15px",
-            "margin": "",
-            "width_lap": 17.6,
-            "width_tab": 100,
-            "border_mobi": false,
-            "border_width_mobi": "0px 0px 0px 0px",
-            "border_color_mobi": "#ffffff",
-            "border_style_mobi": "solid",
-            "width_mobi": 100
-          },
-          "blocks": {}
         }
       },
       "block_order": [
-        "column_wncNTT",
-        "column_Xa3jrM",
-        "column_aJNkEd"
+        "column_wncNTT"
       ],
       "settings": {
         "max_width": "",
@@ -2538,26 +2496,6 @@
             "title_RkNNfL"
           ]
         },
-        "column_YGmQPX": {
-          "type": "_column",
-          "settings": {
-            "border": false,
-            "border_width": "0px 0px 0px 0px",
-            "border_color": "#ffffff",
-            "border_style": "solid",
-            "width": 48.7,
-            "padding": "0 15px",
-            "margin": "| | 0 0 20px",
-            "width_lap": 48.7,
-            "width_tab": 100,
-            "border_mobi": false,
-            "border_width_mobi": "0px 0px 0px 0px",
-            "border_color_mobi": "#ffffff",
-            "border_style_mobi": "solid",
-            "width_mobi": 100
-          },
-          "blocks": {}
-        },
         "column_phrj3Q": {
           "type": "_column",
           "settings": {
@@ -2581,7 +2519,6 @@
       },
       "block_order": [
         "column_VAr9Xj",
-        "column_YGmQPX",
         "column_phrj3Q"
       ],
       "settings": {
