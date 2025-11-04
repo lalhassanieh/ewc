@@ -242,16 +242,24 @@
             }
         });
         
-        // Remove SAR text when SAR is selected
+        // Remove SAR text when SAR is selected (avoid glitch by checking if already processed)
         if (currentCurrency === 'SAR') {
             const textElements = document.querySelectorAll('.js-product-price, .price-container, .ajaxcart__price');
             textElements.forEach(element => {
-                let text = element.innerHTML;
-                if (text.includes('SAR')) {
+                // Only process if element doesn't have the processed flag
+                if (!element.hasAttribute('data-sar-processed') && element.innerHTML.includes('SAR')) {
+                    let text = element.innerHTML;
                     text = text.replace(/SAR\s*/g, '');
                     element.innerHTML = text;
-                    console.log('GLOBAL: Removed SAR text');
+                    element.setAttribute('data-sar-processed', 'true');
+                    console.log('GLOBAL: Removed SAR text from element');
                 }
+            });
+        } else {
+            // Reset processed flags when currency is not SAR
+            const textElements = document.querySelectorAll('[data-sar-processed]');
+            textElements.forEach(element => {
+                element.removeAttribute('data-sar-processed');
             });
         }
     }
@@ -264,20 +272,35 @@
         let shouldUpdate = false;
         
         mutations.forEach(function(mutation) {
+            // Only trigger on currency attribute changes
             if (mutation.type === 'attributes' && mutation.attributeName === 'doubly-currency') {
                 shouldUpdate = true;
+                console.log('GLOBAL: Currency attribute change detected');
             }
-            if (mutation.type === 'childList') {
-                const target = mutation.target;
-                if (target.closest && (target.closest('.js-product-price') || target.closest('.price-container') || target.closest('.ajaxcart__price'))) {
-                    shouldUpdate = true;
+            // Only trigger on significant DOM changes, not text modifications
+            if (mutation.type === 'childList' && mutation.addedNodes.length > 0) {
+                for (let node of mutation.addedNodes) {
+                    if (node.nodeType === 1 && ( // Element node
+                        node.matches && (
+                            node.matches('.js-product-price') || 
+                            node.matches('.price-container') || 
+                            node.matches('.ajaxcart__price') ||
+                            node.querySelector('.js-product-price') ||
+                            node.querySelector('.price-container') ||
+                            node.querySelector('.ajaxcart__price')
+                        )
+                    )) {
+                        shouldUpdate = true;
+                        console.log('GLOBAL: New price element added to DOM');
+                        break;
+                    }
                 }
             }
         });
         
         if (shouldUpdate) {
-            console.log('GLOBAL: DOM change detected, updating riyal fonts');
-            setTimeout(updateRiyalFontVisibility, 100);
+            console.log('GLOBAL: Significant change detected, updating riyal fonts');
+            setTimeout(updateRiyalFontVisibility, 150);
         }
     });
     
@@ -295,8 +318,8 @@
         setTimeout(updateRiyalFontVisibility, 200);
     });
     
-    // Periodic check as backup
-    setInterval(updateRiyalFontVisibility, 3000);
+    // Periodic check as backup (less frequent to avoid glitching)
+    setInterval(updateRiyalFontVisibility, 10000);
     
     console.log('GLOBAL: Riyal font script initialized successfully');
 })();
