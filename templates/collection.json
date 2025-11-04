@@ -17,7 +17,7 @@
         "show_pagetitle": true,
         "show_breadcrumb": true,
         "color_breadcrumb": "#000000",
-        "align_breadcrumb": "center",
+        "align_breadcrumb": "left",
         "enable_collection": true,
         "categories_menu": "",
         "style_collection": "style_1",
