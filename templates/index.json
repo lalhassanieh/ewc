@@ -533,11 +533,11 @@
             "border_width": "0px 0px 0px 0px",
             "border_color": "#fff",
             "border_style": "solid",
-            "width": 29.3,
+            "width": 30,
             "padding": "0 15px",
             "margin": "| | | 0 0 15px",
-            "width_lap": 29.3,
-            "width_tab": 29.3,
+            "width_lap": 35,
+            "width_tab": 35,
             "border_mobi": false,
             "border_width_mobi": "0px 0px 0px 0px",
             "border_color_mobi": "#ffffff",
@@ -552,7 +552,7 @@
                 "title": "SUIT UP LIKE A CHAMPION OFFICIAL EWC MERCH",
                 "font": "--font-family-second",
                 "color": "#231f20",
-                "font_size": 48,
+                "font_size": 35,
                 "line_height": 48,
                 "letter_spacing": 0,
                 "font_weight": "500",
@@ -585,11 +585,11 @@
             "border_width": "0px 0px 0px 0px",
             "border_color": "#fff",
             "border_style": "solid",
-            "width": 70.7,
+            "width": 70,
             "padding": "0 15px",
             "margin": "",
-            "width_lap": 10.7,
-            "width_tab": 70.7,
+            "width_lap": 65,
+            "width_tab": 65,
             "border_mobi": false,
             "border_width_mobi": "0px 0px 0px 0px",
             "border_color_mobi": "#ffffff",
@@ -864,7 +864,7 @@
                 "image": "shopify://shop_images/Image-01_2.jpg",
                 "box_content": true,
                 "subtitle_lookbook": "",
-                "title_lookbook": "EWC LIMITED <br>EDITION PRODUCTS",
+                "title_lookbook": "EWC LIMITED EDITION PRODUCTS",
                 "button_lookbook": "Shop Collection",
                 "button_lookbook_url": "shopify://products/2025-cloud9-official-pro-alternate-jersey",
                 "icon_title": "",
@@ -872,10 +872,10 @@
                 "vertical_position": "bottom",
                 "horizontal_position": "right",
                 "text_align": "left",
-                "padding_content": "0 50px 125px 360px | 0 0 30px 15px | | 30px 15px 0",
+                "padding_content": "0 360px 125px 360px | 0 0 30px 15px | | 50px 15px 50px",
                 "button_hover": "hover_style_5",
                 "disable_absolute": true,
-                "vertical_position_mobi": "middle",
+                "vertical_position_mobi": "top",
                 "horizontal_position_mobi": "center",
                 "text_align_mobi": "center"
               },
@@ -903,11 +903,11 @@
                     "text_transfrom_subtitle": "default",
                     "color_title": "#ffffff",
                     "font_title": "--font-family-second",
-                    "font_size_title": 96,
+                    "font_size_title": 48,
                     "line_height_title": 96,
                     "font_weight_title": "500",
                     "letter_spacing_title": 0,
-                    "margin_title": "0px 0px 50px 0px",
+                    "margin_title": "0px 0px 10px 0px",
                     "text_transfrom_title": "default",
                     "font_button": "--font-family-second",
                     "text_transfrom_button": "default",
@@ -938,7 +938,7 @@
                     "font_size_title_mobi": 30,
                     "line_height_title_mobi": 35,
                     "letter_spacing_title_mobi": 0,
-                    "margin_title_mobi": "0px 0px 0px 0px",
+                    "margin_title_mobi": "0px 0px 20px 0px",
                     "font_size_button_mobi": 16,
                     "font_icon_mobi": 14,
                     "margin_icon_mobi": 0,
@@ -970,6 +970,9 @@
       "block_order": [
         "column_k3TDkL"
       ],
+      "custom_css": [
+        "@media (max-width: 500px) {.wpbingo-widget-lookbook .box-title .content-info.box-horizontal-right {justify-content: center; }}"
+      ],
       "settings": {
         "max_width": "",
         "fullwidth": true,
@@ -982,7 +985,7 @@
         "width_bg": "container",
         "padding_bg": "",
         "padding": "",
-        "margin": "0 0 85px",
+        "margin": "0 0 85px | 0 0 55px",
         "vertical_align": "top",
         "horizontal_align": "left"
       }
@@ -1031,7 +1034,7 @@
                     "text_align": "left",
                     "background_content": "rgba(0,0,0,0)",
                     "border_radius_content": "0px 0px 0px 0px",
-                    "padding": "0 15px 65px 40px | 0 15px 30px 30px | 0 15px 15px",
+                    "padding": "0 15px 65px 40px | 0 15px 30px 30px | 20px 30px 20px",
                     "margin": ""
                   },
                   "blocks": {
@@ -1057,7 +1060,7 @@
                         "line_height_tab": 35,
                         "align_tab": "left",
                         "color_mobi": "#ffffff",
-                        "font_size_mobi": 30,
+                        "font_size_mobi": 17,
                         "line_height_mobi": 35,
                         "letter_spacing_mobi": 0,
                         "align_mobi": "left"
@@ -1085,8 +1088,8 @@
                         "line_height_tab": 35,
                         "align_tab": "left",
                         "color_mobi": "#ffffff",
-                        "font_size_mobi": 30,
-                        "line_height_mobi": 35,
+                        "font_size_mobi": 14,
+                        "line_height_mobi": 20,
                         "letter_spacing_mobi": 0,
                         "align_mobi": "left"
                       },
@@ -1152,7 +1155,7 @@
                         "color_hover_mobi": "#ffffff",
                         "background_hover_mobi": "#000000",
                         "border_color_hover_mobi": "#ffffff",
-                        "align_mobi": "center"
+                        "align_mobi": "left"
                       },
                       "blocks": {}
                     }
@@ -1214,7 +1217,7 @@
                     "text_align": "left",
                     "background_content": "rgba(0,0,0,0)",
                     "border_radius_content": "0px 0px 0px 0px",
-                    "padding": "0 15px 65px 40px | 0 15px 30px 30px | 0 15px 15px",
+                    "padding": "0 15px 65px 40px | 0 15px 30px 30px | 20px 30px 20px",
                     "margin": ""
                   },
                   "blocks": {
@@ -1240,7 +1243,7 @@
                         "line_height_tab": 35,
                         "align_tab": "left",
                         "color_mobi": "#ffffff",
-                        "font_size_mobi": 30,
+                        "font_size_mobi": 15,
                         "line_height_mobi": 35,
                         "letter_spacing_mobi": 0,
                         "align_mobi": "left"
@@ -1268,8 +1271,8 @@
                         "line_height_tab": 35,
                         "align_tab": "left",
                         "color_mobi": "#ffffff",
-                        "font_size_mobi": 30,
-                        "line_height_mobi": 35,
+                        "font_size_mobi": 14,
+                        "line_height_mobi": 20,
                         "letter_spacing_mobi": 0,
                         "align_mobi": "left"
                       },
@@ -1335,7 +1338,7 @@
                         "color_hover_mobi": "#ffffff",
                         "background_hover_mobi": "#000000",
                         "border_color_hover_mobi": "#ffffff",
-                        "align_mobi": "center"
+                        "align_mobi": "left"
                       },
                       "blocks": {}
                     }
@@ -2106,7 +2109,7 @@
                         "title": "CLUB CHAMPIONSHIP",
                         "font": "--font-family-second",
                         "color": "#ffffff",
-                        "font_size": 70,
+                        "font_size": 35,
                         "line_height": 70,
                         "letter_spacing": 0,
                         "font_weight": "300",
@@ -2321,7 +2324,7 @@
                 "title": "CLUB PARTNER PROGRAM",
                 "font": "--font-family-second",
                 "color": "#231f20",
-                "font_size": 48,
+                "font_size": 35,
                 "line_height": 48,
                 "letter_spacing": 0,
                 "font_weight": "500",
@@ -2470,7 +2473,7 @@
                 "title": "TRENDING NOW",
                 "font": "--font-family-second",
                 "color": "#231f20",
-                "font_size": 48,
+                "font_size": 35,
                 "line_height": 48,
                 "letter_spacing": 0,
                 "font_weight": "500",
@@ -3948,7 +3951,7 @@
         "bg_color": "#ffffff",
         "title_color": "#ffffff",
         "subtitle_color": "#ffffff",
-        "button_bg": "#111111",
+        "button_bg": "#d1b26e",
         "button_color": "#ffffff",
         "code_1": "EWC25-TEE-15-EYT19SL4",
         "product_handle_1": "worlds2025-gift-ewc-tshirt",
