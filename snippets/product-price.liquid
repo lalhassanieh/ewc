@@ -19,6 +19,7 @@
 		content="{{ variant.price | divided_by: 100.00 }}">
 		{{ variant.price | money }}
 	</span>
+	
 	<div class="product-single__unit">
 		{%- capture unit_price_separator -%}
 			<span aria-hidden="true">/</span><span class="sr-only invisible">&nbsp;{{ 'general.accessibility.unit_price_separator' | t }}&nbsp;</span>

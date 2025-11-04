@@ -26,7 +26,7 @@
           /* basic styling - adjust values as you like */
           #apply-promo-section.apply-promo-section {
             {% comment %} padding: 30px 20px 100px 20px; {% endcomment %}
-             height: 90vh;
+             height: {{ section.settings.section_height | default: 90 }}vh;
             text-align:center;
             background: {{ section.settings.bg_color }};
             {% if section.settings.bg_image != blank %}
@@ -239,6 +239,17 @@
       "default": 0,
       "unit": "%",
       "info": "Add a dark overlay over the background image to improve text readability"
+    },
+    {
+      "type": "range",
+      "id": "section_height",
+      "label": "Section Height",
+      "min": 30,
+      "max": 100,
+      "step": 5,
+      "default": 90,
+      "unit": "vh",
+      "info": "Set the height of the section as a percentage of viewport height"
     },
     { "type": "color", "id": "bg_color", "label": "Background color", "default": "#ffffff" },
     { "type": "color", "id": "title_color", "label": "Title color", "default": "#111111" },
