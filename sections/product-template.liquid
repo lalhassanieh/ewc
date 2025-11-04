@@ -67,7 +67,7 @@
 											<h1 class="product-single__title" style="margin:{{ block.settings.product_title_margin }};--title-color:{{ block.settings.title_color }};--title-text-transform:{{ block.settings.title_transform }};--title-font-size:{{ block.settings.title_size }}px;" itemprop="name">{{ product.title }}</h1>
 										{%- when 'price' -%}
 											{%- if group_product != blank -%}
-												<div class="price-container" style="margin:{{ block.settings.product_price_margin }};--price-color:{{ block.settings.price_color }};--price-color-sale:{{ block.settings.price_color_sale }};--price-color-on-sale:{{ block.settings.price_color_on_sale }};--price-font-size:{{ block.settings.price_size }}px;--price-font-size-sale:{{ block.settings.price_size_sale }}px;">
+												<div class="price-container sar-currency" style="margin:{{ block.settings.product_price_margin }};--price-color:{{ block.settings.price_color }};--price-color-sale:{{ block.settings.price_color_sale }};--price-color-on-sale:{{ block.settings.price_color_on_sale }};--price-font-size:{{ block.settings.price_size }}px;--price-font-size-sale:{{ block.settings.price_size_sale }}px;">
 													{% for group_ids in group_product_array %}
 														{% assign product_id = group_ids | plus: 0 %}
 														{% paginate collections.all.products by 1000 %}
@@ -1714,7 +1714,7 @@
         });
         
         // Update SAR currency class and padding
-        const priceContainers = document.querySelectorAll('.price-single-product');
+        const priceContainers = document.querySelectorAll('.price-single-product, .price-container');
         priceContainers.forEach(container => {
             if (currentCurrency === 'SAR') {
                 container.classList.add('sar-currency');
