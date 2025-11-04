@@ -64,7 +64,8 @@
 .shopify-payment-button__button,
 .ajaxcart__product-name,
 .cart-modal__btn,
-.page-cart__title {
+.page-cart__title,
+.wpbingo-breadcrumbs__inner {
   text-transform: uppercase;
 }
 
