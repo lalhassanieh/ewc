@@ -192,6 +192,7 @@
     'use strict';
     
     console.log('GLOBAL: Initializing riyal font script for product prices');
+    let isInitialized = false;
     
     function detectCurrentCurrency() {
         // Method 1: Check BEAST Currency Converter attributes
@@ -218,17 +219,30 @@
         return null;
     }
     
+    function hideAllSARTextImmediately() {
+        // Immediately hide SAR text on page load to prevent glitching
+        const textElements = document.querySelectorAll('.js-product-price, .price-container, .ajaxcart__price');
+        textElements.forEach(element => {
+            if (element.innerHTML.includes('SAR')) {
+                let text = element.innerHTML;
+                text = text.replace(/SAR\s*/g, '');
+                element.innerHTML = text;
+                element.setAttribute('data-sar-processed', 'true');
+            }
+        });
+    }
+    
     function updateRiyalFontVisibility() {
         const currentCurrency = detectCurrentCurrency();
         console.log('GLOBAL: Updating riyal font visibility, currency:', currentCurrency);
         
-        // Update riyal font spans visibility
+        // Update riyal font spans visibility using CSS classes
         const riyalFonts = document.querySelectorAll('.riyal-font');
         riyalFonts.forEach(span => {
             if (currentCurrency === 'SAR') {
-                span.style.display = 'inline';
+                span.classList.add('show-riyal');
             } else {
-                span.style.display = 'none';
+                span.classList.remove('show-riyal');
             }
         });
         
@@ -242,30 +256,34 @@
             }
         });
         
-        // Remove SAR text when SAR is selected (avoid glitch by checking if already processed)
-        if (currentCurrency === 'SAR') {
-            const textElements = document.querySelectorAll('.js-product-price, .price-container, .ajaxcart__price');
-            textElements.forEach(element => {
-                // Only process if element doesn't have the processed flag
-                if (!element.hasAttribute('data-sar-processed') && element.innerHTML.includes('SAR')) {
-                    let text = element.innerHTML;
-                    text = text.replace(/SAR\s*/g, '');
-                    element.innerHTML = text;
-                    element.setAttribute('data-sar-processed', 'true');
-                    console.log('GLOBAL: Removed SAR text from element');
-                }
-            });
-        } else {
-            // Reset processed flags when currency is not SAR
-            const textElements = document.querySelectorAll('[data-sar-processed]');
-            textElements.forEach(element => {
-                element.removeAttribute('data-sar-processed');
-            });
+        // Handle SAR text removal - only on first initialization
+        if (!isInitialized) {
+            if (currentCurrency === 'SAR') {
+                // SAR text already removed by hideAllSARTextImmediately
+                console.log('GLOBAL: SAR text already processed during initialization');
+            } else {
+                // If not SAR, restore processed flags for future use
+                const textElements = document.querySelectorAll('[data-sar-processed]');
+                textElements.forEach(element => {
+                    element.removeAttribute('data-sar-processed');
+                });
+            }
+            isInitialized = true;
         }
     }
     
-    // Initial update
-    updateRiyalFontVisibility();
+    // Immediately hide SAR text on script load
+    hideAllSARTextImmediately();
+    
+    // Wait for DOM to be fully ready, then initialize
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', function() {
+            setTimeout(updateRiyalFontVisibility, 50);
+        });
+    } else {
+        // DOM is already ready
+        setTimeout(updateRiyalFontVisibility, 50);
+    }
     
     // Monitor for BEAST Currency Converter changes
     const observer = new MutationObserver(function(mutations) {
@@ -315,11 +333,47 @@
     // Listen for BEAST Currency Converter events
     document.addEventListener('currencyChanged', function(e) {
         console.log('GLOBAL: BEAST currency change event detected:', e.detail);
-        setTimeout(updateRiyalFontVisibility, 200);
+        setTimeout(function() {
+            const currentCurrency = detectCurrentCurrency();
+            const riyalFonts = document.querySelectorAll('.riyal-font');
+            const priceElements = document.querySelectorAll('.js-product-price, .js-product-compare-price, .price-container, .ajaxcart__price, .cart-total__subtotal-price, .cart-product-info__price, .cart-table__price, .cart__price, .order-discount, .product-price');
+            
+            riyalFonts.forEach(span => {
+                if (currentCurrency === 'SAR') {
+                    span.classList.add('show-riyal');
+                } else {
+                    span.classList.remove('show-riyal');
+                }
+            });
+            
+            priceElements.forEach(element => {
+                if (currentCurrency === 'SAR') {
+                    element.classList.add('sar-currency');
+                } else {
+                    element.classList.remove('sar-currency');
+                }
+            });
+        }, 100);
     });
     
-    // Periodic check as backup (less frequent to avoid glitching)
-    setInterval(updateRiyalFontVisibility, 10000);
+    // Minimal periodic check as backup
+    setInterval(function() {
+        if (isInitialized) {
+            const currentCurrency = detectCurrentCurrency();
+            const riyalFonts = document.querySelectorAll('.riyal-font');
+            
+            riyalFonts.forEach(span => {
+                const shouldShow = currentCurrency === 'SAR';
+                const isShowing = span.classList.contains('show-riyal');
+                
+                if (shouldShow && !isShowing) {
+                    span.classList.add('show-riyal');
+                } else if (!shouldShow && isShowing) {
+                    span.classList.remove('show-riyal');
+                }
+            });
+        }
+    }, 15000);
     
     console.log('GLOBAL: Riyal font script initialized successfully');
 })();

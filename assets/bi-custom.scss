@@ -47,15 +47,25 @@
     font-display: swap;
 }
 
-.riyal-font::after {
-    position: absolute;
-    top: 50%;
-    content: "A";
-    left: 6px;
-    font-family: MHE-Riyal-Sign !important;
-    font-weight: 700;
-    transform: translateY(-50%);
-    font-size: 20px;
+.riyal-font {
+    // Initially hide riyal font to prevent glitching
+    display: none !important;
+    
+    &::after {
+        position: absolute;
+        top: 50%;
+        content: "A";
+        left: 6px;
+        font-family: MHE-Riyal-Sign !important;
+        font-weight: 700;
+        transform: translateY(-50%);
+        font-size: 20px;
+    }
+    
+    // Only show when currency is determined to be SAR
+    &.show-riyal {
+        display: inline !important;
+    }
 }
 
 .content-bottom-custom {
