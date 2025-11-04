@@ -354,6 +354,13 @@
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
+  // Check if global script is handling this
+  if (window.riyalFontGlobalScriptLoaded) {
+    console.log('Global riyal font script is active, skipping product grid script...');
+    return;
+  }
+  console.log('Loading product grid riyal font script...');
+
   function updateRiyalFontVisibility() {
     // Check for BEAST currency converter attributes
     const moneyElements = document.querySelectorAll('.money[doubly-currency]');
