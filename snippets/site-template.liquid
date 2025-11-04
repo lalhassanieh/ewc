@@ -657,101 +657,115 @@
 <script>
 document.addEventListener('DOMContentLoaded', function() {
   function updateRiyalFontVisibilityGlobal() {
-    // Check for BEAST currency converter attributes
+    // Get all elements we need to work with
     const moneyElements = document.querySelectorAll('.money[doubly-currency]');
+    const allMoneyElements = document.querySelectorAll('.money');
     const riyalFonts = document.querySelectorAll('.riyal-font');
     const productPrices = document.querySelectorAll('.product-price, .ajaxcart__price');
     
+    let currentCurrency = null;
+    
+    // First try: Check BEAST currency converter attributes
     if (moneyElements.length > 0) {
-      // Get current currency from BEAST converter
-      const currentCurrency = moneyElements[0].getAttribute('doubly-currency');
-      
-      riyalFonts.forEach(function(font) {
-        if (currentCurrency === 'SAR') {
-          font.style.display = 'inline';
-        } else {
-          font.style.display = 'none';
-        }
-      });
-
-      // Add/remove SAR currency class for padding
-      productPrices.forEach(function(priceElement) {
-        if (currentCurrency === 'SAR') {
-          priceElement.classList.add('sar-currency');
-        } else {
-          priceElement.classList.remove('sar-currency');
-        }
-      });
-
-      // Hide/show SAR text when SAR is selected
-      moneyElements.forEach(function(moneyElement) {
-        if (currentCurrency === 'SAR') {
-          // Hide the SAR text by replacing it
-          let textContent = moneyElement.textContent || moneyElement.innerText;
-          if (textContent.includes(' SAR')) {
-            moneyElement.textContent = textContent.replace(' SAR', '');
-          }
-        }
-      });
-    } else {
-      // Fallback: check Shopify's default currency
-      const isSAR = Shopify && Shopify.currency && Shopify.currency.active === 'SAR';
-  
-      riyalFonts.forEach(function(font) {
-        if (isSAR) {
-          font.style.display = 'inline';
-          // Also handle SAR text removal for default Shopify currency
-          const moneyElementsDefault = document.querySelectorAll('.money');
-          moneyElementsDefault.forEach(function(moneyElement) {
-            let textContent = moneyElement.textContent || moneyElement.innerText;
-            if (textContent.includes(' SAR')) {
-              moneyElement.textContent = textContent.replace(' SAR', '');
-            }
-          });
-        } else {
-          font.style.display = 'none';
-        }
-      });
-
-      // Add/remove SAR currency class for padding (fallback)
-      productPrices.forEach(function(priceElement) {
-        if (isSAR) {
-          priceElement.classList.add('sar-currency');
-        } else {
-          priceElement.classList.remove('sar-currency');
+      currentCurrency = moneyElements[0].getAttribute('doubly-currency');
+    }
+    
+    // Second try: Check if any money element contains SAR text
+    if (!currentCurrency) {
+      allMoneyElements.forEach(function(moneyElement) {
+        const text = moneyElement.textContent || moneyElement.innerText;
+        if (text.includes('SAR') || text.includes('ر.س')) {
+          currentCurrency = 'SAR';
+        } else if (text.includes('€') || text.includes('EUR')) {
+          currentCurrency = 'EUR';
+        } else if (text.includes('$') || text.includes('USD')) {
+          currentCurrency = 'USD';
         }
       });
     }
+    
+    // Third try: Fallback to Shopify's default currency
+    if (!currentCurrency && typeof Shopify !== 'undefined' && Shopify.currency) {
+      currentCurrency = Shopify.currency.active;
+    }
+    
+    // Apply riyal font visibility and padding based on detected currency
+    const isSAR = (currentCurrency === 'SAR');
+    
+    riyalFonts.forEach(function(font) {
+      if (isSAR) {
+        font.style.display = 'inline';
+      } else {
+        font.style.display = 'none';
+      }
+    });
+
+    // Add/remove SAR currency class for padding
+    productPrices.forEach(function(priceElement) {
+      if (isSAR) {
+        priceElement.classList.add('sar-currency');
+      } else {
+        priceElement.classList.remove('sar-currency');
+      }
+    });
+
+    // Hide/show SAR text when SAR is selected
+    if (isSAR) {
+      allMoneyElements.forEach(function(moneyElement) {
+        let textContent = moneyElement.textContent || moneyElement.innerText;
+        if (textContent.includes(' SAR')) {
+          moneyElement.textContent = textContent.replace(' SAR', '');
+        }
+      });
+    }
+    
+    // Debug logging (remove in production)
+    console.log('Currency detected:', currentCurrency, 'Is SAR:', isSAR, 'Riyal fonts found:', riyalFonts.length);
   }
 
-  // Initial check
-  updateRiyalFontVisibilityGlobal();
+  // Initial check with delay to ensure DOM is fully loaded
+  setTimeout(updateRiyalFontVisibilityGlobal, 100);
   
-  // Monitor for currency changes by BEAST converter
+  // Set up observer to watch for dynamically added content
   const observer = new MutationObserver(function(mutations) {
     mutations.forEach(function(mutation) {
+      // Watch for attribute changes on money elements
       if (mutation.type === 'attributes' && 
           (mutation.attributeName === 'doubly-currency' || 
            mutation.target.classList.contains('money'))) {
-        updateRiyalFontVisibilityGlobal();
+        setTimeout(updateRiyalFontVisibilityGlobal, 50);
       }
-      // Also watch for text changes in money elements
-      if (mutation.type === 'childList' && 
-          (mutation.target.classList.contains('money') ||
-           mutation.target.classList.contains('ajaxcart__price'))) {
-        setTimeout(updateRiyalFontVisibilityGlobal, 100);
+      
+      // Watch for new nodes being added (like AJAX cart content)
+      if (mutation.type === 'childList') {
+        let shouldUpdate = false;
+        mutation.addedNodes.forEach(function(node) {
+          if (node.nodeType === 1) { // Element node
+            if (node.classList && (node.classList.contains('money') || 
+                node.classList.contains('ajaxcart__price') ||
+                node.classList.contains('riyal-font'))) {
+              shouldUpdate = true;
+            }
+            // Also check if any descendants have these classes
+            if (node.querySelectorAll && 
+                (node.querySelectorAll('.money, .ajaxcart__price, .riyal-font').length > 0)) {
+              shouldUpdate = true;
+            }
+          }
+        });
+        if (shouldUpdate) {
+          setTimeout(updateRiyalFontVisibilityGlobal, 100);
+        }
       }
     });
   });
 
-  // Observe changes to money elements and ajaxcart prices
-  document.querySelectorAll('.money, .ajaxcart__price').forEach(function(element) {
-    observer.observe(element, { 
-      attributes: true, 
-      attributeFilter: ['doubly-currency'],
-      childList: true,
-      subtree: true 
-    });
+  // Observe the entire document for changes
+  observer.observe(document.body, { 
+    attributes: true, 
+    attributeFilter: ['doubly-currency', 'class'],
+    childList: true,
+    subtree: true 
   });
 
   // Also listen for currency change events that might be triggered by BEAST
@@ -769,5 +783,18 @@ document.addEventListener('DOMContentLoaded', function() {
   document.addEventListener('cart:refreshed', function() {
     setTimeout(updateRiyalFontVisibilityGlobal, 300);
   });
+
+  // Listen for AJAX cart drawer/modal opening
+  document.addEventListener('cart:open', function() {
+    setTimeout(updateRiyalFontVisibilityGlobal, 100);
+  });
+
+  // Add periodic check as failsafe (every 2 seconds)
+  setInterval(function() {
+    // Only run if there are riyal fonts on the page
+    if (document.querySelectorAll('.riyal-font').length > 0) {
+      updateRiyalFontVisibilityGlobal();
+    }
+  }, 2000);
 });
 </script>
