@@ -168,7 +168,7 @@
 							{%- endcapture -%}
 							<span class="product-unit-price">
 								<span class="d-none">{{ 'products.general.unit_price' | t }}</span>
-								<span>{%- if shop.currency == 'SAR' -%}<span class="riyal-font"></span>{%- endif -%}{{ variant.unit_price | money }}</span>{{- unit_price_separator -}}{{- unit_price_base_unit -}}
+								<span><span class="riyal-font"></span>{{ variant.unit_price | money }}</span>{{- unit_price_separator -}}{{- unit_price_base_unit -}}
 							</span>
 						{%- endif -%}
 					{%- else -%}
@@ -199,9 +199,9 @@
 								{% endif %}	
 							{% endfor %}
 							{%- if template contains 'collection' -%}
-								{%- if shop.currency == 'SAR' -%}<span class="riyal-font"></span>{%- endif -%}{{ product.price | money }}
+								<span class="riyal-font"></span>{{ product.price | money }}
 							{% else %}	
-								{%- if shop.currency == 'SAR' -%}<span class="riyal-font"></span>{%- endif -%}{{  min_price | money }} - {{  max_price | money }}
+								<span class="riyal-font"></span>{{  min_price | money }} - {{  max_price | money }}
 							{% endif %}	
 						</div>
 					{%- endif -%}
