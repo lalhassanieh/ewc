@@ -56,7 +56,11 @@
 .list-item a,
 .breadcrumb__link span,
 .block-sidebar__title,
-.facet-filters__sort, .loadmore-button-text, .jdgm-write-rev-link, .more-info-tabs__nav-item {
+.facet-filters__sort,
+.loadmore-button-text,
+.jdgm-write-rev-link,
+.more-info-tabs__nav-item,
+.product-single .product-single__buttons .btn--add-to-cart {
   text-transform: uppercase;
 }
 
