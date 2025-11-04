@@ -49,7 +49,10 @@
   font-size: clamp(20px, 2vw + 1rem, 28px);
 }
 
-.bwp-button-text {
+.bwp-button-text,
+.product-card__name,
+.product-tabs__nav-link,
+.list-item a {
   text-transform: uppercase;
 }
 
