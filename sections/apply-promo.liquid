@@ -116,7 +116,9 @@
         checkCodeInBackend(code)
         .then((isConfigured) => {
           if (!isConfigured) {
-            throw new Error('This discount code is not available on our system. Please check the code and try again.');
+            const error = new Error('This discount code is not available on our system. Please check the code and try again.');
+            error.step = 'Backend Configuration Check';
+            throw error;
           }
 
           setMessage('Code found in system! Validating with Shopify...', false);
@@ -126,11 +128,15 @@
         })
         .then((discountData) => {
           if (!discountData.valid) {
-            throw new Error(discountData.message || 'This discount code is invalid or has expired');
+            const error = new Error(discountData.message || 'This discount code is invalid or has expired');
+            error.step = 'Shopify Validation';
+            throw error;
           }
           
           if (discountData.used) {
-            throw new Error('This discount code has already been used and cannot be used again');
+            const error = new Error('This discount code has already been used and cannot be used again');
+            error.step = 'Usage Check';
+            throw error;
           }
 
           setMessage('Discount code validated! Getting assigned products from Shopify...', false);
@@ -140,7 +146,9 @@
         })
         .then((products) => {
           if (!products || products.length === 0) {
-            throw new Error('No products assigned to this discount code');
+            const error = new Error('No products assigned to this discount code');
+            error.step = 'Product Assignment';
+            throw error;
           }
 
           setMessage('Clearing cart and adding products...', false);
@@ -183,15 +191,13 @@
         .catch((error) => {
           console.error('Discount code processing error:', error);
           
-          // Show specific error message to user
+          // Show specific error message to user with step info
           let errorMessage = error.message || 'An unexpected error occurred. Please try again.';
           
-          // Log additional context for debugging
-          console.log('Error details:', {
-            code: code,
-            step: 'Processing discount code',
-            timestamp: new Date().toISOString()
-          });
+          // Add step information for debugging
+          if (error.step) {
+            errorMessage += ` (Step: ${error.step})`;
+          }
           
           setMessage(errorMessage, true);
           btn.disabled = false;
@@ -211,23 +217,16 @@
           configuredCodes.push('{{ section.settings.fallback_code_2 | strip }}');
           {%- endif -%}
 
-          // Debug logging - show exactly what we have
-          console.log('=== DISCOUNT CODE DEBUG ===');
-          console.log('Raw configured codes:', configuredCodes);
-          console.log('Entered code:', `"${code}"`);
-          console.log('Entered code length:', code.length);
-          
           // Check if the entered code exists in our configured codes (case-insensitive)
           const codeToCheck = code.trim().toLowerCase();
           const configuredCodesLower = configuredCodes.map(c => c.trim().toLowerCase());
           
-          console.log('Code to check (lowercase):', `"${codeToCheck}"`);
-          console.log('Configured codes (lowercase):', configuredCodesLower);
-          
           const isCodeConfigured = configuredCodesLower.includes(codeToCheck);
           
-          console.log('Match found:', isCodeConfigured);
-          console.log('=== END DEBUG ===');
+          // Temporary debug info for troubleshooting
+          console.log('DEBUG: Configured codes:', configuredCodes);
+          console.log('DEBUG: Code to check:', `"${code}"` + ' -> ' + `"${codeToCheck}"`);
+          console.log('DEBUG: Match found:', isCodeConfigured);
           
           resolve(isCodeConfigured);
         });
@@ -341,7 +340,6 @@
           
           return [];
         } catch (error) {
-          console.log('Could not extract products from discount response:', error);
           return [];
         }
       }
@@ -349,11 +347,8 @@
       // Function to get products assigned to this discount from Shopify
       async function getDiscountProducts(discountData) {
         try {
-          console.log('Getting products for discount:', discountData);
-          
           // Priority 1: Products extracted from Shopify discount checkout response
           if (discountData.applicableProducts && discountData.applicableProducts.length > 0) {
-            console.log('Using products from Shopify discount:', discountData.applicableProducts);
             return discountData.applicableProducts.map(product => ({
               handle: product.handle,
               quantity: 1
@@ -363,7 +358,6 @@
           // Priority 2: Manual configuration for specific discount codes
           const configuredProducts = await getConfiguredProducts(discountData.code);
           if (configuredProducts && configuredProducts.length > 0) {
-            console.log('Using manually configured products:', configuredProducts);
             return configuredProducts;
           }
           
