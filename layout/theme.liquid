@@ -199,7 +199,6 @@
         if (priceElements.length > 0) {
             const currency = priceElements[0].getAttribute('doubly-currency');
             if (currency) {
-                console.log('GLOBAL: Currency from BEAST converter:', currency);
                 return currency;
             }
         }
@@ -209,12 +208,10 @@
         for (const priceEl of allPrices) {
             const text = priceEl.textContent || '';
             if (text.includes('SAR') || text.includes('ر.س')) {
-                console.log('GLOBAL: SAR detected via text analysis');
                 return 'SAR';
             }
         }
         
-        console.log('GLOBAL: No SAR currency detected');
         return null;
     }
     
@@ -258,7 +255,6 @@
         if (!isInitialized) {
             if (currentCurrency === 'SAR') {
                 // SAR text already removed by hideAllSARTextImmediately
-                console.log('GLOBAL: SAR text already processed during initialization');
             } else {
                 // If not SAR, restore processed flags for future use
                 const textElements = document.querySelectorAll('[data-sar-processed]');
@@ -291,7 +287,6 @@
             // Only trigger on currency attribute changes
             if (mutation.type === 'attributes' && mutation.attributeName === 'doubly-currency') {
                 shouldUpdate = true;
-                console.log('GLOBAL: Currency attribute change detected');
             }
             // Only trigger on significant DOM changes, not text modifications
             if (mutation.type === 'childList' && mutation.addedNodes.length > 0) {
@@ -307,7 +302,6 @@
                         )
                     )) {
                         shouldUpdate = true;
-                        console.log('GLOBAL: New price element added to DOM');
                         break;
                     }
                 }
@@ -329,7 +323,6 @@
     
     // Listen for BEAST Currency Converter events
     document.addEventListener('currencyChanged', function(e) {
-        console.log('GLOBAL: BEAST currency change event detected:', e.detail);
         setTimeout(function() {
             const currentCurrency = detectCurrentCurrency();
             const riyalFonts = document.querySelectorAll('.riyal-font');
@@ -371,7 +364,6 @@
             });
         }
     }, 15000);
-    
 })();
 </script>
   </body>
