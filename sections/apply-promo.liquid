@@ -194,6 +194,11 @@
           // Show specific error message to user with step info
           let errorMessage = error.message || 'An unexpected error occurred. Please try again.';
           
+          // Special handling for backend configuration errors
+          if (error.step === 'Backend Configuration Check' && error.message.includes('not available on our system')) {
+            errorMessage = 'This discount code is not configured. Please contact support or check that the code is entered correctly.';
+          }
+          
           // Add step information for debugging
           if (error.step) {
             errorMessage += ` (Step: ${error.step})`;
@@ -207,10 +212,10 @@
       function checkCodeInBackend(code) {
         return new Promise((resolve) => {
           // Get all configured discount codes from the section settings - build with Liquid
-          {%- assign code1 = section.settings.fallback_code_1 | strip -%}
-          {%- assign code2 = section.settings.fallback_code_2 | strip -%}
+          {%- assign code1 = section.settings.fallback_code_1 | strip | downcase -%}
+          {%- assign code2 = section.settings.fallback_code_2 | strip | downcase -%}
           
-          // Build the configured codes array more safely
+          // Build the configured codes array more safely with proper escaping
           const configuredCodes = [];
           
           {%- if code1 != blank and code1 != '' -%}
@@ -220,18 +225,30 @@
           configuredCodes.push('{{ code2 | escape }}');
           {%- endif -%}
           
-          console.log('DEBUG: Liquid-built array:', configuredCodes);
+          // Enhanced debugging
+          console.log('DEBUG: Raw section settings check:');
+          console.log('DEBUG: - fallback_code_1:', '{{ section.settings.fallback_code_1 | default: "NOT SET" }}');
+          console.log('DEBUG: - fallback_code_2:', '{{ section.settings.fallback_code_2 | default: "NOT SET" }}');
+          console.log('DEBUG: Liquid-built configured codes array:', configuredCodes);
+          console.log('DEBUG: Array length:', configuredCodes.length);
 
           // Check if the entered code exists in our configured codes (case-insensitive)
           const codeToCheck = code.trim().toLowerCase();
-          const configuredCodesLower = configuredCodes.map(c => c.trim().toLowerCase());
           
-          const isCodeConfigured = configuredCodesLower.includes(codeToCheck);
+          const isCodeConfigured = configuredCodes.some(configCode => {
+            const configCodeLower = configCode.trim().toLowerCase();
+            console.log('DEBUG: Comparing "' + codeToCheck + '" with configured "' + configCodeLower + '"');
+            return configCodeLower === codeToCheck;
+          });
           
-          // Temporary debug info for troubleshooting
-          console.log('DEBUG: Configured codes:', configuredCodes);
-          console.log('DEBUG: Code to check:', `"${code}"` + ' -> ' + `"${codeToCheck}"`);
-          console.log('DEBUG: Match found:', isCodeConfigured);
+          // Enhanced debug info for troubleshooting
+          console.log('DEBUG: Final comparison result:', isCodeConfigured);
+          console.log('DEBUG: Input code processed as:', `"${codeToCheck}"`);
+          
+          if (!isCodeConfigured && configuredCodes.length === 0) {
+            console.log('ERROR: No discount codes are configured in the theme customizer!');
+            console.log('Please add discount codes in: Theme Customizer → Apply promo code section');
+          }
           
           resolve(isCodeConfigured);
         });
@@ -683,41 +700,44 @@
     { "type": "color", "id": "button_bg", "label": "Button background", "default": "#111111" },
     { "type": "color", "id": "button_color", "label": "Button text color", "default": "#ffffff" },
 
-    { "type": "header", "content": "Backend Discount Code Configuration" },
+    { "type": "header", "content": "⚙️ Discount Code Configuration" },
     { 
       "type": "paragraph", 
-      "content": "IMPORTANT: Only discount codes entered in this section will be accepted by the form. System checks backend configuration first, then validates with Shopify, then automatically gets assigned products from Shopify discount settings." 
+      "content": "🔑 REQUIRED: You MUST configure discount codes here for the form to work. The system will reject any codes not listed in this section." 
     },
 
-    { "type": "header", "content": "Allowed Discount Codes" },
+    { "type": "header", "content": "📋 Setup Instructions" },
     { 
       "type": "paragraph", 
-      "content": "Enter the discount codes you want to allow. Users can only use codes listed here. System will automatically detect products assigned to these discounts in Shopify admin." 
+      "content": "1. Enter your discount code exactly as it appears in Shopify admin\n2. Enter the product handle you want to add to cart\n3. Set the quantity to add\n4. The system will validate the code with Shopify and add your specified product" 
     },
     {
       "type": "text",
       "id": "fallback_code_1",
-      "label": "Discount Code 1",
-      "info": "First allowed discount code (must exist in Shopify admin)"
+      "label": "✅ Discount Code 1 (e.g: freecarla)",
+      "info": "Enter discount code exactly as created in Shopify admin",
+      "placeholder": "freecarla"
     },
     {
       "type": "text",
       "id": "fallback_products_1",
-      "label": "Product Handle for Code 1",
-      "info": "Product handle to add when this discount is used (e.g: 2025-cloud9-official-pro-alternate-jersey)"
+      "label": "🎯 Product Handle for Code 1",
+      "info": "Product handle from your products (found in product URL)",
+      "placeholder": "2025-cloud9-official-pro-alternate-jersey"
     },
     {
       "type": "number",
       "id": "fallback_quantity_1",
-      "label": "Quantity for Code 1",
-      "default": 1
+      "label": "📦 Quantity for Code 1",
+      "default": 1,
+      "info": "How many of this product to add to cart"
     },
 
     {
       "type": "text",
       "id": "fallback_code_2",
-      "label": "Discount Code 2",
-      "info": "Second allowed discount code (must exist in Shopify admin)"
+      "label": "✅ Discount Code 2 (optional)",
+      "info": "Second discount code (leave blank if not needed)"
     },
     {
       "type": "text",
