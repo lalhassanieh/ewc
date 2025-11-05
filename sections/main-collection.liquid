@@ -4,8 +4,8 @@
 {%- assign sidebar_left_class = 'col-12' -%}
 {%- assign sidebar_right_class = 'col-12' -%}
 {%- if sidebar_enable and layout_filter contains 'sidebar' -%}
-	{%- assign sidebar_left_class = 'col-12 col-lg-12 col-xl-3' -%}
-	{%- assign sidebar_right_class = 'col-12 col-lg-12 col-xl-9' -%}
+	{%- assign sidebar_left_class = 'col-12 col-lg-12 col-xl-2' -%}
+	{%- assign sidebar_right_class = 'col-12 col-lg-12 col-xl-10' -%}
 {%- endif -%}
 <section class="js-page-collection page-collection {{ settings.style_view_items }} {{ layout_filter }}{% if shop_full %} shop_full{% endif %}"{% if settings.style_view_items == 'viewmore' %} data-list_number="{{ settings.count_items }}"{% endif %}>
 	<div class="container">
