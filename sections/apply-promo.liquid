@@ -112,11 +112,10 @@
         setMessage('Checking discount code...', false);
         btn.disabled = true;
 
-        // Step 1: Check if the code exists in backend configuration
+        // Step 1: Check if the code exists in backend configuration and get products
         checkCodeInBackend(code)
-        .then((isConfigured) => {
-          if (!isConfigured) {
-            /*This discount code is not available on our system. Please check the code and try again.*/
+        .then((configResult) => {
+          if (!configResult.found) {
             const error = new Error('Invalid Discount code.');
             error.step = 'Backend Configuration Check';
             throw error;
@@ -124,8 +123,8 @@
 
           setMessage('Code found in system! Validating with Shopify...', false);
           
-          // Step 2: Validate the discount code with Shopify backend
-          return validateDiscountCode(code);
+          // Step 2: Validate the discount code with Shopify backend, passing the configured products
+          return validateDiscountCode(code, configResult.products);
         })
         .then((discountData) => {
           if (!discountData.valid) {
@@ -204,58 +203,121 @@
           btn.disabled = false;
         });
 
-      // Function to check if code exists in backend configuration
+      // Function to check if code exists in backend configuration and get its products
       function checkCodeInBackend(code) {
         return new Promise((resolve) => {
-          // Get all configured discount codes from the section settings - build with Liquid
-          {%- assign code1 = section.settings.fallback_code_1 | strip -%}
-          {%- assign code2 = section.settings.fallback_code_2 | strip -%}
+          // Get all configured discount codes and their products from section settings
+          const discountConfigs = [];
           
-          // Build the configured codes array more safely
-          const configuredCodes = [];
+          {%- assign code1 = section.settings.discount_code_1 | strip -%}
+          {%- assign code2 = section.settings.discount_code_2 | strip -%}
+          {%- assign code3 = section.settings.discount_code_3 | strip -%}
           
+          // Build discount configuration array
           {%- if code1 != blank and code1 != '' -%}
-          configuredCodes.push('{{ code1 | escape }}');
+          const config1 = {
+            code: '{{ code1 | escape }}',
+            products: []
+          };
+          {%- assign handle1_1 = section.settings.product_handle_1_1 | strip -%}
+          {%- assign handle1_2 = section.settings.product_handle_1_2 | strip -%}
+          {%- assign handle1_3 = section.settings.product_handle_1_3 | strip -%}
+          {%- if handle1_1 != blank and handle1_1 != '' -%}
+          config1.products.push({ handle: '{{ handle1_1 | escape }}', quantity: 1 });
           {%- endif -%}
-          {%- if code2 != blank and code2 != '' -%}
-          configuredCodes.push('{{ code2 | escape }}');
+          {%- if handle1_2 != blank and handle1_2 != '' -%}
+          config1.products.push({ handle: '{{ handle1_2 | escape }}', quantity: 1 });
           {%- endif -%}
-          
-          console.log('DEBUG: Liquid-built array:', configuredCodes);
+          {%- if handle1_3 != blank and handle1_3 != '' -%}
+          config1.products.push({ handle: '{{ handle1_3 | escape }}', quantity: 1 });
+          {%- endif -%}
+          discountConfigs.push(config1);
+          {%- endif -%}
 
-          // Check if the entered code exists in our configured codes (case-insensitive)
+          {%- if code2 != blank and code2 != '' -%}
+          const config2 = {
+            code: '{{ code2 | escape }}',
+            products: []
+          };
+          {%- assign handle2_1 = section.settings.product_handle_2_1 | strip -%}
+          {%- assign handle2_2 = section.settings.product_handle_2_2 | strip -%}
+          {%- assign handle2_3 = section.settings.product_handle_2_3 | strip -%}
+          {%- if handle2_1 != blank and handle2_1 != '' -%}
+          config2.products.push({ handle: '{{ handle2_1 | escape }}', quantity: 1 });
+          {%- endif -%}
+          {%- if handle2_2 != blank and handle2_2 != '' -%}
+          config2.products.push({ handle: '{{ handle2_2 | escape }}', quantity: 1 });
+          {%- endif -%}
+          {%- if handle2_3 != blank and handle2_3 != '' -%}
+          config2.products.push({ handle: '{{ handle2_3 | escape }}', quantity: 1 });
+          {%- endif -%}
+          discountConfigs.push(config2);
+          {%- endif -%}
+
+          {%- if code3 != blank and code3 != '' -%}
+          const config3 = {
+            code: '{{ code3 | escape }}',
+            products: []
+          };
+          {%- assign handle3_1 = section.settings.product_handle_3_1 | strip -%}
+          {%- assign handle3_2 = section.settings.product_handle_3_2 | strip -%}
+          {%- assign handle3_3 = section.settings.product_handle_3_3 | strip -%}
+          {%- if handle3_1 != blank and handle3_1 != '' -%}
+          config3.products.push({ handle: '{{ handle3_1 | escape }}', quantity: 1 });
+          {%- endif -%}
+          {%- if handle3_2 != blank and handle3_2 != '' -%}
+          config3.products.push({ handle: '{{ handle3_2 | escape }}', quantity: 1 });
+          {%- endif -%}
+          {%- if handle3_3 != blank and handle3_3 != '' -%}
+          config3.products.push({ handle: '{{ handle3_3 | escape }}', quantity: 1 });
+          {%- endif -%}
+          discountConfigs.push(config3);
+          {%- endif -%}
+          
+          console.log('DEBUG: Discount configurations:', discountConfigs);
+
+          // Find matching discount configuration (case-insensitive)
           const codeToCheck = code.trim().toLowerCase();
-          const configuredCodesLower = configuredCodes.map(c => c.trim().toLowerCase());
+          const matchedConfig = discountConfigs.find(config => 
+            config.code.trim().toLowerCase() === codeToCheck && 
+            config.products.length > 0
+          );
           
-          const isCodeConfigured = configuredCodesLower.includes(codeToCheck);
-          
-          // Temporary debug info for troubleshooting
-          console.log('DEBUG: Configured codes:', configuredCodes);
-          console.log('DEBUG: Code to check:', `"${code}"` + ' -> ' + `"${codeToCheck}"`);
-          console.log('DEBUG: Match found:', isCodeConfigured);
-          
-          resolve(isCodeConfigured);
+          if (matchedConfig) {
+            console.log('DEBUG: Found matching configuration:', matchedConfig);
+            resolve({
+              found: true,
+              products: matchedConfig.products
+            });
+          } else {
+            console.log('DEBUG: No matching configuration found for code:', code);
+            resolve({
+              found: false,
+              products: []
+            });
+          }
         });
       }
 
-      // Function to validate discount code with Shopify and get product info
-      async function validateDiscountCode(code) {
+      // Function to validate discount code with Shopify
+      async function validateDiscountCode(code, configuredProducts) {
         try {
-          console.log('DEBUG: Starting Shopify validation and product detection for:', code);
+          console.log('DEBUG: Starting Shopify validation for:', code);
+          console.log('DEBUG: Using configured products:', configuredProducts);
           
-          // Try to get discount information by applying it to a temporary product
-          // First, get a random product to test with
-          const productsResponse = await fetch('/products.json?limit=1');
-          const productsData = await productsResponse.json();
+          // Try to validate the discount by testing with one of the configured products
+          const firstProduct = configuredProducts[0];
           
-          if (!productsData.products || productsData.products.length === 0) {
-            throw new Error('No products available for testing discount');
+          // Get the product details to test with
+          const productResponse = await fetch(`/products/${firstProduct.handle}.js`);
+          if (!productResponse.ok) {
+            throw new Error(`Product ${firstProduct.handle} not found`);
           }
           
-          const testProduct = productsData.products[0];
+          const testProduct = await productResponse.json();
           const testVariant = testProduct.variants[0];
           
-          console.log('DEBUG: Using test product:', testProduct.handle);
+          console.log('DEBUG: Using configured product for validation:', testProduct.handle);
           
           // Add test product to cart
           const addResponse = await fetch('/cart/add.js', {
@@ -291,32 +353,19 @@
           console.log('DEBUG: Cart update with discount response status:', updateResponse.status);
           
           if (updateResponse.ok) {
-            // Discount code was accepted, now detect which products it applies to
-            const applicableProducts = await detectDiscountProducts(code);
+            // Discount code was accepted, use the configured products
             
             // Clean up - remove test product from cart
             await fetch('/cart/clear.js', { method: 'POST' });
             
-            // Only return success if we actually found products
-            if (applicableProducts && applicableProducts.length > 0) {
-              return {
-                valid: true,
-                used: false,
-                code: code,
-                type: 'detected',
-                value: null,
-                applicableProducts: applicableProducts
-              };
-            } else {
-              return {
-                valid: true,
-                used: false,
-                code: code,
-                type: 'no_products_detected',
-                value: null,
-                applicableProducts: []
-              };
-            }
+            return {
+              valid: true,
+              used: false,
+              code: code,
+              type: 'configured',
+              value: null,
+              applicableProducts: configuredProducts
+            };
           }
           
           if (discountResponse.status === 404) {
@@ -546,39 +595,20 @@
         }
       }
 
-      // Function to get products assigned to this discount from Shopify
+      // Function to get products assigned to this discount
       async function getDiscountProducts(discountData) {
         try {
           console.log('DEBUG: Getting products for discount:', discountData.code);
           console.log('DEBUG: Discount data:', discountData);
           
-          // Check if validation specifically detected no products or is assumed valid
-          if (discountData.type === 'no_products_detected' || discountData.type === 'assumed') {
-            const error = new Error('Could not automatically detect products for this discount code. Please contact support to configure the specific products for this discount.');
-            error.step = 'Product Assignment';
-            throw error;
-          }
-          
-          // Priority 1: Products automatically detected from Shopify discount
-          if (discountData.applicableProducts && discountData.applicableProducts.length > 0) {
-            console.log('DEBUG: Using automatically detected products from Shopify:', discountData.applicableProducts);
+          // Use the configured products from backend configuration
+          if (discountData.type === 'configured' && discountData.applicableProducts && discountData.applicableProducts.length > 0) {
+            console.log('DEBUG: Using configured products:', discountData.applicableProducts);
             return discountData.applicableProducts;
           }
           
-          // Priority 2: If no products detected, try to get them directly
-          console.log('DEBUG: No products detected automatically, trying direct detection');
-          const detectedProducts = await detectDiscountProducts(discountData.code);
-          
-          if (detectedProducts && detectedProducts.length > 0) {
-            console.log('DEBUG: Found products through direct detection:', detectedProducts);
-            return detectedProducts;
-          }
-          
-          // If no products detected, don't use random fallback products
-          // Instead, throw a clear error asking for manual specification
-          console.log('DEBUG: No products could be automatically detected');
-          
-          const error = new Error('Could not automatically detect products for this discount code. Please contact support to configure the specific products for this discount.');
+          // If no products configured or validation failed, throw error
+          const error = new Error('No products configured for this discount code. Please contact support.');
           error.step = 'Product Assignment';
           throw error;
           
@@ -682,22 +712,88 @@
       "content": "IMPORTANT: Only discount codes entered in this section will be accepted by the form. System checks backend configuration first, then validates with Shopify, then automatically gets assigned products from Shopify discount settings." 
     },
 
-    { "type": "header", "content": "Allowed Discount Codes" },
+    { "type": "header", "content": "Discount Configuration" },
     { 
       "type": "paragraph", 
-      "content": "Enter the discount codes you want to allow. Users can only use codes listed here. System will automatically detect products assigned to these discounts in Shopify admin." 
+      "content": "Configure discount codes and their associated products. Each discount code must have at least one product handle specified." 
+    },
+
+    { "type": "header", "content": "Discount Code 1" },
+    {
+      "type": "text",
+      "id": "discount_code_1",
+      "label": "Discount Code",
+      "info": "Enter the exact discount code (must exist in Shopify admin)"
     },
     {
       "type": "text",
-      "id": "fallback_code_1",
-      "label": "Discount Code 1",
-      "info": "First allowed discount code (must exist in Shopify admin)"
+      "id": "product_handle_1_1",
+      "label": "Product Handle 1",
+      "info": "Product handle (from product URL) to add when this discount is applied"
     },
     {
       "type": "text",
-      "id": "fallback_code_2",
-      "label": "Discount Code 2",
-      "info": "Second allowed discount code (must exist in Shopify admin)"
+      "id": "product_handle_1_2",
+      "label": "Product Handle 2 (Optional)",
+      "info": "Optional second product handle"
+    },
+    {
+      "type": "text",
+      "id": "product_handle_1_3",
+      "label": "Product Handle 3 (Optional)",
+      "info": "Optional third product handle"
+    },
+
+    { "type": "header", "content": "Discount Code 2" },
+    {
+      "type": "text",
+      "id": "discount_code_2",
+      "label": "Discount Code",
+      "info": "Enter the exact discount code (must exist in Shopify admin)"
+    },
+    {
+      "type": "text",
+      "id": "product_handle_2_1",
+      "label": "Product Handle 1",
+      "info": "Product handle (from product URL) to add when this discount is applied"
+    },
+    {
+      "type": "text",
+      "id": "product_handle_2_2",
+      "label": "Product Handle 2 (Optional)",
+      "info": "Optional second product handle"
+    },
+    {
+      "type": "text",
+      "id": "product_handle_2_3",
+      "label": "Product Handle 3 (Optional)",
+      "info": "Optional third product handle"
+    },
+
+    { "type": "header", "content": "Discount Code 3" },
+    {
+      "type": "text",
+      "id": "discount_code_3",
+      "label": "Discount Code",
+      "info": "Enter the exact discount code (must exist in Shopify admin)"
+    },
+    {
+      "type": "text",
+      "id": "product_handle_3_1",
+      "label": "Product Handle 1",
+      "info": "Product handle (from product URL) to add when this discount is applied"
+    },
+    {
+      "type": "text",
+      "id": "product_handle_3_2",
+      "label": "Product Handle 2 (Optional)",
+      "info": "Optional second product handle"
+    },
+    {
+      "type": "text",
+      "id": "product_handle_3_3",
+      "label": "Product Handle 3 (Optional)",
+      "info": "Optional third product handle"
     }
   ],
   "presets": [
