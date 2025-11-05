@@ -206,33 +206,18 @@
       // Function to check if code exists in backend configuration
       function checkCodeInBackend(code) {
         return new Promise((resolve) => {
-          // Get all configured discount codes from the section settings
-          const configuredCodes = [];
-          
-          console.log('DEBUG: Starting with empty array:', configuredCodes);
-          
-          // Add fallback codes if configured (with trimming and case handling)
+          // Get all configured discount codes from the section settings - build with Liquid
           {%- assign code1 = section.settings.fallback_code_1 | strip -%}
           {%- assign code2 = section.settings.fallback_code_2 | strip -%}
           
-          console.log('DEBUG: Code1 from Liquid:', '{{ code1 }}');
-          console.log('DEBUG: Code1 length:', {{ code1 | size }});
+          const configuredCodes = [
+            {%- if code1 != blank and code1 != '' -%}'{{ code1 }}'{%- endif -%}
+            {%- if code2 != blank and code2 != '' -%}
+              {%- if code1 != blank and code1 != '' -%},{% endif %}'{{ code2 }}'
+            {%- endif -%}
+          ].filter(code => code && code.trim() !== '');
           
-          {%- if code1 != blank and code1 != '' -%}
-          console.log('DEBUG: About to push code1 to array');
-          configuredCodes.push('{{ code1 }}');
-          console.log('DEBUG: Array after adding code1:', configuredCodes);
-          {%- else -%}
-          console.log('DEBUG: Code1 condition failed - not adding');
-          {%- endif -%}
-          
-          {%- if code2 != blank and code2 != '' -%}
-          console.log('DEBUG: About to push code2 to array');
-          configuredCodes.push('{{ code2 }}');
-          console.log('DEBUG: Array after adding code2:', configuredCodes);
-          {%- else -%}
-          console.log('DEBUG: Code2 condition failed - not adding');
-          {%- endif -%}
+          console.log('DEBUG: Liquid-built array:', configuredCodes);
 
           // Check if the entered code exists in our configured codes (case-insensitive)
           const codeToCheck = code.trim().toLowerCase();
