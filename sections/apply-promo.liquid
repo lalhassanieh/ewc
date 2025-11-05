@@ -210,12 +210,15 @@
           {%- assign code1 = section.settings.fallback_code_1 | strip -%}
           {%- assign code2 = section.settings.fallback_code_2 | strip -%}
           
-          const configuredCodes = [
-            {%- if code1 != blank and code1 != '' -%}'{{ code1 }}'{%- endif -%}
-            {%- if code2 != blank and code2 != '' -%}
-              {%- if code1 != blank and code1 != '' -%},{% endif %}'{{ code2 }}'
-            {%- endif -%}
-          ].filter(code => code && code.trim() !== '');
+          // Build the configured codes array more safely
+          const configuredCodes = [];
+          
+          {%- if code1 != blank and code1 != '' -%}
+          configuredCodes.push('{{ code1 | escape }}');
+          {%- endif -%}
+          {%- if code2 != blank and code2 != '' -%}
+          configuredCodes.push('{{ code2 | escape }}');
+          {%- endif -%}
           
           console.log('DEBUG: Liquid-built array:', configuredCodes);
 
