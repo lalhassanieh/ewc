@@ -162,13 +162,18 @@ body,
 .h4,
 .h5,
 .h6,
-
 h4,
 h5,
 h6,
 a,
 .bwp-block-desc {
     font-family: 'AcuminProCond-Regular' !important;
+}
+
+.wpbingo-footer-section {
+    .bwp-block-title {
+        font-family: 'AcuminProCond-Regular' !important;
+    }
 }
 
 .wpbingo-inner-section,
@@ -192,11 +197,11 @@ a,
     position: relative;
 }
 
-.banner-wrapper-infor .bwp-block-title,
-.btn--add-to-cart,
-.swatch-items label {
-    font-family: 'RiformaMonoLL-Regular' !important;
-}
+// .banner-wrapper-infor .bwp-block-title,
+// .btn--add-to-cart,
+// .swatch-items label {
+//     font-family: 'RiformaMonoLL-Regular' !important;
+// }
 
 .wpb-variants-swatch .Barley {
     background-color: #989486 !important;
