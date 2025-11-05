@@ -211,14 +211,17 @@
               return { valid: true, used: true, message: 'Discount code has already been used' };
             }
 
-            // If we get here, discount is likely valid
+            // If we get here, discount is likely valid - extract product/collection info
+            const discountInfo = extractDiscountInfo(text);
             return { 
               valid: true, 
               used: false, 
               code: code,
-              // Extract discount info from response if needed
-              type: extractDiscountType(text),
-              value: extractDiscountValue(text)
+              type: discountInfo.type,
+              value: discountInfo.value,
+              productIds: discountInfo.productIds,
+              collectionIds: discountInfo.collectionIds,
+              isStoreWide: discountInfo.isStoreWide
             };
           } else {
             return { valid: false, message: 'Unable to validate discount code' };
@@ -229,77 +232,123 @@
         }
       }
 
-      // Function to extract discount type from Shopify response
-      function extractDiscountType(html) {
-        // Look for discount type indicators in the HTML
-        if (html.includes('percentage') || html.includes('%')) return 'percentage';
-        if (html.includes('fixed_amount') || html.includes('$')) return 'fixed_amount';
-        return 'unknown';
-      }
-
-      // Function to extract discount value from Shopify response
-      function extractDiscountValue(html) {
-        // Extract discount value from HTML response
-        const percentageMatch = html.match(/(\d+)%/);
-        if (percentageMatch) return percentageMatch[1];
-        
-        const amountMatch = html.match(/\$(\d+(?:\.\d{2})?)/);
-        if (amountMatch) return amountMatch[1];
-        
-        return null;
-      }
-
-      // Function to get products for the discount based on section settings
-      async function getDiscountProducts(discountData) {
-        // Map discount code to products using section settings
-        const discountProductMap = {
-          {%- if section.settings.discount_code_1 != blank -%}
-          '{{ section.settings.discount_code_1 }}': [
-            {%- if section.settings.product_handle_1_1 != blank -%}
-            { handle: '{{ section.settings.product_handle_1_1 }}', quantity: {{ section.settings.quantity_1_1 | default: 1 }} },
-            {%- endif -%}
-            {%- if section.settings.product_handle_1_2 != blank -%}
-            { handle: '{{ section.settings.product_handle_1_2 }}', quantity: {{ section.settings.quantity_1_2 | default: 1 }} },
-            {%- endif -%}
-            {%- if section.settings.product_handle_1_3 != blank -%}
-            { handle: '{{ section.settings.product_handle_1_3 }}', quantity: {{ section.settings.quantity_1_3 | default: 1 }} }
-            {%- endif -%}
-          ].filter(p => p.handle){%- if section.settings.discount_code_2 != blank -%},{%- endif -%}
-          {%- endif -%}
-          {%- if section.settings.discount_code_2 != blank -%}
-          '{{ section.settings.discount_code_2 }}': [
-            {%- if section.settings.product_handle_2_1 != blank -%}
-            { handle: '{{ section.settings.product_handle_2_1 }}', quantity: {{ section.settings.quantity_2_1 | default: 1 }} },
-            {%- endif -%}
-            {%- if section.settings.product_handle_2_2 != blank -%}
-            { handle: '{{ section.settings.product_handle_2_2 }}', quantity: {{ section.settings.quantity_2_2 | default: 1 }} },
-            {%- endif -%}
-            {%- if section.settings.product_handle_2_3 != blank -%}
-            { handle: '{{ section.settings.product_handle_2_3 }}', quantity: {{ section.settings.quantity_2_3 | default: 1 }} }
-            {%- endif -%}
-          ].filter(p => p.handle){%- if section.settings.discount_code_3 != blank -%},{%- endif -%}
-          {%- endif -%}
-          {%- if section.settings.discount_code_3 != blank -%}
-          '{{ section.settings.discount_code_3 }}': [
-            {%- if section.settings.product_handle_3_1 != blank -%}
-            { handle: '{{ section.settings.product_handle_3_1 }}', quantity: {{ section.settings.quantity_3_1 | default: 1 }} },
-            {%- endif -%}
-            {%- if section.settings.product_handle_3_2 != blank -%}
-            { handle: '{{ section.settings.product_handle_3_2 }}', quantity: {{ section.settings.quantity_3_2 | default: 1 }} },
-            {%- endif -%}
-            {%- if section.settings.product_handle_3_3 != blank -%}
-            { handle: '{{ section.settings.product_handle_3_3 }}', quantity: {{ section.settings.quantity_3_3 | default: 1 }} }
-            {%- endif -%}
-          ].filter(p => p.handle)
-          {%- endif -%}
+      // Function to extract comprehensive discount info from Shopify response
+      function extractDiscountInfo(html) {
+        const discountInfo = {
+          type: 'unknown',
+          value: null,
+          productIds: [],
+          collectionIds: [],
+          isStoreWide: false
         };
 
-        const products = discountProductMap[discountData.code];
-        if (!products) {
-          throw new Error('No products configured for this discount code');
+        // Extract discount type and value
+        if (html.includes('percentage') || html.includes('%')) {
+          discountInfo.type = 'percentage';
+          const percentageMatch = html.match(/(\d+)%/);
+          if (percentageMatch) discountInfo.value = percentageMatch[1];
+        } else if (html.includes('fixed_amount') || html.includes('$')) {
+          discountInfo.type = 'fixed_amount';
+          const amountMatch = html.match(/\$(\d+(?:\.\d{2})?)/);
+          if (amountMatch) discountInfo.value = amountMatch[1];
         }
 
-        return products;
+        // Check if discount applies to specific products
+        const productIdMatches = html.match(/product[_-]id["\']?\s*[:=]\s*["\']?(\d+)/gi);
+        if (productIdMatches) {
+          discountInfo.productIds = productIdMatches.map(match => {
+            const id = match.match(/(\d+)/);
+            return id ? id[1] : null;
+          }).filter(Boolean);
+        }
+
+        // Check if discount applies to specific collections
+        const collectionMatches = html.match(/collection[_-]id["\']?\s*[:=]\s*["\']?(\d+)/gi);
+        if (collectionMatches) {
+          discountInfo.collectionIds = collectionMatches.map(match => {
+            const id = match.match(/(\d+)/);
+            return id ? id[1] : null;
+          }).filter(Boolean);
+        }
+
+        // Check if it's a store-wide discount (no product/collection restrictions)
+        if (discountInfo.productIds.length === 0 && discountInfo.collectionIds.length === 0) {
+          discountInfo.isStoreWide = true;
+        }
+
+        return discountInfo;
+      }
+
+      // Function to get products from the Shopify discount configuration
+      async function getDiscountProducts(discountData) {
+        try {
+          // If discount has specific product restrictions, get them from Shopify
+          if (discountData.productIds && discountData.productIds.length > 0) {
+            // Get products specified in the discount
+            const products = await Promise.all(
+              discountData.productIds.map(async (productId) => {
+                const response = await fetch(`/products/${productId}.js`);
+                const product = await response.json();
+                return {
+                  handle: product.handle,
+                  quantity: 1,
+                  id: product.id,
+                  title: product.title
+                };
+              })
+            );
+            return products;
+          }
+
+          // If discount applies to collections, get products from those collections
+          if (discountData.collectionIds && discountData.collectionIds.length > 0) {
+            const allProducts = [];
+            for (const collectionId of discountData.collectionIds) {
+              try {
+                const response = await fetch(`/collections/${collectionId}/products.json?limit=250`);
+                const data = await response.json();
+                const products = data.products.map(product => ({
+                  handle: product.handle,
+                  quantity: 1,
+                  id: product.id,
+                  title: product.title
+                }));
+                allProducts.push(...products);
+              } catch (error) {
+                console.warn(`Failed to fetch collection ${collectionId}:`, error);
+              }
+            }
+            
+            if (allProducts.length > 0) {
+              // Return first few products from the eligible collections
+              return allProducts.slice(0, {{ section.settings.max_products | default: 5 }});
+            }
+          }
+
+          // Fallback: Use default products from section settings if discount is store-wide
+          const defaultProducts = [
+            {%- if section.settings.default_product_1 != blank -%}
+            { handle: '{{ section.settings.default_product_1 }}', quantity: {{ section.settings.default_quantity_1 | default: 1 }} },
+            {%- endif -%}
+            {%- if section.settings.default_product_2 != blank -%}
+            { handle: '{{ section.settings.default_product_2 }}', quantity: {{ section.settings.default_quantity_2 | default: 1 }} },
+            {%- endif -%}
+            {%- if section.settings.default_product_3 != blank -%}
+            { handle: '{{ section.settings.default_product_3 }}', quantity: {{ section.settings.default_quantity_3 | default: 1 }} }
+            {%- endif -%}
+          ].filter(p => p.handle);
+
+          if (defaultProducts.length > 0) {
+            return defaultProducts;
+          }
+
+          // If no products found, throw error
+          throw new Error('No eligible products found for this discount code');
+
+        } catch (error) {
+          console.error('Error getting discount products:', error);
+          throw new Error('Unable to determine products for this discount');
+        }
       }
 
       // Function to add multiple products to cart
@@ -386,141 +435,61 @@
     { "type": "color", "id": "button_bg", "label": "Button background", "default": "#111111" },
     { "type": "color", "id": "button_color", "label": "Button text color", "default": "#ffffff" },
 
-    { "type": "header", "content": "Discount Configuration" },
+    { "type": "header", "content": "Automatic Discount Configuration" },
     { 
       "type": "paragraph", 
-      "content": "Configure actual Shopify discount codes and their associated products. The system will validate if the discount code exists in Shopify and hasn't been used before adding products to cart." 
+      "content": "The system automatically detects products from Shopify discount configurations. Products are fetched directly from the discount settings in Shopify Admin. Only configure fallback products for store-wide discounts." 
+    },
+    {
+      "type": "range",
+      "id": "max_products",
+      "label": "Max Products to Add",
+      "min": 1,
+      "max": 10,
+      "step": 1,
+      "default": 5,
+      "info": "Maximum number of products to add when discount applies to collections"
     },
 
-    { "type": "header", "content": "Discount Code 1" },
-    {
-      "type": "text",
-      "id": "discount_code_1",
-      "label": "Shopify Discount Code 1",
-      "info": "Enter the actual discount code created in Shopify Admin > Discounts"
+    { "type": "header", "content": "Fallback Products (Store-wide Discounts)" },
+    { 
+      "type": "paragraph", 
+      "content": "These products will be added to cart for store-wide discounts that don't specify particular products or collections." 
     },
     {
       "type": "text",
-      "id": "product_handle_1_1",
-      "label": "Product 1 Handle",
-      "info": "First product to add to cart for this discount"
+      "id": "default_product_1",
+      "label": "Default Product 1 Handle",
+      "info": "Product to add for store-wide discounts (optional)"
     },
     {
       "type": "number",
-      "id": "quantity_1_1",
-      "label": "Product 1 Quantity",
+      "id": "default_quantity_1",
+      "label": "Default Product 1 Quantity",
       "default": 1
     },
     {
       "type": "text",
-      "id": "product_handle_1_2",
-      "label": "Product 2 Handle",
-      "info": "Second product to add to cart (optional)"
+      "id": "default_product_2",
+      "label": "Default Product 2 Handle",
+      "info": "Second product for store-wide discounts (optional)"
     },
     {
       "type": "number",
-      "id": "quantity_1_2",
-      "label": "Product 2 Quantity",
+      "id": "default_quantity_2",
+      "label": "Default Product 2 Quantity",
       "default": 1
     },
     {
       "type": "text",
-      "id": "product_handle_1_3",
-      "label": "Product 3 Handle",
-      "info": "Third product to add to cart (optional)"
+      "id": "default_product_3",
+      "label": "Default Product 3 Handle",
+      "info": "Third product for store-wide discounts (optional)"
     },
     {
       "type": "number",
-      "id": "quantity_1_3",
-      "label": "Product 3 Quantity",
-      "default": 1
-    },
-
-    { "type": "header", "content": "Discount Code 2" },
-    {
-      "type": "text",
-      "id": "discount_code_2",
-      "label": "Shopify Discount Code 2",
-      "info": "Enter the actual discount code created in Shopify Admin > Discounts"
-    },
-    {
-      "type": "text",
-      "id": "product_handle_2_1",
-      "label": "Product 1 Handle",
-      "info": "First product to add to cart for this discount"
-    },
-    {
-      "type": "number",
-      "id": "quantity_2_1",
-      "label": "Product 1 Quantity",
-      "default": 1
-    },
-    {
-      "type": "text",
-      "id": "product_handle_2_2",
-      "label": "Product 2 Handle",
-      "info": "Second product to add to cart (optional)"
-    },
-    {
-      "type": "number",
-      "id": "quantity_2_2",
-      "label": "Product 2 Quantity",
-      "default": 1
-    },
-    {
-      "type": "text",
-      "id": "product_handle_2_3",
-      "label": "Product 3 Handle",
-      "info": "Third product to add to cart (optional)"
-    },
-    {
-      "type": "number",
-      "id": "quantity_2_3",
-      "label": "Product 3 Quantity",
-      "default": 1
-    },
-
-    { "type": "header", "content": "Discount Code 3" },
-    {
-      "type": "text",
-      "id": "discount_code_3",
-      "label": "Shopify Discount Code 3",
-      "info": "Enter the actual discount code created in Shopify Admin > Discounts"
-    },
-    {
-      "type": "text",
-      "id": "product_handle_3_1",
-      "label": "Product 1 Handle",
-      "info": "First product to add to cart for this discount"
-    },
-    {
-      "type": "number",
-      "id": "quantity_3_1",
-      "label": "Product 1 Quantity",
-      "default": 1
-    },
-    {
-      "type": "text",
-      "id": "product_handle_3_2",
-      "label": "Product 2 Handle",
-      "info": "Second product to add to cart (optional)"
-    },
-    {
-      "type": "number",
-      "id": "quantity_3_2",
-      "label": "Product 2 Quantity",
-      "default": 1
-    },
-    {
-      "type": "text",
-      "id": "product_handle_3_3",
-      "label": "Product 3 Handle",
-      "info": "Third product to add to cart (optional)"
-    },
-    {
-      "type": "number",
-      "id": "quantity_3_3",
-      "label": "Product 3 Quantity",
+      "id": "default_quantity_3",
+      "label": "Default Product 3 Quantity",
       "default": 1
     }
   ],
