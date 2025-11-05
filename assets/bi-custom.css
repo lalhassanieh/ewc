@@ -131,7 +131,8 @@ a,
   font-family: "AcuminProCond-Regular" !important;
 }
 
-.wpbingo-footer-section .wpbingo-title__heading {
+.wpbingo-footer-section .wpbingo-title__heading,
+.wpbingo-footer-section .bwp-block-title {
   font-family: "AcuminProCond-Regular" !important;
 }
 
