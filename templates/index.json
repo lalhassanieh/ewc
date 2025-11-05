@@ -1367,9 +1367,7 @@
         "column_ACCfhe",
         "column_AdeCqj"
       ],
-      "custom_css": [
-        ".banner-wrapper-infor .bwp-block-title {font-family: \"AcuminProCond-Regular\" !important;}"
-      ],
+      "custom_css": [],
       "name": "Custom Section",
       "settings": {
         "max_width": "",
