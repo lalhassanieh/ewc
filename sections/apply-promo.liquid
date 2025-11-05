@@ -209,31 +209,29 @@
           // Get all configured discount codes from the section settings
           const configuredCodes = [];
           
+          console.log('DEBUG: Starting with empty array:', configuredCodes);
+          
           // Add fallback codes if configured (with trimming and case handling)
           {%- assign code1 = section.settings.fallback_code_1 | strip -%}
           {%- assign code2 = section.settings.fallback_code_2 | strip -%}
           
+          console.log('DEBUG: Code1 from Liquid:', '{{ code1 }}');
+          console.log('DEBUG: Code1 length:', {{ code1 | size }});
+          
           {%- if code1 != blank and code1 != '' -%}
+          console.log('DEBUG: About to push code1 to array');
           configuredCodes.push('{{ code1 }}');
-          {%- endif -%}
-          {%- if code2 != blank and code2 != '' -%}
-          configuredCodes.push('{{ code2 }}');
+          console.log('DEBUG: Array after adding code1:', configuredCodes);
+          {%- else -%}
+          console.log('DEBUG: Code1 condition failed - not adding');
           {%- endif -%}
           
-          // Debug what Liquid is actually outputting
-          console.log('DEBUG: About to add codes...');
-          console.log('DEBUG: Code1 variable:', '{{ code1 }}');
-          console.log('DEBUG: Code2 variable:', '{{ code2 }}');
-          console.log('DEBUG: Code1 length:', '{{ code1 | size }}');
-          {%- if code1 != blank and code1 != '' -%}
-          console.log('DEBUG: Adding code1 to array');
-          {%- else -%}
-          console.log('DEBUG: Code1 NOT added - blank or empty');
-          {%- endif -%}
           {%- if code2 != blank and code2 != '' -%}
-          console.log('DEBUG: Adding code2 to array');
+          console.log('DEBUG: About to push code2 to array');
+          configuredCodes.push('{{ code2 }}');
+          console.log('DEBUG: Array after adding code2:', configuredCodes);
           {%- else -%}
-          console.log('DEBUG: Code2 NOT added - blank or empty');
+          console.log('DEBUG: Code2 condition failed - not adding');
           {%- endif -%}
 
           // Check if the entered code exists in our configured codes (case-insensitive)
