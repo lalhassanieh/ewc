@@ -291,14 +291,26 @@
             // Clean up - remove test product from cart
             await fetch('/cart/clear.js', { method: 'POST' });
             
-            return {
-              valid: true,
-              used: false,
-              code: code,
-              type: 'detected',
-              value: null,
-              applicableProducts: applicableProducts
-            };
+            // Only return success if we actually found products
+            if (applicableProducts && applicableProducts.length > 0) {
+              return {
+                valid: true,
+                used: false,
+                code: code,
+                type: 'detected',
+                value: null,
+                applicableProducts: applicableProducts
+              };
+            } else {
+              return {
+                valid: true,
+                used: false,
+                code: code,
+                type: 'no_products_detected',
+                value: null,
+                applicableProducts: []
+              };
+            }
           }
           
           if (discountResponse.status === 404) {
@@ -346,50 +358,118 @@
         try {
           console.log('DEBUG: Attempting to detect products for discount:', code);
           
-          // Strategy: Try to find products that this discount would apply to
-          // by checking the discount URL and looking for product references
-          
-          const discountPageResponse = await fetch(`/discount/${encodeURIComponent(code)}`, {
-            method: 'GET'
+          // Strategy 1: Check if the discount redirects to a specific product page
+          const discountResponse = await fetch(`/discount/${encodeURIComponent(code)}`, {
+            method: 'GET',
+            redirect: 'manual'
           });
           
-          if (discountPageResponse.ok) {
-            const discountPageText = await discountPageResponse.text();
+          console.log('DEBUG: Discount response status:', discountResponse.status);
+          console.log('DEBUG: Discount response headers:', Object.fromEntries(discountResponse.headers.entries()));
+          
+          if (discountResponse.status === 302 || discountResponse.status === 301) {
+            const location = discountResponse.headers.get('location');
+            console.log('DEBUG: Discount redirects to:', location);
             
-            // Look for product URLs in the redirect or page content
-            const productMatches = discountPageText.match(/\/products\/([a-zA-Z0-9\-_]+)/g);
-            
-            if (productMatches && productMatches.length > 0) {
-              const uniqueHandles = [...new Set(productMatches.map(match => 
-                match.replace('/products/', '')
-              ))];
-              
-              console.log('DEBUG: Found product handles in discount page:', uniqueHandles);
-              return uniqueHandles.slice(0, 5).map(handle => ({ handle, quantity: 1 })); // Limit to 5 products
+            if (location && location.includes('/products/')) {
+              const productMatch = location.match(/\/products\/([a-zA-Z0-9\-_]+)/);
+              if (productMatch) {
+                const productHandle = productMatch[1];
+                console.log('DEBUG: Found product from redirect:', productHandle);
+                return [{ handle: productHandle, quantity: 1 }];
+              }
             }
           }
           
-          // Fallback: If this is a product-specific discount, we might need to 
-          // get all products and test which ones the discount applies to
-          console.log('DEBUG: No products detected from discount page, trying product scan');
+          // Strategy 2: For discount codes that apply to specific collections or products,
+          // we need to test products individually to see which ones the discount applies to
+          console.log('DEBUG: No direct product redirect found, trying product testing');
           
-          // Get some recent products to test
-          const recentProductsResponse = await fetch('/products.json?limit=10');
-          const recentProductsData = await recentProductsResponse.json();
+          // Get a broader range of products to test
+          const productsResponse = await fetch('/products.json?limit=20');
+          const productsData = await productsResponse.json();
           
-          if (recentProductsData.products && recentProductsData.products.length > 0) {
-            // For now, return the first product as a fallback
-            // In a more sophisticated implementation, you could test each product
-            const fallbackProduct = recentProductsData.products[0];
-            console.log('DEBUG: Using fallback product:', fallbackProduct.handle);
-            return [{ handle: fallbackProduct.handle, quantity: 1 }];
+          if (!productsData.products || productsData.products.length === 0) {
+            console.log('DEBUG: No products available for testing');
+            return [];
           }
           
+          // Test each product to see if the discount applies
+          const applicableProducts = [];
+          
+          for (const product of productsData.products.slice(0, 10)) { // Test first 10 products
+            try {
+              const isApplicable = await testProductWithDiscount(product, code);
+              if (isApplicable) {
+                console.log('DEBUG: Product applies to discount:', product.handle);
+                applicableProducts.push({ handle: product.handle, quantity: 1 });
+              }
+            } catch (testError) {
+              console.log('DEBUG: Error testing product:', product.handle, testError);
+            }
+          }
+          
+          if (applicableProducts.length > 0) {
+            console.log('DEBUG: Found applicable products through testing:', applicableProducts);
+            return applicableProducts.slice(0, 3); // Limit to 3 products max
+          }
+          
+          console.log('DEBUG: No applicable products found through testing');
           return [];
           
         } catch (error) {
           console.error('DEBUG: Error detecting discount products:', error);
           return [];
+        }
+      }
+      
+      // Test if a specific product works with the discount
+      async function testProductWithDiscount(product, discountCode) {
+        try {
+          if (!product.variants || product.variants.length === 0) {
+            return false;
+          }
+          
+          const variant = product.variants[0];
+          
+          // Clear cart first
+          await fetch('/cart/clear.js', { method: 'POST' });
+          
+          // Add the product to cart
+          const addResponse = await fetch('/cart/add.js', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              id: variant.id,
+              quantity: 1
+            })
+          });
+          
+          if (!addResponse.ok) {
+            return false;
+          }
+          
+          // Try to apply the discount
+          const discountTestResponse = await fetch(`/discount/${encodeURIComponent(discountCode)}`, {
+            method: 'GET',
+            redirect: 'manual'
+          });
+          
+          // Check if the discount was successfully applied
+          // A 302 redirect usually means the discount was applied and we're being redirected to cart/checkout
+          if (discountTestResponse.status === 302) {
+            const location = discountTestResponse.headers.get('location');
+            // If redirected to cart or checkout, the discount likely applies
+            if (location && (location.includes('/cart') || location.includes('/checkout'))) {
+              return true;
+            }
+          }
+          
+          return false;
+          
+        } catch (error) {
+          console.error('Error testing product with discount:', error);
+          return false;
         }
       }
 
@@ -446,6 +526,13 @@
           console.log('DEBUG: Getting products for discount:', discountData.code);
           console.log('DEBUG: Discount data:', discountData);
           
+          // Check if validation specifically detected no products
+          if (discountData.type === 'no_products_detected') {
+            const error = new Error('Could not automatically detect products for this discount code. Please contact support to configure the specific products for this discount.');
+            error.step = 'Product Assignment';
+            throw error;
+          }
+          
           // Priority 1: Products automatically detected from Shopify discount
           if (discountData.applicableProducts && discountData.applicableProducts.length > 0) {
             console.log('DEBUG: Using automatically detected products from Shopify:', discountData.applicableProducts);
@@ -461,17 +548,11 @@
             return detectedProducts;
           }
           
-          // Priority 3: Fallback - get a popular/recent product
-          console.log('DEBUG: Using fallback product strategy');
-          const fallbackProducts = await getFallbackProducts();
+          // If no products detected, don't use random fallback products
+          // Instead, throw a clear error asking for manual specification
+          console.log('DEBUG: No products could be automatically detected');
           
-          if (fallbackProducts && fallbackProducts.length > 0) {
-            console.log('DEBUG: Using fallback products:', fallbackProducts);
-            return fallbackProducts;
-          }
-          
-          // If absolutely nothing works, throw error
-          const error = new Error('Unable to determine products for this discount code. The discount is valid but no applicable products could be found.');
+          const error = new Error('Could not automatically detect products for this discount code. Please contact support to configure the specific products for this discount.');
           error.step = 'Product Assignment';
           throw error;
           
@@ -482,25 +563,7 @@
         }
       }
       
-      // Fallback function to get some products when auto-detection fails
-      async function getFallbackProducts() {
-        try {
-          const response = await fetch('/products.json?limit=3');
-          const data = await response.json();
-          
-          if (data.products && data.products.length > 0) {
-            return data.products.map(product => ({
-              handle: product.handle,
-              quantity: 1
-            }));
-          }
-          
-          return [];
-        } catch (error) {
-          console.error('Error getting fallback products:', error);
-          return [];
-        }
-      }
+
 
 
       // Function to add multiple products to cart
