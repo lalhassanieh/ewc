@@ -87,7 +87,7 @@
 .product-recommendations__inner .wpbingo-title__heading,
 .jdgm-rev-widg__title {
   text-transform: uppercase;
-  font-size: clamp(20px, 2vw + 1rem, 28px);
+  font-size: clamp(20px, 2vw + 1rem, 28px) !important;
 }
 
 .bwp-button-text,
