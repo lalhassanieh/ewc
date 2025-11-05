@@ -109,33 +109,43 @@
           return;
         }
 
-        setMessage('Validating discount code...', false);
+        setMessage('Checking discount code...', false);
         btn.disabled = true;
 
-        // Step 1: Validate the discount code with Shopify
-        validateDiscountCode(code)
+        // Step 1: Check if the code exists in backend configuration
+        checkCodeInBackend(code)
+        .then((isConfigured) => {
+          if (!isConfigured) {
+            throw new Error('This discount code is not available on our system. Please check the code and try again.');
+          }
+
+          setMessage('Code found in system! Validating with Shopify...', false);
+          
+          // Step 2: Validate the discount code with Shopify backend
+          return validateDiscountCode(code);
+        })
         .then((discountData) => {
           if (!discountData.valid) {
-            throw new Error(discountData.message || 'Invalid discount code');
+            throw new Error(discountData.message || 'This discount code is invalid or has expired');
           }
           
           if (discountData.used) {
-            throw new Error('This discount code has already been used');
+            throw new Error('This discount code has already been used and cannot be used again');
           }
 
-          setMessage('Discount code valid! Processing products...', false);
+          setMessage('Discount code validated! Getting assigned products from Shopify...', false);
           
-          // Step 2: Get products associated with this discount
+          // Step 3: Get products assigned to this discount from Shopify
           return getDiscountProducts(discountData);
         })
         .then((products) => {
           if (!products || products.length === 0) {
-            throw new Error('No products found for this discount code');
+            throw new Error('No products assigned to this discount code');
           }
 
           setMessage('Clearing cart and adding products...', false);
 
-          // Step 3: Clear cart
+          // Step 4: Clear cart first
           return fetch('/cart/clear.js', {
             method: 'POST',
             headers: {
@@ -144,11 +154,11 @@
           }).then(() => products);
         })
         .then((products) => {
-          // Step 4: Add all products to cart
+          // Step 5: Add all assigned products to cart
           return addProductsToCart(products);
         })
         .then(() => {
-          // Step 5: Apply discount code and redirect to checkout
+          // Step 6: Apply discount code and redirect to checkout
           setMessage('Products added! Applying discount and redirecting...', false);
           
           // Apply the discount code to the cart
@@ -171,10 +181,45 @@
           }, 500);
         })
         .catch((error) => {
-          console.error('Error:', error);
-          setMessage(error.message || 'Error processing request. Please try again.', true);
+          console.error('Discount code processing error:', error);
+          
+          // Show specific error message to user
+          let errorMessage = error.message || 'An unexpected error occurred. Please try again.';
+          
+          // Log additional context for debugging
+          console.log('Error details:', {
+            code: code,
+            step: 'Processing discount code',
+            timestamp: new Date().toISOString()
+          });
+          
+          setMessage(errorMessage, true);
           btn.disabled = false;
         });
+
+      // Function to check if code exists in backend configuration
+      function checkCodeInBackend(code) {
+        return new Promise((resolve) => {
+          // Get all configured discount codes from the section settings
+          const configuredCodes = [];
+          
+          // Add fallback codes if configured
+          {%- if section.settings.fallback_code_1 != blank -%}
+          configuredCodes.push('{{ section.settings.fallback_code_1 }}');
+          {%- endif -%}
+          {%- if section.settings.fallback_code_2 != blank -%}
+          configuredCodes.push('{{ section.settings.fallback_code_2 }}');
+          {%- endif -%}
+
+          // Check if the entered code exists in our configured codes
+          const isCodeConfigured = configuredCodes.includes(code);
+          
+          console.log('Configured codes:', configuredCodes);
+          console.log('Checking code:', code, 'Found:', isCodeConfigured);
+          
+          resolve(isCodeConfigured);
+        });
+      }
 
       // Function to validate discount code with Shopify
       async function validateDiscountCode(code) {
@@ -202,29 +247,38 @@
             // Check if discount was applied by examining response
             const text = await discountResponse.text();
             
-            // Look for discount validation patterns in the HTML response
-            if (text.includes('discount-code-error') || text.includes('discount_code_error')) {
-              return { valid: false, message: 'Invalid or expired discount code' };
+            // Look for various discount error patterns in the HTML response
+            if (text.includes('discount-code-error') || text.includes('discount_code_error') || 
+                text.includes('invalid') || text.includes('expired') || text.includes('not found')) {
+              return { valid: false, message: 'Discount code is invalid, expired, or not found' };
             }
             
-            if (text.includes('discount-already-used') || text.includes('usage_limit_reached')) {
-              return { valid: true, used: true, message: 'Discount code has already been used' };
+            // Look for usage limit patterns
+            if (text.includes('discount-already-used') || text.includes('usage_limit_reached') || 
+                text.includes('already been used') || text.includes('limit exceeded') ||
+                text.includes('maximum usage') || text.includes('no longer available')) {
+              return { valid: true, used: true, message: 'Discount code has reached its usage limit' };
             }
 
-            // If we get here, discount is likely valid - extract product/collection info
-            const discountInfo = extractDiscountInfo(text);
+            // Look for customer eligibility issues
+            if (text.includes('not eligible') || text.includes('customer eligibility') || 
+                text.includes('restricted') || text.includes('not applicable')) {
+              return { valid: false, message: 'This discount code is not applicable to your account' };
+            }
+
+            // If we get here, discount is likely valid and unused
             return { 
               valid: true, 
               used: false, 
               code: code,
-              type: discountInfo.type,
-              value: discountInfo.value,
-              productIds: discountInfo.productIds,
-              collectionIds: discountInfo.collectionIds,
-              isStoreWide: discountInfo.isStoreWide
+              // Extract discount info from response if needed
+              type: extractDiscountType(text),
+              value: extractDiscountValue(text),
+              // Try to extract applicable products from the response
+              applicableProducts: extractApplicableProducts(text)
             };
           } else {
-            return { valid: false, message: 'Unable to validate discount code' };
+            return { valid: false, message: 'Unable to validate discount code with Shopify' };
           }
         } catch (error) {
           console.error('Discount validation error:', error);
@@ -232,123 +286,124 @@
         }
       }
 
-      // Function to extract comprehensive discount info from Shopify response
-      function extractDiscountInfo(html) {
-        const discountInfo = {
-          type: 'unknown',
-          value: null,
-          productIds: [],
-          collectionIds: [],
-          isStoreWide: false
-        };
-
-        // Extract discount type and value
-        if (html.includes('percentage') || html.includes('%')) {
-          discountInfo.type = 'percentage';
-          const percentageMatch = html.match(/(\d+)%/);
-          if (percentageMatch) discountInfo.value = percentageMatch[1];
-        } else if (html.includes('fixed_amount') || html.includes('$')) {
-          discountInfo.type = 'fixed_amount';
-          const amountMatch = html.match(/\$(\d+(?:\.\d{2})?)/);
-          if (amountMatch) discountInfo.value = amountMatch[1];
-        }
-
-        // Check if discount applies to specific products
-        const productIdMatches = html.match(/product[_-]id["\']?\s*[:=]\s*["\']?(\d+)/gi);
-        if (productIdMatches) {
-          discountInfo.productIds = productIdMatches.map(match => {
-            const id = match.match(/(\d+)/);
-            return id ? id[1] : null;
-          }).filter(Boolean);
-        }
-
-        // Check if discount applies to specific collections
-        const collectionMatches = html.match(/collection[_-]id["\']?\s*[:=]\s*["\']?(\d+)/gi);
-        if (collectionMatches) {
-          discountInfo.collectionIds = collectionMatches.map(match => {
-            const id = match.match(/(\d+)/);
-            return id ? id[1] : null;
-          }).filter(Boolean);
-        }
-
-        // Check if it's a store-wide discount (no product/collection restrictions)
-        if (discountInfo.productIds.length === 0 && discountInfo.collectionIds.length === 0) {
-          discountInfo.isStoreWide = true;
-        }
-
-        return discountInfo;
+      // Function to extract discount type from Shopify response
+      function extractDiscountType(html) {
+        // Look for discount type indicators in the HTML
+        if (html.includes('percentage') || html.includes('%')) return 'percentage';
+        if (html.includes('fixed_amount') || html.includes('$')) return 'fixed_amount';
+        return 'unknown';
       }
 
-      // Function to get products from the Shopify discount configuration
+      // Function to extract discount value from Shopify response
+      function extractDiscountValue(html) {
+        // Extract discount value from HTML response
+        const percentageMatch = html.match(/(\d+)%/);
+        if (percentageMatch) return percentageMatch[1];
+        
+        const amountMatch = html.match(/\$(\d+(?:\.\d{2})?)/);
+        if (amountMatch) return amountMatch[1];
+        
+        return null;
+      }
+
+      // Function to extract applicable products from Shopify checkout response
+      function extractApplicableProducts(html) {
+        try {
+          // Try to find product handles in the checkout response
+          const productMatches = html.match(/\/products\/([a-zA-Z0-9\-_]+)/g);
+          if (productMatches && productMatches.length > 0) {
+            const uniqueHandles = [...new Set(productMatches.map(match => 
+              match.replace('/products/', '')
+            ))];
+            return uniqueHandles.map(handle => ({ handle, quantity: 1 }));
+          }
+          
+          // Alternative: look for data-product-handle attributes
+          const handleMatches = html.match(/data-product-handle=['"]([^'"]+)['"]/g);
+          if (handleMatches && handleMatches.length > 0) {
+            const handles = handleMatches.map(match => 
+              match.match(/data-product-handle=['"]([^'"]+)['"]/)[1]
+            );
+            return [...new Set(handles)].map(handle => ({ handle, quantity: 1 }));
+          }
+          
+          return [];
+        } catch (error) {
+          console.log('Could not extract products from discount response:', error);
+          return [];
+        }
+      }
+
+      // Function to get products assigned to this discount from Shopify
       async function getDiscountProducts(discountData) {
         try {
-          // If discount has specific product restrictions, get them from Shopify
-          if (discountData.productIds && discountData.productIds.length > 0) {
-            // Get products specified in the discount
-            const products = await Promise.all(
-              discountData.productIds.map(async (productId) => {
-                const response = await fetch(`/products/${productId}.js`);
-                const product = await response.json();
-                return {
-                  handle: product.handle,
-                  quantity: 1,
-                  id: product.id,
-                  title: product.title
-                };
-              })
-            );
-            return products;
+          console.log('Getting products for discount:', discountData);
+          
+          // Priority 1: Products extracted from Shopify discount checkout response
+          if (discountData.applicableProducts && discountData.applicableProducts.length > 0) {
+            console.log('Using products from Shopify discount:', discountData.applicableProducts);
+            return discountData.applicableProducts.map(product => ({
+              handle: product.handle,
+              quantity: 1
+            }));
           }
-
-          // If discount applies to collections, get products from those collections
-          if (discountData.collectionIds && discountData.collectionIds.length > 0) {
-            const allProducts = [];
-            for (const collectionId of discountData.collectionIds) {
-              try {
-                const response = await fetch(`/collections/${collectionId}/products.json?limit=250`);
-                const data = await response.json();
-                const products = data.products.map(product => ({
-                  handle: product.handle,
-                  quantity: 1,
-                  id: product.id,
-                  title: product.title
-                }));
-                allProducts.push(...products);
-              } catch (error) {
-                console.warn(`Failed to fetch collection ${collectionId}:`, error);
-              }
-            }
-            
-            if (allProducts.length > 0) {
-              // Return first few products from the eligible collections
-              return allProducts.slice(0, {{ section.settings.max_products | default: 5 }});
-            }
+          
+          // Priority 2: Manual configuration for specific discount codes
+          const configuredProducts = await getConfiguredProducts(discountData.code);
+          if (configuredProducts && configuredProducts.length > 0) {
+            console.log('Using manually configured products:', configuredProducts);
+            return configuredProducts;
           }
-
-          // Fallback: Use default products from section settings if discount is store-wide
-          const defaultProducts = [
-            {%- if section.settings.default_product_1 != blank -%}
-            { handle: '{{ section.settings.default_product_1 }}', quantity: {{ section.settings.default_quantity_1 | default: 1 }} },
-            {%- endif -%}
-            {%- if section.settings.default_product_2 != blank -%}
-            { handle: '{{ section.settings.default_product_2 }}', quantity: {{ section.settings.default_quantity_2 | default: 1 }} },
-            {%- endif -%}
-            {%- if section.settings.default_product_3 != blank -%}
-            { handle: '{{ section.settings.default_product_3 }}', quantity: {{ section.settings.default_quantity_3 | default: 1 }} }
-            {%- endif -%}
-          ].filter(p => p.handle);
-
-          if (defaultProducts.length > 0) {
-            return defaultProducts;
-          }
-
-          // If no products found, throw error
-          throw new Error('No eligible products found for this discount code');
-
+          
+          // If no products found anywhere, throw an error
+          throw new Error('No products assigned to this discount code');
+          
         } catch (error) {
           console.error('Error getting discount products:', error);
-          throw new Error('Unable to determine products for this discount');
+          throw new Error('Unable to find products for this discount code');
         }
+      }
+      
+      // Fallback function to get products from theme configuration
+      async function getConfiguredProducts(code) {
+        // This allows manual override for specific discount codes if needed
+        const manualProductMap = {
+          {%- if section.settings.fallback_code_1 != blank -%}
+          '{{ section.settings.fallback_code_1 }}': [
+            {%- if section.settings.fallback_products_1 != blank -%}
+            ...{{ section.settings.fallback_products_1 | split: ',' | json }}.map(handle => ({ 
+              handle: handle.trim(), 
+              quantity: {{ section.settings.fallback_quantity_1 | default: 1 }} 
+            }))
+            {%- endif -%}
+          ]{%- if section.settings.fallback_code_2 != blank -%},{%- endif -%}
+          {%- endif -%}
+          {%- if section.settings.fallback_code_2 != blank -%}
+          '{{ section.settings.fallback_code_2 }}': [
+            {%- if section.settings.fallback_products_2 != blank -%}
+            ...{{ section.settings.fallback_products_2 | split: ',' | json }}.map(handle => ({ 
+              handle: handle.trim(), 
+              quantity: {{ section.settings.fallback_quantity_2 | default: 1 }} 
+            }))
+            {%- endif -%}
+          ]
+          {%- endif -%}
+        };
+        
+        const configuredProducts = manualProductMap[code];
+        if (configuredProducts && configuredProducts.length > 0) {
+          return configuredProducts;
+        }
+        
+        // If no specific configuration, return a default product or throw error
+        if ('{{ section.settings.default_product_handle }}') {
+          return [{ 
+            handle: '{{ section.settings.default_product_handle }}', 
+            quantity: {{ section.settings.default_quantity | default: 1 }} 
+          }];
+        }
+        
+        throw new Error('No products configured for this discount code. Please contact support.');
       }
 
       // Function to add multiple products to cart
@@ -435,61 +490,66 @@
     { "type": "color", "id": "button_bg", "label": "Button background", "default": "#111111" },
     { "type": "color", "id": "button_color", "label": "Button text color", "default": "#ffffff" },
 
-    { "type": "header", "content": "Automatic Discount Configuration" },
+    { "type": "header", "content": "Backend Discount Code Configuration" },
     { 
       "type": "paragraph", 
-      "content": "The system automatically detects products from Shopify discount configurations. Products are fetched directly from the discount settings in Shopify Admin. Only configure fallback products for store-wide discounts." 
-    },
-    {
-      "type": "range",
-      "id": "max_products",
-      "label": "Max Products to Add",
-      "min": 1,
-      "max": 10,
-      "step": 1,
-      "default": 5,
-      "info": "Maximum number of products to add when discount applies to collections"
+      "content": "IMPORTANT: Only discount codes entered in this section will be accepted by the form. System checks backend configuration first, then validates with Shopify, then automatically gets assigned products from Shopify discount settings." 
     },
 
-    { "type": "header", "content": "Fallback Products (Store-wide Discounts)" },
+    { "type": "header", "content": "Allowed Discount Codes" },
     { 
       "type": "paragraph", 
-      "content": "These products will be added to cart for store-wide discounts that don't specify particular products or collections." 
+      "content": "Enter the discount codes you want to allow. Users can only use codes listed here. System will automatically detect products assigned to these discounts in Shopify admin." 
     },
     {
       "type": "text",
-      "id": "default_product_1",
-      "label": "Default Product 1 Handle",
-      "info": "Product to add for store-wide discounts (optional)"
+      "id": "fallback_code_1",
+      "label": "Discount Code 1",
+      "info": "First allowed discount code (must exist in Shopify admin)"
+    },
+    {
+      "type": "text",
+      "id": "fallback_products_1",
+      "label": "Manual Products for Code 1 (Optional)",
+      "info": "Only use if automatic detection fails. Comma-separated product handles (e.g: product-1,product-2)"
     },
     {
       "type": "number",
-      "id": "default_quantity_1",
-      "label": "Default Product 1 Quantity",
+      "id": "fallback_quantity_1",
+      "label": "Quantity per Product",
       "default": 1
     },
+
     {
       "type": "text",
-      "id": "default_product_2",
-      "label": "Default Product 2 Handle",
-      "info": "Second product for store-wide discounts (optional)"
+      "id": "fallback_code_2",
+      "label": "Discount Code 2",
+      "info": "Second allowed discount code (must exist in Shopify admin)"
+    },
+    {
+      "type": "text",
+      "id": "fallback_products_2",
+      "label": "Manual Products for Code 2 (Optional)", 
+      "info": "Only use if automatic detection fails. Comma-separated product handles (e.g: product-1,product-2)"
     },
     {
       "type": "number",
-      "id": "default_quantity_2",
-      "label": "Default Product 2 Quantity",
+      "id": "fallback_quantity_2",
+      "label": "Quantity per Product",
       "default": 1
     },
+
+    { "type": "header", "content": "Default Fallback (Optional)" },
     {
       "type": "text",
-      "id": "default_product_3",
-      "label": "Default Product 3 Handle",
-      "info": "Third product for store-wide discounts (optional)"
+      "id": "default_product_handle",
+      "label": "Default Product Handle", 
+      "info": "Product to add if no products are detected for valid discount codes (optional last resort)"
     },
     {
       "type": "number",
-      "id": "default_quantity_3",
-      "label": "Default Product 3 Quantity",
+      "id": "default_quantity",
+      "label": "Default Quantity",
       "default": 1
     }
   ],
