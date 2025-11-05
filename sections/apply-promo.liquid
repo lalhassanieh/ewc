@@ -412,44 +412,57 @@
       
       // Fallback function to get products from theme configuration
       async function getConfiguredProducts(code) {
-        // This allows manual override for specific discount codes if needed
-        const manualProductMap = {
-          {%- if section.settings.fallback_code_1 != blank -%}
-          '{{ section.settings.fallback_code_1 }}': [
-            {%- if section.settings.fallback_products_1 != blank -%}
-            ...{{ section.settings.fallback_products_1 | split: ',' | json }}.map(handle => ({ 
-              handle: handle.trim(), 
-              quantity: {{ section.settings.fallback_quantity_1 | default: 1 }} 
-            }))
-            {%- endif -%}
-          ]{%- if section.settings.fallback_code_2 != blank -%},{%- endif -%}
-          {%- endif -%}
-          {%- if section.settings.fallback_code_2 != blank -%}
-          '{{ section.settings.fallback_code_2 }}': [
-            {%- if section.settings.fallback_products_2 != blank -%}
-            ...{{ section.settings.fallback_products_2 | split: ',' | json }}.map(handle => ({ 
-              handle: handle.trim(), 
-              quantity: {{ section.settings.fallback_quantity_2 | default: 1 }} 
-            }))
-            {%- endif -%}
-          ]
-          {%- endif -%}
-        };
+        console.log('DEBUG: Looking for configured products for code:', code);
         
-        const configuredProducts = manualProductMap[code];
+        // This allows manual override for specific discount codes if needed
+        const manualProductMap = {};
+        
+        {%- if section.settings.fallback_code_1 != blank -%}
+        {%- assign code1_clean = section.settings.fallback_code_1 | strip | downcase -%}
+        manualProductMap['{{ code1_clean }}'] = [];
+        {%- if section.settings.fallback_products_1 != blank -%}
+        {%- assign products1 = section.settings.fallback_products_1 | split: ',' -%}
+        {%- for product in products1 -%}
+        manualProductMap['{{ code1_clean }}'].push({
+          handle: '{{ product | strip }}',
+          quantity: {{ section.settings.fallback_quantity_1 | default: 1 }}
+        });
+        {%- endfor -%}
+        {%- endif -%}
+        {%- endif -%}
+        
+        {%- if section.settings.fallback_code_2 != blank -%}
+        {%- assign code2_clean = section.settings.fallback_code_2 | strip | downcase -%}
+        manualProductMap['{{ code2_clean }}'] = [];
+        {%- if section.settings.fallback_products_2 != blank -%}
+        {%- assign products2 = section.settings.fallback_products_2 | split: ',' -%}
+        {%- for product in products2 -%}
+        manualProductMap['{{ code2_clean }}'].push({
+          handle: '{{ product | strip }}',
+          quantity: {{ section.settings.fallback_quantity_2 | default: 1 }}
+        });
+        {%- endfor -%}
+        {%- endif -%}
+        {%- endif -%}
+        
+        console.log('DEBUG: Manual product map:', manualProductMap);
+        
+        const configuredProducts = manualProductMap[code.toLowerCase()];
         if (configuredProducts && configuredProducts.length > 0) {
+          console.log('DEBUG: Found manual products:', configuredProducts);
           return configuredProducts;
         }
         
         // If no specific configuration, return a default product or throw error
-        if ('{{ section.settings.default_product_handle }}') {
-          return [{ 
-            handle: '{{ section.settings.default_product_handle }}', 
-            quantity: {{ section.settings.default_quantity | default: 1 }} 
-          }];
-        }
+        {%- if section.settings.default_product_handle != blank -%}
+        console.log('DEBUG: Using default product fallback');
+        return [{ 
+          handle: '{{ section.settings.default_product_handle | strip }}', 
+          quantity: {{ section.settings.default_quantity | default: 1 }} 
+        }];
+        {%- endif -%}
         
-        throw new Error('No products configured for this discount code. Please contact support.');
+        throw new Error('No products configured for this discount code. Please add products in theme customizer or contact support.');
       }
 
       // Function to add multiple products to cart
