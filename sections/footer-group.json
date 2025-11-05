@@ -64,7 +64,7 @@
             "description_3tNtcA": {
               "type": "description",
               "settings": {
-                "desc": "Subscribe to be aware of our regular promotions <br> & exclusive offers!",
+                "desc": "Subscribe to be aware of our regular promotions <br> & exclusive offers!\n<br>\nVAT Registration Number: 311333791600003",
                 "font": "--font-family-second",
                 "color": "#000000",
                 "font_size": 14,
@@ -168,7 +168,7 @@
                 "list_item_4nrXWm": {
                   "type": "_list-item",
                   "settings": {
-                    "text": "Terms and Conditions",
+                    "text": "Terms and Conditions (VAT Registration Number: 311333791600003)",
                     "url": "shopify://pages/terms-and-conditions",
                     "icon": "",
                     "padding": "0 0 12px",
