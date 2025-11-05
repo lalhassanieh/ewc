@@ -195,8 +195,17 @@
           let errorMessage = error.message || 'An unexpected error occurred. Please try again.';
           
           // Special handling for backend configuration errors
-          if (error.step === 'Backend Configuration Check' && error.message.includes('not available on our system')) {
-            errorMessage = 'This discount code is not configured. Please contact support or check that the code is entered correctly.';
+          if (error.step === 'Backend Configuration Check') {
+            if (error.message.includes('not available on our system')) {
+              errorMessage = '⚙️ Configuration Required: No discount codes are set up yet. Please configure discount codes in the theme customizer first.';
+            }
+          }
+          
+          // Special handling for product assignment errors  
+          if (error.step === 'Product Assignment') {
+            if (error.message.includes('No products configured')) {
+              errorMessage = '🎯 Product Setup Required: Please configure which products to add for this discount code in the theme customizer.';
+            }
           }
           
           // Add step information for debugging
@@ -249,14 +258,7 @@
             console.log('Please add discount codes in: Theme Customizer → Apply promo code section');
           }
           
-          // TEMPORARY BYPASS for testing - remove this after confirmation
-          if (!isCodeConfigured) {
-            console.log('⚠️ BYPASS: Code not found in config but proceeding anyway for testing');
-            console.log('⚠️ Make sure to configure codes properly in theme customizer');
-            resolve(true); // Temporarily bypass backend check
-          } else {
-            resolve(isCodeConfigured);
-          }
+          resolve(isCodeConfigured);
         });
       }
 
@@ -537,9 +539,9 @@
     {
       "type": "text",
       "id": "fallback_code_1",
-      "label": "✅ Discount Code 1 (e.g: freecarla)",
+      "label": "✅ Discount Code 1",
       "info": "Enter discount code exactly as created in Shopify admin",
-      "placeholder": "freecarla"
+      "placeholder": "dicount code"
     },
     {
       "type": "text",
