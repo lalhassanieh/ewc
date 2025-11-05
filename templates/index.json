@@ -2449,7 +2449,7 @@
       "type": "apply-promo",
       "name": "Apply promo code",
       "settings": {
-        "title": "APPLY YOUR PROMO CODE",
+        "title": "CLAIM YOUR WORLDS2025 DROP",
         "subtitle": "Enter the promo code to claim your Worlds2025 drop",
         "placeholder": "Enter promo code",
         "button_text": "Apply",
