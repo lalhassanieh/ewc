@@ -203,19 +203,31 @@
           // Get all configured discount codes from the section settings
           const configuredCodes = [];
           
-          // Add fallback codes if configured
+          // Add fallback codes if configured (with trimming and case handling)
           {%- if section.settings.fallback_code_1 != blank -%}
-          configuredCodes.push('{{ section.settings.fallback_code_1 }}');
+          configuredCodes.push('{{ section.settings.fallback_code_1 | strip }}');
           {%- endif -%}
           {%- if section.settings.fallback_code_2 != blank -%}
-          configuredCodes.push('{{ section.settings.fallback_code_2 }}');
+          configuredCodes.push('{{ section.settings.fallback_code_2 | strip }}');
           {%- endif -%}
 
-          // Check if the entered code exists in our configured codes
-          const isCodeConfigured = configuredCodes.includes(code);
+          // Debug logging - show exactly what we have
+          console.log('=== DISCOUNT CODE DEBUG ===');
+          console.log('Raw configured codes:', configuredCodes);
+          console.log('Entered code:', `"${code}"`);
+          console.log('Entered code length:', code.length);
           
-          console.log('Configured codes:', configuredCodes);
-          console.log('Checking code:', code, 'Found:', isCodeConfigured);
+          // Check if the entered code exists in our configured codes (case-insensitive)
+          const codeToCheck = code.trim().toLowerCase();
+          const configuredCodesLower = configuredCodes.map(c => c.trim().toLowerCase());
+          
+          console.log('Code to check (lowercase):', `"${codeToCheck}"`);
+          console.log('Configured codes (lowercase):', configuredCodesLower);
+          
+          const isCodeConfigured = configuredCodesLower.includes(codeToCheck);
+          
+          console.log('Match found:', isCodeConfigured);
+          console.log('=== END DEBUG ===');
           
           resolve(isCodeConfigured);
         });
