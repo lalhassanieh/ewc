@@ -15,14 +15,6 @@
   font-display: swap;
 }
 @font-face {
-  font-family: "RiformaMonoLL-Regular";
-  src: url("./RiformaMonoLL-Regular.eot");
-  src: url("./RiformaMonoLL-Regular.eot?#iefix") format("embedded-opentype"), url("./RiformaMonoLL-Regular.woff2") format("woff2"), url("./RiformaMonoLL-Regular.woff") format("woff"), url("./RiformaMonoLL-Regular.ttf") format("truetype"), url("./RiformaMonoLL-Regular.svg#RiformaMonoLL-Regular") format("svg");
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
   font-family: "MHE-Riyal-Sign";
   src: url("./MHERiyalSign-Regular.woff2") format("woff2"), url("./MHERiyalSign-Regular.woff") format("woff"), url("./MHERiyalSign-Regular.ttf") format("truetype");
   font-weight: normal;

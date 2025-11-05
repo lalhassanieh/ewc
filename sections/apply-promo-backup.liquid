@@ -1,0 +1,534 @@
+<!-- sections/apply-promo.liquid -->
+<section id="apply-promo-section" class="apply-promo-section">
+  <div class="apply-promo-inner">
+    <h2 class="apply-promo-title">{{ section.settings.title }}</h2>
+    <p class="apply-promo-subtitle">{{ section.settings.subtitle }}</p>
+
+    <form id="applyPromoForm" class="apply-promo-form" onsubmit="return false;">
+      <label for="applyPromoCode" class="visually-hidden">Promo code</label>
+      <input
+        id="applyPromoCode"
+        name="code"
+        type="text"
+        placeholder="{{ section.settings.placeholder }}"
+        aria-label="Promo code"
+        class="apply-promo-input"
+      >
+
+      {% comment %}
+        <div class="wpbingo-button">
+          <button id="applyPromoBtn" type="button" class="bwp-button default apply-promo-btn" tabindex="0">
+            <span class="bwp-button-content-wrapper">
+              <span class="bwp-button-text">{{ section.settings.button_text }}</span>
+            </span>
+          </button>
+        </div>
+      {% endcomment %}
+      <div class="wpbingo-button">
+        <div id="applyPromoBtn" class="bwp-button default apply-promo-btn">
+          <span class="bwp-button-content-wrapper">
+            <span class="bwp-button-text">{{ section.settings.button_text }}</span>
+          </span>
+        </div>
+      </div>
+      <div id="applyPromoMsg" class="apply-promo-msg" aria-live="polite"></div>
+    </form>
+  </div>
+
+  <style>
+          /* basic styling - adjust values as you like */
+          #apply-promo-section.apply-promo-section {
+            {% comment %} padding: 30px 20px 100px 20px; {% endcomment %}
+             height: {{ section.settings.section_height | default: 90 }}vh;
+            text-align:center;
+            background: {{ section.settings.bg_color }};
+            {% if section.settings.bg_image != blank %}
+            background-image: url('{{ section.settings.bg_image | image_url: width: 1920 }}');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            {% endif %}
+            position: relative;
+          }
+          {% if section.settings.bg_image != blank and section.settings.bg_overlay_opacity > 0 %}
+          #apply-promo-section.apply-promo-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, {{ section.settings.bg_overlay_opacity | divided_by: 100.0 }});
+            z-index: 1;
+          }
+          {% endif %}
+         .apply-promo-inner {
+      width: 100%;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      align-items: center;
+      z-index: 2;
+      top: 50%;
+      position: absolute;
+      transform: translate(-50%,-50%);
+      left: 50%;
+    }
+          .apply-promo-title { margin:0;  font-size: clamp(28px, 4vw, 35px); color:{{ section.settings.title_color }}; }
+          .apply-promo-subtitle {padding-bottom: 10px; margin:0; font-size:18px; color:{{ section.settings.subtitle_color }}; }
+          .apply-promo-form {position:relative; display:flex; gap:10px; width:100%; justify-content:center; flex-wrap:wrap; }
+          .apply-promo-input { padding:10px 14px; min-width:220px; max-width:420px; border:1px solid #ccc; border-radius:4px; }
+          .apply-promo-btn.bwp-button { text-transform:uppercase; padding:10px 16px; border:none; cursor:pointer; border-radius:4px; background:{{ section.settings.button_bg }}; color:{{ section.settings.button_color }}; }
+          .apply-promo-btn .bwp-button-text { color: {{ section.settings.button_color }}; }
+          .apply-promo-msg { position: absolute;
+        bottom: -23px;margin-top:8px; font-size:13px; color:#e74c3c; min-height:18px; }
+          .visually-hidden { position:absolute !important; height:1px; width:1px; overflow:hidden; clip:rect(1px,1px,1px,1px); white-space:nowrap; }
+          @media (min-width: 700px) {
+            .apply-promo-form { flex-wrap:nowrap; }
+          }
+  </style>
+
+  <script>
+    (function () {
+      const form = document.getElementById('applyPromoForm');
+      const input = document.getElementById('applyPromoCode');
+      const btn = document.getElementById('applyPromoBtn');
+      const msg = document.getElementById('applyPromoMsg');
+
+      function setMessage(text, isError) {
+        msg.textContent = text || '';
+        msg.style.color = isError ? '#e74c3c' : '#2ecc71';
+      }
+
+      btn.addEventListener('click', function () {
+        const code = input.value.trim();
+        if (!code) {
+          setMessage('Please enter a promo code.', true);
+          input.focus();
+          return;
+        }
+
+        setMessage('Validating discount code...', false);
+        btn.disabled = true;
+
+        // Step 1: Validate the discount code with Shopify
+        validateDiscountCode(code)
+        .then((discountData) => {
+          if (!discountData.valid) {
+            throw new Error(discountData.message || 'Invalid discount code');
+          }
+          
+          if (discountData.used) {
+            throw new Error('This discount code has already been used');
+          }
+
+          setMessage('Discount code valid! Processing products...', false);
+          
+          // Step 2: Get products associated with this discount
+          return getDiscountProducts(discountData);
+        })
+        .then((products) => {
+          if (!products || products.length === 0) {
+            throw new Error('No products found for this discount code');
+          }
+
+          setMessage('Clearing cart and adding products...', false);
+
+          // Step 3: Clear cart
+          return fetch('/cart/clear.js', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            }
+          }).then(() => products);
+        })
+        .then((products) => {
+          // Step 4: Add all products to cart
+          return addProductsToCart(products);
+        })
+        .then(() => {
+          // Step 5: Apply discount code and redirect to checkout
+          setMessage('Products added! Applying discount and redirecting...', false);
+          
+          // Apply the discount code to the cart
+          return fetch('/cart/update.js', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+              attributes: {
+                'discount_code': code
+              }
+            })
+          });
+        })
+        .then(() => {
+          // Redirect to checkout with discount code
+          setTimeout(() => {
+            window.location.href = `/checkout?discount=${encodeURIComponent(code)}`;
+          }, 500);
+        })
+        .catch((error) => {
+          console.error('Error:', error);
+          setMessage(error.message || 'Error processing request. Please try again.', true);
+          btn.disabled = false;
+        });
+
+      // Function to validate discount code with Shopify
+      async function validateDiscountCode(code) {
+        try {
+          // Create a temporary cart to test the discount
+          const response = await fetch('/cart.js', {
+            method: 'GET',
+            headers: {
+              'Content-Type': 'application/json',
+            }
+          });
+          
+          const cart = await response.json();
+          
+          // Try to apply discount to see if it exists and is valid
+          const discountResponse = await fetch('/checkout', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/x-www-form-urlencoded',
+            },
+            body: `discount=${encodeURIComponent(code)}&_method=GET`
+          });
+
+          if (discountResponse.ok) {
+            // Check if discount was applied by examining response
+            const text = await discountResponse.text();
+            
+            // Look for discount validation patterns in the HTML response
+            if (text.includes('discount-code-error') || text.includes('discount_code_error')) {
+              return { valid: false, message: 'Invalid or expired discount code' };
+            }
+            
+            if (text.includes('discount-already-used') || text.includes('usage_limit_reached')) {
+              return { valid: true, used: true, message: 'Discount code has already been used' };
+            }
+
+            // If we get here, discount is likely valid
+            return { 
+              valid: true, 
+              used: false, 
+              code: code,
+              // Extract discount info from response if needed
+              type: extractDiscountType(text),
+              value: extractDiscountValue(text)
+            };
+          } else {
+            return { valid: false, message: 'Unable to validate discount code' };
+          }
+        } catch (error) {
+          console.error('Discount validation error:', error);
+          return { valid: false, message: 'Error validating discount code' };
+        }
+      }
+
+      // Function to extract discount type from Shopify response
+      function extractDiscountType(html) {
+        // Look for discount type indicators in the HTML
+        if (html.includes('percentage') || html.includes('%')) return 'percentage';
+        if (html.includes('fixed_amount') || html.includes('$')) return 'fixed_amount';
+        return 'unknown';
+      }
+
+      // Function to extract discount value from Shopify response
+      function extractDiscountValue(html) {
+        // Extract discount value from HTML response
+        const percentageMatch = html.match(/(\d+)%/);
+        if (percentageMatch) return percentageMatch[1];
+        
+        const amountMatch = html.match(/\$(\d+(?:\.\d{2})?)/);
+        if (amountMatch) return amountMatch[1];
+        
+        return null;
+      }
+
+      // Function to get products for the discount based on section settings
+      async function getDiscountProducts(discountData) {
+        // Map discount code to products using section settings
+        const discountProductMap = {
+          {%- if section.settings.discount_code_1 != blank -%}
+          '{{ section.settings.discount_code_1 }}': [
+            {%- if section.settings.product_handle_1_1 != blank -%}
+            { handle: '{{ section.settings.product_handle_1_1 }}', quantity: {{ section.settings.quantity_1_1 | default: 1 }} },
+            {%- endif -%}
+            {%- if section.settings.product_handle_1_2 != blank -%}
+            { handle: '{{ section.settings.product_handle_1_2 }}', quantity: {{ section.settings.quantity_1_2 | default: 1 }} },
+            {%- endif -%}
+            {%- if section.settings.product_handle_1_3 != blank -%}
+            { handle: '{{ section.settings.product_handle_1_3 }}', quantity: {{ section.settings.quantity_1_3 | default: 1 }} }
+            {%- endif -%}
+          ].filter(p => p.handle){%- if section.settings.discount_code_2 != blank -%},{%- endif -%}
+          {%- endif -%}
+          {%- if section.settings.discount_code_2 != blank -%}
+          '{{ section.settings.discount_code_2 }}': [
+            {%- if section.settings.product_handle_2_1 != blank -%}
+            { handle: '{{ section.settings.product_handle_2_1 }}', quantity: {{ section.settings.quantity_2_1 | default: 1 }} },
+            {%- endif -%}
+            {%- if section.settings.product_handle_2_2 != blank -%}
+            { handle: '{{ section.settings.product_handle_2_2 }}', quantity: {{ section.settings.quantity_2_2 | default: 1 }} },
+            {%- endif -%}
+            {%- if section.settings.product_handle_2_3 != blank -%}
+            { handle: '{{ section.settings.product_handle_2_3 }}', quantity: {{ section.settings.quantity_2_3 | default: 1 }} }
+            {%- endif -%}
+          ].filter(p => p.handle){%- if section.settings.discount_code_3 != blank -%},{%- endif -%}
+          {%- endif -%}
+          {%- if section.settings.discount_code_3 != blank -%}
+          '{{ section.settings.discount_code_3 }}': [
+            {%- if section.settings.product_handle_3_1 != blank -%}
+            { handle: '{{ section.settings.product_handle_3_1 }}', quantity: {{ section.settings.quantity_3_1 | default: 1 }} },
+            {%- endif -%}
+            {%- if section.settings.product_handle_3_2 != blank -%}
+            { handle: '{{ section.settings.product_handle_3_2 }}', quantity: {{ section.settings.quantity_3_2 | default: 1 }} },
+            {%- endif -%}
+            {%- if section.settings.product_handle_3_3 != blank -%}
+            { handle: '{{ section.settings.product_handle_3_3 }}', quantity: {{ section.settings.quantity_3_3 | default: 1 }} }
+            {%- endif -%}
+          ].filter(p => p.handle)
+          {%- endif -%}
+        };
+
+        const products = discountProductMap[discountData.code];
+        if (!products) {
+          throw new Error('No products configured for this discount code');
+        }
+
+        return products;
+      }
+
+      // Function to add multiple products to cart
+      async function addProductsToCart(products) {
+        const addPromises = products.map(async (productData) => {
+          // Get product details
+          const response = await fetch(`/products/${productData.handle}.js`);
+          const product = await response.json();
+          
+          if (!product || !product.variants || product.variants.length === 0) {
+            throw new Error(`Product ${productData.handle} not found or no variants available`);
+          }
+
+          // Get the first available variant
+          const variant = product.variants.find((v) => v.available) || product.variants[0];
+
+          // Add to cart
+          return fetch('/cart/add.js', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+              id: variant.id,
+              quantity: productData.quantity,
+            }),
+          });
+        });
+
+        return Promise.all(addPromises);
+      }
+      });
+
+      // Allow Enter key
+      input.addEventListener('keydown', function (e) {
+        if (e.key === 'Enter') {
+          btn.click();
+        }
+      });
+    })();
+  </script>
+</section>
+
+{% schema %}
+{
+  "name": "Apply promo code",
+  "settings": [
+    { "type": "header", "content": "Section Settings" },
+    { "type": "text", "id": "title", "label": "Title", "default": "Apply your promo code" },
+    { "type": "text", "id": "subtitle", "label": "Subtitle", "default": "Enter a promo code to get a discount" },
+    { "type": "text", "id": "placeholder", "label": "Input placeholder", "default": "Enter promo code" },
+    { "type": "text", "id": "button_text", "label": "Button text", "default": "Apply" },
+    {
+      "type": "image_picker",
+      "id": "bg_image",
+      "label": "Background Image",
+      "info": "Optional background image for the entire section"
+    },
+    {
+      "type": "range",
+      "id": "bg_overlay_opacity",
+      "label": "Background Overlay Opacity",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "default": 0,
+      "unit": "%",
+      "info": "Add a dark overlay over the background image to improve text readability"
+    },
+    {
+      "type": "range",
+      "id": "section_height",
+      "label": "Section Height",
+      "min": 30,
+      "max": 100,
+      "step": 5,
+      "default": 90,
+      "unit": "vh",
+      "info": "Set the height of the section as a percentage of viewport height"
+    },
+    { "type": "color", "id": "bg_color", "label": "Background color", "default": "#ffffff" },
+    { "type": "color", "id": "title_color", "label": "Title color", "default": "#111111" },
+    { "type": "color", "id": "subtitle_color", "label": "Subtitle color", "default": "#666666" },
+    { "type": "color", "id": "button_bg", "label": "Button background", "default": "#111111" },
+    { "type": "color", "id": "button_color", "label": "Button text color", "default": "#ffffff" },
+
+    { "type": "header", "content": "Discount Configuration" },
+    { 
+      "type": "paragraph", 
+      "content": "Configure actual Shopify discount codes and their associated products. The system will validate if the discount code exists in Shopify and hasn't been used before adding products to cart." 
+    },
+
+    { "type": "header", "content": "Discount Code 1" },
+    {
+      "type": "text",
+      "id": "discount_code_1",
+      "label": "Shopify Discount Code 1",
+      "info": "Enter the actual discount code created in Shopify Admin > Discounts"
+    },
+    {
+      "type": "text",
+      "id": "product_handle_1_1",
+      "label": "Product 1 Handle",
+      "info": "First product to add to cart for this discount"
+    },
+    {
+      "type": "number",
+      "id": "quantity_1_1",
+      "label": "Product 1 Quantity",
+      "default": 1
+    },
+    {
+      "type": "text",
+      "id": "product_handle_1_2",
+      "label": "Product 2 Handle",
+      "info": "Second product to add to cart (optional)"
+    },
+    {
+      "type": "number",
+      "id": "quantity_1_2",
+      "label": "Product 2 Quantity",
+      "default": 1
+    },
+    {
+      "type": "text",
+      "id": "product_handle_1_3",
+      "label": "Product 3 Handle",
+      "info": "Third product to add to cart (optional)"
+    },
+    {
+      "type": "number",
+      "id": "quantity_1_3",
+      "label": "Product 3 Quantity",
+      "default": 1
+    },
+
+    { "type": "header", "content": "Discount Code 2" },
+    {
+      "type": "text",
+      "id": "discount_code_2",
+      "label": "Shopify Discount Code 2",
+      "info": "Enter the actual discount code created in Shopify Admin > Discounts"
+    },
+    {
+      "type": "text",
+      "id": "product_handle_2_1",
+      "label": "Product 1 Handle",
+      "info": "First product to add to cart for this discount"
+    },
+    {
+      "type": "number",
+      "id": "quantity_2_1",
+      "label": "Product 1 Quantity",
+      "default": 1
+    },
+    {
+      "type": "text",
+      "id": "product_handle_2_2",
+      "label": "Product 2 Handle",
+      "info": "Second product to add to cart (optional)"
+    },
+    {
+      "type": "number",
+      "id": "quantity_2_2",
+      "label": "Product 2 Quantity",
+      "default": 1
+    },
+    {
+      "type": "text",
+      "id": "product_handle_2_3",
+      "label": "Product 3 Handle",
+      "info": "Third product to add to cart (optional)"
+    },
+    {
+      "type": "number",
+      "id": "quantity_2_3",
+      "label": "Product 3 Quantity",
+      "default": 1
+    },
+
+    { "type": "header", "content": "Discount Code 3" },
+    {
+      "type": "text",
+      "id": "discount_code_3",
+      "label": "Shopify Discount Code 3",
+      "info": "Enter the actual discount code created in Shopify Admin > Discounts"
+    },
+    {
+      "type": "text",
+      "id": "product_handle_3_1",
+      "label": "Product 1 Handle",
+      "info": "First product to add to cart for this discount"
+    },
+    {
+      "type": "number",
+      "id": "quantity_3_1",
+      "label": "Product 1 Quantity",
+      "default": 1
+    },
+    {
+      "type": "text",
+      "id": "product_handle_3_2",
+      "label": "Product 2 Handle",
+      "info": "Second product to add to cart (optional)"
+    },
+    {
+      "type": "number",
+      "id": "quantity_3_2",
+      "label": "Product 2 Quantity",
+      "default": 1
+    },
+    {
+      "type": "text",
+      "id": "product_handle_3_3",
+      "label": "Product 3 Handle",
+      "info": "Third product to add to cart (optional)"
+    },
+    {
+      "type": "number",
+      "id": "quantity_3_3",
+      "label": "Product 3 Quantity",
+      "default": 1
+    }
+  ],
+  "presets": [
+    {
+      "name": "Apply promo code",
+      "category": "Promotions"
+    }
+  ]
+}
+{% endschema %}
