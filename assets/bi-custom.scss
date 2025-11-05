@@ -39,18 +39,32 @@
 
 @font-face {
     font-family: 'MHE-Riyal-Sign';
-    src: url('MHERiyalSign-Regular.woff2') format('woff2'),
-        url('MHERiyalSign-Regular.woff') format('woff'),
-        url('MHERiyalSign-Regular.ttf') format('truetype');
+    src: url('./MHERiyalSign-Regular.woff2') format('woff2'),
+        url('./MHERiyalSign-Regular.woff') format('woff'),
+        url('./MHERiyalSign-Regular.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
     font-display: swap;
 }
 
+@font-face {
+    font-family: 'Acumin-Pro-ExtraCondensed';
+    src: url('./AcuminProExtraCond-Black.eot');
+    src: url('./AcuminProExtraCond-Black.eot?#iefix') format('embedded-opentype'),
+        url('./AcuminProExtraCond-Black.woff2') format('woff2'),
+        url('./AcuminProExtraCond-Black.woff') format('woff'),
+        url('./AcuminProExtraCond-Black.ttf') format('truetype'),
+        url('./AcuminProExtraCond-Black.svg#AcuminProExtraCond-Black') format('svg');
+    font-weight: 900;
+    font-style: normal;
+    font-display: swap;
+}
+
+
 .riyal-font {
     // Initially hide riyal font to prevent glitching
     display: none !important;
-    
+
     &::after {
         position: absolute;
         top: 50%;
@@ -61,7 +75,7 @@
         transform: translateY(-50%);
         font-size: 20px;
     }
-    
+
     // Only show when currency is determined to be SAR
     &.show-riyal {
         display: inline !important;
@@ -71,7 +85,7 @@
 .content-bottom-custom {
     .product-price {
         position: relative;
-        
+
         &.sar-currency {
             padding-left: 28px;
         }
@@ -80,7 +94,7 @@
 
 .ajaxcart__price {
     position: relative;
-    
+
     &.sar-currency {
         padding-left: 28px;
     }
@@ -92,7 +106,7 @@
 .cart__price,
 .order-discount {
     position: relative;
-    
+
     &.sar-currency {
         padding-left: 28px;
     }
@@ -101,7 +115,7 @@
 .js-product-price.product-single__price,
 .js-product-compare-price.product-single__price--compare-at {
     position: relative;
-    
+
     &.sar-currency {
         padding-left: 28px;
     }
@@ -132,26 +146,33 @@
     text-transform: uppercase;
 }
 
-body,
+
 .h1,
 .h2,
 .h3,
-.h4,
-.h5,
-.h6,
 h1,
 h2,
 h3,
+.bwp-block-title {
+    font-family: 'Acumin-Pro-ExtraCondensed' !important;
+}
+
+body,
+
+.h4,
+.h5,
+.h6,
+
 h4,
 h5,
 h6,
 a,
-.bwp-block-desc,
-.bwp-block-title {
+.bwp-block-desc {
     font-family: 'AcuminProCond-Regular' !important;
 }
 
-.wpbingo-inner-section {
+.wpbingo-inner-section,
+.bwp-widget-banner {
     position: relative;
 }
 
@@ -261,6 +282,7 @@ a,
 .jdgm-write-rev-link {
     border-radius: 50px;
 }
+
 .jdgm-review-widget--small .jdgm-rev-widg {
     padding: 16px 20px;
 }
