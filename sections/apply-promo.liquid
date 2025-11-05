@@ -390,39 +390,52 @@
       function getConfiguredProductsForCode(code) {
         const codeLower = code.toLowerCase().trim();
         
-        // Check code 1
-        {%- if section.settings.fallback_code_1 != blank -%}
-        const code1 = '{{ section.settings.fallback_code_1 | strip | downcase }}';
-        if (codeLower === code1) {
-          {%- if section.settings.fallback_products_1 != blank -%}
-          const productHandles = '{{ section.settings.fallback_products_1 | strip }}';
-          const quantity = {{ section.settings.fallback_quantity_1 | default: 1 }};
-          
-          // Split by comma and create product objects
-          return productHandles.split(',').map(handle => ({
-            handle: handle.trim(),
-            quantity: quantity
-          })).filter(product => product.handle !== '');
+        // Build configuration data from Liquid settings
+        const codeConfig = {
+          {%- if section.settings.fallback_code_1 != blank -%}
+          '{{ section.settings.fallback_code_1 | strip | downcase }}': {
+            {%- if section.settings.fallback_products_1 != blank -%}
+            products: '{{ section.settings.fallback_products_1 | strip }}',
+            quantity: {{ section.settings.fallback_quantity_1 | default: 1 }}
+            {%- else -%}
+            products: '',
+            quantity: 1
+            {%- endif -%}
+          },
           {%- endif -%}
-        }
-        {%- endif -%}
+          {%- if section.settings.fallback_code_2 != blank -%}
+          '{{ section.settings.fallback_code_2 | strip | downcase }}': {
+            {%- if section.settings.fallback_products_2 != blank -%}
+            products: '{{ section.settings.fallback_products_2 | strip }}',
+            quantity: {{ section.settings.fallback_quantity_2 | default: 1 }}
+            {%- else -%}
+            products: '',
+            quantity: 1
+            {%- endif -%}
+          }
+          {%- endif -%}
+        };
         
-        // Check code 2
-        {%- if section.settings.fallback_code_2 != blank -%}
-        const code2 = '{{ section.settings.fallback_code_2 | strip | downcase }}';
-        if (codeLower === code2) {
-          {%- if section.settings.fallback_products_2 != blank -%}
-          const productHandles = '{{ section.settings.fallback_products_2 | strip }}';
-          const quantity = {{ section.settings.fallback_quantity_2 | default: 1 }};
+        console.log('DEBUG: Code configuration:', codeConfig);
+        console.log('DEBUG: Looking for code:', codeLower);
+        
+        // Check if this code is configured
+        if (codeConfig[codeLower] && codeConfig[codeLower].products) {
+          const config = codeConfig[codeLower];
+          const productHandles = config.products;
+          const quantity = config.quantity;
+          
+          console.log('DEBUG: Found config for code:', { productHandles, quantity });
           
           // Split by comma and create product objects
-          return productHandles.split(',').map(handle => ({
+          const products = productHandles.split(',').map(handle => ({
             handle: handle.trim(),
             quantity: quantity
           })).filter(product => product.handle !== '');
-          {%- endif -%}
+          
+          console.log('DEBUG: Parsed products:', products);
+          return products;
         }
-        {%- endif -%}
         
         console.log('DEBUG: No configured products found for code:', code);
         return [];
