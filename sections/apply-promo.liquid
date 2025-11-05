@@ -116,7 +116,8 @@
         checkCodeInBackend(code)
         .then((isConfigured) => {
           if (!isConfigured) {
-            const error = new Error('This discount code is not available on our system. Please check the code and try again.');
+            /*This discount code is not available on our system. Please check the code and try again.*/
+            const error = new Error('Invalid Discount code.');
             error.step = 'Backend Configuration Check';
             throw error;
           }
@@ -274,18 +275,23 @@
           
           console.log('DEBUG: Test product added to cart');
           
-          // Try to apply discount and see what happens
-          const discountResponse = await fetch(`/discount/${encodeURIComponent(code)}`, {
-            method: 'GET',
-            redirect: 'manual' // Don't follow redirects automatically
+          // Try to apply discount code to the cart to see if it's valid
+          const updateResponse = await fetch('/cart/update.js', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+              attributes: {
+                'discount_code': code
+              }
+            })
           });
           
-          console.log('DEBUG: Discount URL response status:', discountResponse.status);
+          console.log('DEBUG: Cart update with discount response status:', updateResponse.status);
           
-          if (discountResponse.status === 302 || discountResponse.status === 200) {
-            // Discount exists and is valid
-            
-            // Now try to detect which products this discount applies to
+          if (updateResponse.ok) {
+            // Discount code was accepted, now detect which products it applies to
             const applicableProducts = await detectDiscountProducts(code);
             
             // Clean up - remove test product from cart
@@ -358,35 +364,11 @@
         try {
           console.log('DEBUG: Attempting to detect products for discount:', code);
           
-          // Strategy 1: Check if the discount redirects to a specific product page
-          const discountResponse = await fetch(`/discount/${encodeURIComponent(code)}`, {
-            method: 'GET',
-            redirect: 'manual'
-          });
+          // Strategy: Test products from catalog to see which ones work with the discount
+          console.log('DEBUG: Testing products for discount compatibility');
           
-          console.log('DEBUG: Discount response status:', discountResponse.status);
-          console.log('DEBUG: Discount response headers:', Object.fromEntries(discountResponse.headers.entries()));
-          
-          if (discountResponse.status === 302 || discountResponse.status === 301) {
-            const location = discountResponse.headers.get('location');
-            console.log('DEBUG: Discount redirects to:', location);
-            
-            if (location && location.includes('/products/')) {
-              const productMatch = location.match(/\/products\/([a-zA-Z0-9\-_]+)/);
-              if (productMatch) {
-                const productHandle = productMatch[1];
-                console.log('DEBUG: Found product from redirect:', productHandle);
-                return [{ handle: productHandle, quantity: 1 }];
-              }
-            }
-          }
-          
-          // Strategy 2: For discount codes that apply to specific collections or products,
-          // we need to test products individually to see which ones the discount applies to
-          console.log('DEBUG: No direct product redirect found, trying product testing');
-          
-          // Get a broader range of products to test
-          const productsResponse = await fetch('/products.json?limit=20');
+          // Get all products to find potential matches
+          const productsResponse = await fetch('/products.json?limit=250');
           const productsData = await productsResponse.json();
           
           if (!productsData.products || productsData.products.length === 0) {
@@ -394,18 +376,43 @@
             return [];
           }
           
-          // Test each product to see if the discount applies
+          // Strategy 1: Look for products that might be free gifts based on name/title
+          const giftKeywords = ['gift', 'free', 'hat', 'worlds2025', 'ewc'];
+          const potentialGifts = productsData.products.filter(product => {
+            const title = product.title.toLowerCase();
+            return giftKeywords.some(keyword => title.includes(keyword));
+          });
+          
+          console.log('DEBUG: Found potential gift products:', potentialGifts.map(p => p.title));
+          
+          // Test potential gift products first
           const applicableProducts = [];
           
-          for (const product of productsData.products.slice(0, 10)) { // Test first 10 products
+          for (const product of potentialGifts) {
             try {
               const isApplicable = await testProductWithDiscount(product, code);
               if (isApplicable) {
-                console.log('DEBUG: Product applies to discount:', product.handle);
+                console.log('DEBUG: Gift product applies to discount:', product.handle);
                 applicableProducts.push({ handle: product.handle, quantity: 1 });
               }
             } catch (testError) {
-              console.log('DEBUG: Error testing product:', product.handle, testError);
+              console.log('DEBUG: Error testing gift product:', product.handle, testError);
+            }
+          }
+          
+          // If no gift products found, test a sample of regular products
+          if (applicableProducts.length === 0) {
+            console.log('DEBUG: No gift products worked, testing regular products');
+            for (const product of productsData.products.slice(0, 10)) {
+              try {
+                const isApplicable = await testProductWithDiscount(product, code);
+                if (isApplicable) {
+                  console.log('DEBUG: Regular product applies to discount:', product.handle);
+                  applicableProducts.push({ handle: product.handle, quantity: 1 });
+                }
+              } catch (testError) {
+                console.log('DEBUG: Error testing regular product:', product.handle, testError);
+              }
             }
           }
           
@@ -449,18 +456,37 @@
             return false;
           }
           
-          // Try to apply the discount
-          const discountTestResponse = await fetch(`/discount/${encodeURIComponent(discountCode)}`, {
-            method: 'GET',
-            redirect: 'manual'
+          // Get cart before discount
+          const cartBeforeResponse = await fetch('/cart.js');
+          const cartBefore = await cartBeforeResponse.json();
+          const priceBefore = cartBefore.total_price;
+          
+          // Try to update cart with discount code
+          const discountUpdateResponse = await fetch('/cart/update.js', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              attributes: {
+                'discount_code': discountCode
+              }
+            })
           });
           
-          // Check if the discount was successfully applied
-          // A 302 redirect usually means the discount was applied and we're being redirected to cart/checkout
-          if (discountTestResponse.status === 302) {
-            const location = discountTestResponse.headers.get('location');
-            // If redirected to cart or checkout, the discount likely applies
-            if (location && (location.includes('/cart') || location.includes('/checkout'))) {
+          if (discountUpdateResponse.ok) {
+            // Get cart after discount attempt
+            const cartAfterResponse = await fetch('/cart.js');
+            const cartAfter = await cartAfterResponse.json();
+            const priceAfter = cartAfter.total_price;
+            
+            // Check if price changed or if it's a 100% discount (free product)
+            if (priceAfter < priceBefore || (priceBefore > 0 && priceAfter === 0)) {
+              console.log('DEBUG: Discount applied! Price changed from', priceBefore, 'to', priceAfter);
+              return true;
+            }
+            
+            // For 100% off discounts on free products, check if discount code appears in cart attributes
+            if (cartAfter.attributes && cartAfter.attributes.discount_code === discountCode) {
+              console.log('DEBUG: Discount code accepted in cart attributes');
               return true;
             }
           }
@@ -526,8 +552,8 @@
           console.log('DEBUG: Getting products for discount:', discountData.code);
           console.log('DEBUG: Discount data:', discountData);
           
-          // Check if validation specifically detected no products
-          if (discountData.type === 'no_products_detected') {
+          // Check if validation specifically detected no products or is assumed valid
+          if (discountData.type === 'no_products_detected' || discountData.type === 'assumed') {
             const error = new Error('Could not automatically detect products for this discount code. Please contact support to configure the specific products for this discount.');
             error.step = 'Product Assignment';
             throw error;
