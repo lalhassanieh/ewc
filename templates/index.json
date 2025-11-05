@@ -2393,19 +2393,17 @@
         },
         "tab_ABHmqH": {
           "type": "tab",
-          "disabled": true,
           "settings": {
-            "title": "Toys",
-            "collection": "toys",
+            "title": "hoodies",
+            "collection": "cpp-apparel",
             "limit": 8
           }
         },
         "tab_nLfL8Q": {
           "type": "tab",
-          "disabled": true,
           "settings": {
-            "title": "Trophies & Awards",
-            "collection": "trophies-awards",
+            "title": "JACKETS",
+            "collection": "jackets-2",
             "limit": 8
           }
         }
@@ -2471,7 +2469,7 @@
               "type": "title",
               "settings": {
                 "heading_size": "h3",
-                "title": "TRENDING NOW",
+                "title": "ESPORTS MERCHANDISE",
                 "font": "--font-family-second",
                 "color": "#231f20",
                 "font_size": 35,
@@ -2721,6 +2719,7 @@
         },
         "tab_kTHcn8": {
           "type": "tab",
+          "disabled": true,
           "settings": {
             "title": "Tshirts",
             "collection": "t-shirts-1",
@@ -2729,6 +2728,7 @@
         },
         "tab_XANX7D": {
           "type": "tab",
+          "disabled": true,
           "settings": {
             "title": "Hoodies",
             "collection": "hoodies-1",
@@ -2737,6 +2737,7 @@
         },
         "tab_kgxgah": {
           "type": "tab",
+          "disabled": true,
           "settings": {
             "title": "Jackets",
             "collection": "jackets-1",
