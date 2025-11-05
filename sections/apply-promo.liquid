@@ -508,32 +508,21 @@
         }
       }
 
-      // Function to get products assigned to this discount from Shopify
+      // Function to get products assigned to this discount
       async function getDiscountProducts(discountData) {
         try {
-          console.log('DEBUG: Getting products for discount:', discountData.code);
-          console.log('DEBUG: Discount data:', discountData);
+          console.log('DEBUG: Getting configured product for discount:', discountData.code);
           
-          // Priority 1: Products automatically detected from Shopify discount
-          if (discountData.applicableProducts && discountData.applicableProducts.length > 0) {
-            console.log('DEBUG: Using automatically detected products from Shopify:', discountData.applicableProducts);
-            return discountData.applicableProducts;
+          // Get the configured product handle for this specific discount code
+          const productInfo = getConfiguredProductForCode(discountData.code);
+          
+          if (productInfo && productInfo.handle) {
+            console.log('DEBUG: Found configured product:', productInfo);
+            return [productInfo];
           }
           
-          // Priority 2: If no products detected, try to get them directly
-          console.log('DEBUG: No products detected automatically, trying direct detection');
-          const detectedProducts = await detectDiscountProducts(discountData.code);
-          
-          if (detectedProducts && detectedProducts.length > 0) {
-            console.log('DEBUG: Found products through direct detection:', detectedProducts);
-            return detectedProducts;
-          }
-          
-          // If no products detected, don't use random fallback products
-          // Instead, throw a clear error asking for manual specification
-          console.log('DEBUG: No products could be automatically detected');
-          
-          const error = new Error('Could not automatically detect products for this discount code. Please contact support to configure the specific products for this discount.');
+          // If no product configured for this code, throw error
+          const error = new Error('No product configured for this discount code. Please add the product handle in theme customizer.');
           error.step = 'Product Assignment';
           throw error;
           
@@ -542,6 +531,40 @@
           if (!error.step) error.step = 'Product Assignment';
           throw error;
         }
+      }
+      
+      // Get the configured product for a specific discount code
+      function getConfiguredProductForCode(code) {
+        const codeLower = code.toLowerCase().trim();
+        
+        // Check code 1
+        {%- if section.settings.fallback_code_1 != blank -%}
+        const code1 = '{{ section.settings.fallback_code_1 | strip | downcase }}';
+        if (codeLower === code1) {
+          {%- if section.settings.fallback_products_1 != blank -%}
+          return {
+            handle: '{{ section.settings.fallback_products_1 | strip }}',
+            quantity: {{ section.settings.fallback_quantity_1 | default: 1 }}
+          };
+          {%- endif -%}
+        }
+        {%- endif -%}
+        
+        // Check code 2
+        {%- if section.settings.fallback_code_2 != blank -%}
+        const code2 = '{{ section.settings.fallback_code_2 | strip | downcase }}';
+        if (codeLower === code2) {
+          {%- if section.settings.fallback_products_2 != blank -%}
+          return {
+            handle: '{{ section.settings.fallback_products_2 | strip }}',
+            quantity: {{ section.settings.fallback_quantity_2 | default: 1 }}
+          };
+          {%- endif -%}
+        }
+        {%- endif -%}
+        
+        console.log('DEBUG: No configured product found for code:', code);
+        return null;
       }
       
       // Fallback function to get some products when auto-detection fails
@@ -567,17 +590,28 @@
 
       // Function to add multiple products to cart
       async function addProductsToCart(products) {
+        console.log('DEBUG: Adding products to cart:', products);
+        
         const addPromises = products.map(async (productData) => {
-          // Get product details
+          console.log('DEBUG: Processing product:', productData);
+          
+          // Get product details using handle
           const response = await fetch(`/products/${productData.handle}.js`);
+          
+          if (!response.ok) {
+            throw new Error(`Product ${productData.handle} not found`);
+          }
+          
           const product = await response.json();
+          console.log('DEBUG: Product details:', product);
           
           if (!product || !product.variants || product.variants.length === 0) {
-            throw new Error(`Product ${productData.handle} not found or no variants available`);
+            throw new Error(`Product ${productData.handle} has no variants available`);
           }
 
           // Get the first available variant
           const variant = product.variants.find((v) => v.available) || product.variants[0];
+          console.log('DEBUG: Using variant:', variant.id, 'for quantity:', productData.quantity);
 
           // Add to cart
           return fetch('/cart/add.js', {
@@ -587,7 +621,7 @@
             },
             body: JSON.stringify({
               id: variant.id,
-              quantity: productData.quantity,
+              quantity: productData.quantity || 1,
             }),
           });
         });
@@ -668,9 +702,34 @@
     },
     {
       "type": "text",
+      "id": "fallback_products_1",
+      "label": "Product Handle for Code 1",
+      "info": "Product handle to add when this discount is used (e.g: 2025-cloud9-official-pro-alternate-jersey)"
+    },
+    {
+      "type": "number",
+      "id": "fallback_quantity_1",
+      "label": "Quantity for Code 1",
+      "default": 1
+    },
+
+    {
+      "type": "text",
       "id": "fallback_code_2",
       "label": "Discount Code 2",
       "info": "Second allowed discount code (must exist in Shopify admin)"
+    },
+    {
+      "type": "text",
+      "id": "fallback_products_2",
+      "label": "Product Handle for Code 2",
+      "info": "Product handle to add when this discount is used (e.g: product-handle-name)"
+    },
+    {
+      "type": "number",
+      "id": "fallback_quantity_2",
+      "label": "Quantity for Code 2",
+      "default": 1
     }
   ],
   "presets": [
