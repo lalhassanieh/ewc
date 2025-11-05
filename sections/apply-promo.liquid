@@ -210,24 +210,30 @@
           const configuredCodes = [];
           
           // Add fallback codes if configured (with trimming and case handling)
-          {%- if section.settings.fallback_code_1 != blank -%}
-          configuredCodes.push('{{ section.settings.fallback_code_1 | strip }}');
+          {%- assign code1 = section.settings.fallback_code_1 | strip -%}
+          {%- assign code2 = section.settings.fallback_code_2 | strip -%}
+          
+          {%- if code1 != blank and code1 != '' -%}
+          configuredCodes.push('{{ code1 }}');
           {%- endif -%}
-          {%- if section.settings.fallback_code_2 != blank -%}
-          configuredCodes.push('{{ section.settings.fallback_code_2 | strip }}');
+          {%- if code2 != blank and code2 != '' -%}
+          configuredCodes.push('{{ code2 }}');
           {%- endif -%}
           
           // Debug what Liquid is actually outputting
-          console.log('DEBUG: Section ID:', '{{ section.id }}');
-          console.log('DEBUG: Section Type:', '{{ section.type }}');
-          console.log('DEBUG: All Settings:', {{ section.settings | json }});
-          console.log('DEBUG: Raw setting 1:', '{{ section.settings.fallback_code_1 }}');
-          console.log('DEBUG: Raw setting 2:', '{{ section.settings.fallback_code_2 }}');
-          console.log('DEBUG: Title setting:', '{{ section.settings.title }}');
-          {%- if section.settings.fallback_code_1 != blank -%}
-          console.log('DEBUG: Setting 1 is NOT blank');
+          console.log('DEBUG: About to add codes...');
+          console.log('DEBUG: Code1 variable:', '{{ code1 }}');
+          console.log('DEBUG: Code2 variable:', '{{ code2 }}');
+          console.log('DEBUG: Code1 length:', '{{ code1 | size }}');
+          {%- if code1 != blank and code1 != '' -%}
+          console.log('DEBUG: Adding code1 to array');
           {%- else -%}
-          console.log('DEBUG: Setting 1 IS blank');
+          console.log('DEBUG: Code1 NOT added - blank or empty');
+          {%- endif -%}
+          {%- if code2 != blank and code2 != '' -%}
+          console.log('DEBUG: Adding code2 to array');
+          {%- else -%}
+          console.log('DEBUG: Code2 NOT added - blank or empty');
           {%- endif -%}
 
           // Check if the entered code exists in our configured codes (case-insensitive)
