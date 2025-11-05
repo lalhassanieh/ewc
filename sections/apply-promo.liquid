@@ -308,9 +308,6 @@
           if (discountResponse.status === 302 || discountResponse.status === 200) {
             // Discount exists and is valid
             
-            // Now try to detect which products this discount applies to
-            const applicableProducts = await detectDiscountProducts(code);
-            
             // Clean up - remove test product from cart
             await fetch('/cart/clear.js', { method: 'POST' });
             
@@ -318,9 +315,7 @@
               valid: true,
               used: false,
               code: code,
-              type: 'detected',
-              value: null,
-              applicableProducts: applicableProducts
+              type: 'validated'
             };
           }
           
@@ -363,189 +358,22 @@
           };
         }
       }
-      
-      // Function to detect which products a discount applies to
-      async function detectDiscountProducts(code) {
-        try {
-          console.log('DEBUG: Attempting to detect products for discount:', code);
-          
-          // Strategy 1: Check if the discount redirects to a specific product page
-          const discountResponse = await fetch(`/discount/${encodeURIComponent(code)}`, {
-            method: 'GET',
-            redirect: 'manual'
-          });
-          
-          console.log('DEBUG: Discount response status:', discountResponse.status);
-          console.log('DEBUG: Discount response headers:', Object.fromEntries(discountResponse.headers.entries()));
-          
-          if (discountResponse.status === 302 || discountResponse.status === 301) {
-            const location = discountResponse.headers.get('location');
-            console.log('DEBUG: Discount redirects to:', location);
-            
-            if (location && location.includes('/products/')) {
-              const productMatch = location.match(/\/products\/([a-zA-Z0-9\-_]+)/);
-              if (productMatch) {
-                const productHandle = productMatch[1];
-                console.log('DEBUG: Found product from redirect:', productHandle);
-                return [{ handle: productHandle, quantity: 1 }];
-              }
-            }
-          }
-          
-          // Strategy 2: For discount codes that apply to specific collections or products,
-          // we need to test products individually to see which ones the discount applies to
-          console.log('DEBUG: No direct product redirect found, trying product testing');
-          
-          // Get a broader range of products to test
-          const productsResponse = await fetch('/products.json?limit=20');
-          const productsData = await productsResponse.json();
-          
-          if (!productsData.products || productsData.products.length === 0) {
-            console.log('DEBUG: No products available for testing');
-            return [];
-          }
-          
-          // Test each product to see if the discount applies
-          const applicableProducts = [];
-          
-          for (const product of productsData.products.slice(0, 10)) { // Test first 10 products
-            try {
-              const isApplicable = await testProductWithDiscount(product, code);
-              if (isApplicable) {
-                console.log('DEBUG: Product applies to discount:', product.handle);
-                applicableProducts.push({ handle: product.handle, quantity: 1 });
-              }
-            } catch (testError) {
-              console.log('DEBUG: Error testing product:', product.handle, testError);
-            }
-          }
-          
-          if (applicableProducts.length > 0) {
-            console.log('DEBUG: Found applicable products through testing:', applicableProducts);
-            return applicableProducts.slice(0, 3); // Limit to 3 products max
-          }
-          
-          console.log('DEBUG: No applicable products found through testing');
-          return [];
-          
-        } catch (error) {
-          console.error('DEBUG: Error detecting discount products:', error);
-          return [];
-        }
-      }
-      
-      // Test if a specific product works with the discount
-      async function testProductWithDiscount(product, discountCode) {
-        try {
-          if (!product.variants || product.variants.length === 0) {
-            return false;
-          }
-          
-          const variant = product.variants[0];
-          
-          // Clear cart first
-          await fetch('/cart/clear.js', { method: 'POST' });
-          
-          // Add the product to cart
-          const addResponse = await fetch('/cart/add.js', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-              id: variant.id,
-              quantity: 1
-            })
-          });
-          
-          if (!addResponse.ok) {
-            return false;
-          }
-          
-          // Try to apply the discount
-          const discountTestResponse = await fetch(`/discount/${encodeURIComponent(discountCode)}`, {
-            method: 'GET',
-            redirect: 'manual'
-          });
-          
-          // Check if the discount was successfully applied
-          // A 302 redirect usually means the discount was applied and we're being redirected to cart/checkout
-          if (discountTestResponse.status === 302) {
-            const location = discountTestResponse.headers.get('location');
-            // If redirected to cart or checkout, the discount likely applies
-            if (location && (location.includes('/cart') || location.includes('/checkout'))) {
-              return true;
-            }
-          }
-          
-          return false;
-          
-        } catch (error) {
-          console.error('Error testing product with discount:', error);
-          return false;
-        }
-      }
 
-      // Function to extract discount type from Shopify response
-      function extractDiscountType(html) {
-        // Look for discount type indicators in the HTML
-        if (html.includes('percentage') || html.includes('%')) return 'percentage';
-        if (html.includes('fixed_amount') || html.includes('$')) return 'fixed_amount';
-        return 'unknown';
-      }
-
-      // Function to extract discount value from Shopify response
-      function extractDiscountValue(html) {
-        // Extract discount value from HTML response
-        const percentageMatch = html.match(/(\d+)%/);
-        if (percentageMatch) return percentageMatch[1];
-        
-        const amountMatch = html.match(/\$(\d+(?:\.\d{2})?)/);
-        if (amountMatch) return amountMatch[1];
-        
-        return null;
-      }
-
-      // Function to extract applicable products from Shopify checkout response
-      function extractApplicableProducts(html) {
-        try {
-          // Try to find product handles in the checkout response
-          const productMatches = html.match(/\/products\/([a-zA-Z0-9\-_]+)/g);
-          if (productMatches && productMatches.length > 0) {
-            const uniqueHandles = [...new Set(productMatches.map(match => 
-              match.replace('/products/', '')
-            ))];
-            return uniqueHandles.map(handle => ({ handle, quantity: 1 }));
-          }
-          
-          // Alternative: look for data-product-handle attributes
-          const handleMatches = html.match(/data-product-handle=['"]([^'"]+)['"]/g);
-          if (handleMatches && handleMatches.length > 0) {
-            const handles = handleMatches.map(match => 
-              match.match(/data-product-handle=['"]([^'"]+)['"]/)[1]
-            );
-            return [...new Set(handles)].map(handle => ({ handle, quantity: 1 }));
-          }
-          
-          return [];
-        } catch (error) {
-          return [];
-        }
-      }
-
-      // Function to get products assigned to this discount
+      // Function to get products assigned to this discount (manual configuration only)
       async function getDiscountProducts(discountData) {
         try {
-          console.log('DEBUG: Getting configured product for discount:', discountData.code);
+          console.log('DEBUG: Getting manually configured products for discount:', discountData.code);
           
-          // Get the configured product handle for this specific discount code
-          const productInfo = getConfiguredProductForCode(discountData.code);
+          // Get the configured product handles for this specific discount code
+          const products = getConfiguredProductsForCode(discountData.code);
           
-          if (productInfo && productInfo.handle) {
-            console.log('DEBUG: Found configured product:', productInfo);
-            return [productInfo];
+          if (products && products.length > 0) {
+            console.log('DEBUG: Found configured products:', products);
+            return products;
           }
           
-          // If no product configured for this code, throw error
-          const error = new Error('No product configured for this discount code. Please add the product handle in theme customizer.');
+          // If no products configured for this code, throw error
+          const error = new Error('No products configured for this discount code. Please add product handles in theme customizer.');
           error.step = 'Product Assignment';
           throw error;
           
@@ -556,8 +384,8 @@
         }
       }
       
-      // Get the configured product for a specific discount code
-      function getConfiguredProductForCode(code) {
+      // Get the configured products for a specific discount code (supports comma-separated handles)
+      function getConfiguredProductsForCode(code) {
         const codeLower = code.toLowerCase().trim();
         
         // Check code 1
@@ -565,10 +393,14 @@
         const code1 = '{{ section.settings.fallback_code_1 | strip | downcase }}';
         if (codeLower === code1) {
           {%- if section.settings.fallback_products_1 != blank -%}
-          return {
-            handle: '{{ section.settings.fallback_products_1 | strip }}',
-            quantity: {{ section.settings.fallback_quantity_1 | default: 1 }}
-          };
+          const productHandles = '{{ section.settings.fallback_products_1 | strip }}';
+          const quantity = {{ section.settings.fallback_quantity_1 | default: 1 }};
+          
+          // Split by comma and create product objects
+          return productHandles.split(',').map(handle => ({
+            handle: handle.trim(),
+            quantity: quantity
+          })).filter(product => product.handle !== '');
           {%- endif -%}
         }
         {%- endif -%}
@@ -578,37 +410,22 @@
         const code2 = '{{ section.settings.fallback_code_2 | strip | downcase }}';
         if (codeLower === code2) {
           {%- if section.settings.fallback_products_2 != blank -%}
-          return {
-            handle: '{{ section.settings.fallback_products_2 | strip }}',
-            quantity: {{ section.settings.fallback_quantity_2 | default: 1 }}
-          };
+          const productHandles = '{{ section.settings.fallback_products_2 | strip }}';
+          const quantity = {{ section.settings.fallback_quantity_2 | default: 1 }};
+          
+          // Split by comma and create product objects
+          return productHandles.split(',').map(handle => ({
+            handle: handle.trim(),
+            quantity: quantity
+          })).filter(product => product.handle !== '');
           {%- endif -%}
         }
         {%- endif -%}
         
-        console.log('DEBUG: No configured product found for code:', code);
-        return null;
+        console.log('DEBUG: No configured products found for code:', code);
+        return [];
       }
-      
-      // Fallback function to get some products when auto-detection fails
-      async function getFallbackProducts() {
-        try {
-          const response = await fetch('/products.json?limit=3');
-          const data = await response.json();
-          
-          if (data.products && data.products.length > 0) {
-            return data.products.map(product => ({
-              handle: product.handle,
-              quantity: 1
-            }));
-          }
-          
-          return [];
-        } catch (error) {
-          console.error('Error getting fallback products:', error);
-          return [];
-        }
-      }
+
 
 
       // Function to add multiple products to cart
@@ -712,10 +529,10 @@
       "content": "🔑 REQUIRED: You MUST configure discount codes here for the form to work. The system will reject any codes not listed in this section." 
     },
 
-    { "type": "header", "content": "📋 Setup Instructions" },
+    { "type": "header", "content": "📋 Manual Setup Instructions" },
     { 
       "type": "paragraph", 
-      "content": "1. Enter your discount code exactly as it appears in Shopify admin\n2. Enter the product handle you want to add to cart\n3. Set the quantity to add\n4. The system will validate the code with Shopify and add your specified product" 
+      "content": "✅ MANUAL CONFIGURATION ONLY\n1. Enter your discount code exactly as it appears in Shopify admin\n2. Enter the product handle(s) to add to cart (comma-separated for multiple)\n3. Set the quantity per product\n4. The system will validate the code with Shopify and add your specified products" 
     },
     {
       "type": "text",
@@ -727,9 +544,9 @@
     {
       "type": "text",
       "id": "fallback_products_1",
-      "label": "🎯 Product Handle for Code 1",
-      "info": "Product handle from your products (found in product URL)",
-      "placeholder": "2025-cloud9-official-pro-alternate-jersey"
+      "label": "🎯 Product Handle(s) for Code 1",
+      "info": "Product handle(s). Use comma to separate multiple: product-1,product-2,product-3",
+      "placeholder": "2025-cloud9-official-pro-alternate-jersey,another-product"
     },
     {
       "type": "number",
@@ -748,8 +565,9 @@
     {
       "type": "text",
       "id": "fallback_products_2",
-      "label": "Product Handle for Code 2",
-      "info": "Product handle to add when this discount is used (e.g: product-handle-name)"
+      "label": "🎯 Product Handle(s) for Code 2",
+      "info": "Product handle(s). Use comma to separate multiple: product-1,product-2,product-3",
+      "placeholder": "product-handle-1,product-handle-2"
     },
     {
       "type": "number",
