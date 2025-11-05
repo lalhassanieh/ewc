@@ -1071,6 +1071,7 @@
                     "description_KyQG9M": {
                       "type": "description",
                       "name": "desc",
+                      "disabled": true,
                       "settings": {
                         "desc": "Bring home the spirit of champions with<br>exclusive EWC trophy replicas.",
                         "font": "--font-family-second",
@@ -1214,7 +1215,7 @@
                   "settings": {
                     "content_position": "absolute",
                     "vertical_position": "bottom",
-                    "horizontal_position": "left",
+                    "horizontal_position": "right",
                     "text_align": "left",
                     "background_content": "rgba(0,0,0,0)",
                     "border_radius_content": "0px 0px 0px 0px",
@@ -1254,6 +1255,7 @@
                     "description_jJhi7d": {
                       "type": "description",
                       "name": "desc",
+                      "disabled": true,
                       "settings": {
                         "desc": "From the arena to the streets — <br>accessories built for every player.",
                         "font": "--font-family-second",
@@ -2441,6 +2443,40 @@
         "column2": 3,
         "column3": 1,
         "column4": 1
+      }
+    },
+    "apply_promo_4Akj9E": {
+      "type": "apply-promo",
+      "name": "Apply promo code",
+      "settings": {
+        "title": "APPLY YOUR PROMO CODE",
+        "subtitle": "Enter a promo code to claim",
+        "placeholder": "Enter promo code",
+        "button_text": "Apply",
+        "bg_image": "shopify://shop_images/Banner-01.2.jpg",
+        "bg_overlay_opacity": 30,
+        "section_height": 60,
+        "bg_color": "#ffffff",
+        "title_color": "#ffffff",
+        "subtitle_color": "#ffffff",
+        "button_bg": "#d1b26e",
+        "button_color": "#ffffff",
+        "code_1": "free-test-gift",
+        "product_handle_1": "worlds2025-gift-ewc-tshirt",
+        "code_2": "EWC25-TEE-15-31080404",
+        "product_handle_2": "worlds2025-gift-ewc-tshirt",
+        "code_3": "EWC25-HOOD-10-ZUIQTR8L",
+        "product_handle_3": "worlds2025-gift-ewc-hoodie",
+        "code_4": "EWC25-HAT-20-UXSTM0DY",
+        "product_handle_4": "docapp-free-gift-free-worlds2025-gift-ewc-hat-6751",
+        "code_5": "EWC25-HAT-20-VUN8B6X2",
+        "product_handle_5": "docapp-free-gift-free-worlds2025-gift-ewc-hat",
+        "code_6": "EWC25-HAT-20-6PYDAL9W",
+        "product_handle_6": "worlds2025-gift-ewc-hat",
+        "code_7": "EWC25-COIN-10-Q0LYJNCD",
+        "product_handle_7": "worlds2025-gift-ewc-collector-coin",
+        "code_8": "",
+        "product_handle_8": ""
       }
     },
     "featured_custom_section_aMVTBf": {
@@ -3938,40 +3974,6 @@
         "vertical_align": "top",
         "horizontal_align": "left"
       }
-    },
-    "apply_promo_4Akj9E": {
-      "type": "apply-promo",
-      "name": "Apply promo code",
-      "settings": {
-        "title": "APPLY YOUR PROMO CODE",
-        "subtitle": "Enter a promo code to get a discount",
-        "placeholder": "Enter promo code",
-        "button_text": "Apply",
-        "bg_image": "shopify://shop_images/Banner-01.2.jpg",
-        "bg_overlay_opacity": 30,
-        "section_height": 60,
-        "bg_color": "#ffffff",
-        "title_color": "#ffffff",
-        "subtitle_color": "#ffffff",
-        "button_bg": "#d1b26e",
-        "button_color": "#ffffff",
-        "code_1": "free-test-gift",
-        "product_handle_1": "worlds2025-gift-ewc-tshirt",
-        "code_2": "EWC25-TEE-15-31080404",
-        "product_handle_2": "worlds2025-gift-ewc-tshirt",
-        "code_3": "EWC25-HOOD-10-ZUIQTR8L",
-        "product_handle_3": "worlds2025-gift-ewc-hoodie",
-        "code_4": "EWC25-HAT-20-UXSTM0DY",
-        "product_handle_4": "docapp-free-gift-free-worlds2025-gift-ewc-hat-6751",
-        "code_5": "EWC25-HAT-20-VUN8B6X2",
-        "product_handle_5": "docapp-free-gift-free-worlds2025-gift-ewc-hat",
-        "code_6": "EWC25-HAT-20-6PYDAL9W",
-        "product_handle_6": "worlds2025-gift-ewc-hat",
-        "code_7": "EWC25-COIN-10-Q0LYJNCD",
-        "product_handle_7": "worlds2025-gift-ewc-collector-coin",
-        "code_8": "",
-        "product_handle_8": ""
-      }
     }
   },
   "order": [
@@ -3985,6 +3987,7 @@
     "featured_custom_section_mzGr9V",
     "featured_custom_section_JFFQyz",
     "featured_product_tabs_BVzBap",
+    "apply_promo_4Akj9E",
     "featured_custom_section_aMVTBf",
     "featured_custom_section_JQqpcL",
     "featured_product_tabs_AyBiXd",
@@ -3992,7 +3995,6 @@
     "featured_custom_section_m4kR83",
     "featured_custom_section_nxRpXp",
     "featured_custom_section_4VMgVA",
-    "featured_custom_section_eUzjf3",
-    "apply_promo_4Akj9E"
+    "featured_custom_section_eUzjf3"
   ]
 }
