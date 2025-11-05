@@ -2450,7 +2450,7 @@
       "name": "Apply promo code",
       "settings": {
         "title": "APPLY YOUR PROMO CODE",
-        "subtitle": "Enter a promo code to claim",
+        "subtitle": "Enter the promo code to claim your Worlds2025 drop",
         "placeholder": "Enter promo code",
         "button_text": "Apply",
         "bg_image": "shopify://shop_images/Banner-01.2.jpg",
