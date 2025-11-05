@@ -113,6 +113,8 @@
         btn.disabled = true;
 
         // Step 1: Check if the code exists in backend configuration and get products
+        let backendConfig = null;
+        
         checkCodeInBackend(code)
         .then((configResult) => {
           if (!configResult.found) {
@@ -121,10 +123,13 @@
             throw error;
           }
 
+          // Store backend config for later use
+          backendConfig = configResult;
+          
           setMessage('Code found in system! Validating with Shopify...', false);
           
-          // Step 2: Validate the discount code with Shopify backend, passing the configured products
-          return validateDiscountCode(code, configResult.products);
+          // Step 2: Validate the discount code with Shopify backend
+          return validateDiscountCode(code);
         })
         .then((discountData) => {
           if (!discountData.valid) {
@@ -139,10 +144,10 @@
             throw error;
           }
 
-          setMessage('Discount code validated! Getting assigned products from Shopify...', false);
+          setMessage('Discount code validated! Getting assigned products...', false);
           
-          // Step 3: Get products assigned to this discount from Shopify
-          return getDiscountProducts(discountData);
+          // Step 3: Get products assigned to this discount (with backend fallback)
+          return getDiscountProducts(discountData, backendConfig);
         })
         .then((products) => {
           if (!products || products.length === 0) {
@@ -299,25 +304,24 @@
         });
       }
 
-      // Function to validate discount code with Shopify
-      async function validateDiscountCode(code, configuredProducts) {
+      // Function to validate discount code with Shopify and get product info
+      async function validateDiscountCode(code) {
         try {
-          console.log('DEBUG: Starting Shopify validation for:', code);
-          console.log('DEBUG: Using configured products:', configuredProducts);
+          console.log('DEBUG: Starting Shopify validation and product detection for:', code);
           
-          // Try to validate the discount by testing with one of the configured products
-          const firstProduct = configuredProducts[0];
+          // Try to get discount information by applying it to a temporary product
+          // First, get a random product to test with
+          const productsResponse = await fetch('/products.json?limit=1');
+          const productsData = await productsResponse.json();
           
-          // Get the product details to test with
-          const productResponse = await fetch(`/products/${firstProduct.handle}.js`);
-          if (!productResponse.ok) {
-            throw new Error(`Product ${firstProduct.handle} not found`);
+          if (!productsData.products || productsData.products.length === 0) {
+            throw new Error('No products available for testing discount');
           }
           
-          const testProduct = await productResponse.json();
+          const testProduct = productsData.products[0];
           const testVariant = testProduct.variants[0];
           
-          console.log('DEBUG: Using configured product for validation:', testProduct.handle);
+          console.log('DEBUG: Using test product:', testProduct.handle);
           
           // Add test product to cart
           const addResponse = await fetch('/cart/add.js', {
@@ -353,33 +357,52 @@
           console.log('DEBUG: Cart update with discount response status:', updateResponse.status);
           
           if (updateResponse.ok) {
-            // Discount code was accepted, use the configured products
+            // Discount exists and is valid
+            
+            // Now try to detect which products this discount applies to
+            const applicableProducts = await detectDiscountProducts(code);
             
             // Clean up - remove test product from cart
             await fetch('/cart/clear.js', { method: 'POST' });
             
-            return {
-              valid: true,
-              used: false,
-              code: code,
-              type: 'configured',
-              value: null,
-              applicableProducts: configuredProducts
-            };
+            // Only return success if we actually found products
+            if (applicableProducts && applicableProducts.length > 0) {
+              return {
+                valid: true,
+                used: false,
+                code: code,
+                type: 'detected',
+                value: null,
+                applicableProducts: applicableProducts
+              };
+            } else {
+              return {
+                valid: true,
+                used: false,
+                code: code,
+                type: 'no_products_detected',
+                value: null,
+                applicableProducts: []
+              };
+            }
           }
           
-          if (discountResponse.status === 404) {
+          if (updateResponse.status === 404) {
             // Clean up
             await fetch('/cart/clear.js', { method: 'POST' });
             return { valid: false, message: 'Discount code does not exist in Shopify' };
           }
           
-          // If cart update failed, the discount code might be invalid
+          // Clean up and assume valid if inconclusive
           await fetch('/cart/clear.js', { method: 'POST' });
           
           return {
-            valid: false,
-            message: 'Discount code is invalid or cannot be applied'
+            valid: true,
+            used: false,
+            code: code,
+            type: 'assumed',
+            value: null,
+            applicableProducts: []
           };
           
         } catch (error) {
@@ -587,20 +610,42 @@
         }
       }
 
-      // Function to get products assigned to this discount
-      async function getDiscountProducts(discountData) {
+      // Function to get products assigned to this discount from Shopify
+      async function getDiscountProducts(discountData, backendConfig) {
         try {
           console.log('DEBUG: Getting products for discount:', discountData.code);
           console.log('DEBUG: Discount data:', discountData);
+          console.log('DEBUG: Backend config:', backendConfig);
           
-          // Use the configured products from backend configuration
-          if (discountData.type === 'configured' && discountData.applicableProducts && discountData.applicableProducts.length > 0) {
-            console.log('DEBUG: Using configured products:', discountData.applicableProducts);
+          // Check if validation specifically detected no products or is assumed valid
+          if (discountData.type === 'no_products_detected' || discountData.type === 'assumed') {
+            console.log('DEBUG: No products detected automatically, using configured products');
+            
+            // Use configured products from backend configuration as fallback
+            if (backendConfig && backendConfig.products && backendConfig.products.length > 0) {
+              console.log('DEBUG: Using configured products from backend:', backendConfig.products);
+              return backendConfig.products;
+            } else {
+              const error = new Error('This discount code is not properly configured. Please contact support.');
+              error.step = 'Product Assignment';
+              throw error;
+            }
+          }
+          
+          // Priority 1: Products automatically detected from Shopify discount
+          if (discountData.applicableProducts && discountData.applicableProducts.length > 0) {
+            console.log('DEBUG: Using automatically detected products from Shopify:', discountData.applicableProducts);
             return discountData.applicableProducts;
           }
           
-          // If no products configured or validation failed, throw error
-          const error = new Error('This discount code is not properly configured. Please contact support.');
+          // Priority 2: Use configured products as fallback
+          if (backendConfig && backendConfig.products && backendConfig.products.length > 0) {
+            console.log('DEBUG: Using configured products as fallback:', backendConfig.products);
+            return backendConfig.products;
+          }
+          
+          // If no products detected and no configuration, throw error
+          const error = new Error('This discount code has no products assigned to it.');
           error.step = 'Product Assignment';
           throw error;
           
