@@ -64,7 +64,7 @@
             "description_3tNtcA": {
               "type": "description",
               "settings": {
-                "desc": "Subscribe to be aware of our regular promotions <br> & exclusive offers!\n<br>\nVAT Registration Number: 311333791600003",
+                "desc": "Subscribe to be aware of our regular promotions <br> & exclusive offers!",
                 "font": "--font-family-second",
                 "color": "#000000",
                 "font_size": 14,
@@ -539,7 +539,7 @@
             "text_block_RY8WdH": {
               "type": "text-block",
               "settings": {
-                "title": "<p>Copyright © 2025. All Rights Reserved.</p>",
+                "title": "<p>Copyright © 2025. All Rights Reserved.<br/>VAT Registration Number: 311333791600003</p>",
                 "font": "--font-family-base",
                 "color": "#000000",
                 "font_size": 14,
