@@ -216,6 +216,19 @@
           {%- if section.settings.fallback_code_2 != blank -%}
           configuredCodes.push('{{ section.settings.fallback_code_2 | strip }}');
           {%- endif -%}
+          
+          // Debug what Liquid is actually outputting
+          console.log('DEBUG: Section ID:', '{{ section.id }}');
+          console.log('DEBUG: Section Type:', '{{ section.type }}');
+          console.log('DEBUG: All Settings:', {{ section.settings | json }});
+          console.log('DEBUG: Raw setting 1:', '{{ section.settings.fallback_code_1 }}');
+          console.log('DEBUG: Raw setting 2:', '{{ section.settings.fallback_code_2 }}');
+          console.log('DEBUG: Title setting:', '{{ section.settings.title }}');
+          {%- if section.settings.fallback_code_1 != blank -%}
+          console.log('DEBUG: Setting 1 is NOT blank');
+          {%- else -%}
+          console.log('DEBUG: Setting 1 IS blank');
+          {%- endif -%}
 
           // Check if the entered code exists in our configured codes (case-insensitive)
           const codeToCheck = code.trim().toLowerCase();
