@@ -2459,18 +2459,12 @@
         "subtitle_color": "#ffffff",
         "button_bg": "#d1b26e",
         "button_color": "#ffffff",
-        "discount_code_1": "test_free_gift_code",
-        "product_handle_1_1": "",
-        "product_handle_1_2": "",
-        "product_handle_1_3": "",
-        "discount_code_2": "",
-        "product_handle_2_1": "",
-        "product_handle_2_2": "",
-        "product_handle_2_3": "",
-        "discount_code_3": "",
-        "product_handle_3_1": "",
-        "product_handle_3_2": "",
-        "product_handle_3_3": ""
+        "fallback_code_1": "test_free_gift_code",
+        "fallback_products_1": "docapp-free-gift-free-worlds2025-gift-ewc-hat-6751",
+        "fallback_quantity_1": 1,
+        "fallback_code_2": "",
+        "fallback_products_2": "",
+        "fallback_quantity_2": 1
       }
     },
     "featured_custom_section_aMVTBf": {
