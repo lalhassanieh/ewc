@@ -191,7 +191,6 @@
 (function() {
     'use strict';
     
-    console.log('GLOBAL: Initializing riyal font script for product prices');
     let isInitialized = false;
     
     function detectCurrentCurrency() {
@@ -234,7 +233,6 @@
     
     function updateRiyalFontVisibility() {
         const currentCurrency = detectCurrentCurrency();
-        console.log('GLOBAL: Updating riyal font visibility, currency:', currentCurrency);
         
         // Update riyal font spans visibility using CSS classes
         const riyalFonts = document.querySelectorAll('.riyal-font');
@@ -317,7 +315,6 @@
         });
         
         if (shouldUpdate) {
-            console.log('GLOBAL: Significant change detected, updating riyal fonts');
             setTimeout(updateRiyalFontVisibility, 150);
         }
     });
@@ -375,7 +372,6 @@
         }
     }, 15000);
     
-    console.log('GLOBAL: Riyal font script initialized successfully');
 })();
 </script>
   </body>
