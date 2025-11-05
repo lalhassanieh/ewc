@@ -237,86 +237,159 @@
         });
       }
 
-      // Function to validate discount code with Shopify
+      // Function to validate discount code with Shopify and get product info
       async function validateDiscountCode(code) {
         try {
-          console.log('DEBUG: Starting Shopify validation for:', code);
+          console.log('DEBUG: Starting Shopify validation and product detection for:', code);
           
-          // Method 1: Try to validate using cart API with discount
-          const cartResponse = await fetch('/cart/update.js', {
+          // Try to get discount information by applying it to a temporary product
+          // First, get a random product to test with
+          const productsResponse = await fetch('/products.json?limit=1');
+          const productsData = await productsResponse.json();
+          
+          if (!productsData.products || productsData.products.length === 0) {
+            throw new Error('No products available for testing discount');
+          }
+          
+          const testProduct = productsData.products[0];
+          const testVariant = testProduct.variants[0];
+          
+          console.log('DEBUG: Using test product:', testProduct.handle);
+          
+          // Add test product to cart
+          const addResponse = await fetch('/cart/add.js', {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',
             },
             body: JSON.stringify({
-              attributes: {
-                'discount_code_test': code
-              }
+              id: testVariant.id,
+              quantity: 1
             })
           });
-
-          if (cartResponse.ok) {
-            console.log('DEBUG: Cart API responded OK');
-            // For now, assume the discount is valid if we get here
-            // In a real scenario, you might need additional validation
-            return { 
-              valid: true, 
-              used: false, 
-              code: code,
-              type: 'unknown',
-              value: null,
-              applicableProducts: []
-            };
-          }
-
-          console.log('DEBUG: Cart API failed, trying alternative method');
           
-          // Method 2: Alternative validation - check if discount exists by applying it
-          const checkoutUrl = `/discount/${encodeURIComponent(code)}`;
-          const checkResponse = await fetch(checkoutUrl, {
-            method: 'HEAD',  // Just check if the URL exists
+          if (!addResponse.ok) {
+            throw new Error('Failed to add test product to cart');
+          }
+          
+          console.log('DEBUG: Test product added to cart');
+          
+          // Try to apply discount and see what happens
+          const discountResponse = await fetch(`/discount/${encodeURIComponent(code)}`, {
+            method: 'GET',
+            redirect: 'manual' // Don't follow redirects automatically
           });
-
-          console.log('DEBUG: Checkout URL check status:', checkResponse.status);
-
-          if (checkResponse.status === 200 || checkResponse.status === 302) {
-            // Discount URL exists, likely valid
-            return { 
-              valid: true, 
-              used: false, 
+          
+          console.log('DEBUG: Discount URL response status:', discountResponse.status);
+          
+          if (discountResponse.status === 302 || discountResponse.status === 200) {
+            // Discount exists and is valid
+            
+            // Now try to detect which products this discount applies to
+            const applicableProducts = await detectDiscountProducts(code);
+            
+            // Clean up - remove test product from cart
+            await fetch('/cart/clear.js', { method: 'POST' });
+            
+            return {
+              valid: true,
+              used: false,
               code: code,
-              type: 'unknown',
+              type: 'detected',
               value: null,
-              applicableProducts: []
+              applicableProducts: applicableProducts
             };
           }
-
-          if (checkResponse.status === 404) {
+          
+          if (discountResponse.status === 404) {
+            // Clean up
+            await fetch('/cart/clear.js', { method: 'POST' });
             return { valid: false, message: 'Discount code does not exist in Shopify' };
           }
-
-          // If we get here, assume valid for now (better to allow than block)
-          console.log('DEBUG: Validation inconclusive, assuming valid');
-          return { 
-            valid: true, 
-            used: false, 
+          
+          // Clean up and assume valid if inconclusive
+          await fetch('/cart/clear.js', { method: 'POST' });
+          
+          return {
+            valid: true,
+            used: false,
             code: code,
-            type: 'unknown',
+            type: 'assumed',
             value: null,
             applicableProducts: []
           };
-
+          
         } catch (error) {
           console.error('DEBUG: Shopify validation error:', error);
-          // On error, assume valid (fail open rather than fail closed)
-          return { 
-            valid: true, 
-            used: false, 
+          
+          // Clean up cart in case of error
+          try {
+            await fetch('/cart/clear.js', { method: 'POST' });
+          } catch (cleanupError) {
+            console.error('Cart cleanup failed:', cleanupError);
+          }
+          
+          // Return assumed valid to avoid blocking legitimate discounts
+          return {
+            valid: true,
+            used: false,
             code: code,
-            type: 'unknown',
+            type: 'error',
             value: null,
             applicableProducts: []
           };
+        }
+      }
+      
+      // Function to detect which products a discount applies to
+      async function detectDiscountProducts(code) {
+        try {
+          console.log('DEBUG: Attempting to detect products for discount:', code);
+          
+          // Strategy: Try to find products that this discount would apply to
+          // by checking the discount URL and looking for product references
+          
+          const discountPageResponse = await fetch(`/discount/${encodeURIComponent(code)}`, {
+            method: 'GET'
+          });
+          
+          if (discountPageResponse.ok) {
+            const discountPageText = await discountPageResponse.text();
+            
+            // Look for product URLs in the redirect or page content
+            const productMatches = discountPageText.match(/\/products\/([a-zA-Z0-9\-_]+)/g);
+            
+            if (productMatches && productMatches.length > 0) {
+              const uniqueHandles = [...new Set(productMatches.map(match => 
+                match.replace('/products/', '')
+              ))];
+              
+              console.log('DEBUG: Found product handles in discount page:', uniqueHandles);
+              return uniqueHandles.slice(0, 5).map(handle => ({ handle, quantity: 1 })); // Limit to 5 products
+            }
+          }
+          
+          // Fallback: If this is a product-specific discount, we might need to 
+          // get all products and test which ones the discount applies to
+          console.log('DEBUG: No products detected from discount page, trying product scan');
+          
+          // Get some recent products to test
+          const recentProductsResponse = await fetch('/products.json?limit=10');
+          const recentProductsData = await recentProductsResponse.json();
+          
+          if (recentProductsData.products && recentProductsData.products.length > 0) {
+            // For now, return the first product as a fallback
+            // In a more sophisticated implementation, you could test each product
+            const fallbackProduct = recentProductsData.products[0];
+            console.log('DEBUG: Using fallback product:', fallbackProduct.handle);
+            return [{ handle: fallbackProduct.handle, quantity: 1 }];
+          }
+          
+          return [];
+          
+        } catch (error) {
+          console.error('DEBUG: Error detecting discount products:', error);
+          return [];
         }
       }
 
@@ -371,35 +444,34 @@
       async function getDiscountProducts(discountData) {
         try {
           console.log('DEBUG: Getting products for discount:', discountData.code);
+          console.log('DEBUG: Discount data:', discountData);
           
-          // Priority 1: Products extracted from Shopify discount checkout response
+          // Priority 1: Products automatically detected from Shopify discount
           if (discountData.applicableProducts && discountData.applicableProducts.length > 0) {
-            console.log('DEBUG: Using products from Shopify response');
-            return discountData.applicableProducts.map(product => ({
-              handle: product.handle,
-              quantity: 1
-            }));
+            console.log('DEBUG: Using automatically detected products from Shopify:', discountData.applicableProducts);
+            return discountData.applicableProducts;
           }
           
-          // Priority 2: Manual configuration for specific discount codes
-          console.log('DEBUG: Trying configured products');
-          const configuredProducts = await getConfiguredProducts(discountData.code);
-          if (configuredProducts && configuredProducts.length > 0) {
-            console.log('DEBUG: Using manually configured products');
-            return configuredProducts;
+          // Priority 2: If no products detected, try to get them directly
+          console.log('DEBUG: No products detected automatically, trying direct detection');
+          const detectedProducts = await detectDiscountProducts(discountData.code);
+          
+          if (detectedProducts && detectedProducts.length > 0) {
+            console.log('DEBUG: Found products through direct detection:', detectedProducts);
+            return detectedProducts;
           }
           
-          // Priority 3: Use default product if configured
-          {%- if section.settings.default_product_handle != blank -%}
-          console.log('DEBUG: Using default product fallback');
-          return [{ 
-            handle: '{{ section.settings.default_product_handle | strip }}', 
-            quantity: {{ section.settings.default_quantity | default: 1 }} 
-          }];
-          {%- endif -%}
+          // Priority 3: Fallback - get a popular/recent product
+          console.log('DEBUG: Using fallback product strategy');
+          const fallbackProducts = await getFallbackProducts();
           
-          // If no products found anywhere, throw an error
-          const error = new Error('No products assigned to this discount code. Please configure products in theme settings.');
+          if (fallbackProducts && fallbackProducts.length > 0) {
+            console.log('DEBUG: Using fallback products:', fallbackProducts);
+            return fallbackProducts;
+          }
+          
+          // If absolutely nothing works, throw error
+          const error = new Error('Unable to determine products for this discount code. The discount is valid but no applicable products could be found.');
           error.step = 'Product Assignment';
           throw error;
           
@@ -410,60 +482,26 @@
         }
       }
       
-      // Fallback function to get products from theme configuration
-      async function getConfiguredProducts(code) {
-        console.log('DEBUG: Looking for configured products for code:', code);
-        
-        // This allows manual override for specific discount codes if needed
-        const manualProductMap = {};
-        
-        {%- if section.settings.fallback_code_1 != blank -%}
-        {%- assign code1_clean = section.settings.fallback_code_1 | strip | downcase -%}
-        manualProductMap['{{ code1_clean }}'] = [];
-        {%- if section.settings.fallback_products_1 != blank -%}
-        {%- assign products1 = section.settings.fallback_products_1 | split: ',' -%}
-        {%- for product in products1 -%}
-        manualProductMap['{{ code1_clean }}'].push({
-          handle: '{{ product | strip }}',
-          quantity: {{ section.settings.fallback_quantity_1 | default: 1 }}
-        });
-        {%- endfor -%}
-        {%- endif -%}
-        {%- endif -%}
-        
-        {%- if section.settings.fallback_code_2 != blank -%}
-        {%- assign code2_clean = section.settings.fallback_code_2 | strip | downcase -%}
-        manualProductMap['{{ code2_clean }}'] = [];
-        {%- if section.settings.fallback_products_2 != blank -%}
-        {%- assign products2 = section.settings.fallback_products_2 | split: ',' -%}
-        {%- for product in products2 -%}
-        manualProductMap['{{ code2_clean }}'].push({
-          handle: '{{ product | strip }}',
-          quantity: {{ section.settings.fallback_quantity_2 | default: 1 }}
-        });
-        {%- endfor -%}
-        {%- endif -%}
-        {%- endif -%}
-        
-        console.log('DEBUG: Manual product map:', manualProductMap);
-        
-        const configuredProducts = manualProductMap[code.toLowerCase()];
-        if (configuredProducts && configuredProducts.length > 0) {
-          console.log('DEBUG: Found manual products:', configuredProducts);
-          return configuredProducts;
+      // Fallback function to get some products when auto-detection fails
+      async function getFallbackProducts() {
+        try {
+          const response = await fetch('/products.json?limit=3');
+          const data = await response.json();
+          
+          if (data.products && data.products.length > 0) {
+            return data.products.map(product => ({
+              handle: product.handle,
+              quantity: 1
+            }));
+          }
+          
+          return [];
+        } catch (error) {
+          console.error('Error getting fallback products:', error);
+          return [];
         }
-        
-        // If no specific configuration, return a default product or throw error
-        {%- if section.settings.default_product_handle != blank -%}
-        console.log('DEBUG: Using default product fallback');
-        return [{ 
-          handle: '{{ section.settings.default_product_handle | strip }}', 
-          quantity: {{ section.settings.default_quantity | default: 1 }} 
-        }];
-        {%- endif -%}
-        
-        throw new Error('No products configured for this discount code. Please add products in theme customizer or contact support.');
       }
+
 
       // Function to add multiple products to cart
       async function addProductsToCart(products) {
@@ -568,48 +606,9 @@
     },
     {
       "type": "text",
-      "id": "fallback_products_1",
-      "label": "Manual Products for Code 1 (Optional)",
-      "info": "Only use if automatic detection fails. Comma-separated product handles (e.g: product-1,product-2)"
-    },
-    {
-      "type": "number",
-      "id": "fallback_quantity_1",
-      "label": "Quantity per Product",
-      "default": 1
-    },
-
-    {
-      "type": "text",
       "id": "fallback_code_2",
       "label": "Discount Code 2",
       "info": "Second allowed discount code (must exist in Shopify admin)"
-    },
-    {
-      "type": "text",
-      "id": "fallback_products_2",
-      "label": "Manual Products for Code 2 (Optional)", 
-      "info": "Only use if automatic detection fails. Comma-separated product handles (e.g: product-1,product-2)"
-    },
-    {
-      "type": "number",
-      "id": "fallback_quantity_2",
-      "label": "Quantity per Product",
-      "default": 1
-    },
-
-    { "type": "header", "content": "Default Fallback (Optional)" },
-    {
-      "type": "text",
-      "id": "default_product_handle",
-      "label": "Default Product Handle", 
-      "info": "Product to add if no products are detected for valid discount codes (optional last resort)"
-    },
-    {
-      "type": "number",
-      "id": "default_quantity",
-      "label": "Default Quantity",
-      "default": 1
     }
   ],
   "presets": [
