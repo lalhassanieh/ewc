@@ -97,8 +97,15 @@
       const msg = document.getElementById('applyPromoMsg');
 
       function setMessage(text, isError) {
+        console.log('DEBUG: setMessage called with:', text, 'isError:', isError);
+        if (!msg) {
+          console.error('ERROR: Message element not found!');
+          return;
+        }
         msg.textContent = text || '';
         msg.style.color = isError ? '#e74c3c' : '#2ecc71';
+        msg.style.display = 'block'; // Make sure it's visible
+        console.log('DEBUG: Message set successfully');
       }
 
       btn.addEventListener('click', function () {
@@ -111,13 +118,20 @@
 
         setMessage('Checking discount code...', false);
         btn.disabled = true;
+        console.log('DEBUG: Starting discount code processing');
+
+        // Store backend config for the entire process
+        let backendConfig = null;
 
         // Step 1: Check if the code exists in backend configuration and get products
-        let backendConfig = null;
+        console.log('DEBUG: About to check code in backend:', code);
         
         checkCodeInBackend(code)
         .then((configResult) => {
+          console.log('DEBUG: Backend check result:', configResult);
+          
           if (!configResult.found) {
+            console.log('DEBUG: Code not found in backend, throwing error');
             const error = new Error('This discount code is not available. Please check the code and try again.');
             error.step = 'Backend Configuration Check';
             throw error;
@@ -195,6 +209,7 @@
         })
         .catch((error) => {
           console.error('Discount code processing error:', error);
+          console.log('DEBUG: About to show error message');
           
           // Show user-friendly error message
           let errorMessage = error.message || 'An unexpected error occurred. Please try again.';
@@ -204,13 +219,17 @@
             console.log('Error occurred at step:', error.step);
           }
           
+          console.log('DEBUG: Setting error message:', errorMessage);
           setMessage(errorMessage, true);
           btn.disabled = false;
+          console.log('DEBUG: Error message should be visible now');
         });
 
       // Function to check if code exists in backend configuration and get its products
       function checkCodeInBackend(code) {
+        console.log('DEBUG: checkCodeInBackend called with code:', code);
         return new Promise((resolve) => {
+          console.log('DEBUG: Inside checkCodeInBackend promise');
           // Get all configured discount codes and their products from section settings
           const discountConfigs = [];
           
