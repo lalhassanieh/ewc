@@ -656,19 +656,19 @@
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-  // Prevent multiple instances of this script from running
+  
   if (window.riyalFontGlobalScriptLoaded) {
-    console.log('Riyal font global script already loaded, skipping...');
+  
     return;
   }
   window.riyalFontGlobalScriptLoaded = true;
-  console.log('Loading riyal font global script...');
+
 
   function ensureRiyalFontSpansExist() {
     // Check cart subtotal specifically
     const subtotalPrice = document.querySelector('.cart-total__subtotal-price');
     if (subtotalPrice && !subtotalPrice.querySelector('.riyal-font')) {
-      console.log('Re-adding missing riyal font to subtotal...');
+   
       const riyalSpan = document.createElement('span');
       riyalSpan.className = 'riyal-font';
       riyalSpan.style.display = 'none';
@@ -760,18 +760,13 @@ document.addEventListener('DOMContentLoaded', function() {
       });
     }
     
-    // Debug logging (remove in production)
-    console.log('Currency detected:', currentCurrency, 'Is SAR:', isSAR, 'Riyal fonts found:', riyalFonts.length);
-    console.log('BEAST elements found:', moneyElements.length, 'All money elements:', allMoneyElements.length);
-    console.log('Product prices found:', productPrices.length);
+
     
     // Log first few riyal fonts for debugging
     riyalFonts.forEach(function(font, index) {
       if (index < 5) {
-        console.log('Riyal font', index, 'display:', font.style.display, 'parent:', font.parentElement.className);
         // Special check for subtotal
         if (font.parentElement.classList.contains('cart-total__subtotal-price')) {
-          console.log('SUBTOTAL riyal font - display:', font.style.display, 'currency:', currentCurrency);
         }
       }
     });
@@ -853,11 +848,10 @@ document.addEventListener('DOMContentLoaded', function() {
   // Special monitoring for cart subtotal
   const subtotalElement = document.querySelector('.cart-total__subtotal-price');
   if (subtotalElement) {
-    console.log('Found subtotal element, setting up special monitoring...');
     const subtotalObserver = new MutationObserver(function(mutations) {
       mutations.forEach(function(mutation) {
         if (mutation.type === 'childList' || mutation.type === 'characterData') {
-          console.log('Subtotal content changed, updating riyal fonts...');
+    
           setTimeout(updateRiyalFontVisibilityGlobal, 50);
         }
       });
@@ -875,13 +869,13 @@ document.addEventListener('DOMContentLoaded', function() {
     // Only run if there are riyal fonts on the page
     const riyalFonts = document.querySelectorAll('.riyal-font');
     if (riyalFonts.length > 0) {
-      console.log('Periodic check - riyal fonts found:', riyalFonts.length);
+    
       // Check if any riyal font has been reset by external scripts
       let needsUpdate = false;
       riyalFonts.forEach(function(font) {
         const currentCurrency = document.querySelector('.money[doubly-currency]')?.getAttribute('doubly-currency');
         if (currentCurrency === 'SAR' && font.style.display === 'none') {
-          console.log('Found hidden riyal font when SAR is active - needs update');
+      
           needsUpdate = true;
         }
       });
