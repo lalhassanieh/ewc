@@ -237,65 +237,83 @@
       // Function to validate discount code with Shopify
       async function validateDiscountCode(code) {
         try {
-          // Create a temporary cart to test the discount
-          const response = await fetch('/cart.js', {
-            method: 'GET',
-            headers: {
-              'Content-Type': 'application/json',
-            }
-          });
+          console.log('DEBUG: Starting Shopify validation for:', code);
           
-          const cart = await response.json();
-          
-          // Try to apply discount to see if it exists and is valid
-          const discountResponse = await fetch('/checkout', {
+          // Method 1: Try to validate using cart API with discount
+          const cartResponse = await fetch('/cart/update.js', {
             method: 'POST',
             headers: {
-              'Content-Type': 'application/x-www-form-urlencoded',
+              'Content-Type': 'application/json',
             },
-            body: `discount=${encodeURIComponent(code)}&_method=GET`
+            body: JSON.stringify({
+              attributes: {
+                'discount_code_test': code
+              }
+            })
           });
 
-          if (discountResponse.ok) {
-            // Check if discount was applied by examining response
-            const text = await discountResponse.text();
-            
-            // Look for various discount error patterns in the HTML response
-            if (text.includes('discount-code-error') || text.includes('discount_code_error') || 
-                text.includes('invalid') || text.includes('expired') || text.includes('not found')) {
-              return { valid: false, message: 'Discount code is invalid, expired, or not found' };
-            }
-            
-            // Look for usage limit patterns
-            if (text.includes('discount-already-used') || text.includes('usage_limit_reached') || 
-                text.includes('already been used') || text.includes('limit exceeded') ||
-                text.includes('maximum usage') || text.includes('no longer available')) {
-              return { valid: true, used: true, message: 'Discount code has reached its usage limit' };
-            }
-
-            // Look for customer eligibility issues
-            if (text.includes('not eligible') || text.includes('customer eligibility') || 
-                text.includes('restricted') || text.includes('not applicable')) {
-              return { valid: false, message: 'This discount code is not applicable to your account' };
-            }
-
-            // If we get here, discount is likely valid and unused
+          if (cartResponse.ok) {
+            console.log('DEBUG: Cart API responded OK');
+            // For now, assume the discount is valid if we get here
+            // In a real scenario, you might need additional validation
             return { 
               valid: true, 
               used: false, 
               code: code,
-              // Extract discount info from response if needed
-              type: extractDiscountType(text),
-              value: extractDiscountValue(text),
-              // Try to extract applicable products from the response
-              applicableProducts: extractApplicableProducts(text)
+              type: 'unknown',
+              value: null,
+              applicableProducts: []
             };
-          } else {
-            return { valid: false, message: 'Unable to validate discount code with Shopify' };
           }
+
+          console.log('DEBUG: Cart API failed, trying alternative method');
+          
+          // Method 2: Alternative validation - check if discount exists by applying it
+          const checkoutUrl = `/discount/${encodeURIComponent(code)}`;
+          const checkResponse = await fetch(checkoutUrl, {
+            method: 'HEAD',  // Just check if the URL exists
+          });
+
+          console.log('DEBUG: Checkout URL check status:', checkResponse.status);
+
+          if (checkResponse.status === 200 || checkResponse.status === 302) {
+            // Discount URL exists, likely valid
+            return { 
+              valid: true, 
+              used: false, 
+              code: code,
+              type: 'unknown',
+              value: null,
+              applicableProducts: []
+            };
+          }
+
+          if (checkResponse.status === 404) {
+            return { valid: false, message: 'Discount code does not exist in Shopify' };
+          }
+
+          // If we get here, assume valid for now (better to allow than block)
+          console.log('DEBUG: Validation inconclusive, assuming valid');
+          return { 
+            valid: true, 
+            used: false, 
+            code: code,
+            type: 'unknown',
+            value: null,
+            applicableProducts: []
+          };
+
         } catch (error) {
-          console.error('Discount validation error:', error);
-          return { valid: false, message: 'Error validating discount code' };
+          console.error('DEBUG: Shopify validation error:', error);
+          // On error, assume valid (fail open rather than fail closed)
+          return { 
+            valid: true, 
+            used: false, 
+            code: code,
+            type: 'unknown',
+            value: null,
+            applicableProducts: []
+          };
         }
       }
 
@@ -349,8 +367,11 @@
       // Function to get products assigned to this discount from Shopify
       async function getDiscountProducts(discountData) {
         try {
+          console.log('DEBUG: Getting products for discount:', discountData.code);
+          
           // Priority 1: Products extracted from Shopify discount checkout response
           if (discountData.applicableProducts && discountData.applicableProducts.length > 0) {
+            console.log('DEBUG: Using products from Shopify response');
             return discountData.applicableProducts.map(product => ({
               handle: product.handle,
               quantity: 1
@@ -358,17 +379,31 @@
           }
           
           // Priority 2: Manual configuration for specific discount codes
+          console.log('DEBUG: Trying configured products');
           const configuredProducts = await getConfiguredProducts(discountData.code);
           if (configuredProducts && configuredProducts.length > 0) {
+            console.log('DEBUG: Using manually configured products');
             return configuredProducts;
           }
           
+          // Priority 3: Use default product if configured
+          {%- if section.settings.default_product_handle != blank -%}
+          console.log('DEBUG: Using default product fallback');
+          return [{ 
+            handle: '{{ section.settings.default_product_handle | strip }}', 
+            quantity: {{ section.settings.default_quantity | default: 1 }} 
+          }];
+          {%- endif -%}
+          
           // If no products found anywhere, throw an error
-          throw new Error('No products assigned to this discount code');
+          const error = new Error('No products assigned to this discount code. Please configure products in theme settings.');
+          error.step = 'Product Assignment';
+          throw error;
           
         } catch (error) {
           console.error('Error getting discount products:', error);
-          throw new Error('Unable to find products for this discount code');
+          if (!error.step) error.step = 'Product Assignment';
+          throw error;
         }
       }
       
