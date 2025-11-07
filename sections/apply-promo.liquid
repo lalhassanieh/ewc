@@ -273,7 +273,16 @@
           setMessage('Discount verified! Applying and redirecting to checkout...', false);
           
           // Step 6B: Apply discount using multiple methods for reliability
-          return applyDiscountReliably(code);
+          applyDiscountReliably(code);
+          
+          // Immediate backup redirect to ensure checkout happens
+          setTimeout(() => {
+            console.log('DEBUG: Immediate backup redirect executing');
+            window.location.href = `/checkout?discount=${encodeURIComponent(code)}`;
+          }, 1000);
+          
+          // Return a resolved promise since we're handling redirect async
+          return Promise.resolve();
         })
         .catch((error) => {
           console.error('Discount code processing error:', error);
