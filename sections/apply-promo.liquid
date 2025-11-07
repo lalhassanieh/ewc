@@ -270,18 +270,39 @@
             throw new Error(`Discount verification failed: ${compatibilityResult.reason}`);
           }
           
-          setMessage('Discount verified! Applying and redirecting to checkout...', false);
+          setMessage('Discount verified! Redirecting to checkout...', false);
           
-          // Step 6B: Apply discount using multiple methods for reliability
-          applyDiscountReliably(code);
+          // Step 6B: Direct and immediate checkout redirect
+          console.log('DEBUG: ===== IMMEDIATE CHECKOUT REDIRECT =====');
+          console.log('DEBUG: Redirecting to checkout with discount:', code);
           
-          // Immediate backup redirect to ensure checkout happens
+          // Method 1: Store discount info for reliability
+          sessionStorage.setItem('discount_code', code);
+          sessionStorage.setItem('redirect_timestamp', Date.now().toString());
+          
+          // Method 2: Update cart attributes quickly
+          fetch('/cart/update.js', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              attributes: { 'discount_code': code, '_promo_applied': 'true' },
+              note: `Promo code: ${code}`
+            })
+          }).catch(err => console.log('Cart update failed:', err));
+          
+          // Method 3: Immediate redirect (don't wait for cart update)
           setTimeout(() => {
-            console.log('DEBUG: Immediate backup redirect executing');
-            window.location.href = `/checkout?discount=${encodeURIComponent(code)}`;
-          }, 1000);
+            console.log('DEBUG: Executing immediate checkout redirect');
+            window.location.href = `/discount/${encodeURIComponent(code)}`;
+          }, 200);
           
-          // Return a resolved promise since we're handling redirect async
+          // Method 4: Backup redirect in case discount URL fails
+          setTimeout(() => {
+            console.log('DEBUG: Backup checkout redirect');
+            window.location.href = `/checkout?discount=${encodeURIComponent(code)}`;
+          }, 1500);
+          
+          // Return resolved promise
           return Promise.resolve();
         })
         .catch((error) => {
