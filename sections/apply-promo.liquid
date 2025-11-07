@@ -742,7 +742,7 @@
                   '_promo_applied': 'true',
                   '_promo_timestamp': Date.now().toString()
                 },
-                note: `Discount code: ${discountCode}`
+                note: `Promo code: ${discountCode}`
               })
             });
             console.log('DEBUG: Cart updated with discount attributes');
@@ -750,17 +750,32 @@
             console.error('DEBUG: Cart update failed:', updateError);
           }
           
-          // Method 3: Use Shopify's standard discount URL approach
-          console.log('DEBUG: Method 3 - Using Shopify discount URL (primary method)');
+          // Method 3: Verify cart state before redirect
+          console.log('DEBUG: Method 3 - Verifying cart state');
+          const cartCheck = await fetch('/cart.js');
+          const cartData = await cartCheck.json();
+          console.log('DEBUG: Final cart state - Items:', cartData.item_count, 'Total:', cartData.total_price);
           
-          // This is the most reliable approach - let Shopify handle everything
+          // Method 4: Use Shopify's standard discount URL approach (most reliable)
+          console.log('DEBUG: Method 4 - Using Shopify discount URL for automatic application and checkout redirect');
+          
+          // Add a small delay to ensure cart operations are completed
+          await new Promise(resolve => setTimeout(resolve, 500));
+          
+          // This is the most reliable method - Shopify automatically applies discount and redirects to checkout
           window.location.href = `/discount/${encodeURIComponent(discountCode)}`;
+          
+          // Method 5: Fallback with explicit checkout redirect
+          setTimeout(() => {
+            console.log('DEBUG: Method 5 - Fallback to explicit checkout redirect');
+            window.location.href = `/checkout?discount=${encodeURIComponent(discountCode)}`;
+          }, 3000);
           
         } catch (error) {
           console.error('DEBUG: Error in discount application:', error);
           
-          // Final emergency fallback
-          console.log('DEBUG: Emergency fallback - direct redirect');
+          // Emergency fallback - ensure user gets to checkout with discount
+          console.log('DEBUG: Emergency fallback - direct checkout redirect with discount');
           setTimeout(() => {
             window.location.href = `/checkout?discount=${encodeURIComponent(discountCode)}`;
           }, 1000);
