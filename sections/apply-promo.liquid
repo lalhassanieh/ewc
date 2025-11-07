@@ -264,6 +264,25 @@
         return { added: 0, skipped: productHandles.length };
       }
       
+      // Apply discount code to cart using Shopify's permalink method
+      async function applyDiscountToCart(discountCode) {
+        console.log('Applying discount code to cart:', discountCode);
+        
+        try {
+          // Method 1: Use the /discount/{code} endpoint which redirects to cart with discount applied
+          // This is more reliable than the checkout URL parameter
+          const discountUrl = `/discount/${encodeURIComponent(discountCode)}?redirect=/cart`;
+          
+          console.log('Redirecting to:', discountUrl);
+          window.location.href = discountUrl;
+          
+        } catch (error) {
+          console.error('Error applying discount:', error);
+          // Fallback to checkout method
+          window.location.href = `/checkout?discount=${encodeURIComponent(discountCode)}`;
+        }
+      }
+      
       // Main click handler
       btn.addEventListener('click', async function () {
         const code = input.value.trim().toUpperCase();
@@ -292,19 +311,19 @@
             const result = await addProductsToCart(config.products);
             
             if (result.added > 0) {
-              showMessage(`Added ${result.added} item(s). Redirecting...`, false);
+              showMessage(`Added ${result.added} item(s). Applying discount...`, false);
             } else if (result.skipped > 0) {
               showMessage('Some products unavailable. Applying discount...', false);
             }
+            
+            // Wait briefly for cart operations to complete
+            await new Promise(resolve => setTimeout(resolve, 1000));
           } else {
             showMessage('Applying discount...', false);
           }
           
-          // Wait briefly for cart operations to complete
-          await new Promise(resolve => setTimeout(resolve, 800));
-          
-          // Redirect to checkout with discount
-          window.location.href = `/checkout?discount=${encodeURIComponent(config.code)}`;
+          // Apply discount using Shopify's permalink method
+          await applyDiscountToCart(config.code);
           
         } catch (error) {
           console.error('Error:', error);
@@ -332,7 +351,26 @@
         console.log('===========================');
       };
       
-      console.log('Promo section loaded. Type checkPromoConfig() to see configuration.');
+      // Debug helper to check current cart and discount status
+      window.checkCartDiscount = async () => {
+        try {
+          const response = await fetch('/cart.js');
+          const cart = await response.json();
+          console.log('=== CART STATUS ===');
+          console.log('Items:', cart.item_count);
+          console.log('Total:', cart.total_price);
+          console.log('Original Total:', cart.original_total_price);
+          console.log('Total Discount:', cart.total_discount);
+          console.log('Attributes:', cart.attributes);
+          console.log('==================');
+          return cart;
+        } catch (error) {
+          console.error('Error checking cart:', error);
+        }
+      };
+      
+      console.log('Promo section loaded.');
+      console.log('Commands: checkPromoConfig() | checkCartDiscount()');
     })();
   </script>
 </section>
