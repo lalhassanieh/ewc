@@ -173,6 +173,9 @@
         }
 
         setMessage('Checking discount code...', false);
+        
+        // Declare redirect timer variables for cleanup on error
+        let redirectTimer1, redirectTimer2;
         btn.disabled = true;
 
         // Step 1: Check if the code exists in backend configuration
@@ -286,15 +289,19 @@
           
           setMessage('All checks passed! Redirecting to checkout...', false);
           
-          // Step 6B: Direct and immediate checkout redirect
-          console.log('DEBUG: ===== IMMEDIATE CHECKOUT REDIRECT =====');
-          console.log('DEBUG: Redirecting to checkout with discount:', code);
+          // Step 6B: Reliable single-method checkout redirect
+          console.log('DEBUG: ===== RELIABLE CHECKOUT REDIRECT =====');
+          console.log('DEBUG: Starting reliable redirect to checkout with discount:', code);
           
-          // Method 1: Store discount info for reliability
+          // Method 1: Store discount info and redirect state
           sessionStorage.setItem('discount_code', code);
           sessionStorage.setItem('redirect_timestamp', Date.now().toString());
+          sessionStorage.setItem('redirect_attempted', 'false');
+          sessionStorage.setItem('redirect_successful', 'false');
           
-          // Method 2: Update cart attributes quickly
+          // Method 2: Update cart attributes and wait for completion
+          console.log('DEBUG: Updating cart with discount attributes...');
+          
           fetch('/cart/update.js', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
@@ -302,19 +309,50 @@
               attributes: { 'discount_code': code, '_promo_applied': 'true' },
               note: `Promo code: ${code}`
             })
-          }).catch(err => console.log('Cart update failed:', err));
-          
-          // Method 3: Immediate redirect (don't wait for cart update)
-          setTimeout(() => {
-            console.log('DEBUG: Executing immediate checkout redirect');
+          })
+          .then(response => {
+            console.log('DEBUG: Cart update response status:', response.status);
+            return response.json();
+          })
+          .then(cartData => {
+            console.log('DEBUG: Cart updated successfully:', cartData);
+            
+            // Method 3: Single reliable redirect after cart is updated
+            console.log('DEBUG: Executing single reliable checkout redirect...');
+            sessionStorage.setItem('redirect_attempted', 'true');
+            
+            // Use the most reliable Shopify discount URL method
             window.location.href = `/discount/${encodeURIComponent(code)}`;
-          }, 200);
-          
-          // Method 4: Backup redirect in case discount URL fails
-          setTimeout(() => {
-            console.log('DEBUG: Backup checkout redirect');
-            window.location.href = `/checkout?discount=${encodeURIComponent(code)}`;
-          }, 1500);
+            
+            // Set success flag after redirect starts
+            sessionStorage.setItem('redirect_successful', 'true');
+            
+            // Failsafe: Check if redirect worked after 3 seconds
+            redirectTimer1 = setTimeout(() => {
+              if (sessionStorage.getItem('redirect_attempted') === 'true' && 
+                  window.location.pathname !== '/checkout') {
+                console.log('DEBUG: Primary redirect failed, using backup method');
+                window.location.href = `/checkout?discount=${encodeURIComponent(code)}`;
+              }
+            }, 3000);
+          })
+          .catch(cartError => {
+            console.error('DEBUG: Cart update failed:', cartError);
+            console.log('DEBUG: Proceeding with redirect despite cart update failure...');
+            
+            // Even if cart update fails, still redirect with discount
+            sessionStorage.setItem('redirect_attempted', 'true');
+            window.location.href = `/discount/${encodeURIComponent(code)}`;
+            sessionStorage.setItem('redirect_successful', 'true');
+            
+            // Failsafe for cart update failure case too
+            redirectTimer2 = setTimeout(() => {
+              if (window.location.pathname !== '/checkout') {
+                console.log('DEBUG: Cart update failed redirect also failed, final backup');
+                window.location.href = `/checkout?discount=${encodeURIComponent(code)}`;
+              }
+            }, 3000);
+          });
           
           // Return resolved promise
           return Promise.resolve();
@@ -322,30 +360,65 @@
         .catch((error) => {
           console.error('Discount code processing error:', error);
           
+          // IMPORTANT: Clear any redirect timers to prevent checkout redirect on error
+          clearTimeout(redirectTimer1);
+          clearTimeout(redirectTimer2);
+          
           // Show specific error message to user with step info
           let errorMessage = error.message || 'An unexpected error occurred. Please try again.';
+          
+          // Enhanced handling for discount validity errors
+          if (error.message && error.message.includes('Discount code invalid')) {
+            if (error.message.includes('expired')) {
+              errorMessage = '❌ This discount code has expired and is no longer valid.';
+            } else if (error.message.includes('usage limit')) {
+              errorMessage = '❌ This discount code has reached its usage limit and cannot be used again.';
+            } else if (error.message.includes('not available')) {
+              errorMessage = '❌ This discount code is currently not available.';
+            } else if (error.message.includes('does not exist')) {
+              errorMessage = '❌ This discount code does not exist. Please check the code and try again.';
+            } else {
+              errorMessage = '❌ This discount code is no longer valid. Please try a different code.';
+            }
+          }
+          
+          // Enhanced handling for compatibility errors  
+          if (error.message && error.message.includes('Discount compatibility failed')) {
+            errorMessage = '❌ This discount code cannot be applied to the current products. Please check discount requirements.';
+          }
           
           // Special handling for backend configuration errors
           if (error.step === 'Backend Configuration Check') {
             if (error.message.includes('not available on our system')) {
-              errorMessage = 'Configuration Required: No discount codes are set up yet. Please configure discount codes in the theme customizer first.';
+              errorMessage = '⚙️ Configuration Required: No discount codes are set up yet. Please configure discount codes in the theme customizer first.';
             }
           }
           
           // Special handling for product assignment errors  
           if (error.step === 'Product Assignment') {
             if (error.message.includes('No products configured')) {
-              errorMessage = 'Product Setup Required: Please configure which products to add for this discount code in the theme customizer.';
+              errorMessage = '⚙️ Product Setup Required: Please configure which products to add for this discount code in the theme customizer.';
             }
           }
           
-          // Add step information for debugging
-          if (error.step) {
-            errorMessage += ` (Step: ${error.step})`;
+          // Add step information for debugging (only in development)
+          if (error.step && window.location.hostname.includes('localhost')) {
+            errorMessage += ` (Debug: ${error.step})`;
           }
           
+          console.log('DEBUG: ===== ERROR HANDLING - NO REDIRECT =====');
+          console.log('DEBUG: Error caught, preventing any checkout redirect');
+          console.log('DEBUG: Error message:', errorMessage);
+          
+          // Show error message and re-enable button
           setMessage(errorMessage, true);
           btn.disabled = false;
+          
+          // Clear any session storage that might cause issues
+          sessionStorage.removeItem('checkout_redirect_attempted');
+          sessionStorage.removeItem('checkout_redirect_time');
+          sessionStorage.removeItem('discount_code');
+          sessionStorage.removeItem('redirect_timestamp');
         });
 
       // Function to check if code exists in backend configuration
@@ -843,10 +916,18 @@
         } catch (error) {
           console.error('DEBUG: Shopify discount validity check error:', error);
           
+          // Handle network/connection errors
+          if (error.name === 'TypeError' && error.message.includes('fetch')) {
+            return { 
+              valid: false, 
+              reason: 'Network error: Unable to connect to Shopify. Please check your connection and try again.' 
+            };
+          }
+          
           // Be conservative - if we can't verify, assume invalid for safety
           return { 
             valid: false, 
-            reason: 'Unable to verify discount with Shopify backend' 
+            reason: 'Unable to verify discount with Shopify backend. Please try again.' 
           };
         }
       }
