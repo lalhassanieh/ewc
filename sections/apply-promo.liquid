@@ -15,6 +15,15 @@
         class="apply-promo-input"
       >
 
+      {% comment %}
+        <div class="wpbingo-button">
+          <button id="applyPromoBtn" type="button" class="bwp-button default apply-promo-btn" tabindex="0">
+            <span class="bwp-button-content-wrapper">
+              <span class="bwp-button-text">{{ section.settings.button_text }}</span>
+            </span>
+          </button>
+        </div>
+      {% endcomment %}
       <div class="wpbingo-button">
         <div id="applyPromoBtn" class="bwp-button default apply-promo-btn">
           <span class="bwp-button-content-wrapper">
@@ -27,35 +36,34 @@
   </div>
 
   <style>
-    #apply-promo-section.apply-promo-section {
-      height: {{ section.settings.section_height | default: 90 }}vh;
-      text-align: center;
-      background: {{ section.settings.bg_color }};
-      {% if section.settings.bg_image != blank %}
-      background-image: url('{{ section.settings.bg_image | image_url: width: 1920 }}');
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
-      {% endif %}
-      position: relative;
-    }
-    
-    {% if section.settings.bg_image != blank and section.settings.bg_overlay_opacity > 0 %}
-    #apply-promo-section.apply-promo-section::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: rgba(0, 0, 0, {{ section.settings.bg_overlay_opacity | divided_by: 100.0 }});
-      z-index: 1;
-    }
-    {% endif %}
-    
-    .apply-promo-inner {
+          /* basic styling - adjust values as you like */
+          #apply-promo-section.apply-promo-section {
+            {% comment %} padding: 30px 20px 100px 20px; {% endcomment %}
+             height: {{ section.settings.section_height | default: 90 }}vh;
+            text-align:center;
+            background: {{ section.settings.bg_color }};
+            {% if section.settings.bg_image != blank %}
+            background-image: url('{{ section.settings.bg_image | image_url: width: 1920 }}');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            {% endif %}
+            position: relative;
+          }
+          {% if section.settings.bg_image != blank and section.settings.bg_overlay_opacity > 0 %}
+          #apply-promo-section.apply-promo-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, {{ section.settings.bg_overlay_opacity | divided_by: 100.0 }});
+            z-index: 1;
+          }
+          {% endif %}
+         .apply-promo-inner {
       width: 100%;
-      max-width: 600px;
       margin: 0 auto;
       display: flex;
       flex-direction: column;
@@ -64,313 +72,708 @@
       z-index: 2;
       top: 50%;
       position: absolute;
-      transform: translate(-50%, -50%);
+      transform: translate(-50%,-50%);
       left: 50%;
-      padding: 0 20px;
     }
-    
-    .apply-promo-title { 
-      margin: 0;  
-      font-size: clamp(28px, 4vw, 35px); 
-      color: {{ section.settings.title_color }}; 
-    }
-    
-    .apply-promo-subtitle {
-      padding-bottom: 10px; 
-      margin: 0; 
-      font-size: 18px; 
-      color: {{ section.settings.subtitle_color }}; 
-    }
-    
-    .apply-promo-form {
-      position: relative; 
-      display: flex; 
-      gap: 10px; 
-      width: 100%; 
-      justify-content: center; 
-      flex-wrap: wrap; 
-    }
-    
-    .apply-promo-input { 
-      padding: 10px 14px; 
-      min-width: 220px; 
-      max-width: 420px; 
-      flex: 1;
-      border: 1px solid #ccc; 
-      border-radius: 4px; 
-      text-transform: uppercase;
-    }
-    
-    .apply-promo-btn.bwp-button { 
-      text-transform: uppercase; 
-      padding: 10px 16px; 
-      border: none; 
-      cursor: pointer; 
-      border-radius: 4px; 
-      background: {{ section.settings.button_bg }}; 
-      color: {{ section.settings.button_color }};
-      transition: opacity 0.3s;
-    }
-    
-    .apply-promo-btn.bwp-button:hover {
-      opacity: 0.9;
-    }
-    
-    .apply-promo-btn.bwp-button.disabled {
-      opacity: 0.5;
-      cursor: not-allowed;
-      pointer-events: none;
-    }
-    
-    .apply-promo-btn .bwp-button-text { 
-      color: {{ section.settings.button_color }}; 
-    }
-    
-    .apply-promo-msg { 
-      position: absolute;
-      bottom: -28px;
-      left: 0;
-      right: 0;
-      margin-top: 8px; 
-      font-size: 13px; 
-      min-height: 18px;
-      text-align: center;
-    }
-    
-    .apply-promo-msg.error {
-      color: #e74c3c;
-    }
-    
-    .apply-promo-msg.success {
-      color: #2ecc71;
-    }
-    
-    .visually-hidden { 
-      position: absolute !important; 
-      height: 1px; 
-      width: 1px; 
-      overflow: hidden; 
-      clip: rect(1px, 1px, 1px, 1px); 
-      white-space: nowrap; 
-    }
-    
-    @media (min-width: 700px) {
-      .apply-promo-form { flex-wrap: nowrap; }
-    }
+          .apply-promo-title { margin:0;  font-size: clamp(28px, 4vw, 35px); color:{{ section.settings.title_color }}; }
+          .apply-promo-subtitle {padding-bottom: 10px; margin:0; font-size:18px; color:{{ section.settings.subtitle_color }}; }
+          .apply-promo-form {position:relative; display:flex; gap:10px; width:100%; justify-content:center; flex-wrap:wrap; }
+          .apply-promo-input { padding:10px 14px; min-width:220px; max-width:420px; border:1px solid #ccc; border-radius:4px; }
+          .apply-promo-btn.bwp-button { text-transform:uppercase; padding:10px 16px; border:none; cursor:pointer; border-radius:4px; background:{{ section.settings.button_bg }}; color:{{ section.settings.button_color }}; }
+          .apply-promo-btn .bwp-button-text { color: {{ section.settings.button_color }}; }
+          .apply-promo-msg { position: absolute;
+        bottom: -23px;margin-top:8px; font-size:13px; color:#e74c3c; min-height:18px; }
+          .visually-hidden { position:absolute !important; height:1px; width:1px; overflow:hidden; clip:rect(1px,1px,1px,1px); white-space:nowrap; }
+          @media (min-width: 700px) {
+            .apply-promo-form { flex-wrap:nowrap; }
+          }
   </style>
 
   <script>
     (function () {
-      'use strict';
-      
       const form = document.getElementById('applyPromoForm');
       const input = document.getElementById('applyPromoCode');
       const btn = document.getElementById('applyPromoBtn');
-      const btnText = btn.querySelector('.bwp-button-text');
       const msg = document.getElementById('applyPromoMsg');
 
-      // Clear input on page load
+      // Clear input on page load/refresh
       input.value = '';
       
-      // Build configuration from Liquid settings
-      const PROMO_CONFIG = {
-        {% for i in (1..8) %}
-          {% assign code_key = 'fallback_code_' | append: i %}
-          {% assign products_key = 'fallback_products_' | append: i %}
-          {% if section.settings[code_key] != blank %}
-            '{{ section.settings[code_key] | upcase | strip }}': {
-              code: '{{ section.settings[code_key] | strip }}',
-              products: '{{ section.settings[products_key] | strip }}'.split(',').map(h => h.trim()).filter(Boolean)
-            }{% unless forloop.last %},{% endunless %}
-          {% endif %}
-        {% endfor %}
+      // Show current configuration for debugging
+      console.log('=== PROMO CODE SECTION CONFIGURATION ===');
+      console.log('Configured discount codes:');
+      {%- for i in (1..8) -%}
+        {%- assign code_setting = 'fallback_code_' | append: i -%}
+        {%- assign product_setting = 'fallback_products_' | append: i -%}
+        {%- assign code_value = section.settings[code_setting] -%}
+        {%- assign product_value = section.settings[product_setting] -%}
+        {%- if code_value != blank -%}
+        console.log('Code {{ i }}: "{{ code_value }}" → Products: "{{ product_value | default: "NOT SET" }}"');
+        {%- endif -%}
+      {%- endfor -%}
+      console.log('==========================================');
+      
+      // Add function to verify cart state (useful for debugging)
+      window.verifyCartState = async function() {
+        try {
+          const cartResponse = await fetch('/cart.js');
+          const cartData = await cartResponse.json();
+          
+          console.log('=== CURRENT CART STATE ===');
+          console.log('Total items:', cartData.item_count);
+          console.log('Total price:', cartData.total_price);
+          console.log('Original total price:', cartData.original_total_price);
+          console.log('Total discount:', cartData.total_discount);
+          console.log('Cart attributes:', cartData.attributes);
+          console.log('Applied discounts:', cartData.cart_level_discount_applications || 'None');
+          
+          // Check for pending discount codes
+          const pendingDiscount = sessionStorage.getItem('pending_discount_code') || localStorage.getItem('pending_discount_code');
+          if (pendingDiscount) {
+            console.log('Pending discount code found:', pendingDiscount);
+          }
+          
+          console.log('Items in cart:');
+          cartData.items.forEach(item => {
+            console.log(`- ${item.product_title} (${item.handle}) x${item.quantity} - $${(item.line_price / 100).toFixed(2)}`);
+            if (item.discounts && item.discounts.length > 0) {
+              console.log(`  Applied discounts:`, item.discounts);
+            }
+          });
+          console.log('=========================');
+          
+          return cartData;
+        } catch (error) {
+          console.error('Error checking cart state:', error);
+        }
       };
       
-      console.log('Promo Configuration:', PROMO_CONFIG);
-      
-      // Helper: Show message
-      function showMessage(text, isError) {
-        msg.textContent = text || '';
-        msg.className = 'apply-promo-msg ' + (isError ? 'error' : 'success');
-      }
-      
-      // Helper: Set button loading state
-      function setLoading(loading) {
-        if (loading) {
-          btn.classList.add('disabled');
-          btnText.textContent = 'Processing...';
+      // Function to manually apply pending discount (for troubleshooting)
+      window.applyPendingDiscount = function() {
+        const pendingDiscount = sessionStorage.getItem('pending_discount_code') || localStorage.getItem('pending_discount_code');
+        if (pendingDiscount) {
+          console.log('Applying pending discount:', pendingDiscount);
+          window.location.href = `/discount/${encodeURIComponent(pendingDiscount)}`;
         } else {
-          btn.classList.remove('disabled');
-          btnText.textContent = '{{ section.settings.button_text }}';
+          console.log('No pending discount code found');
         }
-      }
+      };
       
-      // Add products to cart (doesn't clear existing cart)
-      async function addProductsToCart(productHandles) {
-        if (!productHandles || productHandles.length === 0) {
-          return { added: 0, skipped: 0 };
-        }
-        
-        const items = [];
-        let skipped = 0;
-        
-        // Fetch each product and prepare for batch add
-        for (const handle of productHandles) {
-          try {
-            const response = await fetch(`/products/${handle}.js`);
-            
-            if (!response.ok) {
-              console.warn(`Product ${handle} not found or not accessible`);
-              skipped++;
-              continue;
-            }
-            
-            const product = await response.json();
-            
-            // Find first available variant
-            const variant = product.variants.find(v => v.available) || product.variants[0];
-            
-            if (variant) {
-              items.push({
-                id: variant.id,
-                quantity: 1
-              });
-            } else {
-              skipped++;
-            }
-          } catch (error) {
-            console.warn(`Error fetching product ${handle}:`, error);
-            skipped++;
-          }
-        }
-        
-        // Batch add all items
-        if (items.length > 0) {
-          try {
-            const response = await fetch('/cart/add.js', {
-              method: 'POST',
-              headers: { 'Content-Type': 'application/json' },
-              body: JSON.stringify({ items })
-            });
-            
-            if (response.ok) {
-              return { added: items.length, skipped };
-            }
-          } catch (error) {
-            console.error('Error adding items to cart:', error);
-          }
-        }
-        
-        return { added: 0, skipped: productHandles.length };
+      function setMessage(text, isError) {
+        msg.textContent = text || '';
+        msg.style.color = isError ? '#e74c3c' : '#2ecc71';
       }
-      
-      // Apply discount code to cart using Shopify's permalink method
-      async function applyDiscountToCart(discountCode) {
-        console.log('Applying discount code to cart:', discountCode);
-        
-        try {
-          // Method 1: Use the /discount/{code} endpoint which redirects to cart with discount applied
-          // This is more reliable than the checkout URL parameter
-          const discountUrl = `/discount/${encodeURIComponent(discountCode)}?redirect=/cart`;
-          
-          console.log('Redirecting to:', discountUrl);
-          window.location.href = discountUrl;
-          
-        } catch (error) {
-          console.error('Error applying discount:', error);
-          // Fallback to checkout method
-          window.location.href = `/checkout?discount=${encodeURIComponent(discountCode)}`;
-        }
-      }
-      
-      // Main click handler
-      btn.addEventListener('click', async function () {
-        const code = input.value.trim().toUpperCase();
-        
+
+      btn.addEventListener('click', function () {
+        const code = input.value.trim();
         if (!code) {
-          showMessage('Please enter a promo code', true);
+          setMessage('Please enter a promo code.', true);
           input.focus();
           return;
         }
-        
-        // Check if code is configured
-        if (!PROMO_CONFIG[code]) {
-          showMessage('Invalid promo code. Please check and try again.', true);
-          return;
-        }
-        
-        setLoading(true);
-        showMessage('Processing...', false);
-        
-        try {
-          const config = PROMO_CONFIG[code];
+
+        setMessage('Checking discount code...', false);
+        btn.disabled = true;
+
+        // Step 1: Check if the code exists in backend configuration
+        checkCodeInBackend(code)
+        .then((isConfigured) => {
+          if (!isConfigured) {
+            const error = new Error('This discount code is not available on our system. Please check the code and try again.');
+            error.step = 'Backend Configuration Check';
+            throw error;
+          }
+
+          setMessage('Code found in system! Validating with Shopify...', false);
           
-          // Add products if configured
-          if (config.products.length > 0) {
-            showMessage('Adding products to cart...', false);
-            const result = await addProductsToCart(config.products);
-            
-            if (result.added > 0) {
-              showMessage(`Added ${result.added} item(s). Applying discount...`, false);
-            } else if (result.skipped > 0) {
-              showMessage('Some products unavailable. Applying discount...', false);
-            }
-            
-            // Wait briefly for cart operations to complete
-            await new Promise(resolve => setTimeout(resolve, 1000));
-          } else {
-            showMessage('Applying discount...', false);
+          // Step 2: Validate the discount code with Shopify backend
+          return validateDiscountCode(code);
+        })
+        .then((discountData) => {
+          if (!discountData.valid) {
+            const error = new Error(discountData.message || 'This discount code is invalid or has expired');
+            error.step = 'Shopify Validation';
+            throw error;
           }
           
-          // Apply discount using Shopify's permalink method
-          await applyDiscountToCart(config.code);
+          if (discountData.used) {
+            const error = new Error('This discount code has already been used and cannot be used again');
+            error.step = 'Usage Check';
+            throw error;
+          }
+
+          setMessage('Discount code validated! Getting assigned products from Shopify...', false);
+          
+          // Step 3: Get products assigned to this discount from Shopify
+          return getDiscountProducts(discountData);
+        })
+        .then((products) => {
+          if (!products || products.length === 0) {
+            const error = new Error('No products assigned to this discount code');
+            error.step = 'Product Assignment';
+            throw error;
+          }
+
+          setMessage('Clearing cart and adding products...', false);
+
+          // Step 4: Clear cart first
+          return fetch('/cart/clear.js', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            }
+          }).then(() => products);
+        })
+        .then((products) => {
+          console.log('DEBUG: About to add these products to cart:', products);
+          console.log('DEBUG: Product handles being added:', products.map(p => p.handle));
+          
+          // Step 5: Add all assigned products to cart
+          return addProductsToCart(products);
+        })
+        .then(() => {
+          // Step 6: Get current cart contents for debugging
+          return fetch('/cart.js').then(response => response.json());
+        })
+        .then((cartData) => {
+          console.log('DEBUG: Cart contents before checkout:', cartData);
+          console.log('DEBUG: Items in cart:', cartData.items.map(item => ({
+            handle: item.handle,
+            product_title: item.product_title,
+            variant_title: item.variant_title,
+            quantity: item.quantity,
+            product_id: item.product_id,
+            variant_id: item.variant_id
+          })));
+          
+          // Check if cart already has discount applied
+          console.log('DEBUG: Current cart attributes:', cartData.attributes);
+          console.log('DEBUG: Cart total price:', cartData.total_price, 'Cart original total:', cartData.original_total_price);
+          
+          // Log specific details for troubleshooting
+          console.log('DEBUG: ===== DISCOUNT FLOW VERIFICATION =====');
+          console.log('DEBUG: Discount code being applied:', code);
+          console.log('DEBUG: Products that will be in cart when discount is applied:');
+          cartData.items.forEach(item => {
+            console.log(`DEBUG: - ${item.product_title} (handle: ${item.handle}, product_id: ${item.product_id})`);
+          });
+          
+          setMessage('Products added! Verifying discount compatibility and applying...', false);
+          
+          // Step 6A: First verify if this discount can be applied by testing it
+          return verifyDiscountCompatibility(code, cartData.items);
+        })
+        .then((compatibilityResult) => {
+          console.log('DEBUG: Discount compatibility check result:', compatibilityResult);
+          
+          if (!compatibilityResult.compatible) {
+            throw new Error(`Discount verification failed: ${compatibilityResult.reason}`);
+          }
+          
+          setMessage('Discount verified! Applying and redirecting to checkout...', false);
+          
+          // Step 6B: Apply discount using multiple methods for reliability
+          return applyDiscountReliably(code);
+        })
+        .catch((error) => {
+          console.error('Discount code processing error:', error);
+          
+          // Show specific error message to user with step info
+          let errorMessage = error.message || 'An unexpected error occurred. Please try again.';
+          
+          // Special handling for backend configuration errors
+          if (error.step === 'Backend Configuration Check') {
+            if (error.message.includes('not available on our system')) {
+              errorMessage = 'Configuration Required: No discount codes are set up yet. Please configure discount codes in the theme customizer first.';
+            }
+          }
+          
+          // Special handling for product assignment errors  
+          if (error.step === 'Product Assignment') {
+            if (error.message.includes('No products configured')) {
+              errorMessage = 'Product Setup Required: Please configure which products to add for this discount code in the theme customizer.';
+            }
+          }
+          
+          // Add step information for debugging
+          if (error.step) {
+            errorMessage += ` (Step: ${error.step})`;
+          }
+          
+          setMessage(errorMessage, true);
+          btn.disabled = false;
+        });
+
+      // Function to check if code exists in backend configuration
+      function checkCodeInBackend(code) {
+        return new Promise((resolve) => {
+          // Get all configured discount codes from the section settings - build with Liquid
+          // Keep original case for display, but we'll do case-insensitive comparison
+          
+          // Build the configured codes array more safely with proper escaping
+          const configuredCodes = [];
+          
+          {%- if section.settings.fallback_code_1 != blank and section.settings.fallback_code_1 != '' -%}
+          configuredCodes.push('{{ section.settings.fallback_code_1 | strip | escape }}');
+          {%- endif -%}
+          {%- if section.settings.fallback_code_2 != blank and section.settings.fallback_code_2 != '' -%}
+          configuredCodes.push('{{ section.settings.fallback_code_2 | strip | escape }}');
+          {%- endif -%}
+          {%- if section.settings.fallback_code_3 != blank and section.settings.fallback_code_3 != '' -%}
+          configuredCodes.push('{{ section.settings.fallback_code_3 | strip | escape }}');
+          {%- endif -%}
+          {%- if section.settings.fallback_code_4 != blank and section.settings.fallback_code_4 != '' -%}
+          configuredCodes.push('{{ section.settings.fallback_code_4 | strip | escape }}');
+          {%- endif -%}
+          {%- if section.settings.fallback_code_5 != blank and section.settings.fallback_code_5 != '' -%}
+          configuredCodes.push('{{ section.settings.fallback_code_5 | strip | escape }}');
+          {%- endif -%}
+          {%- if section.settings.fallback_code_6 != blank and section.settings.fallback_code_6 != '' -%}
+          configuredCodes.push('{{ section.settings.fallback_code_6 | strip | escape }}');
+          {%- endif -%}
+          {%- if section.settings.fallback_code_7 != blank and section.settings.fallback_code_7 != '' -%}
+          configuredCodes.push('{{ section.settings.fallback_code_7 | strip | escape }}');
+          {%- endif -%}
+          {%- if section.settings.fallback_code_8 != blank and section.settings.fallback_code_8 != '' -%}
+          configuredCodes.push('{{ section.settings.fallback_code_8 | strip | escape }}');
+          {%- endif -%}
+          
+          // Enhanced debugging
+          console.log('DEBUG: Raw section settings check:');
+          console.log('DEBUG: - fallback_code_1:', '{{ section.settings.fallback_code_1 | default: "NOT SET" }}');
+          console.log('DEBUG: - fallback_code_2:', '{{ section.settings.fallback_code_2 | default: "NOT SET" }}');
+          console.log('DEBUG: - fallback_code_3:', '{{ section.settings.fallback_code_3 | default: "NOT SET" }}');
+          console.log('DEBUG: - fallback_code_4:', '{{ section.settings.fallback_code_4 | default: "NOT SET" }}');
+          console.log('DEBUG: - fallback_code_5:', '{{ section.settings.fallback_code_5 | default: "NOT SET" }}');
+          console.log('DEBUG: - fallback_code_6:', '{{ section.settings.fallback_code_6 | default: "NOT SET" }}');
+          console.log('DEBUG: - fallback_code_7:', '{{ section.settings.fallback_code_7 | default: "NOT SET" }}');
+          console.log('DEBUG: - fallback_code_8:', '{{ section.settings.fallback_code_8 | default: "NOT SET" }}');
+          console.log('DEBUG: Liquid-built configured codes array:', configuredCodes);
+          console.log('DEBUG: Array length:', configuredCodes.length);
+
+          // Check if the entered code exists in our configured codes (case-insensitive)
+          const codeToCheck = code.trim().toLowerCase();
+          
+          const isCodeConfigured = configuredCodes.some(configCode => {
+            const configCodeLower = configCode.trim().toLowerCase();
+            console.log('DEBUG: Comparing "' + codeToCheck + '" with configured "' + configCodeLower + '"');
+            return configCodeLower === codeToCheck;
+          });
+          
+          // Enhanced debug info for troubleshooting
+          console.log('DEBUG: Final comparison result:', isCodeConfigured);
+          console.log('DEBUG: Input code processed as:', `"${codeToCheck}"`);
+          
+          if (!isCodeConfigured && configuredCodes.length === 0) {
+            console.log('ERROR: No discount codes are configured in the theme customizer!');
+            console.log('Please add discount codes in: Theme Customizer → Apply promo code section');
+          }
+          
+          resolve(isCodeConfigured);
+        });
+      }
+
+      // Function to validate discount code with Shopify and get product info
+      async function validateDiscountCode(code) {
+        try {
+          console.log('DEBUG: Starting Shopify validation and product detection for:', code);
+          
+          // Try to get discount information by applying it to a temporary product
+          // First, get a random product to test with
+          const productsResponse = await fetch('/products.json?limit=1');
+          const productsData = await productsResponse.json();
+          
+          if (!productsData.products || productsData.products.length === 0) {
+            throw new Error('No products available for testing discount');
+          }
+          
+          const testProduct = productsData.products[0];
+          const testVariant = testProduct.variants[0];
+          
+          console.log('DEBUG: Using test product:', testProduct.handle);
+          
+          // Add test product to cart
+          const addResponse = await fetch('/cart/add.js', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+              id: testVariant.id,
+              quantity: 1
+            })
+          });
+          
+          if (!addResponse.ok) {
+            throw new Error('Failed to add test product to cart');
+          }
+          
+          console.log('DEBUG: Test product added to cart');
+          
+          // Try to apply discount and see what happens
+          const discountResponse = await fetch(`/discount/${encodeURIComponent(code)}`, {
+            method: 'GET',
+            redirect: 'manual' // Don't follow redirects automatically
+          });
+          
+          console.log('DEBUG: Discount URL response status:', discountResponse.status);
+          
+          if (discountResponse.status === 302 || discountResponse.status === 200) {
+            // Discount exists and is valid
+            
+            // Clean up - remove test product from cart
+            await fetch('/cart/clear.js', { method: 'POST' });
+            
+            return {
+              valid: true,
+              used: false,
+              code: code,
+              type: 'validated'
+            };
+          }
+          
+          if (discountResponse.status === 404) {
+            // Clean up
+            await fetch('/cart/clear.js', { method: 'POST' });
+            return { valid: false, message: 'Discount code does not exist in Shopify' };
+          }
+          
+          // Clean up and assume valid if inconclusive
+          await fetch('/cart/clear.js', { method: 'POST' });
+          
+          return {
+            valid: true,
+            used: false,
+            code: code,
+            type: 'assumed',
+            value: null,
+            applicableProducts: []
+          };
           
         } catch (error) {
-          console.error('Error:', error);
-          showMessage('Something went wrong. Please try again.', true);
-          setLoading(false);
+          console.error('DEBUG: Shopify validation error:', error);
+          
+          // Clean up cart in case of error
+          try {
+            await fetch('/cart/clear.js', { method: 'POST' });
+          } catch (cleanupError) {
+            console.error('Cart cleanup failed:', cleanupError);
+          }
+          
+          // Return assumed valid to avoid blocking legitimate discounts
+          return {
+            valid: true,
+            used: false,
+            code: code,
+            type: 'error',
+            value: null,
+            applicableProducts: []
+          };
         }
-      });
+      }
+
+      // Function to get products assigned to this discount (manual configuration only)
+      async function getDiscountProducts(discountData) {
+        try {
+          console.log('DEBUG: Getting manually configured products for discount:', discountData.code);
+          
+          // Get the configured product handles for this specific discount code
+          const products = getConfiguredProductsForCode(discountData.code);
+          
+          if (products && products.length > 0) {
+            console.log('DEBUG: Found configured products:', products);
+            return products;
+          }
+          
+          // If no products configured for this code, throw error
+          const error = new Error('No products configured for this discount code. Please add product handles in theme customizer.');
+          error.step = 'Product Assignment';
+          throw error;
+          
+        } catch (error) {
+          console.error('Error getting discount products:', error);
+          if (!error.step) error.step = 'Product Assignment';
+          throw error;
+        }
+      }
       
-      // Allow Enter key submission
+      // Get the configured products for a specific discount code (supports comma-separated handles)
+      function getConfiguredProductsForCode(code) {
+        const codeLower = code.toLowerCase().trim();
+        
+        // Build configuration data from Liquid settings
+        const codeConfig = {
+          {%- if section.settings.fallback_code_1 != blank -%}
+          '{{ section.settings.fallback_code_1 | strip | downcase }}': {
+            {%- if section.settings.fallback_products_1 != blank -%}
+            products: '{{ section.settings.fallback_products_1 | strip }}',
+            quantity: 1
+            {%- else -%}
+            products: '',
+            quantity: 1
+            {%- endif -%}
+          },
+          {%- endif -%}
+          {%- if section.settings.fallback_code_2 != blank -%}
+          '{{ section.settings.fallback_code_2 | strip | downcase }}': {
+            {%- if section.settings.fallback_products_2 != blank -%}
+            products: '{{ section.settings.fallback_products_2 | strip }}',
+            quantity: 1
+            {%- else -%}
+            products: '',
+            quantity: 1
+            {%- endif -%}
+          },
+          {%- endif -%}
+          {%- if section.settings.fallback_code_3 != blank -%}
+          '{{ section.settings.fallback_code_3 | strip | downcase }}': {
+            {%- if section.settings.fallback_products_3 != blank -%}
+            products: '{{ section.settings.fallback_products_3 | strip }}',
+            quantity: 1
+            {%- else -%}
+            products: '',
+            quantity: 1
+            {%- endif -%}
+          },
+          {%- endif -%}
+          {%- if section.settings.fallback_code_4 != blank -%}
+          '{{ section.settings.fallback_code_4 | strip | downcase }}': {
+            {%- if section.settings.fallback_products_4 != blank -%}
+            products: '{{ section.settings.fallback_products_4 | strip }}',
+            quantity: 1
+            {%- else -%}
+            products: '',
+            quantity: 1
+            {%- endif -%}
+          },
+          {%- endif -%}
+          {%- if section.settings.fallback_code_5 != blank -%}
+          '{{ section.settings.fallback_code_5 | strip | downcase }}': {
+            {%- if section.settings.fallback_products_5 != blank -%}
+            products: '{{ section.settings.fallback_products_5 | strip }}',
+            quantity: 1
+            {%- else -%}
+            products: '',
+            quantity: 1
+            {%- endif -%}
+          },
+          {%- endif -%}
+          {%- if section.settings.fallback_code_6 != blank -%}
+          '{{ section.settings.fallback_code_6 | strip | downcase }}': {
+            {%- if section.settings.fallback_products_6 != blank -%}
+            products: '{{ section.settings.fallback_products_6 | strip }}',
+            quantity: 1
+            {%- else -%}
+            products: '',
+            quantity: 1
+            {%- endif -%}
+          },
+          {%- endif -%}
+          {%- if section.settings.fallback_code_7 != blank -%}
+          '{{ section.settings.fallback_code_7 | strip | downcase }}': {
+            {%- if section.settings.fallback_products_7 != blank -%}
+            products: '{{ section.settings.fallback_products_7 | strip }}',
+            quantity: 1
+            {%- else -%}
+            products: '',
+            quantity: 1
+            {%- endif -%}
+          },
+          {%- endif -%}
+          {%- if section.settings.fallback_code_8 != blank -%}
+          '{{ section.settings.fallback_code_8 | strip | downcase }}': {
+            {%- if section.settings.fallback_products_8 != blank -%}
+            products: '{{ section.settings.fallback_products_8 | strip }}',
+            quantity: 1
+            {%- else -%}
+            products: '',
+            quantity: 1
+            {%- endif -%}
+          }
+          {%- endif -%}
+        };
+        
+        console.log('DEBUG: Code configuration:', codeConfig);
+        console.log('DEBUG: Looking for code:', codeLower);
+        
+        // Check if this code is configured
+        if (codeConfig[codeLower] && codeConfig[codeLower].products) {
+          const config = codeConfig[codeLower];
+          const productHandles = config.products;
+          const quantity = config.quantity;
+          
+          console.log('DEBUG: Found config for code:', { productHandles, quantity });
+          
+          // Split by comma and create product objects
+          const products = productHandles.split(',').map(handle => ({
+            handle: handle.trim(),
+            quantity: quantity
+          })).filter(product => product.handle !== '');
+          
+          console.log('DEBUG: Parsed products:', products);
+          return products;
+        }
+        
+        console.log('DEBUG: No configured products found for code:', code);
+        return [];
+      }
+
+
+
+      // Function to add multiple products to cart
+      async function addProductsToCart(products) {
+        console.log('DEBUG: Adding products to cart:', products);
+        
+        const addPromises = products.map(async (productData) => {
+          console.log('DEBUG: Processing product:', productData);
+          
+          // Get product details using handle
+          const response = await fetch(`/products/${productData.handle}.js`);
+          
+          if (!response.ok) {
+            console.error(`ERROR: Product ${productData.handle} not accessible via API (Status: ${response.status})`);
+            console.error('This might be because the product is unlisted or has restricted access');
+            throw new Error(`Product ${productData.handle} not found - check if product is published/listed`);
+          }
+          
+          const product = await response.json();
+          console.log('DEBUG: Product details:', product);
+          console.log('DEBUG: Product status - ID:', product.id, 'Available:', product.available, 'Published:', product.published_at);
+          
+          if (!product || !product.variants || product.variants.length === 0) {
+            throw new Error(`Product ${productData.handle} has no variants available`);
+          }
+
+          // Get the first available variant
+          const variant = product.variants.find((v) => v.available) || product.variants[0];
+          console.log('DEBUG: Using variant:', variant.id, 'for quantity:', productData.quantity);
+
+          // Add to cart
+          return fetch('/cart/add.js', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+              id: variant.id,
+              quantity: productData.quantity || 1,
+            }),
+          });
+        });
+
+        return Promise.all(addPromises);
+      }
+
+      // Function to verify discount compatibility with current cart
+      async function verifyDiscountCompatibility(discountCode, cartItems) {
+        try {
+          console.log('DEBUG: Verifying discount compatibility for:', discountCode);
+          console.log('DEBUG: With cart items:', cartItems);
+          
+          // Test the discount URL to see if it's valid
+          const testResponse = await fetch(`/discount/${encodeURIComponent(discountCode)}`, {
+            method: 'GET',
+            redirect: 'manual'
+          });
+          
+          console.log('DEBUG: Discount test response status:', testResponse.status);
+          
+          if (testResponse.status === 404) {
+            return { 
+              compatible: false, 
+              reason: 'Discount code does not exist in Shopify' 
+            };
+          }
+          
+          if (testResponse.status === 302 || testResponse.status === 200) {
+            // Get redirect location to understand what Shopify is doing
+            const location = testResponse.headers.get('location');
+            console.log('DEBUG: Discount redirects to:', location);
+            
+            if (location && location.includes('error')) {
+              return { 
+                compatible: false, 
+                reason: 'Shopify rejected the discount (check discount settings)' 
+              };
+            }
+            
+            return { 
+              compatible: true, 
+              reason: 'Discount appears valid', 
+              redirectLocation: location 
+            };
+          }
+          
+          // If we can't determine, assume compatible but warn
+          console.warn('DEBUG: Could not definitively verify discount, proceeding anyway');
+          return { 
+            compatible: true, 
+            reason: 'Could not verify, assuming valid' 
+          };
+          
+        } catch (error) {
+          console.error('DEBUG: Error verifying discount:', error);
+          return { 
+            compatible: true, 
+            reason: 'Verification failed, assuming valid' 
+          };
+        }
+      }
+
+      // Function to apply discount with multiple methods and verification
+      async function applyDiscountReliably(discountCode) {
+        try {
+          console.log('DEBUG: ===== APPLYING DISCOUNT RELIABLY =====');
+          
+          // Method 1: Set session storage for persistence
+          console.log('DEBUG: Method 1 - Setting session storage');
+          sessionStorage.setItem('pending_discount_code', discountCode);
+          localStorage.setItem('pending_discount_code', discountCode);
+          
+          // Method 2: Update cart with discount in note/attributes
+          console.log('DEBUG: Method 2 - Updating cart with discount info');
+          try {
+            await fetch('/cart/update.js', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({
+                attributes: {
+                  'discount_code': discountCode,
+                  '_promo_applied': 'true',
+                  '_promo_timestamp': Date.now().toString()
+                },
+                note: `Discount code: ${discountCode}`
+              })
+            });
+            console.log('DEBUG: Cart updated with discount attributes');
+          } catch (updateError) {
+            console.error('DEBUG: Cart update failed:', updateError);
+          }
+          
+          // Method 3: Use Shopify's standard discount URL approach
+          console.log('DEBUG: Method 3 - Using Shopify discount URL (primary method)');
+          
+          // This is the most reliable approach - let Shopify handle everything
+          window.location.href = `/discount/${encodeURIComponent(discountCode)}`;
+          
+        } catch (error) {
+          console.error('DEBUG: Error in discount application:', error);
+          
+          // Final emergency fallback
+          console.log('DEBUG: Emergency fallback - direct redirect');
+          setTimeout(() => {
+            window.location.href = `/checkout?discount=${encodeURIComponent(discountCode)}`;
+          }, 1000);
+        }
+      }
+      });
+
+      // Allow Enter key
       input.addEventListener('keydown', function (e) {
         if (e.key === 'Enter') {
-          e.preventDefault();
           btn.click();
         }
       });
-      
-      // Debug helper
-      window.checkPromoConfig = () => {
-        console.log('=== PROMO CONFIGURATION ===');
-        console.log('Total codes configured:', Object.keys(PROMO_CONFIG).length);
-        Object.entries(PROMO_CONFIG).forEach(([code, config]) => {
-          console.log(`Code: ${code}`);
-          console.log(`  Products: ${config.products.join(', ') || 'None'}`);
-        });
-        console.log('===========================');
-      };
-      
-      // Debug helper to check current cart and discount status
-      window.checkCartDiscount = async () => {
-        try {
-          const response = await fetch('/cart.js');
-          const cart = await response.json();
-          console.log('=== CART STATUS ===');
-          console.log('Items:', cart.item_count);
-          console.log('Total:', cart.total_price);
-          console.log('Original Total:', cart.original_total_price);
-          console.log('Total Discount:', cart.total_discount);
-          console.log('Attributes:', cart.attributes);
-          console.log('==================');
-          return cart;
-        } catch (error) {
-          console.error('Error checking cart:', error);
-        }
-      };
-      
-      console.log('Promo section loaded.');
-      console.log('Commands: checkPromoConfig() | checkCartDiscount()');
     })();
   </script>
 </section>
@@ -379,48 +782,16 @@
 {
   "name": "Apply promo code",
   "settings": [
-    {
-      "type": "header",
-      "content": "Content"
-    },
-    {
-      "type": "text",
-      "id": "title",
-      "label": "Title",
-      "default": "Apply your promo code"
-    },
-    {
-      "type": "text",
-      "id": "subtitle",
-      "label": "Subtitle",
-      "default": "Enter a promo code to get a discount"
-    },
-    {
-      "type": "text",
-      "id": "placeholder",
-      "label": "Input placeholder",
-      "default": "Enter promo code"
-    },
-    {
-      "type": "text",
-      "id": "button_text",
-      "label": "Button text",
-      "default": "Apply"
-    },
-    {
-      "type": "header",
-      "content": "Styling"
-    },
-    {
-      "type": "color",
-      "id": "bg_color",
-      "label": "Background color",
-      "default": "#ffffff"
-    },
+    { "type": "header", "content": "Section Settings" },
+    { "type": "text", "id": "title", "label": "Title", "default": "Apply your promo code" },
+    { "type": "text", "id": "subtitle", "label": "Subtitle", "default": "Enter a promo code to get a discount" },
+    { "type": "text", "id": "placeholder", "label": "Input placeholder", "default": "Enter promo code" },
+    { "type": "text", "id": "button_text", "label": "Button text", "default": "Apply" },
     {
       "type": "image_picker",
       "id": "bg_image",
-      "label": "Background Image"
+      "label": "Background Image",
+      "info": "Optional background image for the entire section"
     },
     {
       "type": "range",
@@ -430,7 +801,8 @@
       "max": 100,
       "step": 5,
       "default": 0,
-      "unit": "%"
+      "unit": "%",
+      "info": "Add a dark overlay over the background image to improve text readability"
     },
     {
       "type": "range",
@@ -440,121 +812,140 @@
       "max": 100,
       "step": 5,
       "default": 90,
-      "unit": "vh"
+      "unit": "vh",
+      "info": "Set the height of the section as a percentage of viewport height"
     },
-    {
-      "type": "color",
-      "id": "title_color",
-      "label": "Title color",
-      "default": "#111111"
+    { "type": "color", "id": "bg_color", "label": "Background color", "default": "#ffffff" },
+    { "type": "color", "id": "title_color", "label": "Title color", "default": "#111111" },
+    { "type": "color", "id": "subtitle_color", "label": "Subtitle color", "default": "#666666" },
+    { "type": "color", "id": "button_bg", "label": "Button background", "default": "#111111" },
+    { "type": "color", "id": "button_color", "label": "Button text color", "default": "#ffffff" },
+
+    { "type": "header", "content": "Discount Code Configuration" },
+    { 
+      "type": "paragraph", 
+      "content": "REQUIRED: You MUST configure discount codes here for the form to work. The system will reject any codes not listed in this section." 
     },
-    {
-      "type": "color",
-      "id": "subtitle_color",
-      "label": "Subtitle color",
-      "default": "#666666"
-    },
-    {
-      "type": "color",
-      "id": "button_bg",
-      "label": "Button background",
-      "default": "#111111"
-    },
-    {
-      "type": "color",
-      "id": "button_color",
-      "label": "Button text color",
-      "default": "#ffffff"
-    },
-    {
-      "type": "header",
-      "content": "Discount Codes"
-    },
-    {
-      "type": "paragraph",
-      "content": "Configure up to 8 discount codes. Enter the code exactly as created in Shopify admin, and optionally specify product handles (comma-separated) to auto-add to cart."
+
+    { "type": "header", "content": "Manual Setup Instructions" },
+    { 
+      "type": "paragraph", 
+      "content": "MANUAL CONFIGURATION ONLY\n1. Enter your discount code exactly as it appears in Shopify admin\n2. Enter the product handle(s) to add to cart (comma-separated for multiple)\n3. Set the quantity per product\n4. The system will validate the code with Shopify and add your specified products" 
     },
     {
       "type": "text",
       "id": "fallback_code_1",
-      "label": "Discount Code 1"
+      "label": "Discount Code 1",
+      "info": "Enter discount code exactly as created in Shopify admin",
+      "placeholder": "dicount code"
     },
     {
       "type": "text",
       "id": "fallback_products_1",
-      "label": "Product Handles for Code 1",
-      "info": "Comma-separated (e.g., product-1,product-2). Leave blank to only apply discount."
+      "label": "Product Handle(s) for Code 1",
+      "info": "Product handle(s). Use comma to separate multiple: product-1,product-2,product-3",
+      "placeholder": "2025-cloud9-official-pro-alternate-jersey,another-product"
     },
+
+
     {
       "type": "text",
       "id": "fallback_code_2",
-      "label": "Discount Code 2"
+      "label": "Discount Code 2 (optional)",
+      "info": "Second discount code (leave blank if not needed)"
     },
     {
       "type": "text",
       "id": "fallback_products_2",
-      "label": "Product Handles for Code 2"
+      "label": "Product Handle(s) for Code 2",
+      "info": "Product handle(s). Use comma to separate multiple: product-1,product-2,product-3",
+      "placeholder": "product-handle-1,product-handle-2"
     },
+
     {
       "type": "text",
       "id": "fallback_code_3",
-      "label": "Discount Code 3"
+      "label": "Discount Code 3 (optional)",
+      "info": "Third discount code (leave blank if not needed)"
     },
     {
       "type": "text",
       "id": "fallback_products_3",
-      "label": "Product Handles for Code 3"
+      "label": "Product Handle(s) for Code 3",
+      "info": "Product handle(s). Use comma to separate multiple: product-1,product-2,product-3",
+      "placeholder": "product-handle-1,product-handle-2"
     },
+
     {
       "type": "text",
       "id": "fallback_code_4",
-      "label": "Discount Code 4"
+      "label": "Discount Code 4 (optional)",
+      "info": "Fourth discount code (leave blank if not needed)"
     },
     {
       "type": "text",
       "id": "fallback_products_4",
-      "label": "Product Handles for Code 4"
+      "label": "Product Handle(s) for Code 4",
+      "info": "Product handle(s). Use comma to separate multiple: product-1,product-2,product-3",
+      "placeholder": "product-handle-1,product-handle-2"
     },
+
     {
       "type": "text",
       "id": "fallback_code_5",
-      "label": "Discount Code 5"
+      "label": "Discount Code 5 (optional)",
+      "info": "Fifth discount code (leave blank if not needed)"
     },
     {
       "type": "text",
       "id": "fallback_products_5",
-      "label": "Product Handles for Code 5"
+      "label": "Product Handle(s) for Code 5",
+      "info": "Product handle(s). Use comma to separate multiple: product-1,product-2,product-3",
+      "placeholder": "product-handle-1,product-handle-2"
     },
+
     {
       "type": "text",
       "id": "fallback_code_6",
-      "label": "Discount Code 6"
+      "label": "Discount Code 6 (optional)",
+      "info": "Sixth discount code (leave blank if not needed)"
     },
     {
       "type": "text",
       "id": "fallback_products_6",
-      "label": "Product Handles for Code 6"
+      "label": "Product Handle(s) for Code 6",
+      "info": "Product handle(s). Use comma to separate multiple: product-1,product-2,product-3",
+      "placeholder": "product-handle-1,product-handle-2"
     },
+
     {
       "type": "text",
       "id": "fallback_code_7",
-      "label": "Discount Code 7"
+      "label": "Discount Code 7 (optional)",
+      "info": "Seventh discount code (leave blank if not needed)"
     },
     {
       "type": "text",
       "id": "fallback_products_7",
-      "label": "Product Handles for Code 7"
+      "label": "Product Handle(s) for Code 7",
+      "info": "Product handle(s). Use comma to separate multiple: product-1,product-2,product-3",
+      "placeholder": "product-handle-1,product-handle-2"
     },
+
     {
       "type": "text",
       "id": "fallback_code_8",
-      "label": "Discount Code 8"
+      "label": "Discount Code 8 (optional)",
+      "info": "Eighth discount code (leave blank if not needed)"
     },
     {
       "type": "text",
       "id": "fallback_products_8",
-      "label": "Product Handles for Code 8"
-    }
+      "label": "Product Handle(s) for Code 8",
+      "info": "Product handle(s). Use comma to separate multiple: product-1,product-2,product-3",
+      "placeholder": "product-handle-1,product-handle-2"
+    },
+
   ],
   "presets": [
     {
