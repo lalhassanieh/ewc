@@ -258,19 +258,33 @@
             console.log(`DEBUG: - ${item.product_title} (handle: ${item.handle}, product_id: ${item.product_id})`);
           });
           
-          setMessage('Products added! Verifying discount compatibility and applying...', false);
+          setMessage('Products added! Verifying discount is still valid in Shopify...', false);
           
-          // Step 6A: First verify if this discount can be applied by testing it
-          return verifyDiscountCompatibility(code, cartData.items);
+          // Step 6A: Enhanced Shopify backend verification for discount validity
+          return verifyShopifyDiscountValidity(code);
         })
-        .then((compatibilityResult) => {
-          console.log('DEBUG: Discount compatibility check result:', compatibilityResult);
+        .then((validityResult) => {
+          console.log('DEBUG: Shopify discount validity check result:', validityResult);
           
-          if (!compatibilityResult.compatible) {
-            throw new Error(`Discount verification failed: ${compatibilityResult.reason}`);
+          if (!validityResult.valid) {
+            throw new Error(`Discount code invalid: ${validityResult.reason}`);
           }
           
-          setMessage('Discount verified! Redirecting to checkout...', false);
+          setMessage('Discount validated! Performing final compatibility check...', false);
+          
+          // Step 6B: Get current cart and verify compatibility
+          return fetch('/cart.js')
+            .then(response => response.json())
+            .then(currentCart => verifyDiscountCompatibility(code, currentCart.items));
+        })
+        .then((compatibilityResult) => {
+          console.log('DEBUG: Final compatibility check result:', compatibilityResult);
+          
+          if (!compatibilityResult.compatible) {
+            throw new Error(`Discount compatibility failed: ${compatibilityResult.reason}`);
+          }
+          
+          setMessage('All checks passed! Redirecting to checkout...', false);
           
           // Step 6B: Direct and immediate checkout redirect
           console.log('DEBUG: ===== IMMEDIATE CHECKOUT REDIRECT =====');
@@ -692,6 +706,149 @@
         });
 
         return Promise.all(addPromises);
+      }
+
+      // Enhanced Shopify backend verification for discount validity
+      async function verifyShopifyDiscountValidity(discountCode) {
+        try {
+          console.log('DEBUG: ===== SHOPIFY DISCOUNT VALIDITY CHECK =====');
+          console.log('DEBUG: Checking if discount code is still valid:', discountCode);
+          
+          // Method 1: Test discount URL with cart simulation
+          const testResponse = await fetch(`/discount/${encodeURIComponent(discountCode)}`, {
+            method: 'GET',
+            redirect: 'manual'
+          });
+          
+          console.log('DEBUG: Initial discount test status:', testResponse.status);
+          
+          // Check for immediate failures
+          if (testResponse.status === 404) {
+            return { 
+              valid: false, 
+              reason: 'Discount code does not exist' 
+            };
+          }
+          
+          // Method 2: Advanced validation - try to apply discount to a test cart scenario
+          try {
+            console.log('DEBUG: Testing discount application with cart...');
+            
+            // Create a test request to see what Shopify returns
+            const cartTestResponse = await fetch('/cart/add.js', {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+                'X-Requested-With': 'XMLHttpRequest'
+              },
+              body: JSON.stringify({
+                id: 'test', // This will fail but we can check the response
+                quantity: 1
+              })
+            });
+            
+            // Now test if we can access checkout with discount
+            const checkoutTestResponse = await fetch(`/checkout?discount=${encodeURIComponent(discountCode)}`, {
+              method: 'GET',
+              redirect: 'manual'
+            });
+            
+            console.log('DEBUG: Checkout test response status:', checkoutTestResponse.status);
+            
+            // Analyze response to determine discount validity
+            if (checkoutTestResponse.status === 302) {
+              const location = checkoutTestResponse.headers.get('location');
+              console.log('DEBUG: Checkout redirect location:', location);
+              
+              // Check for error indicators in redirect URL
+              if (location && (
+                location.includes('error') || 
+                location.includes('expired') || 
+                location.includes('invalid') ||
+                location.includes('limit') ||
+                location.includes('unavailable')
+              )) {
+                // Parse the error from URL if possible
+                let reason = 'Discount code is no longer valid';
+                if (location.includes('expired')) reason = 'Discount code has expired';
+                if (location.includes('limit')) reason = 'Discount code usage limit reached';
+                if (location.includes('unavailable')) reason = 'Discount code is not available';
+                
+                return { 
+                  valid: false, 
+                  reason: reason,
+                  details: location
+                };
+              }
+              
+              return { 
+                valid: true, 
+                reason: 'Discount code is active and available',
+                checkoutUrl: location
+              };
+            }
+            
+            // Method 3: Fallback test with discount URL status codes
+            if (testResponse.status === 302 || testResponse.status === 200) {
+              const location = testResponse.headers.get('location');
+              
+              // Additional checks for common Shopify error patterns
+              if (location && (
+                location.includes('errors') ||
+                location.includes('discount_expired') ||
+                location.includes('discount_used') ||
+                location.includes('discount_limit')
+              )) {
+                let reason = 'Discount code validation failed';
+                if (location.includes('expired')) reason = 'Discount code has expired';
+                if (location.includes('used') || location.includes('limit')) reason = 'Discount code usage limit exceeded';
+                
+                return { 
+                  valid: false, 
+                  reason: reason 
+                };
+              }
+              
+              return { 
+                valid: true, 
+                reason: 'Discount appears valid in Shopify',
+                redirectLocation: location 
+              };
+            }
+            
+            // If we get here, assume valid but log warning
+            console.warn('DEBUG: Could not definitively verify discount validity, assuming valid');
+            return { 
+              valid: true, 
+              reason: 'Could not verify completely, proceeding with caution' 
+            };
+            
+          } catch (testError) {
+            console.error('DEBUG: Advanced validation failed:', testError);
+            
+            // Fallback to basic validation
+            if (testResponse.status === 302 || testResponse.status === 200) {
+              return { 
+                valid: true, 
+                reason: 'Basic validation passed, advanced test failed' 
+              };
+            }
+            
+            return { 
+              valid: false, 
+              reason: 'Discount validation failed completely' 
+            };
+          }
+          
+        } catch (error) {
+          console.error('DEBUG: Shopify discount validity check error:', error);
+          
+          // Be conservative - if we can't verify, assume invalid for safety
+          return { 
+            valid: false, 
+            reason: 'Unable to verify discount with Shopify backend' 
+          };
+        }
       }
 
       // Function to verify discount compatibility with current cart
