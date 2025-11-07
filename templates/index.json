@@ -2461,10 +2461,20 @@
         "button_color": "#ffffff",
         "fallback_code_1": "test_free_gift_code",
         "fallback_products_1": "docapp-free-gift-free-worlds2025-gift-ewc-hat-6751",
-        "fallback_quantity_1": 1,
-        "fallback_code_2": "",
-        "fallback_products_2": "",
-        "fallback_quantity_2": 1
+        "fallback_code_2": "test_free_gift_code_hoodie",
+        "fallback_products_2": "docapp-free-gift-free-worlds2025-gift-ewc-hoodie",
+        "fallback_code_3": "",
+        "fallback_products_3": "",
+        "fallback_code_4": "",
+        "fallback_products_4": "",
+        "fallback_code_5": "",
+        "fallback_products_5": "",
+        "fallback_code_6": "",
+        "fallback_products_6": "",
+        "fallback_code_7": "",
+        "fallback_products_7": "",
+        "fallback_code_8": "",
+        "fallback_products_8": ""
       }
     },
     "featured_custom_section_aMVTBf": {
