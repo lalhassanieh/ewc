@@ -186,24 +186,14 @@
           
           setMessage('Products added! Applying discount and redirecting...', false);
           
-          // Apply the discount code to the cart
-          return fetch('/cart/update.js', {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-              attributes: {
-                'discount_code': code
-              }
-            })
-          });
-        })
-        .then(() => {
-          // Redirect to checkout with discount code
+          console.log('DEBUG: Applying discount code:', code);
+          
+          // Use the most reliable method: redirect to discount URL which auto-applies and redirects to cart/checkout
+          // This is Shopify's standard way to apply discounts
           setTimeout(() => {
-            window.location.href = `/checkout?discount=${encodeURIComponent(code)}`;
-          }, 500);
+            console.log('DEBUG: Redirecting to discount URL for automatic application');
+            window.location.href = `/discount/${encodeURIComponent(code)}`;
+          }, 1000);
         })
         .catch((error) => {
           console.error('Discount code processing error:', error);
