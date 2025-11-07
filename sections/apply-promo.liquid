@@ -197,14 +197,14 @@
           // Special handling for backend configuration errors
           if (error.step === 'Backend Configuration Check') {
             if (error.message.includes('not available on our system')) {
-              errorMessage = '⚙️ Configuration Required: No discount codes are set up yet. Please configure discount codes in the theme customizer first.';
+              errorMessage = 'Configuration Required: No discount codes are set up yet. Please configure discount codes in the theme customizer first.';
             }
           }
           
           // Special handling for product assignment errors  
           if (error.step === 'Product Assignment') {
             if (error.message.includes('No products configured')) {
-              errorMessage = '🎯 Product Setup Required: Please configure which products to add for this discount code in the theme customizer.';
+              errorMessage = 'Product Setup Required: Please configure which products to add for this discount code in the theme customizer.';
             }
           }
           
@@ -396,7 +396,7 @@
           '{{ section.settings.fallback_code_1 | strip | downcase }}': {
             {%- if section.settings.fallback_products_1 != blank -%}
             products: '{{ section.settings.fallback_products_1 | strip }}',
-            quantity: {{ section.settings.fallback_quantity_1 | default: 1 }}
+            quantity: 1
             {%- else -%}
             products: '',
             quantity: 1
@@ -407,7 +407,7 @@
           '{{ section.settings.fallback_code_2 | strip | downcase }}': {
             {%- if section.settings.fallback_products_2 != blank -%}
             products: '{{ section.settings.fallback_products_2 | strip }}',
-            quantity: {{ section.settings.fallback_quantity_2 | default: 1 }}
+            quantity: 1
             {%- else -%}
             products: '',
             quantity: 1
@@ -538,58 +538,47 @@
     { "type": "color", "id": "button_bg", "label": "Button background", "default": "#111111" },
     { "type": "color", "id": "button_color", "label": "Button text color", "default": "#ffffff" },
 
-    { "type": "header", "content": "⚙️ Discount Code Configuration" },
+    { "type": "header", "content": "Discount Code Configuration" },
     { 
       "type": "paragraph", 
-      "content": "🔑 REQUIRED: You MUST configure discount codes here for the form to work. The system will reject any codes not listed in this section." 
+      "content": "REQUIRED: You MUST configure discount codes here for the form to work. The system will reject any codes not listed in this section." 
     },
 
-    { "type": "header", "content": "📋 Manual Setup Instructions" },
+    { "type": "header", "content": "Manual Setup Instructions" },
     { 
       "type": "paragraph", 
-      "content": "✅ MANUAL CONFIGURATION ONLY\n1. Enter your discount code exactly as it appears in Shopify admin\n2. Enter the product handle(s) to add to cart (comma-separated for multiple)\n3. Set the quantity per product\n4. The system will validate the code with Shopify and add your specified products" 
+      "content": "MANUAL CONFIGURATION ONLY\n1. Enter your discount code exactly as it appears in Shopify admin\n2. Enter the product handle(s) to add to cart (comma-separated for multiple)\n3. Set the quantity per product\n4. The system will validate the code with Shopify and add your specified products" 
     },
     {
       "type": "text",
       "id": "fallback_code_1",
-      "label": "✅ Discount Code 1",
+      "label": "Discount Code 1",
       "info": "Enter discount code exactly as created in Shopify admin",
       "placeholder": "dicount code"
     },
     {
       "type": "text",
       "id": "fallback_products_1",
-      "label": "🎯 Product Handle(s) for Code 1",
+      "label": "Product Handle(s) for Code 1",
       "info": "Product handle(s). Use comma to separate multiple: product-1,product-2,product-3",
       "placeholder": "2025-cloud9-official-pro-alternate-jersey,another-product"
     },
-    {
-      "type": "number",
-      "id": "fallback_quantity_1",
-      "label": "📦 Quantity for Code 1",
-      "default": 1,
-      "info": "How many of this product to add to cart"
-    },
+
 
     {
       "type": "text",
       "id": "fallback_code_2",
-      "label": "✅ Discount Code 2 (optional)",
+      "label": "Discount Code 2 (optional)",
       "info": "Second discount code (leave blank if not needed)"
     },
     {
       "type": "text",
       "id": "fallback_products_2",
-      "label": "🎯 Product Handle(s) for Code 2",
+      "label": "Product Handle(s) for Code 2",
       "info": "Product handle(s). Use comma to separate multiple: product-1,product-2,product-3",
       "placeholder": "product-handle-1,product-handle-2"
     },
-    {
-      "type": "number",
-      "id": "fallback_quantity_2",
-      "label": "Quantity for Code 2",
-      "default": 1
-    }
+
   ],
   "presets": [
     {
