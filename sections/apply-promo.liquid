@@ -181,10 +181,27 @@
             handle: item.handle,
             product_title: item.product_title,
             variant_title: item.variant_title,
-            quantity: item.quantity
+            quantity: item.quantity,
+            product_id: item.product_id,
+            variant_id: item.variant_id
           })));
           
+          // Log specific details for troubleshooting
+          console.log('DEBUG: ===== DISCOUNT TROUBLESHOOTING =====');
+          console.log('DEBUG: Discount code being applied:', code);
+          console.log('DEBUG: Products that will be in cart when discount is applied:');
+          cartData.items.forEach(item => {
+            console.log(`DEBUG: - ${item.product_title} (handle: ${item.handle}, product_id: ${item.product_id})`);
+          });
+          console.log('DEBUG: =====================================');
+          
           setMessage('Products added! Applying discount and redirecting...', false);
+          
+          // Add helpful message for troubleshooting
+          console.log('DEBUG: If you get "discount code isn\'t valid for items in cart" error:');
+          console.log('DEBUG: 1. Check your Shopify discount settings');
+          console.log('DEBUG: 2. Make sure the discount applies to the products being added');
+          console.log('DEBUG: 3. Check the "Applies to" section in your discount configuration');
           
           console.log('DEBUG: Applying discount code:', code);
           
