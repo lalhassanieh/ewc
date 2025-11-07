@@ -232,11 +232,35 @@
           {%- if section.settings.fallback_code_2 != blank and section.settings.fallback_code_2 != '' -%}
           configuredCodes.push('{{ section.settings.fallback_code_2 | strip | escape }}');
           {%- endif -%}
+          {%- if section.settings.fallback_code_3 != blank and section.settings.fallback_code_3 != '' -%}
+          configuredCodes.push('{{ section.settings.fallback_code_3 | strip | escape }}');
+          {%- endif -%}
+          {%- if section.settings.fallback_code_4 != blank and section.settings.fallback_code_4 != '' -%}
+          configuredCodes.push('{{ section.settings.fallback_code_4 | strip | escape }}');
+          {%- endif -%}
+          {%- if section.settings.fallback_code_5 != blank and section.settings.fallback_code_5 != '' -%}
+          configuredCodes.push('{{ section.settings.fallback_code_5 | strip | escape }}');
+          {%- endif -%}
+          {%- if section.settings.fallback_code_6 != blank and section.settings.fallback_code_6 != '' -%}
+          configuredCodes.push('{{ section.settings.fallback_code_6 | strip | escape }}');
+          {%- endif -%}
+          {%- if section.settings.fallback_code_7 != blank and section.settings.fallback_code_7 != '' -%}
+          configuredCodes.push('{{ section.settings.fallback_code_7 | strip | escape }}');
+          {%- endif -%}
+          {%- if section.settings.fallback_code_8 != blank and section.settings.fallback_code_8 != '' -%}
+          configuredCodes.push('{{ section.settings.fallback_code_8 | strip | escape }}');
+          {%- endif -%}
           
           // Enhanced debugging
           console.log('DEBUG: Raw section settings check:');
           console.log('DEBUG: - fallback_code_1:', '{{ section.settings.fallback_code_1 | default: "NOT SET" }}');
           console.log('DEBUG: - fallback_code_2:', '{{ section.settings.fallback_code_2 | default: "NOT SET" }}');
+          console.log('DEBUG: - fallback_code_3:', '{{ section.settings.fallback_code_3 | default: "NOT SET" }}');
+          console.log('DEBUG: - fallback_code_4:', '{{ section.settings.fallback_code_4 | default: "NOT SET" }}');
+          console.log('DEBUG: - fallback_code_5:', '{{ section.settings.fallback_code_5 | default: "NOT SET" }}');
+          console.log('DEBUG: - fallback_code_6:', '{{ section.settings.fallback_code_6 | default: "NOT SET" }}');
+          console.log('DEBUG: - fallback_code_7:', '{{ section.settings.fallback_code_7 | default: "NOT SET" }}');
+          console.log('DEBUG: - fallback_code_8:', '{{ section.settings.fallback_code_8 | default: "NOT SET" }}');
           console.log('DEBUG: Liquid-built configured codes array:', configuredCodes);
           console.log('DEBUG: Array length:', configuredCodes.length);
 
@@ -412,6 +436,72 @@
             products: '',
             quantity: 1
             {%- endif -%}
+          },
+          {%- endif -%}
+          {%- if section.settings.fallback_code_3 != blank -%}
+          '{{ section.settings.fallback_code_3 | strip | downcase }}': {
+            {%- if section.settings.fallback_products_3 != blank -%}
+            products: '{{ section.settings.fallback_products_3 | strip }}',
+            quantity: 1
+            {%- else -%}
+            products: '',
+            quantity: 1
+            {%- endif -%}
+          },
+          {%- endif -%}
+          {%- if section.settings.fallback_code_4 != blank -%}
+          '{{ section.settings.fallback_code_4 | strip | downcase }}': {
+            {%- if section.settings.fallback_products_4 != blank -%}
+            products: '{{ section.settings.fallback_products_4 | strip }}',
+            quantity: 1
+            {%- else -%}
+            products: '',
+            quantity: 1
+            {%- endif -%}
+          },
+          {%- endif -%}
+          {%- if section.settings.fallback_code_5 != blank -%}
+          '{{ section.settings.fallback_code_5 | strip | downcase }}': {
+            {%- if section.settings.fallback_products_5 != blank -%}
+            products: '{{ section.settings.fallback_products_5 | strip }}',
+            quantity: 1
+            {%- else -%}
+            products: '',
+            quantity: 1
+            {%- endif -%}
+          },
+          {%- endif -%}
+          {%- if section.settings.fallback_code_6 != blank -%}
+          '{{ section.settings.fallback_code_6 | strip | downcase }}': {
+            {%- if section.settings.fallback_products_6 != blank -%}
+            products: '{{ section.settings.fallback_products_6 | strip }}',
+            quantity: 1
+            {%- else -%}
+            products: '',
+            quantity: 1
+            {%- endif -%}
+          },
+          {%- endif -%}
+          {%- if section.settings.fallback_code_7 != blank -%}
+          '{{ section.settings.fallback_code_7 | strip | downcase }}': {
+            {%- if section.settings.fallback_products_7 != blank -%}
+            products: '{{ section.settings.fallback_products_7 | strip }}',
+            quantity: 1
+            {%- else -%}
+            products: '',
+            quantity: 1
+            {%- endif -%}
+          },
+          {%- endif -%}
+          {%- if section.settings.fallback_code_8 != blank -%}
+          '{{ section.settings.fallback_code_8 | strip | downcase }}': {
+            {%- if section.settings.fallback_products_8 != blank -%}
+            products: '{{ section.settings.fallback_products_8 | strip }}',
+            quantity: 1
+            {%- else -%}
+            products: '',
+            quantity: 1
+            {%- endif -%}
           }
           {%- endif -%}
         };
@@ -575,6 +665,90 @@
       "type": "text",
       "id": "fallback_products_2",
       "label": "Product Handle(s) for Code 2",
+      "info": "Product handle(s). Use comma to separate multiple: product-1,product-2,product-3",
+      "placeholder": "product-handle-1,product-handle-2"
+    },
+
+    {
+      "type": "text",
+      "id": "fallback_code_3",
+      "label": "Discount Code 3 (optional)",
+      "info": "Third discount code (leave blank if not needed)"
+    },
+    {
+      "type": "text",
+      "id": "fallback_products_3",
+      "label": "Product Handle(s) for Code 3",
+      "info": "Product handle(s). Use comma to separate multiple: product-1,product-2,product-3",
+      "placeholder": "product-handle-1,product-handle-2"
+    },
+
+    {
+      "type": "text",
+      "id": "fallback_code_4",
+      "label": "Discount Code 4 (optional)",
+      "info": "Fourth discount code (leave blank if not needed)"
+    },
+    {
+      "type": "text",
+      "id": "fallback_products_4",
+      "label": "Product Handle(s) for Code 4",
+      "info": "Product handle(s). Use comma to separate multiple: product-1,product-2,product-3",
+      "placeholder": "product-handle-1,product-handle-2"
+    },
+
+    {
+      "type": "text",
+      "id": "fallback_code_5",
+      "label": "Discount Code 5 (optional)",
+      "info": "Fifth discount code (leave blank if not needed)"
+    },
+    {
+      "type": "text",
+      "id": "fallback_products_5",
+      "label": "Product Handle(s) for Code 5",
+      "info": "Product handle(s). Use comma to separate multiple: product-1,product-2,product-3",
+      "placeholder": "product-handle-1,product-handle-2"
+    },
+
+    {
+      "type": "text",
+      "id": "fallback_code_6",
+      "label": "Discount Code 6 (optional)",
+      "info": "Sixth discount code (leave blank if not needed)"
+    },
+    {
+      "type": "text",
+      "id": "fallback_products_6",
+      "label": "Product Handle(s) for Code 6",
+      "info": "Product handle(s). Use comma to separate multiple: product-1,product-2,product-3",
+      "placeholder": "product-handle-1,product-handle-2"
+    },
+
+    {
+      "type": "text",
+      "id": "fallback_code_7",
+      "label": "Discount Code 7 (optional)",
+      "info": "Seventh discount code (leave blank if not needed)"
+    },
+    {
+      "type": "text",
+      "id": "fallback_products_7",
+      "label": "Product Handle(s) for Code 7",
+      "info": "Product handle(s). Use comma to separate multiple: product-1,product-2,product-3",
+      "placeholder": "product-handle-1,product-handle-2"
+    },
+
+    {
+      "type": "text",
+      "id": "fallback_code_8",
+      "label": "Discount Code 8 (optional)",
+      "info": "Eighth discount code (leave blank if not needed)"
+    },
+    {
+      "type": "text",
+      "id": "fallback_products_8",
+      "label": "Product Handle(s) for Code 8",
       "info": "Product handle(s). Use comma to separate multiple: product-1,product-2,product-3",
       "placeholder": "product-handle-1,product-handle-2"
     },
