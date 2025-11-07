@@ -176,6 +176,21 @@
         
         // Declare redirect timer variables for cleanup on error
         let redirectTimer1, redirectTimer2;
+        
+        // ULTIMATE CHECKOUT GUARANTEE - Monitor if we stay on form page
+        let checkoutGuaranteeTimer = setTimeout(() => {
+          if (sessionStorage.getItem('redirect_attempted') === 'true' && 
+              !window.location.href.includes('/checkout')) {
+            console.log('DEBUG: ===== CHECKOUT GUARANTEE ACTIVATED =====');
+            console.log('DEBUG: Still on form page after validation - forcing checkout');
+            
+            const storedCode = sessionStorage.getItem('discount_code');
+            if (storedCode) {
+              setMessage('Redirecting to checkout...', false);
+              window.location.href = `/checkout?discount=${encodeURIComponent(storedCode)}`;
+            }
+          }
+        }, 5000); // 5 second ultimate failsafe
         btn.disabled = true;
 
         // Step 1: Check if the code exists in backend configuration
@@ -317,41 +332,94 @@
           .then(cartData => {
             console.log('DEBUG: Cart updated successfully:', cartData);
             
-            // Method 3: Single reliable redirect after cart is updated
-            console.log('DEBUG: Executing single reliable checkout redirect...');
+            // GUARANTEED CHECKOUT REDIRECT WITH DISCOUNT CODE
+            console.log('DEBUG: ===== GUARANTEED CHECKOUT REDIRECT =====');
+            console.log('DEBUG: FORCING CHECKOUT REDIRECT WITH DISCOUNT:', code);
+            
             sessionStorage.setItem('redirect_attempted', 'true');
-            
-            // Use the most reliable Shopify discount URL method
-            window.location.href = `/discount/${encodeURIComponent(code)}`;
-            
-            // Set success flag after redirect starts
             sessionStorage.setItem('redirect_successful', 'true');
             
-            // Failsafe: Check if redirect worked after 3 seconds
-            redirectTimer1 = setTimeout(() => {
-              if (sessionStorage.getItem('redirect_attempted') === 'true' && 
-                  window.location.pathname !== '/checkout') {
-                console.log('DEBUG: Primary redirect failed, using backup method');
+            // Method 1: Primary - Shopify discount URL (auto-applies discount)
+            console.log('DEBUG: Method 1 - Shopify discount URL redirect');
+            try {
+              window.location.replace(`/discount/${encodeURIComponent(code)}`);
+            } catch (error1) {
+              console.error('DEBUG: Method 1 failed:', error1);
+              
+              // Method 2: Backup - Direct checkout with discount parameter
+              console.log('DEBUG: Method 2 - Direct checkout with discount');
+              try {
+                window.location.replace(`/checkout?discount=${encodeURIComponent(code)}`);
+              } catch (error2) {
+                console.error('DEBUG: Method 2 failed:', error2);
+                
+                // Method 3: Force redirect using href (last resort)
+                console.log('DEBUG: Method 3 - Force redirect using href');
                 window.location.href = `/checkout?discount=${encodeURIComponent(code)}`;
+              }
+            }
+            
+            // ULTIMATE FAILSAFE: Multiple backup redirects
+            setTimeout(() => {
+              if (window.location.pathname === window.location.pathname) { // Still on same page
+                console.log('DEBUG: FAILSAFE 1 - Force checkout redirect');
+                window.location.href = `/checkout?discount=${encodeURIComponent(code)}`;
+              }
+            }, 1000);
+            
+            setTimeout(() => {
+              if (!window.location.href.includes('/checkout')) {
+                console.log('DEBUG: FAILSAFE 2 - Emergency checkout redirect');
+                window.open(`/checkout?discount=${encodeURIComponent(code)}`, '_self');
+              }
+            }, 2000);
+            
+            setTimeout(() => {
+              if (!window.location.href.includes('/checkout')) {
+                console.log('DEBUG: FAILSAFE 3 - Final emergency redirect');
+                document.location = `/checkout?discount=${encodeURIComponent(code)}`;
               }
             }, 3000);
           })
           .catch(cartError => {
             console.error('DEBUG: Cart update failed:', cartError);
-            console.log('DEBUG: Proceeding with redirect despite cart update failure...');
+            console.log('DEBUG: ===== CART UPDATE FAILED - STILL FORCING CHECKOUT =====');
             
-            // Even if cart update fails, still redirect with discount
+            // EVEN IF CART FAILS, GUARANTEE CHECKOUT REDIRECT
             sessionStorage.setItem('redirect_attempted', 'true');
-            window.location.href = `/discount/${encodeURIComponent(code)}`;
             sessionStorage.setItem('redirect_successful', 'true');
             
-            // Failsafe for cart update failure case too
-            redirectTimer2 = setTimeout(() => {
-              if (window.location.pathname !== '/checkout') {
-                console.log('DEBUG: Cart update failed redirect also failed, final backup');
+            console.log('DEBUG: FORCING CHECKOUT DESPITE CART FAILURE WITH DISCOUNT:', code);
+            
+            // Immediate redirect - don't wait
+            try {
+              window.location.replace(`/discount/${encodeURIComponent(code)}`);
+            } catch (error) {
+              console.log('DEBUG: Discount URL failed, using direct checkout');
+              window.location.replace(`/checkout?discount=${encodeURIComponent(code)}`);
+            }
+            
+            // Multiple failsafes for cart failure scenario
+            setTimeout(() => {
+              if (!window.location.href.includes('/checkout')) {
+                console.log('DEBUG: CART FAILURE FAILSAFE 1');
                 window.location.href = `/checkout?discount=${encodeURIComponent(code)}`;
               }
-            }, 3000);
+            }, 500);
+            
+            setTimeout(() => {
+              if (!window.location.href.includes('/checkout')) {
+                console.log('DEBUG: CART FAILURE FAILSAFE 2');
+                window.open(`/checkout?discount=${encodeURIComponent(code)}`, '_self');
+              }
+            }, 1500);
+            
+            setTimeout(() => {
+              if (!window.location.href.includes('/checkout')) {
+                console.log('DEBUG: CART FAILURE FINAL FAILSAFE');
+                document.location = `/checkout?discount=${encodeURIComponent(code)}`;
+              }
+            }, 2500);
           });
           
           // Return resolved promise
@@ -1089,30 +1157,128 @@
         }
       });
       
-      // Cleanup function for redirect flags on page visibility change
+      // Enhanced cleanup and redirect monitoring
       document.addEventListener('visibilitychange', function() {
         if (document.visibilityState === 'visible') {
-          // Clear redirect flags if user comes back to page (redirect failed)
-          const redirectTime = parseInt(sessionStorage.getItem('checkout_redirect_time') || '0');
+          // Check if user returned after a failed redirect
+          const redirectTime = parseInt(sessionStorage.getItem('redirect_timestamp') || '0');
+          const redirectAttempted = sessionStorage.getItem('redirect_attempted') === 'true';
           const currentTime = Date.now();
           
-          if (redirectTime && (currentTime - redirectTime) > 5000) {
-            console.log('DEBUG: Cleaning up redirect flags - user returned to page');
-            sessionStorage.removeItem('checkout_redirect_attempted');
-            sessionStorage.removeItem('checkout_redirect_time');
+          if (redirectAttempted && redirectTime && (currentTime - redirectTime) > 5000) {
+            console.log('DEBUG: User returned to page - redirect may have failed');
+            console.log('DEBUG: Cleaning up redirect flags');
+            
+            // Clear all redirect tracking
+            sessionStorage.removeItem('redirect_attempted');
+            sessionStorage.removeItem('redirect_successful');
+            sessionStorage.removeItem('redirect_timestamp');
+            sessionStorage.removeItem('discount_code');
+            
+            // Show message to user about redirect failure
+            if (msg) {
+              setMessage('Redirect failed. Please try clicking the checkout button manually.', true);
+            }
           }
         }
       });
       
-      // Page load cleanup - ensure we're not stuck with old redirect flags
+      // Enhanced page load handling and checkout discount monitoring
       window.addEventListener('load', function() {
-        const redirectTime = parseInt(sessionStorage.getItem('checkout_redirect_time') || '0');
+        const redirectTime = parseInt(sessionStorage.getItem('redirect_timestamp') || '0');
+        const redirectAttempted = sessionStorage.getItem('redirect_attempted') === 'true';
+        const discountCode = sessionStorage.getItem('discount_code');
         const currentTime = Date.now();
         
-        // If redirect flags are more than 1 minute old, clear them
-        if (redirectTime && (currentTime - redirectTime) > 60000) {
-          sessionStorage.removeItem('checkout_redirect_attempted');
-          sessionStorage.removeItem('checkout_redirect_time');
+        console.log('DEBUG: Page loaded - checking redirect and discount state');
+        console.log('DEBUG: Current URL:', window.location.href);
+        console.log('DEBUG: Redirect attempted:', redirectAttempted);
+        console.log('DEBUG: Stored discount code:', discountCode);
+        
+        // CHECKOUT PAGE DISCOUNT ENFORCEMENT
+        if (window.location.pathname.includes('/checkout')) {
+          console.log('DEBUG: ===== ON CHECKOUT PAGE - ENSURING DISCOUNT =====');
+          
+          if (redirectAttempted) {
+            console.log('DEBUG: Successfully redirected to checkout - cleaning up flags');
+            sessionStorage.removeItem('redirect_attempted');
+            sessionStorage.removeItem('redirect_successful');
+            sessionStorage.removeItem('redirect_timestamp');
+          }
+          
+          // ENSURE DISCOUNT CODE IS APPLIED IN CHECKOUT
+          if (discountCode && !window.location.href.includes('discount=')) {
+            console.log('DEBUG: Discount not in URL, forcing discount application');
+            
+            // Try to add discount to URL if missing
+            const separator = window.location.href.includes('?') ? '&' : '?';
+            const newUrl = window.location.href + separator + 'discount=' + encodeURIComponent(discountCode);
+            
+            try {
+              window.history.replaceState({}, '', newUrl);
+              console.log('DEBUG: Added discount to checkout URL:', newUrl);
+            } catch (error) {
+              console.log('DEBUG: Could not update URL, trying full redirect');
+              window.location.href = `/checkout?discount=${encodeURIComponent(discountCode)}`;
+            }
+          }
+          
+          // MONITOR AND AUTO-FILL DISCOUNT FIELD IF PRESENT
+          if (discountCode) {
+            console.log('DEBUG: Monitoring for discount code field to auto-fill');
+            
+            const fillDiscountField = () => {
+              // Common discount field selectors
+              const discountSelectors = [
+                'input[name="discount"]',
+                'input[placeholder*="discount" i]', 
+                'input[placeholder*="coupon" i]',
+                'input[placeholder*="promo" i]',
+                '#checkout_reduction_code',
+                '.reduction-code input',
+                '.discount-code input'
+              ];
+              
+              for (let selector of discountSelectors) {
+                const field = document.querySelector(selector);
+                if (field && !field.value) {
+                  console.log('DEBUG: Found discount field, filling with code:', discountCode);
+                  field.value = discountCode;
+                  
+                  // Trigger change event
+                  field.dispatchEvent(new Event('change', { bubbles: true }));
+                  field.dispatchEvent(new Event('input', { bubbles: true }));
+                  
+                  // Try to submit/apply if there's an apply button
+                  const applyButton = field.parentElement?.querySelector('button') ||
+                                    document.querySelector('button[type="submit"]') ||
+                                    document.querySelector('.btn');
+                  
+                  if (applyButton) {
+                    console.log('DEBUG: Found apply button, clicking to apply discount');
+                    setTimeout(() => applyButton.click(), 100);
+                  }
+                  
+                  break;
+                }
+              }
+            };
+            
+            // Try immediately and then monitor for dynamic loading
+            fillDiscountField();
+            setTimeout(fillDiscountField, 500);
+            setTimeout(fillDiscountField, 1000);
+            setTimeout(fillDiscountField, 2000);
+          }
+        }
+        
+        // Cleanup old redirect flags if not on checkout
+        if (redirectTime && (currentTime - redirectTime) > 60000 && !window.location.pathname.includes('/checkout')) {
+          console.log('DEBUG: Cleaning up old redirect flags');
+          sessionStorage.removeItem('redirect_attempted');
+          sessionStorage.removeItem('redirect_successful');
+          sessionStorage.removeItem('redirect_timestamp');
+          sessionStorage.removeItem('discount_code');
         }
       });
     })();
