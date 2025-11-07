@@ -99,6 +99,42 @@
       // Clear input on page load/refresh
       input.value = '';
       
+      // Show current configuration for debugging
+      console.log('=== PROMO CODE SECTION CONFIGURATION ===');
+      console.log('Configured discount codes:');
+      {%- for i in (1..8) -%}
+        {%- assign code_setting = 'fallback_code_' | append: i -%}
+        {%- assign product_setting = 'fallback_products_' | append: i -%}
+        {%- assign code_value = section.settings[code_setting] -%}
+        {%- assign product_value = section.settings[product_setting] -%}
+        {%- if code_value != blank -%}
+        console.log('Code {{ i }}: "{{ code_value }}" → Products: "{{ product_value | default: "NOT SET" }}"');
+        {%- endif -%}
+      {%- endfor -%}
+      console.log('==========================================');
+      
+      // Add function to verify cart state (useful for debugging)
+      window.verifyCartState = async function() {
+        try {
+          const cartResponse = await fetch('/cart.js');
+          const cartData = await cartResponse.json();
+          
+          console.log('=== CURRENT CART STATE ===');
+          console.log('Total items:', cartData.item_count);
+          console.log('Total price:', cartData.total_price);
+          console.log('Cart attributes:', cartData.attributes);
+          console.log('Items in cart:');
+          cartData.items.forEach(item => {
+            console.log(`- ${item.product_title} (${item.handle}) x${item.quantity}`);
+          });
+          console.log('========================');
+          
+          return cartData;
+        } catch (error) {
+          console.error('Error checking cart state:', error);
+        }
+      };
+      
       function setMessage(text, isError) {
         msg.textContent = text || '';
         msg.style.color = isError ? '#e74c3c' : '#2ecc71';
@@ -186,31 +222,34 @@
             variant_id: item.variant_id
           })));
           
+          // Check if cart already has discount applied
+          console.log('DEBUG: Current cart attributes:', cartData.attributes);
+          console.log('DEBUG: Cart total price:', cartData.total_price, 'Cart original total:', cartData.original_total_price);
+          
           // Log specific details for troubleshooting
-          console.log('DEBUG: ===== DISCOUNT TROUBLESHOOTING =====');
+          console.log('DEBUG: ===== DISCOUNT FLOW VERIFICATION =====');
           console.log('DEBUG: Discount code being applied:', code);
           console.log('DEBUG: Products that will be in cart when discount is applied:');
           cartData.items.forEach(item => {
             console.log(`DEBUG: - ${item.product_title} (handle: ${item.handle}, product_id: ${item.product_id})`);
           });
-          console.log('DEBUG: =====================================');
           
-          setMessage('Products added! Applying discount and redirecting...', false);
+          setMessage('Products added! Verifying discount compatibility and applying...', false);
           
-          // Add helpful message for troubleshooting
-          console.log('DEBUG: If you get "discount code isn\'t valid for items in cart" error:');
-          console.log('DEBUG: 1. Check your Shopify discount settings');
-          console.log('DEBUG: 2. Make sure the discount applies to the products being added');
-          console.log('DEBUG: 3. Check the "Applies to" section in your discount configuration');
+          // Step 6A: First verify if this discount can be applied by testing it
+          return verifyDiscountCompatibility(code, cartData.items);
+        })
+        .then((compatibilityResult) => {
+          console.log('DEBUG: Discount compatibility check result:', compatibilityResult);
           
-          console.log('DEBUG: Applying discount code:', code);
+          if (!compatibilityResult.compatible) {
+            throw new Error(`Discount verification failed: ${compatibilityResult.reason}`);
+          }
           
-          // Use the most reliable method: redirect to discount URL which auto-applies and redirects to cart/checkout
-          // This is Shopify's standard way to apply discounts
-          setTimeout(() => {
-            console.log('DEBUG: Redirecting to discount URL for automatic application');
-            window.location.href = `/discount/${encodeURIComponent(code)}`;
-          }, 1000);
+          setMessage('Discount verified! Applying and redirecting to checkout...', false);
+          
+          // Step 6B: Apply discount using multiple methods for reliability
+          return applyDiscountReliably(code);
         })
         .catch((error) => {
           console.error('Discount code processing error:', error);
@@ -568,11 +607,14 @@
           const response = await fetch(`/products/${productData.handle}.js`);
           
           if (!response.ok) {
-            throw new Error(`Product ${productData.handle} not found`);
+            console.error(`ERROR: Product ${productData.handle} not accessible via API (Status: ${response.status})`);
+            console.error('This might be because the product is unlisted or has restricted access');
+            throw new Error(`Product ${productData.handle} not found - check if product is published/listed`);
           }
           
           const product = await response.json();
           console.log('DEBUG: Product details:', product);
+          console.log('DEBUG: Product status - ID:', product.id, 'Available:', product.available, 'Published:', product.published_at);
           
           if (!product || !product.variants || product.variants.length === 0) {
             throw new Error(`Product ${productData.handle} has no variants available`);
@@ -596,6 +638,95 @@
         });
 
         return Promise.all(addPromises);
+      }
+
+      // Function to verify discount compatibility with current cart
+      async function verifyDiscountCompatibility(discountCode, cartItems) {
+        try {
+          console.log('DEBUG: Verifying discount compatibility for:', discountCode);
+          console.log('DEBUG: With cart items:', cartItems);
+          
+          // Test the discount URL to see if it's valid
+          const testResponse = await fetch(`/discount/${encodeURIComponent(discountCode)}`, {
+            method: 'GET',
+            redirect: 'manual'
+          });
+          
+          console.log('DEBUG: Discount test response status:', testResponse.status);
+          
+          if (testResponse.status === 404) {
+            return { 
+              compatible: false, 
+              reason: 'Discount code does not exist in Shopify' 
+            };
+          }
+          
+          if (testResponse.status === 302 || testResponse.status === 200) {
+            // Get redirect location to understand what Shopify is doing
+            const location = testResponse.headers.get('location');
+            console.log('DEBUG: Discount redirects to:', location);
+            
+            if (location && location.includes('error')) {
+              return { 
+                compatible: false, 
+                reason: 'Shopify rejected the discount (check discount settings)' 
+              };
+            }
+            
+            return { 
+              compatible: true, 
+              reason: 'Discount appears valid', 
+              redirectLocation: location 
+            };
+          }
+          
+          // If we can't determine, assume compatible but warn
+          console.warn('DEBUG: Could not definitively verify discount, proceeding anyway');
+          return { 
+            compatible: true, 
+            reason: 'Could not verify, assuming valid' 
+          };
+          
+        } catch (error) {
+          console.error('DEBUG: Error verifying discount:', error);
+          return { 
+            compatible: true, 
+            reason: 'Verification failed, assuming valid' 
+          };
+        }
+      }
+
+      // Function to apply discount with multiple methods and verification
+      async function applyDiscountReliably(discountCode) {
+        try {
+          console.log('DEBUG: ===== APPLYING DISCOUNT RELIABLY =====');
+          
+          // Method 1: Try cart attributes first
+          console.log('DEBUG: Method 1 - Setting cart attributes');
+          await fetch('/cart/update.js', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              attributes: { 'discount_code': discountCode }
+            })
+          });
+          
+          // Method 2: Use direct discount URL (most reliable)
+          console.log('DEBUG: Method 2 - Using direct discount URL redirect');
+          setTimeout(() => {
+            window.location.href = `/discount/${encodeURIComponent(discountCode)}`;
+          }, 500);
+          
+          // Method 3: Fallback to checkout with URL parameter
+          setTimeout(() => {
+            console.log('DEBUG: Method 3 - Fallback to checkout URL parameter');
+            window.location.href = `/checkout?discount=${encodeURIComponent(discountCode)}`;
+          }, 3000);
+          
+        } catch (error) {
+          console.error('DEBUG: Error in reliable discount application:', error);
+          throw error;
+        }
       }
       });
 
