@@ -122,16 +122,40 @@
           console.log('=== CURRENT CART STATE ===');
           console.log('Total items:', cartData.item_count);
           console.log('Total price:', cartData.total_price);
+          console.log('Original total price:', cartData.original_total_price);
+          console.log('Total discount:', cartData.total_discount);
           console.log('Cart attributes:', cartData.attributes);
+          console.log('Applied discounts:', cartData.cart_level_discount_applications || 'None');
+          
+          // Check for pending discount codes
+          const pendingDiscount = sessionStorage.getItem('pending_discount_code') || localStorage.getItem('pending_discount_code');
+          if (pendingDiscount) {
+            console.log('Pending discount code found:', pendingDiscount);
+          }
+          
           console.log('Items in cart:');
           cartData.items.forEach(item => {
-            console.log(`- ${item.product_title} (${item.handle}) x${item.quantity}`);
+            console.log(`- ${item.product_title} (${item.handle}) x${item.quantity} - $${(item.line_price / 100).toFixed(2)}`);
+            if (item.discounts && item.discounts.length > 0) {
+              console.log(`  Applied discounts:`, item.discounts);
+            }
           });
           console.log('========================');
           
           return cartData;
         } catch (error) {
           console.error('Error checking cart state:', error);
+        }
+      };
+      
+      // Function to manually apply pending discount (for troubleshooting)
+      window.applyPendingDiscount = function() {
+        const pendingDiscount = sessionStorage.getItem('pending_discount_code') || localStorage.getItem('pending_discount_code');
+        if (pendingDiscount) {
+          console.log('Applying pending discount:', pendingDiscount);
+          window.location.href = `/discount/${encodeURIComponent(pendingDiscount)}`;
+        } else {
+          console.log('No pending discount code found');
         }
       };
       
@@ -701,31 +725,45 @@
         try {
           console.log('DEBUG: ===== APPLYING DISCOUNT RELIABLY =====');
           
-          // Method 1: Try cart attributes first
-          console.log('DEBUG: Method 1 - Setting cart attributes');
-          await fetch('/cart/update.js', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-              attributes: { 'discount_code': discountCode }
-            })
-          });
+          // Method 1: Set session storage for persistence
+          console.log('DEBUG: Method 1 - Setting session storage');
+          sessionStorage.setItem('pending_discount_code', discountCode);
+          localStorage.setItem('pending_discount_code', discountCode);
           
-          // Method 2: Use direct discount URL (most reliable)
-          console.log('DEBUG: Method 2 - Using direct discount URL redirect');
-          setTimeout(() => {
-            window.location.href = `/discount/${encodeURIComponent(discountCode)}`;
-          }, 500);
+          // Method 2: Update cart with discount in note/attributes
+          console.log('DEBUG: Method 2 - Updating cart with discount info');
+          try {
+            await fetch('/cart/update.js', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({
+                attributes: {
+                  'discount_code': discountCode,
+                  '_promo_applied': 'true',
+                  '_promo_timestamp': Date.now().toString()
+                },
+                note: `Discount code: ${discountCode}`
+              })
+            });
+            console.log('DEBUG: Cart updated with discount attributes');
+          } catch (updateError) {
+            console.error('DEBUG: Cart update failed:', updateError);
+          }
           
-          // Method 3: Fallback to checkout with URL parameter
-          setTimeout(() => {
-            console.log('DEBUG: Method 3 - Fallback to checkout URL parameter');
-            window.location.href = `/checkout?discount=${encodeURIComponent(discountCode)}`;
-          }, 3000);
+          // Method 3: Use Shopify's standard discount URL approach
+          console.log('DEBUG: Method 3 - Using Shopify discount URL (primary method)');
+          
+          // This is the most reliable approach - let Shopify handle everything
+          window.location.href = `/discount/${encodeURIComponent(discountCode)}`;
           
         } catch (error) {
-          console.error('DEBUG: Error in reliable discount application:', error);
-          throw error;
+          console.error('DEBUG: Error in discount application:', error);
+          
+          // Final emergency fallback
+          console.log('DEBUG: Emergency fallback - direct redirect');
+          setTimeout(() => {
+            window.location.href = `/checkout?discount=${encodeURIComponent(discountCode)}`;
+          }, 1000);
         }
       }
       });
