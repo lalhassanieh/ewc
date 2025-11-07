@@ -96,6 +96,9 @@
       const btn = document.getElementById('applyPromoBtn');
       const msg = document.getElementById('applyPromoMsg');
 
+      // Clear input on page load/refresh
+      input.value = '';
+      
       function setMessage(text, isError) {
         msg.textContent = text || '';
         msg.style.color = isError ? '#e74c3c' : '#2ecc71';
