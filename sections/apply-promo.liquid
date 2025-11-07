@@ -756,29 +756,60 @@
           const cartData = await cartCheck.json();
           console.log('DEBUG: Final cart state - Items:', cartData.item_count, 'Total:', cartData.total_price);
           
-          // Method 4: Use Shopify's standard discount URL approach (most reliable)
-          console.log('DEBUG: Method 4 - Using Shopify discount URL for automatic application and checkout redirect');
+          // Method 4: Enhanced checkout redirect with immediate application
+          console.log('DEBUG: Method 4 - Enhanced checkout redirect strategy');
           
           // Add a small delay to ensure cart operations are completed
-          await new Promise(resolve => setTimeout(resolve, 500));
+          await new Promise(resolve => setTimeout(resolve, 300));
           
-          // This is the most reliable method - Shopify automatically applies discount and redirects to checkout
-          window.location.href = `/discount/${encodeURIComponent(discountCode)}`;
+          // Strategy A: Use Shopify's discount URL (most reliable for discount application)
+          console.log('DEBUG: Strategy A - Shopify discount URL redirect');
           
-          // Method 5: Fallback with explicit checkout redirect
-          setTimeout(() => {
-            console.log('DEBUG: Method 5 - Fallback to explicit checkout redirect');
+          // Set a flag to track redirect attempts
+          sessionStorage.setItem('checkout_redirect_attempted', 'true');
+          sessionStorage.setItem('checkout_redirect_time', Date.now().toString());
+          
+          try {
+            // Primary method - Shopify discount URL
+            window.location.href = `/discount/${encodeURIComponent(discountCode)}`;
+          } catch (discountUrlError) {
+            console.error('DEBUG: Discount URL failed:', discountUrlError);
+            
+            // Strategy B: Direct checkout with discount parameter
+            console.log('DEBUG: Strategy B - Direct checkout redirect');
             window.location.href = `/checkout?discount=${encodeURIComponent(discountCode)}`;
-          }, 3000);
+          }
+          
+          // Strategy C: Backup redirect (in case primary methods are blocked)
+          setTimeout(() => {
+            // Only execute if we're still on the same page (redirect didn't work)
+            if (sessionStorage.getItem('checkout_redirect_attempted') === 'true') {
+              const redirectTime = parseInt(sessionStorage.getItem('checkout_redirect_time') || '0');
+              const currentTime = Date.now();
+              
+              // If more than 2 seconds have passed and we're still here, force redirect
+              if (currentTime - redirectTime > 2000) {
+                console.log('DEBUG: Strategy C - Backup checkout redirect (primary failed)');
+                window.location.replace(`/checkout?discount=${encodeURIComponent(discountCode)}`);
+              }
+            }
+          }, 2500);
           
         } catch (error) {
           console.error('DEBUG: Error in discount application:', error);
           
           // Emergency fallback - ensure user gets to checkout with discount
           console.log('DEBUG: Emergency fallback - direct checkout redirect with discount');
+          
+          // Clear any pending flags
+          sessionStorage.removeItem('checkout_redirect_attempted');
+          sessionStorage.removeItem('checkout_redirect_time');
+          
+          // Use replace to prevent back button issues
           setTimeout(() => {
-            window.location.href = `/checkout?discount=${encodeURIComponent(discountCode)}`;
-          }, 1000);
+            console.log('DEBUG: Executing emergency checkout redirect');
+            window.location.replace(`/checkout?discount=${encodeURIComponent(discountCode)}`);
+          }, 500);
         }
       }
       });
@@ -787,6 +818,33 @@
       input.addEventListener('keydown', function (e) {
         if (e.key === 'Enter') {
           btn.click();
+        }
+      });
+      
+      // Cleanup function for redirect flags on page visibility change
+      document.addEventListener('visibilitychange', function() {
+        if (document.visibilityState === 'visible') {
+          // Clear redirect flags if user comes back to page (redirect failed)
+          const redirectTime = parseInt(sessionStorage.getItem('checkout_redirect_time') || '0');
+          const currentTime = Date.now();
+          
+          if (redirectTime && (currentTime - redirectTime) > 5000) {
+            console.log('DEBUG: Cleaning up redirect flags - user returned to page');
+            sessionStorage.removeItem('checkout_redirect_attempted');
+            sessionStorage.removeItem('checkout_redirect_time');
+          }
+        }
+      });
+      
+      // Page load cleanup - ensure we're not stuck with old redirect flags
+      window.addEventListener('load', function() {
+        const redirectTime = parseInt(sessionStorage.getItem('checkout_redirect_time') || '0');
+        const currentTime = Date.now();
+        
+        // If redirect flags are more than 1 minute old, clear them
+        if (redirectTime && (currentTime - redirectTime) > 60000) {
+          sessionStorage.removeItem('checkout_redirect_attempted');
+          sessionStorage.removeItem('checkout_redirect_time');
         }
       });
     })();
