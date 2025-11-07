@@ -885,8 +885,8 @@
                   "settings": {
                     "product": "ewc-2025-windbreaker-beige",
                     "display": "bottom-right",
-                    "top": 66,
-                    "left": 17
+                    "top": 32,
+                    "left": 32
                   },
                   "blocks": {}
                 },
@@ -2451,10 +2451,10 @@
         "subtitle": "Enter the promo code to claim your Worlds2025 drop",
         "placeholder": "Enter promo code",
         "button_text": "Apply",
+        "bg_color": "#ffffff",
         "bg_image": "shopify://shop_images/Banner-01.2.jpg",
         "bg_overlay_opacity": 30,
         "section_height": 60,
-        "bg_color": "#ffffff",
         "title_color": "#ffffff",
         "subtitle_color": "#ffffff",
         "button_bg": "#d1b26e",
