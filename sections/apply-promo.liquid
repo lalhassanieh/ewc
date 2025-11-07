@@ -165,11 +165,25 @@
           }).then(() => products);
         })
         .then((products) => {
+          console.log('DEBUG: About to add these products to cart:', products);
+          console.log('DEBUG: Product handles being added:', products.map(p => p.handle));
+          
           // Step 5: Add all assigned products to cart
           return addProductsToCart(products);
         })
         .then(() => {
-          // Step 6: Apply discount code and redirect to checkout
+          // Step 6: Get current cart contents for debugging
+          return fetch('/cart.js').then(response => response.json());
+        })
+        .then((cartData) => {
+          console.log('DEBUG: Cart contents before checkout:', cartData);
+          console.log('DEBUG: Items in cart:', cartData.items.map(item => ({
+            handle: item.handle,
+            product_title: item.product_title,
+            variant_title: item.variant_title,
+            quantity: item.quantity
+          })));
+          
           setMessage('Products added! Applying discount and redirecting...', false);
           
           // Apply the discount code to the cart
