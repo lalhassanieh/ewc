@@ -756,25 +756,6 @@
           const cartData = await cartCheck.json();
           console.log('DEBUG: Final cart state - Items:', cartData.item_count, 'Total:', cartData.total_price);
           
-          // Check if cart has zero value - important for discount application
-          if (cartData.total_price === 0) {
-            console.warn('DEBUG: WARNING - Cart total is $0. Discount codes may not apply to zero-value carts.');
-            console.log('DEBUG: Consider setting a minimum price ($0.01+) for products used with discount codes.');
-            
-            // Still proceed but add warning to cart note
-            try {
-              await fetch('/cart/update.js', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({
-                  note: `Promo code: ${discountCode} (Note: Free products - discount may not display but code is tracked)`
-                })
-              });
-            } catch (noteError) {
-              console.error('Failed to update cart note:', noteError);
-            }
-          }
-          
           // Method 4: Use Shopify's standard discount URL approach (most reliable)
           console.log('DEBUG: Method 4 - Using Shopify discount URL for automatic application and checkout redirect');
           
@@ -800,6 +781,7 @@
           }, 1000);
         }
       }
+      });
 
       // Allow Enter key
       input.addEventListener('keydown', function (e) {
@@ -863,7 +845,7 @@
     { "type": "header", "content": "Manual Setup Instructions" },
     { 
       "type": "paragraph", 
-      "content": "MANUAL CONFIGURATION ONLY\n1. Enter your discount code exactly as it appears in Shopify admin\n2. Enter the product handle(s) to add to cart (comma-separated for multiple)\n3. Set the quantity per product\n4. The system will validate the code with Shopify and add your specified products\n\nIMPORTANT: For discount codes to appear at checkout, products must have a price greater than $0. Free products ($0) may prevent discount codes from displaying properly." 
+      "content": "MANUAL CONFIGURATION ONLY\n1. Enter your discount code exactly as it appears in Shopify admin\n2. Enter the product handle(s) to add to cart (comma-separated for multiple)\n3. Set the quantity per product\n4. The system will validate the code with Shopify and add your specified products" 
     },
     {
       "type": "text",
