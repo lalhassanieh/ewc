@@ -161,7 +161,7 @@
                     "text": "Customer Care",
                     "url": "shopify://pages/customer-care",
                     "icon": "",
-                    "padding": "",
+                    "padding": "0 0 12px",
                     "margin": ""
                   },
                   "blocks": {}
