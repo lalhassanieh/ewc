@@ -622,7 +622,7 @@
             "type": "_mainmenu-item",
             "settings": {
               "title": "EWC Merch",
-              "menu_url": "shopify://collections/ewc-merch",
+              "menu_url": "shopify://collections/collectibles",
               "submenu_format": "",
               "badge": "",
               "position": "after",
