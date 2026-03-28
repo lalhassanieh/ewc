@@ -154,6 +154,18 @@
                 "margin_title_mobi": "0px 0px 30px 0px"
               },
               "blocks": {
+                "list_item_rE97VX": {
+                  "type": "_list-item",
+                  "name": "List item",
+                  "settings": {
+                    "text": "Customer Care",
+                    "url": "shopify://pages/customer-care",
+                    "icon": "",
+                    "padding": "",
+                    "margin": ""
+                  },
+                  "blocks": {}
+                },
                 "list_item_ididdR": {
                   "type": "_list-item",
                   "settings": {
@@ -200,6 +212,7 @@
                 }
               },
               "block_order": [
+                "list_item_rE97VX",
                 "list_item_ididdR",
                 "list_item_4nrXWm",
                 "list_item_YfbYfw",
