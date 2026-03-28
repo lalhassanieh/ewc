@@ -188,6 +188,17 @@
                   },
                   "blocks": {}
                 },
+                "list_item_Af3tad": {
+                  "type": "_list-item",
+                  "settings": {
+                    "text": "FAQ",
+                    "url": "shopify://pages/faqs",
+                    "icon": "",
+                    "padding": "0 0 12px",
+                    "margin": ""
+                  },
+                  "blocks": {}
+                },
                 "list_item_YfbYfw": {
                   "type": "_list-item",
                   "settings": {
@@ -215,6 +226,7 @@
                 "list_item_rE97VX",
                 "list_item_ididdR",
                 "list_item_4nrXWm",
+                "list_item_Af3tad",
                 "list_item_YfbYfw",
                 "list_item_EhAeyh"
               ]
