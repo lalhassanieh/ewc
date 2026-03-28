@@ -622,7 +622,7 @@
             "type": "_mainmenu-item",
             "settings": {
               "title": "EWC Merch",
-              "menu_url": "shopify://products/2024-geng-x-libilly-player-jersey-black",
+              "menu_url": "shopify://collections/ewc-merch-1",
               "submenu_format": "",
               "badge": "",
               "position": "after",
